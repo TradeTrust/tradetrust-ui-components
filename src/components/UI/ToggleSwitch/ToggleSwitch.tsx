@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
-import tw from "twin.macro";
+import { vars } from "../../../styles";
+import "../../../index.css";
 
-interface ToggleSwitchProps {
+export interface ToggleSwitchProps {
   isOn: boolean;
   handleToggle?: () => void;
   className?: string;
@@ -26,18 +27,32 @@ export const ToggleSwitch = styled(({ className, isOn, handleToggle }: ToggleSwi
   );
 })`
   .toggle-switch-checkbox {
-    ${tw`h-0 w-0 invisible`}
+    height: 0;
+    width: 0;
+    visibility: hidden;
   }
 
   .toggle-switch-label {
-    ${tw`flex items-center justify-between cursor-pointer w-20 h-8 rounded-full relative -mt-6 ml-4`}
-    ${(props) =>
-      props.isOn ? tw`bg-teal-lighter` : tw`bg-pink`}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 9999px;
+    position: relative;
+    margin-top: -1.5rem;
+    margin-left: 1rem;
+    background-color: ${(props) => (props.isOn ? vars.tealLighter : vars.pink)};
     transition: background-color 0.2s;
   }
 
   .toggle-switch-label .toggle-switch-button {
-    ${tw`absolute w-6 h-6 rounded-full bg-white`}
+    position: "absolute"
+    border-radius: 9999px;
+    background-color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
     content: "";
     top: 4px;
     left: 4px;
@@ -47,12 +62,20 @@ export const ToggleSwitch = styled(({ className, isOn, handleToggle }: ToggleSwi
 
   .toggle-switch-label:before {
     content: "On";
-    ${tw`text-teal font-bold pl-3 opacity-0 uppercase`}
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0;
+    padding-left: 0.75rem;
+    color: ${vars.teal}
+    
   }
 
   .toggle-switch-label:after {
     content: "Off";
-    ${tw`text-red font-bold pr-3 uppercase`}
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-right: 0.75rem;
+    color: ${vars.red}
   }
 
   .toggle-switch-checkbox:checked ~ .toggle-switch-label:after {

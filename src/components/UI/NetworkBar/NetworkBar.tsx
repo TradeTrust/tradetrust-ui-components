@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { vars } from "../../../styles";
 import { X } from "react-feather";
 
+import "../../../index.css";
+
 const NetworkWrap = styled.div`
   background-color: ${vars.greenDarker};
   color: ${vars.white};
@@ -21,13 +23,11 @@ const NetworkWrap = styled.div`
   }
 `;
 
-interface NetworkBarProps {
+export interface NetworkBarProps {
   network?: string;
 }
 
-export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({
-  network,
-}: NetworkBarProps) => {
+export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({ network }: NetworkBarProps) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -46,8 +46,8 @@ export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({
         <div className="flex flex-wrap">
           <div className="col-auto ml-auto">
             <p className="mb-0">
-              You are currently on <span className="network">{network}</span> network. To change it,
-              please upload a new config file.
+              You are currently on <span className="network">{network}</span> network. To change it, please upload a new
+              config file.
             </p>
           </div>
           <div className="col-auto ml-auto">

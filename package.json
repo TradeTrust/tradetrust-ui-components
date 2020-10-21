@@ -14,8 +14,7 @@
     "debug": "^4.1.1",
     "lodash": "^4.17.20",
     "polished": "^3.6.3",
-    "react-feather": "^2.0.8",
-    "twin.macro": "^1.2.0"
+    "react-feather": "^2.0.8"
   },
   "peerDependencies": {
     "react": ">=16.11.0"
@@ -45,6 +44,7 @@
     "@fullhuman/postcss-purgecss": "^2.1.2",
     "@storybook/addon-actions": "6.0.26",
     "@storybook/addon-docs": "6.0.26",
+    "@storybook/addon-links": "^6.0.26",
     "@storybook/addons": "6.0.26",
     "@storybook/react": "6.0.26",
     "@testing-library/react": "9.1.4",
@@ -57,6 +57,8 @@
     "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-preset-react-app": "^9.1.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-jest": "^23.8.2",
@@ -85,15 +87,6 @@
     "webpack-dev-server": "3.8.0"
   },
   "license": "Apache-2.0",
-  "babelMacros": {
-    "twin": {
-      "config": "tailwind.config.js",
-      "preset": "emotion",
-      "debugProp": true,
-      "debugPlugins": false,
-      "debug": false
-    }
-  },
   "babel": {
     "presets": [
       [

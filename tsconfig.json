@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "jsx": "react",
     "sourceMap": true,
-    "types": ["jest", "@emotion/core"]
+    "allowJs": true,
+    "types": ["jest", "@emotion/core", "node"]
   },
   "include": ["src"]
 }
