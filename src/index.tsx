@@ -1,1 +1,1 @@
-export * from "./components/UI/ToggleSwitch";
+export * from "./components/Counter";
