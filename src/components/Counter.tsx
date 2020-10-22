@@ -2,8 +2,8 @@ import React, { useState, FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { getLogger } from "../logger";
 const { trace } = getLogger("Counter");
-import "../index.css";
 import tw from "twin.macro";
+import "../index.css";
 
 export interface CounterProps {
   /** Initial counter value */
