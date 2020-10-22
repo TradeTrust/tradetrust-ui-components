@@ -14,15 +14,16 @@
     "debug": "^4.1.1",
     "lodash": "^4.17.20",
     "polished": "^3.6.3",
-    "react-feather": "^2.0.8"
+    "react-feather": "^2.0.8",
+    "twin.macro": "^1.11.0"
   },
   "peerDependencies": {
     "react": ">=16.11.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production CI=false npm-run-all -s build:css build:js",
-    "build:css": "postcss src/tailwind.css -o build/index.css",
-    "build:js": "webpack --mode production && npm run build:type",
+    "build": "NODE_ENV=production CI=false npm-run-all -s build:css build:js build:type",
+    "build:css": "postcss src/tailwind.css -o src/index.css",
+    "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
@@ -102,7 +103,8 @@
     ],
     "plugins": [
       "@babel/plugin-proposal-nullish-coalescing-operator",
-      "@babel/plugin-proposal-optional-chaining"
+      "@babel/plugin-proposal-optional-chaining",
+      "macros"
     ]
   },
   "eslintConfig": {
