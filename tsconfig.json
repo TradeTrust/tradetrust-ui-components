@@ -12,9 +12,8 @@
     "resolveJsonModule": true,
     "jsx": "react",
     "sourceMap": true,
+    "allowJs": true,
     "types": ["jest", "@emotion/core", "node"]
   },
-  "exclude": [
-    "./build/**/*"
-]
+  "exclude": ["./build/**/*"]
 }
