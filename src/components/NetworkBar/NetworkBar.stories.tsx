@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { NetworkBar } from "./NetworkBar";
 
 export default {
@@ -9,6 +9,6 @@ export default {
   },
 };
 
-export const Default = () => {
+export const Default = (): ReactElement => {
   return <NetworkBar network="ropsten" />;
 };
