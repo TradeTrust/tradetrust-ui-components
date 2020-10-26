@@ -9,10 +9,13 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@govtechsg/address-identity-resolver": "^1.2.0",
     "debug": "^4.1.1",
+    "polished": "^4.0.3",
     "react-feather": "^2.0.8",
     "tailwindcss": "^1.9.5",
-    "twin.macro": "^1.11.0"
+    "twin.macro": "^1.11.0",
+    "validator": "^13.1.17"
   },
   "scripts": {
     "build": "NODE_ENV=production CI=false && npm-run-all -s build:css build:js build:type",
@@ -57,8 +60,11 @@
     "@testing-library/react": "^10.0.3",
     "@types/debug": "4.1.5",
     "@types/jest": "^25.2.1",
+    "@types/lodash": "^4.14.162",
     "@types/node": "^13.13.4",
     "@types/react": "^16.9.34",
+    "@types/react-transition-group": "^4.4.0",
+    "@types/validator": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "babel-jest": "^25.4.0",
@@ -168,7 +174,9 @@
       "jest/prefer-expect-assertions": "off",
       "array-callback-return": "error",
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error"
+      "react-hooks/exhaustive-deps": "error",
+      "@typescript-eslint/no-empty-function": "off",
+      "jest/no-hooks": "off"
     },
     "overrides": [
       {

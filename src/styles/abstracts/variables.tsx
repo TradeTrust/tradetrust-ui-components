@@ -8,9 +8,11 @@ export const black = `${fullConfig.theme.colors.black.default}`;
 export const grey = `${fullConfig.theme.colors.grey.default}`;
 export const greyLighter = `${fullConfig.theme.colors.grey.lighter}`;
 export const greyDark = `${fullConfig.theme.colors.grey.dark}`;
+export const navy = `${fullConfig.theme.colors.navy.default}`;
 export const blue = `${fullConfig.theme.colors.blue.default}`;
 export const blueLighter = `${fullConfig.theme.colors.blue.lighter}`;
 export const blueDark = `${fullConfig.theme.colors.blue.dark}`;
+export const brandOrange = `${fullConfig.theme.colors.brandOrange.default}`;
 export const orange = `${fullConfig.theme.colors.orange.default}`;
 export const orangeDark = `${fullConfig.theme.colors.orange.dark}`;
 export const orangeLighter = `${fullConfig.theme.colors.orange.lighter}`;
@@ -30,7 +32,18 @@ export const lightgreyLighter = `${fullConfig.theme.colors.lightgrey.lighter}`;
 export const lightgreyLightest = `${fullConfig.theme.colors.lightgrey.lightest}`;
 
 export const buttonRadius = "4px";
+export const buttonOutline = navy;
+export const roundButtonOutline = navy;
 
 export const easeInCubic = "cubic-bezier(0.55, 0.055, 0.675, 0.19)";
 export const easeOutCubic = "cubic-bezier(0.215, 0.61, 0.355, 1)";
 export const easeInOutCubic = "cubic-bezier(0.645, 0.045, 0.355, 1)";
+
+export const maxWidth = "1280px";
+export const inputPadding = "5px 10px";
+export const dropzoneBoxshadowPadding = "10px";
+
+export const sm = "576px";
+export const md = "768px";
+export const lg = "992px";
+export const xl = "1200px";

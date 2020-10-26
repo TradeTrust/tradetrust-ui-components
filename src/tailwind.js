@@ -58,6 +58,9 @@ module.exports = {
         default: "#FF9220",
         dark: "#ed8936",
       },
+      brandOrange: {
+        default: "#FF9933",
+      },
       green: {
         lighter: "#68d391",
         default: "#48bb78",
