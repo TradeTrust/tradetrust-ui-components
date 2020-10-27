@@ -18,6 +18,8 @@ import {
   ThirdPartyAPIEntryProps,
 } from "@govtechsg/address-identity-resolver";
 
+import "../../index.css";
+
 export interface AddressBookDropdownProps {
   name: string;
   endpoint: string;

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { isEmpty } from "lodash";
-import { AddressBookTableRow, AddressBookTableRowEmpty } from "./AddressBookTableRow";
+import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
 
 interface AddressBookThirdPartyProps {

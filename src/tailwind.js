@@ -90,6 +90,7 @@ module.exports = {
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
   },
+  prefix: "tw-",
   plugins: [
     plugin(function ({ addBase, config }) {
       addBase({

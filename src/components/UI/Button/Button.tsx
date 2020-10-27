@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { rgba, lighten, darken } from "polished";
 import { mixin, vars } from "../../../styles";
 
-interface ButtonProps {
+export interface ButtonProps {
   children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -18,7 +18,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) =
   );
 };
 
-interface LabelProps {
+export interface LabelProps {
   children?: React.ReactNode;
   className?: string;
   htmlFor: string;

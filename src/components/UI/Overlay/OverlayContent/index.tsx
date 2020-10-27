@@ -4,6 +4,7 @@ import { vars } from "../../../../styles";
 import { X, XCircle, CheckCircle } from "react-feather";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
 
+import "../../../../index.css";
 export interface OverlayContentProps {
   className?: string;
   title: string;

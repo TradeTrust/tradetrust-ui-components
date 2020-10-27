@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import { rgba } from "polished";
 import { mixin, vars } from "../../../styles";
 
+import "../../../index.css";
+
 // TODO check for twin styles
 
 const OverlayBaseStyle = (): string => {
@@ -89,7 +91,7 @@ export const OverlayContentBaseStyle = (): string => {
   `;
 };
 
-interface OverlayProps {
+export interface OverlayProps {
   className?: string;
   overlayContent: React.ReactNode;
   showOverlay: (overlayContent: React.ReactNode) => void;

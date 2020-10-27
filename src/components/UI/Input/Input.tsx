@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { mixin, vars } from "../../../styles";
 
-interface InputProps {
+export interface InputProps {
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name?: string;

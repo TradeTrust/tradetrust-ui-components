@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { mixin } from "../../../styles";
 
-interface LoaderProps {
+export interface LoaderProps {
   width?: string;
   className?: string;
   children?: React.ReactNode;
