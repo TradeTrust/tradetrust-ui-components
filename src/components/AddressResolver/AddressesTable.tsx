@@ -58,7 +58,7 @@ export const TableStyle = (): string => {
   `;
 };
 
-interface AddressesTableProps {
+export interface AddressesTableProps {
   className?: string;
   isNewEndpoint: boolean;
   setNewEndpoint: (isNewEndpoint: boolean) => void;

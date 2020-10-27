@@ -27,7 +27,7 @@ export interface AddressBookDropdownProps {
   apiKey: string;
 }
 
-interface AddressBookProps extends OverlayContentProps {
+export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
   isOverlayVisible: boolean;
