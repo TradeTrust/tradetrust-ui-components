@@ -12,14 +12,14 @@ module.exports = {
       bold: 700,
     },
     minWidth: {
-      "0": "0",
+      0: "0",
       xs: "18rem",
     },
     extend: {
       spacing: {
-        "72": "18rem",
-        "84": "21rem",
-        "96": "24rem",
+        72: "18rem",
+        84: "21rem",
+        96: "24rem",
       },
       colors: {
         primary: {
@@ -58,6 +58,9 @@ module.exports = {
         default: "#FF9220",
         dark: "#ed8936",
       },
+      brandOrange: {
+        default: "#FF9933",
+      },
       green: {
         lighter: "#68d391",
         default: "#48bb78",
@@ -87,6 +90,7 @@ module.exports = {
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
   },
+  prefix: "tw-",
   plugins: [
     plugin(function ({ addBase, config }) {
       addBase({

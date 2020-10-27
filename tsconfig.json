@@ -15,5 +15,5 @@
     "allowJs": true,
     "types": ["jest", "@emotion/core", "node"]
   },
-  "include": ["src"]
+  "exclude": ["./build/**/*"]
 }
