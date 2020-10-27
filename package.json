@@ -4,8 +4,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "types": "build/esm/index.d.ts",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
