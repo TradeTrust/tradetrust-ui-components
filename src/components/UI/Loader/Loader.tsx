@@ -6,6 +6,8 @@ export interface LoaderProps {
   width?: string;
   className?: string;
   children?: React.ReactNode;
+  primary?: string;
+  secondary?: string;
 }
 
 export const Loader: FunctionComponent<LoaderProps> = ({ children, ...props }) => {
@@ -13,5 +15,5 @@ export const Loader: FunctionComponent<LoaderProps> = ({ children, ...props }) =
 };
 
 export const LoaderSpinner = styled(Loader)`
-  ${(props) => mixin.loaderSpinner({ w: props.width })};
+  ${(props) => mixin.loaderSpinner({ w: props.width, primary: props.primary, secondary: props.secondary })};
 `;

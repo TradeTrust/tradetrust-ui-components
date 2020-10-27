@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Loader, LoaderSpinner } from "./Loader";
 
 export default {
@@ -9,10 +9,10 @@ export default {
   },
 };
 
-export const Spinner = () => {
-  return <LoaderSpinner />;
+export const Spinner = (): ReactElement => {
+  return <LoaderSpinner primary="black" secondary="blue" />;
 };
 
-export const SpinnerCustomWidth = () => {
-  return <LoaderSpinner width="90px" />;
+export const SpinnerCustomWidth = (): ReactElement => {
+  return <LoaderSpinner width="90px" primary="black" />;
 };

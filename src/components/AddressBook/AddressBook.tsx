@@ -7,7 +7,7 @@ import { Search, Download } from "react-feather";
 import { CsvUploadButton } from "./CsvUploadButton";
 import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";
 import { vars } from "../../styles";
-// import { Dropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { debounce } from "lodash";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
@@ -37,8 +37,7 @@ export interface AddressBookProps extends OverlayContentProps {
   network: string;
 }
 
-// const StyledDropdownButton = styled(Dropdown.Toggle)
-const StyledDropdownButton = styled.div`
+const StyledDropdownButton = styled(Dropdown.Toggle)`
   position: relative;
   border-radius: 0;
   max-width: 360px;
@@ -62,8 +61,7 @@ const StyledDropdownButton = styled.div`
   }
 `;
 
-// const StyledDropdownItem = styled(Dropdown.Item)`
-const StyledDropdownItem = styled.div`
+const StyledDropdownItem = styled(Dropdown.Item)`
   &:active {
     background-color: ${vars.blue};
   }
@@ -128,7 +126,7 @@ export const AddressBook = styled(
     return (
       <OverlayContent data-testid="overlay-addressbook" setOverlayVisible={setOverlayVisible} {...props}>
         <div className="overlay-actionsbar">
-          {/* <Dropdown>
+          <Dropdown>
             <StyledDropdownButton variant="transparent" className="mb-2">
               {isLocal ? "Local" : name}
             </StyledDropdownButton>
@@ -157,7 +155,7 @@ export const AddressBook = styled(
                 );
               })}
             </Dropdown.Menu>
-          </Dropdown> */}
+          </Dropdown>
           <div className="row align-items-center">
             <div className="col-12 col-md mb-2 mb-md-0">
               <div className="overlay-searchbar">

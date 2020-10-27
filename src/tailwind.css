@@ -13,3 +13,14 @@ h3 {
 @tailwind components;
 
 @tailwind utilities;
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
