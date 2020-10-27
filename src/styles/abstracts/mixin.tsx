@@ -28,13 +28,21 @@ export const fontSize = (size = 16): string => {
   `;
 };
 
+interface LoaderSpinnerProps {
+  w?: string;
+  borderW?: string;
+  spd?: string;
+  primary?: string;
+  secondary?: string;
+}
+
 export const loaderSpinner = ({
   w = "24px",
   borderW = "4px",
   spd = "0.9s",
   primary = vars.white,
   secondary = vars.white,
-}): string => {
+}: LoaderSpinnerProps): string => {
   return `
     width: ${w};
     height: ${w};

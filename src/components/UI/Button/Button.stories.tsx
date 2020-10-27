@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   Button,
   ButtonSolid,
@@ -24,43 +24,43 @@ export default {
   },
 };
 
-export const Solid = () => {
+export const Solid = (): ReactElement => {
   return <ButtonSolid>Solid</ButtonSolid>;
 };
 
-export const SolidDisabled = () => {
+export const SolidDisabled = (): ReactElement => {
   return <ButtonSolid disabled>SolidDisabled</ButtonSolid>;
 };
 
-export const SolidOrangeWhite = () => {
+export const SolidOrangeWhite = (): ReactElement => {
   return <ButtonSolidOrangeWhite>SolidOrangeWhite</ButtonSolidOrangeWhite>;
 };
 
-export const SolidWhiteOrange = () => {
+export const SolidWhiteOrange = (): ReactElement => {
   return <ButtonSolidWhiteOrange>WhiteOrange</ButtonSolidWhiteOrange>;
 };
 
-export const SolidWhiteBlue = () => {
+export const SolidWhiteBlue = (): ReactElement => {
   return <ButtonSolidWhiteBlue>WhiteBlue</ButtonSolidWhiteBlue>;
 };
 
-export const SolidRedWhite = () => {
+export const SolidRedWhite = (): ReactElement => {
   return <ButtonSolidRedWhite>RedWhite</ButtonSolidRedWhite>;
 };
 
-export const SolidWhiteGrey = () => {
+export const SolidWhiteGrey = (): ReactElement => {
   return <ButtonSolidWhiteGrey>WhiteGrey</ButtonSolidWhiteGrey>;
 };
 
-export const SolidGreenWhite = () => {
+export const SolidGreenWhite = (): ReactElement => {
   return <ButtonSolidGreenWhite>GreenWhite</ButtonSolidGreenWhite>;
 };
 
-export const BorderedBlue = () => {
+export const BorderedBlue = (): ReactElement => {
   return <ButtonBorderedBlue>BorderedBlue</ButtonBorderedBlue>;
 };
 
-export const IconWhiteOrange = () => {
+export const IconWhiteOrange = (): ReactElement => {
   return (
     <ButtonIconWhiteOrange>
       <Edit3 />
@@ -68,7 +68,7 @@ export const IconWhiteOrange = () => {
   );
 };
 
-export const IconWhiteOrangeDisabled = () => {
+export const IconWhiteOrangeDisabled = (): ReactElement => {
   return (
     <ButtonIconWhiteOrange disabled>
       <Edit3 />
@@ -76,7 +76,7 @@ export const IconWhiteOrangeDisabled = () => {
   );
 };
 
-export const IconWhiteBlue = () => {
+export const IconWhiteBlue = (): ReactElement => {
   return (
     <ButtonIconWhiteBlue>
       <Printer />
@@ -84,7 +84,7 @@ export const IconWhiteBlue = () => {
   );
 };
 
-export const IconOrangeWhite = () => {
+export const IconOrangeWhite = (): ReactElement => {
   return (
     <ButtonIconOrangeWhite>
       <Book />
@@ -92,7 +92,7 @@ export const IconOrangeWhite = () => {
   );
 };
 
-export const CircleGreylight = () => {
+export const CircleGreylight = (): ReactElement => {
   return (
     <ButtonCircleGreylight>
       <X />

@@ -44,13 +44,6 @@ export const AnchorLink: FunctionComponent<AnchorLinkProps> = ({ children, ...pr
   );
 };
 
-interface ReactRouterLinkProps {
-  className?: string;
-  children?: React.ReactNode;
-  to: string;
-  large?: boolean;
-}
-
 interface BaseStyleButtonProps {
   bgColor: string;
   textColor: string;

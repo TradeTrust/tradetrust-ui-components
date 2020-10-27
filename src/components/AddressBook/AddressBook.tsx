@@ -32,7 +32,7 @@ export interface AddressBookProps extends OverlayContentProps {
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
   isOverlayVisible: boolean;
   setOverlayVisible: (isOverlayVisible: boolean) => void;
-  thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[]; // TODO discuss how to bring in
+  thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
   addressBook: AddressBookLocalProps;
   network: string;
 }
@@ -94,6 +94,7 @@ export const AddressBook = styled(
       }
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const queryEndpoint = useCallback(
       debounce(async (search) => {
         setIsPendingRemoteResults(true);
