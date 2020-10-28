@@ -16,8 +16,6 @@ export const DefaultAddressBook = (): ReactElement => {
       handleLocalAddressBookCsv={() => {
         return Promise.resolve();
       }}
-      isOverlayVisible={true}
-      setOverlayVisible={() => {}}
       thirdPartyAPIEndpoints={[]}
       addressBook={{}}
       network="ropsten"
@@ -33,8 +31,6 @@ export const FilledAddressBook = (): ReactElement => {
       handleLocalAddressBookCsv={() => {
         return Promise.resolve();
       }}
-      isOverlayVisible={true}
-      setOverlayVisible={() => {}}
       thirdPartyAPIEndpoints={[]}
       addressBook={sampleAddressBook}
       network="ropsten"

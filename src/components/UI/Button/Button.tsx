@@ -49,9 +49,9 @@ interface BaseStyleButtonProps {
   textColor: string;
 }
 
-const baseStyleButton = ({ bgColor, textColor }: BaseStyleButtonProps): string => {
+export const baseStyleButton = ({ bgColor, textColor }: BaseStyleButtonProps): string => {
   return `
-    ${mixin.fontRobotoBold()}
+    ${mixin.fontSourcesansproBold()}
     ${mixin.fontSize(16)};
     transition: background-color 0.3s ${vars.easeOutCubic}, color 0.3s ${vars.easeOutCubic}, box-shadow 0.3s ${
     vars.easeOutCubic
@@ -178,7 +178,7 @@ export const ButtonBorderedBlue = styled(Button)`
     textColor: vars.navy,
   })}
 
-  ${mixin.fontRobotoRegular()}
+  ${mixin.fontSourcesansproRegular()}
   border: solid 1px ${vars.navy};
 
   &:hover {
@@ -243,7 +243,7 @@ export const ButtonIconOrangeWhite = styled(Button)`
 
 export const ButtonCircleGreylight = styled(Button)`
   ${baseStyleButton({
-    bgColor: vars.lightgrey,
+    bgColor: vars.greyLight,
     textColor: vars.white,
   })}
 
@@ -261,7 +261,7 @@ export const ButtonCircleGreylight = styled(Button)`
     margin-right: auto;
 
     line {
-      color: ${vars.greyDark};
+      color: ${vars.greyDarker};
       stroke-width: 3px;
     }
   }

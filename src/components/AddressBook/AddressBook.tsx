@@ -19,6 +19,7 @@ import {
 } from "@govtechsg/address-identity-resolver";
 
 import "../../index.css";
+import { useOverlayContext } from "../../common/context/OverlayContext";
 
 export interface AddressBookDropdownProps {
   name: string;
@@ -30,8 +31,6 @@ export interface AddressBookDropdownProps {
 export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
-  isOverlayVisible: boolean;
-  setOverlayVisible: (isOverlayVisible: boolean) => void;
   thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
   addressBook: AddressBookLocalProps;
   network: string;
@@ -43,14 +42,14 @@ const StyledDropdownButton = styled(Dropdown.Toggle)`
   max-width: 360px;
   width: 100%;
   text-align: left;
-  border: solid 1px ${vars.lightgrey};
+  border: solid 1px ${vars.greyLight};
 
   &:focus {
     box-shadow: none;
   }
 
   &:hover {
-    background-color: ${vars.lightgreyLightest};
+    background-color: ${vars.greyLightest};
   }
 
   &::after {
@@ -71,12 +70,12 @@ export const AddressBook = styled(
   ({
     onAddressSelected,
     handleLocalAddressBookCsv,
-    setOverlayVisible,
     thirdPartyAPIEndpoints,
     addressBook,
     network,
     ...props
   }: AddressBookProps) => {
+    const { setOverlayVisible } = useOverlayContext();
     const [searchTerm, setSearchTerm] = useState("");
 
     const [isLocal, setIsLocal] = useState(true);
@@ -125,7 +124,7 @@ export const AddressBook = styled(
     };
 
     return (
-      <OverlayContent data-testid="overlay-addressbook" setOverlayVisible={setOverlayVisible} {...props}>
+      <OverlayContent data-testid="overlay-addressbook" {...props}>
         <div className="overlay-actionsbar">
           <Dropdown>
             <StyledDropdownButton variant="transparent" className="mb-2">
@@ -220,7 +219,7 @@ export const AddressBook = styled(
   max-height: 600px;
 
   .overlay-searchbar {
-    border: solid 1px ${vars.lightgrey};
+    border: solid 1px ${vars.greyLight};
     padding: 5px 10px;
     max-width: 100%;
 
@@ -235,7 +234,7 @@ export const AddressBook = styled(
 
       &::placeholder {
         font-style: italic;
-        color: ${vars.lightgrey};
+        color: ${vars.greyLight};
       }
     }
 

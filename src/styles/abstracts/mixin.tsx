@@ -3,14 +3,14 @@ import tailwindConfig from "../../tailwind.js";
 const fullConfig = resolveConfig(tailwindConfig);
 import { vars } from "../index";
 
-export const fontRobotoRegular = (): string => {
+export const fontSourcesansproRegular = (): string => {
   return `
     font-family: ${fullConfig.theme.fontFamily.body.join(", ")};
     font-weight: ${fullConfig.theme.fontWeight.regular};
   `;
 };
 
-export const fontRobotoBold = (): string => {
+export const fontSourcesansproBold = (): string => {
   return `
     font-family: ${fullConfig.theme.fontFamily.body.join(", ")};
     font-weight: ${fullConfig.theme.fontWeight.bold};
@@ -60,7 +60,7 @@ export const loaderSpinner = ({
 
 export const baseStyleInput = (): string => {
   return `
-    border: 1px solid ${vars.lightgrey};
+    border: 1px solid ${vars.greyLight};
     padding: ${vars.inputPadding};
     margin-bottom: 10px;
 

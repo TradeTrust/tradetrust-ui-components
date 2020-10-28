@@ -6,11 +6,12 @@ import { EndpointEntry } from "./EndpointEntry";
 import { DeleteResolverConfirmation } from "./DeleteResolverConfirmation";
 import { fontSize } from "../../styles/abstracts/mixin";
 import { useThirdPartyAPIEndpoints, ThirdPartyAPIEntryProps } from "@govtechsg/address-identity-resolver";
+import { useOverlayContext } from "../../common/context/OverlayContext";
 
 export const TableStyle = (): string => {
   return `
     .table-responsive {
-      border: solid 1px ${vars.lightgrey};
+      border: solid 1px ${vars.greyLight};
     }
 
     .table {
@@ -20,7 +21,7 @@ export const TableStyle = (): string => {
 
     tr {
       white-space: nowrap;
-      border-top: solid 1px ${vars.lightgrey};;
+      border-top: solid 1px ${vars.greyLight};;
     }
 
     th {
@@ -51,7 +52,7 @@ export const TableStyle = (): string => {
 
       tr {
         &:nth-of-type(even) {
-          background-color: ${vars.lightgreyLightest};
+          background-color: ${vars.greyLightest};
         }
       }
     }
@@ -62,173 +63,160 @@ export interface AddressesTableProps {
   className?: string;
   isNewEndpoint: boolean;
   setNewEndpoint: (isNewEndpoint: boolean) => void;
-  showOverlay: (overlayContent: React.ReactNode) => void;
-  isOverlayVisible: boolean;
-  setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
 
-export const AddressesTable = styled(
-  ({
-    className,
-    isNewEndpoint,
-    setNewEndpoint,
-    showOverlay,
-    setOverlayVisible,
-    isOverlayVisible,
-  }: AddressesTableProps) => {
-    const {
-      thirdPartyAPIEndpoints,
-      addThirdPartyAPIEndpoint,
-      removeThirdPartyAPIEndpoint,
-      setThirdPartyAPIEndpoints,
-    } = useThirdPartyAPIEndpoints();
+export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint }: AddressesTableProps) => {
+  const {
+    thirdPartyAPIEndpoints,
+    addThirdPartyAPIEndpoint,
+    removeThirdPartyAPIEndpoint,
+    setThirdPartyAPIEndpoints,
+  } = useThirdPartyAPIEndpoints();
+  const { showOverlay, setOverlayVisible } = useOverlayContext();
 
-    const deleteAddress = (index: number): void => {
-      removeThirdPartyAPIEndpoint(index);
-      setOverlayVisible(false);
-    };
+  const deleteAddress = (index: number): void => {
+    removeThirdPartyAPIEndpoint(index);
+    setOverlayVisible(false);
+  };
 
-    const onRemoveEndpoint = (name: string, index: number): void => {
-      showOverlay(
-        <DeleteResolverConfirmation
-          title="Delete Address Resolver"
-          name={name}
-          deleteAddress={() => {
-            deleteAddress(index);
-          }}
-          setOverlayVisible={setOverlayVisible}
-          isOverlayVisible={isOverlayVisible}
-        />
-      );
-    };
+  const onRemoveEndpoint = (name: string, index: number): void => {
+    showOverlay(
+      <DeleteResolverConfirmation
+        title="Delete Address Resolver"
+        name={name}
+        deleteAddress={() => {
+          deleteAddress(index);
+        }}
+      />
+    );
+  };
 
-    const isCurrentEndpointUrlExists = (currentEndpoint: string) => (endpoint: string) => {
-      const omitCurrent = thirdPartyAPIEndpoints.filter((item) => {
-        return item.endpoint !== currentEndpoint;
-      });
+  const isCurrentEndpointUrlExists = (currentEndpoint: string) => (endpoint: string) => {
+    const omitCurrent = thirdPartyAPIEndpoints.filter((item) => {
+      return item.endpoint !== currentEndpoint;
+    });
 
-      const isFound = !!omitCurrent.find((item) => {
-        return item.endpoint === endpoint;
-      });
-      return isFound;
-    };
+    const isFound = !!omitCurrent.find((item) => {
+      return item.endpoint === endpoint;
+    });
+    return isFound;
+  };
 
-    const isEndpointUrlExists = (endpoint: string): boolean => {
-      const isFound = !!thirdPartyAPIEndpoints.find((item) => {
-        return item.endpoint === endpoint;
-      });
-      return isFound;
-    };
+  const isEndpointUrlExists = (endpoint: string): boolean => {
+    const isFound = !!thirdPartyAPIEndpoints.find((item) => {
+      return item.endpoint === endpoint;
+    });
+    return isFound;
+  };
 
-    const addNewEndpoint = (newValues: ThirdPartyAPIEntryProps): void => {
-      addThirdPartyAPIEndpoint(newValues);
-      setNewEndpoint(false);
-    };
+  const addNewEndpoint = (newValues: ThirdPartyAPIEntryProps): void => {
+    addThirdPartyAPIEndpoint(newValues);
+    setNewEndpoint(false);
+  };
 
-    const onUpdateEndpoint = (index: number) => (newValues: ThirdPartyAPIEntryProps) => {
-      const newEndpoint = [...thirdPartyAPIEndpoints];
-      newEndpoint.splice(index, 1, newValues);
-      setThirdPartyAPIEndpoints(newEndpoint);
-    };
+  const onUpdateEndpoint = (index: number) => (newValues: ThirdPartyAPIEntryProps) => {
+    const newEndpoint = [...thirdPartyAPIEndpoints];
+    newEndpoint.splice(index, 1, newValues);
+    setThirdPartyAPIEndpoints(newEndpoint);
+  };
 
-    const swapArray = (indexA: number, indexB: number): void => {
-      const toOrdered = [...thirdPartyAPIEndpoints];
+  const swapArray = (indexA: number, indexB: number): void => {
+    const toOrdered = [...thirdPartyAPIEndpoints];
 
-      const to = toOrdered[indexB];
-      const from = toOrdered[indexA];
-      toOrdered[indexA] = to;
-      toOrdered[indexB] = from;
+    const to = toOrdered[indexB];
+    const from = toOrdered[indexA];
+    toOrdered[indexA] = to;
+    toOrdered[indexB] = from;
 
-      setThirdPartyAPIEndpoints(toOrdered);
-    };
+    setThirdPartyAPIEndpoints(toOrdered);
+  };
 
-    const moveEntryUp = (id: number): void => {
-      if (id === 0) return;
-      swapArray(id - 1, id);
-    };
+  const moveEntryUp = (id: number): void => {
+    if (id === 0) return;
+    swapArray(id - 1, id);
+  };
 
-    const moveEntryDown = (id: number): void => {
-      if (id + 1 >= thirdPartyAPIEndpoints.length) return;
-      swapArray(id + 1, id);
-    };
+  const moveEntryDown = (id: number): void => {
+    if (id + 1 >= thirdPartyAPIEndpoints.length) return;
+    swapArray(id + 1, id);
+  };
 
-    return (
-      <div className={`${className} row py-4`}>
-        <div className="col-12 col-lg">
-          <div className="table-responsive">
-            <table className="table">
-              <thead className="table-thead">
+  return (
+    <div className={`${className} row py-4`}>
+      <div className="col-12 col-lg">
+        <div className="table-responsive">
+          <table className="table">
+            <thead className="table-thead">
+              <tr>
+                <th />
+                <td>Order</td>
+                <td>Name</td>
+                <td>Endpoint</td>
+                <td>API Header</td>
+                <td>API Key</td>
+                <td>&nbsp;</td>
+              </tr>
+            </thead>
+            <tbody className="table-tbody">
+              {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
                 <tr>
                   <th />
-                  <td>Order</td>
-                  <td>Name</td>
-                  <td>Endpoint</td>
-                  <td>API Header</td>
-                  <td>API Key</td>
+                  <td>&mdash;</td>
+                  <td>&mdash;</td>
+                  <td>No third party&apos;s endpoint found.</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
                   <td>&nbsp;</td>
                 </tr>
-              </thead>
-              <tbody className="table-tbody">
-                {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
-                  <tr>
-                    <th />
-                    <td>&mdash;</td>
-                    <td>&mdash;</td>
-                    <td>No third party&apos;s endpoint found.</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                )}
-                {thirdPartyAPIEndpoints.map((item, index) => {
-                  const orderNumber = index + 1;
+              )}
+              {thirdPartyAPIEndpoints.map((item, index) => {
+                const orderNumber = index + 1;
 
-                  return (
-                    <EndpointEntry
-                      key={item.endpoint}
-                      orderNumber={orderNumber}
-                      isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
-                      removeEndpoint={() => {
-                        onRemoveEndpoint(item.name, index);
-                      }}
-                      onMoveEntryUp={() => {
-                        moveEntryUp(index);
-                      }}
-                      onMoveEntryDown={() => {
-                        moveEntryDown(index);
-                      }}
-                      onUpdateEndpoint={onUpdateEndpoint(index)}
-                      api={thirdPartyAPIEndpoints[index].endpoint}
-                      name={thirdPartyAPIEndpoints[index].name}
-                      apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
-                      apiKey={thirdPartyAPIEndpoints[index].apiKey}
-                      canEdit={false}
-                    />
-                  );
-                })}
-                {isNewEndpoint && (
+                return (
                   <EndpointEntry
-                    orderNumber={thirdPartyAPIEndpoints.length + 1}
-                    isEndpointUrlExists={isEndpointUrlExists}
+                    key={item.endpoint}
+                    orderNumber={orderNumber}
+                    isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
                     removeEndpoint={() => {
-                      setNewEndpoint(false);
+                      onRemoveEndpoint(item.name, index);
                     }}
-                    onUpdateEndpoint={addNewEndpoint}
-                    api=""
-                    name=""
-                    apiHeader=""
-                    apiKey=""
-                    canEdit={true}
+                    onMoveEntryUp={() => {
+                      moveEntryUp(index);
+                    }}
+                    onMoveEntryDown={() => {
+                      moveEntryDown(index);
+                    }}
+                    onUpdateEndpoint={onUpdateEndpoint(index)}
+                    api={thirdPartyAPIEndpoints[index].endpoint}
+                    name={thirdPartyAPIEndpoints[index].name}
+                    apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
+                    apiKey={thirdPartyAPIEndpoints[index].apiKey}
+                    canEdit={false}
                   />
-                )}
-              </tbody>
-            </table>
-          </div>
+                );
+              })}
+              {isNewEndpoint && (
+                <EndpointEntry
+                  orderNumber={thirdPartyAPIEndpoints.length + 1}
+                  isEndpointUrlExists={isEndpointUrlExists}
+                  removeEndpoint={() => {
+                    setNewEndpoint(false);
+                  }}
+                  onUpdateEndpoint={addNewEndpoint}
+                  api=""
+                  name=""
+                  apiHeader=""
+                  apiKey=""
+                  canEdit={true}
+                />
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
-    );
-  }
-)`
+    </div>
+  );
+})`
   ${TableStyle()}
 
   th {
@@ -245,7 +233,7 @@ export const AddressesTable = styled(
       ${fontSize(20)};
 
       &:hover {
-        color: ${vars.greyDark};
+        color: ${vars.greyDarker};
       }
 
       &.fa-sort-up {
