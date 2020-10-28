@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import { vars } from "../../../../styles";
 import { X, XCircle, CheckCircle } from "react-feather";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
+import { useOverlayContext } from "../../../../common/context/OverlayContext";
 
 import "../../../../index.css";
 export interface OverlayContentProps {
@@ -10,8 +11,6 @@ export interface OverlayContentProps {
   title: string;
   isSuccess?: boolean;
   children?: React.ReactNode;
-  isOverlayVisible: boolean;
-  setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
 
 export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
@@ -19,10 +18,9 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
   title,
   isSuccess,
   children,
-  isOverlayVisible,
-  setOverlayVisible,
   ...props
 }) => {
+  const { isOverlayVisible, setOverlayVisible } = useOverlayContext();
   const handleCloseOverlay = (): void => {
     setOverlayVisible(false);
   };

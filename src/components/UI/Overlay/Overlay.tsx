@@ -5,6 +5,7 @@ import { rgba } from "polished";
 import { mixin, vars } from "../../../styles";
 
 import "../../../index.css";
+import { useOverlayContext } from "../../../common/context/OverlayContext";
 
 // TODO check for twin styles
 
@@ -70,7 +71,7 @@ export const OverlayContentBaseStyle = (): string => {
     }
 
     .overlay-title {
-      ${mixin.fontRobotoBold()}
+      ${mixin.fontSourcesansproBold()}
       color: ${vars.grey};
       margin-bottom: 0;
     }
@@ -84,7 +85,7 @@ export const OverlayContentBaseStyle = (): string => {
 
       &:hover {
         svg {
-          color: ${vars.lightgrey};
+          color: ${vars.greyLight};
         }
       }
     }
@@ -93,19 +94,11 @@ export const OverlayContentBaseStyle = (): string => {
 
 export interface OverlayProps {
   className?: string;
-  overlayContent: React.ReactNode;
-  showOverlay: (overlayContent: React.ReactNode) => void;
-  isOverlayVisible: boolean;
-  setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
 
-export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({
-  className,
-  overlayContent,
-  showOverlay,
-  setOverlayVisible,
-  isOverlayVisible,
-}) => {
+export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({ className }) => {
+  const { overlayContent, showOverlay, isOverlayVisible, setOverlayVisible } = useOverlayContext();
+
   const handleCloseOverlay = (): void => {
     setOverlayVisible(false);
   };

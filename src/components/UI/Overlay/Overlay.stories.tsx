@@ -1,6 +1,24 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, FunctionComponent } from "react";
 import { Overlay, OverlayUnStyled } from "./Overlay";
 import { Textual } from "./OverlayContent/Textual";
+import { ButtonSolid } from "../Button";
+import { useOverlayContext, OverlayContextProvider } from "../../../common/context/OverlayContext";
+
+export interface OverlayDemoProps {
+  buttonText: string;
+  children: React.ReactNode;
+}
+
+const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children }) => {
+  const { showOverlay } = useOverlayContext();
+
+  return (
+    <>
+      <Overlay />
+      <ButtonSolid onClick={() => showOverlay(children)}>{buttonText}</ButtonSolid>
+    </>
+  );
+};
 
 export default {
   title: "UI/Overlay",
@@ -13,9 +31,9 @@ export default {
 
 export const Text = (): ReactElement => {
   return (
-    <Overlay
-      overlayContent={
-        <Textual title="Textual" isOverlayVisible={true} setOverlayVisible={() => {}}>
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Text">
+        <Textual title="Textual">
           <p>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
             aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -72,10 +90,7 @@ export const Text = (): ReactElement => {
             nulla pariatur
           </p>
         </Textual>
-      }
-      showOverlay={() => {}}
-      isOverlayVisible={true}
-      setOverlayVisible={() => {}}
-    />
+      </OverlayDemo>
+    </OverlayContextProvider>
   );
 };

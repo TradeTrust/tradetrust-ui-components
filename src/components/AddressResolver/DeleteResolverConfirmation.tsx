@@ -3,17 +3,18 @@ import { OverlayContentBaseStyle } from "../UI/Overlay";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
 import { ButtonSolidWhiteGrey, ButtonSolidRedWhite } from "../UI/Button";
 import styled from "@emotion/styled";
+import { useOverlayContext } from "../../common/context/OverlayContext";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
   name: string;
   deleteAddress: () => void;
-  setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
 
 export const DeleteResolverConfirmation = styled(
-  ({ name, deleteAddress, setOverlayVisible, ...props }: DeleteResolverConfirmationProps) => {
+  ({ name, deleteAddress, ...props }: DeleteResolverConfirmationProps) => {
+    const { setOverlayVisible } = useOverlayContext();
     return (
-      <OverlayContent setOverlayVisible={setOverlayVisible} {...props}>
+      <OverlayContent {...props}>
         <div className="flex-fill">
           <p>Are you sure you want to delete {name}?</p>
         </div>

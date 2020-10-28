@@ -1,1 +1,1 @@
-export * from "./AddressesTable";
+export * from "./AddressResolver";

@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base; */
 
-h1 {
+/* h1 {
   @apply text-2xl;
 }
 h2 {
@@ -8,11 +8,13 @@ h2 {
 }
 h3 {
   @apply text-lg;
-}
+} */
 
 @tailwind components;
 
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Source+Sans+Pro:400,600,700&display=swap");
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 

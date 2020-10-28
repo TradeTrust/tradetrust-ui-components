@@ -3,8 +3,8 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   theme: {
     fontFamily: {
-      display: ["Roboto", "Helvetica", "Arial", "sans-serif"],
-      body: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+      display: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
+      body: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
     },
     fontWeight: {
       regular: 400,
@@ -31,59 +31,70 @@ module.exports = {
       },
     },
     colors: {
-      lightgrey: {
-        lightest: "#cccccc",
-        lighter: "#fafafa",
-        default: "#eeeeee",
-        dark: "#89969F",
+      brandOrange: {
+        default: "#ff9933",
+      },
+      brandBlue: {
+        default: "#0099cc",
+      },
+      brandNavy: {
+        default: "#324353",
+      },
+      grey: {
+        lightest: "#f5f5f5",
+        lighter: "#e5e5e5",
+        light: "#dddddd",
+        default: "#8f8f8f",
+        dark: "#5a5a5a",
+        darker: "#4f4f4f",
       },
       greyblue: {
         default: "#c1c9d1",
-      },
-      grey: {
-        lighter: "#dddddd",
-        default: "#a0aec0",
-        dark: "#4F4F4F",
+        dark: "#a7afb7",
+        darker: "#343a40",
       },
       blue: {
-        lighter: "#e6f5fa",
-        default: "#0099CC",
-        dark: "#2b6cb0",
+        lightest: "#f5f8fb",
+        lighter: "#f3f8fc",
+        light: "#a6c1ee",
+        default: "#099de3",
+        dark: "#001F29",
       },
       navy: {
         default: "#324353",
       },
       orange: {
         lighter: "#fbd38d",
-        default: "#FF9220",
+        default: "#ffb152",
         dark: "#ed8936",
       },
-      brandOrange: {
-        default: "#FF9933",
-      },
       green: {
+        lightest: "#f5fbf7",
         lighter: "#68d391",
-        default: "#48bb78",
+        default: "#00c04a",
         dark: "#38a169",
         darker: "#001f29",
       },
       teal: {
         lighter: "#e5f9f8",
-        default: "#00CBBC",
+        default: "#00cbbc",
       },
       pink: {
-        default: "#ffe8e8",
+        default: "#fbc2eb",
       },
       red: {
-        lighter: "#FFF4F4",
-        default: "#FF2020",
-        dark: "#c53030",
+        lighter: "#fbeae9",
+        default: "#ff5268",
+        dark: "#8b0000",
       },
       white: {
         default: "#ffffff",
       },
       black: {
         default: "#000000",
+      },
+      offblack: {
+        default: "#212529",
       },
     },
   },
