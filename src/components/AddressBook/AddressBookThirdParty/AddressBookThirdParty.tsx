@@ -22,7 +22,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
         <tr>
           <th>Name</th>
           <td>Address</td>
-          <td>Remarks</td>
+          <td>Source</td>
           <td>&nbsp;</td>
         </tr>
       </thead>
@@ -36,12 +36,13 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
             return (
               <AddressBookTableRow
                 key={index}
+                isLocal={false}
                 onAddressSelect={() => {
                   onAddressSelect(item.identifier);
                 }}
                 address={item.identifier}
                 name={item.name}
-                remarks={item.remarks}
+                source={item.source}
                 network={network}
               />
             );

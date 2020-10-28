@@ -216,7 +216,7 @@ export const AddressBook = styled(
   ${OverlayContentBaseStyle()}
   ${TableStyle()}
 
-  max-width: 760px;
+  max-width: 960px;
   max-height: 600px;
 
   .overlay-searchbar {

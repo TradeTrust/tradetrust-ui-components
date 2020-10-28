@@ -5,19 +5,21 @@ import { ExternalLink } from "react-feather";
 interface AddressBookTableRowProps {
   onAddressSelect: () => void;
   address: string;
+  isLocal: boolean;
   name: string;
   network: string;
-  remarks?: string;
+  source?: string;
   className?: string;
 }
 
 export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = ({
   className,
   onAddressSelect,
+  isLocal,
   address,
   name,
-  remarks,
   network,
+  source,
 }) => {
   const addressHref = makeEtherscanAddressURL(address, network);
 
@@ -25,7 +27,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
     <tr className={className} onClick={onAddressSelect} data-testid="table-row">
       <th>{name}</th>
       <td>{address}</td>
-      {remarks && <td>{remarks}</td>}
+      {!isLocal && <td>{source ? source : "-"}</td>}
       <td>
         <a href={addressHref} target="_blank" rel="noreferrer noopener">
           <ExternalLink />

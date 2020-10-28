@@ -45,6 +45,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
             return (
               <AddressBookTableRow
                 key={key}
+                isLocal={true}
                 onAddressSelect={() => {
                   onAddressSelect(key);
                 }}
