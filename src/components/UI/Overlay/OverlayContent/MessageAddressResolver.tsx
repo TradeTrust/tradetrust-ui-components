@@ -1,7 +1,7 @@
 import { useIdentifierResolver } from "@govtechsg/address-identity-resolver";
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-export const MessageAddressResolver = ({ address }: { address: string }) => {
+export const MessageAddressResolver: FunctionComponent<{ address: string }> = ({ address }) => {
   const { identityName } = useIdentifierResolver(address);
   return <p>{identityName || address}</p>;
 };

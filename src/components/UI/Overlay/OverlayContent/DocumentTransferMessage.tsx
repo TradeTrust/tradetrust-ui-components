@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { mixin, vars } from "../../../../styles";
 import { AnchorLinkButtonSolidOrangeWhite, ButtonSolidOrangeWhite } from "../../Button";
@@ -22,9 +22,9 @@ export enum MessageTitle {
   ENDORSE_TRANSFER_SUCCESS = "Endorse Ownership/Holdership Success",
 }
 
-const ButtonClose = () => {
+const ButtonClose: FunctionComponent = () => {
   const { setOverlayVisible, showOverlay } = useOverlayContext();
-  const handleCloseOverlay = () => {
+  const handleCloseOverlay = (): void => {
     setOverlayVisible(false);
     showOverlay(undefined);
   };
@@ -32,7 +32,7 @@ const ButtonClose = () => {
   return <ButtonSolidOrangeWhite onClick={handleCloseOverlay}>Close</ButtonSolidOrangeWhite>;
 };
 
-const ButtonMetamaskInstall = () => {
+const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
     <AnchorLinkButtonSolidOrangeWhite
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
@@ -43,9 +43,9 @@ const ButtonMetamaskInstall = () => {
   );
 };
 
-const ButtonConfirmAction = (handleOnClick: () => void) => {
+const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
   const { setOverlayVisible, showOverlay } = useOverlayContext();
-  const onClick = () => {
+  const onClick = (): void => {
     handleOnClick();
     setOverlayVisible(false);
     showOverlay(undefined);
@@ -64,15 +64,9 @@ interface DocumentTransferMessageProps extends OverlayContentProps {
   onConfirmationAction?: () => void;
 }
 
-export const DocumentTransferMessage = styled(
-  ({
-    isButtonMetamaskInstall,
-    isConfirmationMessage,
-    onConfirmationAction,
-    children,
-    ...props
-  }: DocumentTransferMessageProps) => {
-    const documentTransferButton = () => {
+export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageProps> = styled(
+  ({ isButtonMetamaskInstall, isConfirmationMessage, onConfirmationAction, children, ...props }) => {
+    const documentTransferButton = (): ReactNode => {
       if (isButtonMetamaskInstall) {
         return <ButtonMetamaskInstall />;
       }
@@ -125,7 +119,7 @@ interface MessageProps {
   holderAddress?: string;
 }
 
-export const MessageNoMetamask = () => {
+export const MessageNoMetamask: FunctionComponent = () => {
   return (
     <>
       <p>Oops! It seems like you have not installed the Metamask extension.</p>
@@ -134,11 +128,11 @@ export const MessageNoMetamask = () => {
   );
 };
 
-export const MessageNoManageAccess = () => {
+export const MessageNoManageAccess: FunctionComponent = () => {
   return <p>Oops! It seems like you do not have access to manage assets.</p>;
 };
 
-export const MessageNoUserAuthorization = () => {
+export const MessageNoUserAuthorization: FunctionComponent = () => {
   return (
     <>
       <p>Oops! It seems like you did not authorize to use Metamask extension.</p>
@@ -146,7 +140,7 @@ export const MessageNoUserAuthorization = () => {
   );
 };
 
-export const MessageTransactionError = ({ error }: MessageProps) => {
+export const MessageTransactionError: FunctionComponent<MessageProps> = ({ error }) => {
   return (
     <>
       <p>Oops! It seems like there&apos;s a failed transaction.</p>
@@ -156,19 +150,22 @@ export const MessageTransactionError = ({ error }: MessageProps) => {
   );
 };
 
-export const MessageSurrenderSuccess = () => {
+export const MessageSurrenderSuccess: FunctionComponent = () => {
   return <p>This Bill of Lading has been surrendered, pending acceptance of issuer.</p>;
 };
 
-export const AcceptSurrender = () => {
+export const AcceptSurrender: FunctionComponent = () => {
   return <p>Surrender for this Bill of Lading has been accepted.</p>;
 };
 
-export const RejectSurrender = () => {
+export const RejectSurrender: FunctionComponent = () => {
   return <p>Surrender for this Bill of Lading has been rejected.</p>;
 };
 
-export const MessageRejectSurrenderConfirmation = ({ beneficiaryAddress, holderAddress }: MessageProps) => {
+export const MessageRejectSurrenderConfirmation: FunctionComponent<MessageProps> = ({
+  beneficiaryAddress,
+  holderAddress,
+}) => {
   return (
     <>
       <h6>Restore document to Owner:</h6>
@@ -179,7 +176,7 @@ export const MessageRejectSurrenderConfirmation = ({ beneficiaryAddress, holderA
   );
 };
 
-export const MessageBeneficiarySuccess = ({ address }: MessageProps) => {
+export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({ address }) => {
   return (
     <>
       <h6>Current Owner</h6>
@@ -188,7 +185,7 @@ export const MessageBeneficiarySuccess = ({ address }: MessageProps) => {
   );
 };
 
-export const MessageHolderSuccess = ({ address }: MessageProps) => {
+export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({ address }) => {
   return (
     <>
       <h6>Current Holder</h6>
@@ -197,11 +194,14 @@ export const MessageHolderSuccess = ({ address }: MessageProps) => {
   );
 };
 
-export const MessageNominateBeneficiaryHolderSuccess = () => {
+export const MessageNominateBeneficiaryHolderSuccess: FunctionComponent = () => {
   return <p>Document has been nominated successfully. Please notify holder to execute transfer.</p>;
 };
 
-export const MessageEndorseTransferSuccess = ({ beneficiaryAddress, holderAddress }: MessageProps) => {
+export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
+  beneficiaryAddress,
+  holderAddress,
+}) => {
   return (
     <>
       <h6>Current Owner</h6>
@@ -223,7 +223,10 @@ interface ShowDocumentTransferMessageOptionProps {
   isConfirmationMessage?: boolean;
 }
 
-export const showDocumentTransferMessage = (title: string, option: ShowDocumentTransferMessageOptionProps) => {
+export const showDocumentTransferMessage = (
+  title: string,
+  option: ShowDocumentTransferMessageOptionProps
+): ReactNode => {
   return (
     <DocumentTransferMessage
       title={title}

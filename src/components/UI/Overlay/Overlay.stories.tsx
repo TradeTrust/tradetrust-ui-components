@@ -109,7 +109,7 @@ export const Text = (): ReactElement => {
   );
 };
 
-export const Video = () => {
+export const Video = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Video">
@@ -119,7 +119,7 @@ export const Video = () => {
   );
 };
 
-export const NoMetamask = () => {
+export const NoMetamask = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No Metamask">
@@ -131,7 +131,7 @@ export const NoMetamask = () => {
   );
 };
 
-export const NoManageAccess = () => {
+export const NoManageAccess = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No Manage Access">
@@ -143,7 +143,7 @@ export const NoManageAccess = () => {
   );
 };
 
-export const NoUserAuthorization = () => {
+export const NoUserAuthorization = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No User Authorization">
@@ -155,7 +155,7 @@ export const NoUserAuthorization = () => {
   );
 };
 
-export const FailTransaction = () => {
+export const FailTransaction = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Fail Transaction">
@@ -167,7 +167,7 @@ export const FailTransaction = () => {
   );
 };
 
-export const SuccessSurrender = () => {
+export const SuccessSurrender = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Surrender">
@@ -179,7 +179,7 @@ export const SuccessSurrender = () => {
   );
 };
 
-export const SuccessChangeBeneficiary = () => {
+export const SuccessChangeBeneficiary = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Change Owner">
@@ -191,7 +191,7 @@ export const SuccessChangeBeneficiary = () => {
   );
 };
 
-export const SuccessChangeHolder = () => {
+export const SuccessChangeHolder = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Change Holder">
@@ -203,7 +203,7 @@ export const SuccessChangeHolder = () => {
   );
 };
 
-export const SuccessNominateBeneficiaryHolder = () => {
+export const SuccessNominateBeneficiaryHolder = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Nominate Owner and Holder">
@@ -215,7 +215,7 @@ export const SuccessNominateBeneficiaryHolder = () => {
   );
 };
 
-export const DeleteAddressResolver = () => {
+export const DeleteAddressResolver = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Delete Address Resolver">

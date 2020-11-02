@@ -77,7 +77,7 @@ export const baseStyleInput = (): string => {
   `;
 };
 
-export const aspectRatio = (width = 16, height = 9) => {
+export const aspectRatio = (width = 16, height = 9): string => {
   return `
     position: relative;
     width: 100%;
@@ -99,32 +99,13 @@ export const aspectRatio = (width = 16, height = 9) => {
   `;
 };
 
-export const containerCustom = ({ mwCustom = vars.maxWidth }) => {
-  return `
-    width: 100%;
-    max-width: 100%;
-    padding-left: $grid-gutter-width / 2;
-    padding-right: $grid-gutter-width / 2;
-    margin-left: auto;
-    margin-right: auto;
-
-    @media only screen and (min-width: ${vars.sm}) {
-      max-width: $mw-sm;
-    }
-
-    @media only screen and (min-width: ${vars.md}) {
-      max-width: $mw-md;
-    }
-
-    @media only screen and (min-width: ${vars.lg}) {
-      max-width: $mw-lg;
-    }
-
-    @media only screen and (min-width: ${vars.xl}) {
-      max-width: ${mwCustom};
-    }
-  `;
-};
+interface loaderSkeletonProps {
+  w: string;
+  h: string;
+  bg: string;
+  loaderBg: string;
+  loaderW: string;
+}
 
 export const loaderSkeleton = ({
   w = "260px",
@@ -132,7 +113,7 @@ export const loaderSkeleton = ({
   bg = vars.greyLighter,
   loaderBg = vars.greyLightest,
   loaderW = "50%",
-}) => {
+}: loaderSkeletonProps): string => {
   return `
     &:empty {
       &::after {
@@ -151,7 +132,7 @@ export const loaderSkeleton = ({
   `;
 };
 
-export const centerVertical = () => {
+export const centerVertical = (): string => {
   return `
     display: flex;
     flex-direction: column;
