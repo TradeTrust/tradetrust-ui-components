@@ -63,7 +63,7 @@ export const maxWidth = "1280px";
 export const inputPadding = "5px 10px";
 export const dropzoneBoxshadowPadding = "10px";
 
-export const sm = "576px";
-export const md = "768px";
-export const lg = "992px";
-export const xl = "1200px";
+export const sm = `${fullConfig.theme.screens.sm}`;
+export const md = `${fullConfig.theme.screens.md}`;
+export const lg = `${fullConfig.theme.screens.lg}`;
+export const xl = `${fullConfig.theme.screens.xl}`;

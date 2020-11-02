@@ -2,7 +2,14 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   theme: {
+    screens: {
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
+    },
     fontFamily: {
+      sans: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
       display: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
       body: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
     },
@@ -14,6 +21,11 @@ module.exports = {
     minWidth: {
       0: "0",
       xs: "18rem",
+    },
+    text: {
+      h1: "40px",
+      h2: "32px",
+      h3: "28px",
     },
     extend: {
       spacing: {
@@ -91,6 +103,7 @@ module.exports = {
         default: "#ffffff",
       },
       black: {
+        light: "#212529",
         default: "#000000",
       },
       offblack: {

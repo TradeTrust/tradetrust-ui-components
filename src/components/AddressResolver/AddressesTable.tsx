@@ -1,17 +1,18 @@
-import React from "react";
 import styled from "@emotion/styled";
+import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
 import { lighten } from "polished";
+import React from "react";
+import { useOverlayContext } from "../../common/context/OverlayContext";
+import { fontSize } from "../../styles/abstracts/mixin";
+import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent/DeleteResolverConfirmation";
 import { vars } from "./../../styles";
 import { EndpointEntry } from "./EndpointEntry";
-import { DeleteResolverConfirmation } from "./DeleteResolverConfirmation";
-import { fontSize } from "../../styles/abstracts/mixin";
-import { useThirdPartyAPIEndpoints, ThirdPartyAPIEntryProps } from "@govtechsg/address-identity-resolver";
-import { useOverlayContext } from "../../common/context/OverlayContext";
 
 export const TableStyle = (): string => {
   return `
     .table-responsive {
       border: solid 1px ${vars.greyLight};
+      width: 100%;
     }
 
     .table {
@@ -33,6 +34,7 @@ export const TableStyle = (): string => {
       vertical-align: middle;
       white-space: nowrap;
       border-top: none;
+      padding: 0.75rem;
     }
 
     .table-thead {
@@ -142,8 +144,8 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
   };
 
   return (
-    <div className={`${className} row py-4`}>
-      <div className="col-12 col-lg">
+    <div className={`${className} tw-flex tw-py-6`}>
+      <div className="tw-flex tw-w-full">
         <div className="table-responsive">
           <table className="table">
             <thead className="table-thead">

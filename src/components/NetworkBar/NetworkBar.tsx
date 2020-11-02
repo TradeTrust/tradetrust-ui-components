@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { vars } from "../../styles";
+import React, { useEffect, useState } from "react";
 import { X } from "react-feather";
-
 import "../../index.css";
+import { vars } from "../../styles";
 
 const NetworkWrap = styled.div`
   background-color: ${vars.greenDarker};
@@ -41,7 +40,7 @@ export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({ network }
   if (!show) return null;
   return (
     <NetworkWrap data-testid="network-bar">
-      <div className="tw-container tw-mx-auto">
+      <div className="container-ui-custom">
         <div className="tw-flex tw-flex-wrap">
           <div className="tw-col-auto tw-ml-auto">
             <p className="tw-mb-0">

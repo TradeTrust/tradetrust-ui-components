@@ -1,25 +1,24 @@
-import React, { useState, useCallback } from "react";
-import { OverlayContentBaseStyle } from "./../UI/Overlay";
-import { TableStyle } from "../AddressResolver/AddressesTable";
-import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
 import styled from "@emotion/styled";
-import { Search, Download } from "react-feather";
-import { CsvUploadButton } from "./CsvUploadButton";
-import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";
-import { vars } from "../../styles";
-import { Dropdown } from "react-bootstrap";
-import { debounce } from "lodash";
-import { AddressBookLocal } from "./AddressBookLocal";
-import { AddressBookThirdParty } from "./AddressBookThirdParty";
 import {
-  entityLookup,
-  AddressBookThirdPartyResultsProps,
   AddressBookLocalProps,
+  AddressBookThirdPartyResultsProps,
+  entityLookup,
   ThirdPartyAPIEntryProps,
 } from "@govtechsg/address-identity-resolver";
-
-import "../../index.css";
+import { debounce } from "lodash";
+import React, { useCallback, useState } from "react";
+import { Download, Search } from "react-feather";
 import { useOverlayContext } from "../../common/context/OverlayContext";
+import "../../index.css";
+import { vars } from "../../styles";
+import { TableStyle } from "../AddressResolver/AddressesTable";
+import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";
+import { Dropdown, DropdownItem } from "../UI/Dropdown";
+import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
+import { OverlayContentBaseStyle } from "./../UI/Overlay";
+import { AddressBookLocal } from "./AddressBookLocal";
+import { AddressBookThirdParty } from "./AddressBookThirdParty";
+import { CsvUploadButton } from "./CsvUploadButton";
 
 export interface AddressBookDropdownProps {
   name: string;
@@ -35,36 +34,6 @@ export interface AddressBookProps extends OverlayContentProps {
   addressBook: AddressBookLocalProps;
   network: string;
 }
-
-const StyledDropdownButton = styled(Dropdown.Toggle)`
-  position: relative;
-  border-radius: 0;
-  max-width: 360px;
-  width: 100%;
-  text-align: left;
-  border: solid 1px ${vars.greyLight};
-
-  &:focus {
-    box-shadow: none;
-  }
-
-  &:hover {
-    background-color: ${vars.greyLightest};
-  }
-
-  &::after {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-`;
-
-const StyledDropdownItem = styled(Dropdown.Item)`
-  &:active {
-    background-color: ${vars.blue};
-  }
-`;
 
 export const AddressBook = styled(
   ({
@@ -126,67 +95,55 @@ export const AddressBook = styled(
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
         <div className="overlay-actionsbar">
-          <Dropdown>
-            <StyledDropdownButton variant="transparent" className="mb-2">
-              {isLocal ? "Local" : name}
-            </StyledDropdownButton>
-
-            <Dropdown.Menu>
-              <StyledDropdownItem
+          <div className="tw-mb-2">
+            <Dropdown dropdownButtonText={isLocal ? "Local" : name}>
+              <DropdownItem
+                itemText="Local"
                 onClick={() => {
                   setIsLocal(true);
                   setSearchTerm("");
                 }}
-              >
-                Local
-              </StyledDropdownItem>
+              />
               {thirdPartyAPIEndpoints.map((item, index) => {
                 return (
-                  <StyledDropdownItem
+                  <DropdownItem
                     key={index}
                     onClick={() => {
                       setIsLocal(false);
                       setSearchTerm("");
                       setRemoteEndpointIndex(index);
                     }}
-                  >
-                    {item.name}
-                  </StyledDropdownItem>
+                    itemText={item.name}
+                  />
                 );
               })}
-            </Dropdown.Menu>
-          </Dropdown>
-          <div className="row align-items-center">
-            <div className="col-12 col-md mb-2 mb-md-0">
+            </Dropdown>
+          </div>
+          <div className="tw-flex tw-items-start tw-flex-col md:tw-flex-row">
+            <div className="tw-flex tw-mb-2 tw-flex-grow ">
               <div className="overlay-searchbar">
-                <div className="row no-gutters align-items-center">
-                  <div className="col">
-                    <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
-                  </div>
-                  <div className="col-auto">
-                    <Search />
-                  </div>
+                <div className="tw-flex tw-mx-0 tw-items-center tw-w-64">
+                  <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
+                  <Search />
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-auto ml-md-auto">
-              <div className="row no-gutters">
-                <div className="col-12 col-md-auto mb-2 mb-md-0">
-                  <AnchorLinkButtonSolidWhiteBlue
-                    href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
-                    download="template.csv"
-                  >
-                    <div className="row align-items-center no-gutters">
-                      <div className="col-auto mr-2">
-                        <Download />
-                      </div>
-                      <div className="col-auto">Download template</div>
+            <div className="tw-flex tw-mx-0">
+              <div className="tw-flex tw-mb-2">
+                <AnchorLinkButtonSolidWhiteBlue
+                  href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
+                  download="template.csv"
+                >
+                  <div className="tw-flex tw-items-center tw-mx-0">
+                    <div className="tw-col-auto tw-mr-2">
+                      <Download />
                     </div>
-                  </AnchorLinkButtonSolidWhiteBlue>
-                </div>
-                <div className="col-12 col-md-auto">
-                  <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
-                </div>
+                    <div className="tw-col-auto">Download template</div>
+                  </div>
+                </AnchorLinkButtonSolidWhiteBlue>
+              </div>
+              <div className="tw-flex">
+                <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
               </div>
             </div>
           </div>
@@ -273,6 +230,8 @@ export const AddressBook = styled(
   .table {
     th {
       width: 120px;
+      text-align: left;
+      padding: 0 12px;
     }
   }
 `;
