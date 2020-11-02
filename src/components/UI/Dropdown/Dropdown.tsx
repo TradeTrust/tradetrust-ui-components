@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { ChevronDown } from "react-feather";
 
-interface DropdownProps {
+export interface DropdownProps {
   dropdownButtonText: string;
   children: React.ReactNode;
 }
