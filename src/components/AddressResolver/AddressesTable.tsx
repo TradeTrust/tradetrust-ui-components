@@ -13,6 +13,8 @@ export const TableStyle = (): string => {
     .table-responsive {
       border: solid 1px ${vars.greyLight};
       width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .table {
