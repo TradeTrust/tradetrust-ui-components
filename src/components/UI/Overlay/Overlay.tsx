@@ -1,11 +1,9 @@
-import React, { FunctionComponent } from "react";
-import { CSSTransition } from "react-transition-group";
 import styled from "@emotion/styled";
 import { rgba } from "polished";
-import { mixin, vars } from "../../../styles";
-
-import "../../../index.css";
+import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
+import "../../../index.css";
+import { mixin, vars } from "../../../styles";
 
 // TODO check for twin styles
 
@@ -36,9 +34,9 @@ const OverlayBaseStyle = (): string => {
 
 export const OverlayContentBaseStyle = (): string => {
   return `
-    transition: visibility 0.3s ${vars.easeOutCubic}, opacity 0.3s ${vars.easeOutCubic}, transform 0.3s ${
+    transition: visibility 0.4s 0.1s ${vars.easeOutCubic}, opacity 0.4s 0.1s ${
     vars.easeOutCubic
-  };
+  }, transform 0.4s 0.1s ${vars.easeOutCubic};
     box-shadow: 0 8px 20px ${rgba(vars.black, 0.2)};
     position: relative;
     z-index: 1;
@@ -74,6 +72,7 @@ export const OverlayContentBaseStyle = (): string => {
       ${mixin.fontSourcesansproBold()}
       color: ${vars.grey};
       margin-bottom: 0;
+      flex-grow: 1;
     }
 
     .overlay-body {
@@ -89,6 +88,11 @@ export const OverlayContentBaseStyle = (): string => {
         }
       }
     }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
   `;
 };
 
@@ -101,25 +105,18 @@ export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({ className }) 
 
   const handleCloseOverlay = (): void => {
     setOverlayVisible(false);
-  };
-
-  const onOverlayTransitionEnded = (): void => {
     showOverlay(undefined);
   };
 
   return (
-    <CSSTransition
-      in={isOverlayVisible}
-      timeout={400}
-      classNames="fade"
-      unmountOnExit
-      onExited={onOverlayTransitionEnded}
-    >
-      <div className={`overlay ${className}`}>
-        <div className="overlay-bg" onClick={handleCloseOverlay} />
-        {overlayContent}
-      </div>
-    </CSSTransition>
+    <>
+      {isOverlayVisible && (
+        <div className={`overlay ${className}`}>
+          <div className="overlay-bg" onClick={handleCloseOverlay} />
+          {overlayContent}
+        </div>
+      )}
+    </>
   );
 };
 

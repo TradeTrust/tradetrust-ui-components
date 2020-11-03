@@ -1,14 +1,16 @@
-/* @tailwind base; */
+@tailwind base;
 
-/* h1 {
-  @apply text-2xl;
+@layer base {
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 28px;
+  }
 }
-h2 {
-  @apply text-xl;
-}
-h3 {
-  @apply text-lg;
-} */
 
 @tailwind components;
 
@@ -16,7 +18,7 @@ h3 {
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600|Source+Sans+Pro:400,600,700&display=swap");
 
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
 
 @keyframes spinning {
   from {

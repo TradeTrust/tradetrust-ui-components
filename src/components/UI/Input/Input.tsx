@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
+import React, { FunctionComponent } from "react";
 import { mixin, vars } from "../../../styles";
 
 export interface InputProps {
@@ -23,8 +23,6 @@ export const Input: FunctionComponent<InputProps> = ({ className, errorMessage, 
 };
 
 export const InputDefault = styled(Input)`
-  margin-bottom: 10px;
-
   &.is-error {
     input {
       border: 1px solid ${vars.red};

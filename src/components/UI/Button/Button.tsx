@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { rgba, lighten, darken } from "polished";
+import { darken, lighten, rgba } from "polished";
+import React, { FunctionComponent } from "react";
 import { mixin, vars } from "../../../styles";
 
 export interface ButtonProps {
@@ -56,8 +56,8 @@ export const baseStyleButton = ({ bgColor, textColor }: BaseStyleButtonProps): s
     transition: background-color 0.3s ${vars.easeOutCubic}, color 0.3s ${vars.easeOutCubic}, box-shadow 0.3s ${
     vars.easeOutCubic
   };
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
     outline: none;
     border: 0;
     padding: 5px 10px;
@@ -128,12 +128,12 @@ const iconButtonStyle = (): string => {
 const bgWhiteTextSecondary = `
   ${baseStyleButton({
     bgColor: vars.white,
-    textColor: vars.blue,
+    textColor: vars.brandBlue,
   })}
 
   ${bgWhiteModifier({
-    hoverTextColor: vars.blue,
-    hoverColor: vars.blue,
+    hoverTextColor: vars.brandBlue,
+    hoverColor: vars.brandBlue,
   })}
 `;
 

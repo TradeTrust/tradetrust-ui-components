@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { NetworkBar } from "./NetworkBar";
 
 export default {
-  title: "UI/NetworkBar",
+  title: "NetworkBar/NetworkBar",
   component: NetworkBar,
   parameters: {
     componentSubtitle: "Bar showing which blockchain network, the application is connected to.",

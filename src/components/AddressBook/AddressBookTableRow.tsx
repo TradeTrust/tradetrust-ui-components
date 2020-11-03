@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import { makeEtherscanAddressURL } from "../../utils";
 import { ExternalLink } from "react-feather";
+import { makeEtherscanAddressURL } from "../../utils";
 
 interface AddressBookTableRowProps {
   onAddressSelect: () => void;
@@ -29,7 +29,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       <td>{address}</td>
       {!isLocal && <td>{source ? source : "-"}</td>}
       <td>
-        <a href={addressHref} target="_blank" rel="noreferrer noopener">
+        <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-brand-blue">
           <ExternalLink />
         </a>
       </td>
@@ -46,6 +46,7 @@ export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmpt
     <tr data-testid="table-row">
       <th>&mdash;</th>
       <td>{message}</td>
+      <td>&nbsp;</td>
     </tr>
   );
 };

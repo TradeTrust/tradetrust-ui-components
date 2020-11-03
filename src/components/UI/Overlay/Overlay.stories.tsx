@@ -1,8 +1,22 @@
-import React, { ReactElement, FunctionComponent } from "react";
-import { Overlay, OverlayUnStyled } from "./Overlay";
-import { Textual } from "./OverlayContent/Textual";
+import React, { FunctionComponent, ReactElement } from "react";
+import { OverlayContextProvider, useOverlayContext } from "../../../common/context/OverlayContext";
 import { ButtonSolid } from "../Button";
-import { useOverlayContext, OverlayContextProvider } from "../../../common/context/OverlayContext";
+import { Overlay, OverlayUnStyled } from "./Overlay";
+import { DeleteResolverConfirmation } from "./OverlayContent/DeleteResolverConfirmation";
+import {
+  DocumentTransferMessage,
+  MessageBeneficiarySuccess,
+  MessageHolderSuccess,
+  MessageNoManageAccess,
+  MessageNoMetamask,
+  MessageNominateBeneficiaryHolderSuccess,
+  MessageNoUserAuthorization,
+  MessageSurrenderSuccess,
+  MessageTitle,
+  MessageTransactionError,
+} from "./OverlayContent/DocumentTransferMessage";
+import { Textual } from "./OverlayContent/Textual";
+import { Youtube } from "./OverlayContent/Youtube";
 
 export interface OverlayDemoProps {
   buttonText: string;
@@ -90,6 +104,128 @@ export const Text = (): ReactElement => {
             nulla pariatur
           </p>
         </Textual>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const Video = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Video">
+        <Youtube title="Digitalising Trust for Cross-Border Trade" youtubeId="udvPQyuqEug" />
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const NoMetamask = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="No Metamask">
+        <DocumentTransferMessage title={MessageTitle.NO_METAMASK} isSuccess={false} isButtonMetamaskInstall={true}>
+          <MessageNoMetamask />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const NoManageAccess = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="No Manage Access">
+        <DocumentTransferMessage title={MessageTitle.NO_MANAGE_ACCESS} isSuccess={false}>
+          <MessageNoManageAccess />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const NoUserAuthorization = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="No User Authorization">
+        <DocumentTransferMessage title={MessageTitle.NO_USER_AUTHORIZATION} isSuccess={false}>
+          <MessageNoUserAuthorization />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const FailTransaction = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Fail Transaction">
+        <DocumentTransferMessage title={MessageTitle.TRANSACTION_ERROR} isSuccess={false}>
+          <MessageTransactionError error="Blockchain error message" />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const SuccessSurrender = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Success Surrender">
+        <DocumentTransferMessage title={MessageTitle.SURRENDER_DOCUMENT_SUCCESS} isSuccess={true}>
+          <MessageSurrenderSuccess />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const SuccessChangeBeneficiary = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Success Change Owner">
+        <DocumentTransferMessage title={MessageTitle.CHANGE_BENEFICIARY_SUCCESS} isSuccess={true}>
+          <MessageBeneficiarySuccess address="Bank of China Pte Ltd" />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const SuccessChangeHolder = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Success Change Holder">
+        <DocumentTransferMessage title={MessageTitle.TRANSFER_HOLDER_SUCCESS} isSuccess={true}>
+          <MessageHolderSuccess address="Bank of China Pte Ltd" />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const SuccessNominateBeneficiaryHolder = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Success Nominate Owner and Holder">
+        <DocumentTransferMessage title={MessageTitle.NOMINATE_BENEFICIARY_HOLDER_SUCCESS} isSuccess={true}>
+          <MessageNominateBeneficiaryHolderSuccess />
+        </DocumentTransferMessage>
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const DeleteAddressResolver = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Delete Address Resolver">
+        <DeleteResolverConfirmation
+          title="Delete Address Resolver"
+          name="Swift"
+          deleteAddress={() => {
+            alert("delete address");
+          }}
+        />
       </OverlayDemo>
     </OverlayContextProvider>
   );

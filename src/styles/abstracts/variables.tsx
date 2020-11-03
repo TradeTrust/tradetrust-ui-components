@@ -3,9 +3,9 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.js";
 const fullConfig = resolveConfig(tailwindConfig);
 
-export const brandOrange = `${fullConfig.theme.colors.brandOrange.default}`;
-export const brandBlue = `${fullConfig.theme.colors.brandBlue.default}`;
-export const brandNavy = `${fullConfig.theme.colors.brandNavy.default}`;
+export const brandOrange = `${fullConfig.theme.colors.brand.orange}`;
+export const brandBlue = `${fullConfig.theme.colors.brand.blue}`;
+export const brandNavy = `${fullConfig.theme.colors.brand.navy}`;
 
 export const grey = `${fullConfig.theme.colors.grey.default}`;
 export const greyDark = `${fullConfig.theme.colors.grey.dark}`;
@@ -63,7 +63,7 @@ export const maxWidth = "1280px";
 export const inputPadding = "5px 10px";
 export const dropzoneBoxshadowPadding = "10px";
 
-export const sm = "576px";
-export const md = "768px";
-export const lg = "992px";
-export const xl = "1200px";
+export const sm = `${fullConfig.theme.screens.sm}`;
+export const md = `${fullConfig.theme.screens.md}`;
+export const lg = `${fullConfig.theme.screens.lg}`;
+export const xl = `${fullConfig.theme.screens.xl}`;
