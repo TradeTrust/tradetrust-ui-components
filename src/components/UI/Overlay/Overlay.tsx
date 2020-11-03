@@ -109,13 +109,6 @@ export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({ className }) 
   };
 
   return (
-    // <CSSTransition
-    //   in={isOverlayVisible}
-    //   timeout={400}
-    //   classNames="fade"
-    //   unmountOnExit
-    //   onExited={onOverlayTransitionEnded}
-    // >
     <>
       {isOverlayVisible && (
         <div className={`overlay ${className}`}>
@@ -124,7 +117,6 @@ export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({ className }) 
         </div>
       )}
     </>
-    // </CSSTransition>
   );
 };
 

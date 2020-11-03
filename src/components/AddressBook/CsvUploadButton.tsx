@@ -17,7 +17,7 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
     }
   };
   return (
-    <div className="tw-ml-2 tw-md-2">
+    <div className="ml-2 md-2">
       <input
         id="csv-file-input"
         type="file"
@@ -27,11 +27,11 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
         accept=".csv"
       />
       <LabelWhiteSecondary htmlFor="csv-file-input">
-        <div className="tw-flex tw-items-center tw-mx-0">
-          <div className="tw-col-auto tw-mr-2">
+        <div className="flex items-center mx-0">
+          <div className="col-auto mr-2">
             <FilePlus />
           </div>
-          <div className="tw-col-auto">Import .csv</div>
+          <div className="col-auto">Import .csv</div>
         </div>
       </LabelWhiteSecondary>
     </div>

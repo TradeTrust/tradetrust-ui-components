@@ -7,25 +7,25 @@ export const AddressResolver: FunctionComponent = () => {
   const [isNewEndpoint, setNewEndpoint] = useState(false);
 
   return (
-    <div className="container-custom tw-py-4">
-      <div className="tw-flex tw-items-end">
-        <div className="tw-flex-1 tw-flex-col">
+    <div className="container py-4">
+      <div className="flex items-end">
+        <div className="flex-1 flex-col">
           <h1>Settings: Address Resolver</h1>
-          <p className="tw-mb-0 tw-text-grey">Add third party’s endpoint to resolve addresses. </p>
+          <p className="mb-0 text-grey">Add third party’s endpoint to resolve addresses. </p>
         </div>
-        <div className="tw-flex">
+        <div className="flex">
           <ButtonSolidOrangeWhite
-            className="tw-my-0"
+            className="my-0"
             onClick={() => {
               setNewEndpoint(true);
             }}
             disabled={isNewEndpoint}
           >
-            <div className="tw-flex tw-items-center tw-mx-0">
-              <div className="tw-col-auto tw-mr-2">
+            <div className="flex items-center mx-0">
+              <div className="col-auto mr-2">
                 <Plus />
               </div>
-              <div className="tw-col-auto">Add</div>
+              <div className="col-auto">Add</div>
             </div>
           </ButtonSolidOrangeWhite>
         </div>

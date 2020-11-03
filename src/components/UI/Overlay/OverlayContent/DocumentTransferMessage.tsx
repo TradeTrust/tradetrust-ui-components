@@ -72,11 +72,11 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
       }
       if (isConfirmationMessage && onConfirmationAction) {
         return (
-          <div className="tw-flex tw-mx-0">
-            <div className="tw-col-auto tw-ml-2">
+          <div className="flex mx-0">
+            <div className="col-auto ml-2">
               <ButtonClose />
             </div>
-            <div className="tw-col-auto tw-ml-2">{ButtonConfirmAction(onConfirmationAction)}</div>
+            <div className="col-auto ml-2">{ButtonConfirmAction(onConfirmationAction)}</div>
           </div>
         );
       }
@@ -85,11 +85,11 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
 
     return (
       <OverlayContent {...props}>
-        <div className="tw-flex-1">
+        <div className="flex-1">
           <div className="message">{children}</div>
         </div>
-        <div className="tw-flex tw-mx-0">
-          <div className="tw-col-auto tw-ml-auto">{documentTransferButton()}</div>
+        <div className="flex mx-0">
+          <div className="col-auto ml-auto">{documentTransferButton()}</div>
         </div>
       </OverlayContent>
     );

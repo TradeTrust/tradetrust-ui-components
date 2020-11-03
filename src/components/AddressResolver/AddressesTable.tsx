@@ -144,8 +144,8 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
   };
 
   return (
-    <div className={`${className} tw-flex tw-py-6`}>
-      <div className="tw-flex tw-w-full">
+    <div className={`${className} flex py-6`}>
+      <div className="flex w-full">
         <div className="table-responsive">
           <table className="table">
             <thead className="table-thead">

@@ -16,11 +16,11 @@ export const DeleteResolverConfirmation = styled(
 
     return (
       <OverlayContent {...props}>
-        <div className="tw-flex-1">
+        <div className="flex-1">
           <p>Are you sure you want to delete {name}?</p>
         </div>
-        <div className="tw-flex tw-mx-0">
-          <div className="tw-col-auto tw-ml-auto tw-mr-2">
+        <div className="flex mx-0">
+          <div className="col-auto ml-auto mr-2">
             <ButtonSolidWhiteGrey
               onClick={() => {
                 setOverlayVisible(false);
@@ -30,7 +30,7 @@ export const DeleteResolverConfirmation = styled(
               Cancel
             </ButtonSolidWhiteGrey>
           </div>
-          <div className="tw-col-auto">
+          <div className="col-auto">
             <ButtonSolidRedWhite onClick={deleteAddress}>Delete</ButtonSolidRedWhite>
           </div>
         </div>

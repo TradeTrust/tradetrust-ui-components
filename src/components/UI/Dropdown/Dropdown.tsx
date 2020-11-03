@@ -10,10 +10,10 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({ dropdownButtonText,
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="tw-relative">
+    <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="tw-relative tw-z-10 tw-w-full tw-max-w-sm tw-border-grey-light tw-border-solid tw-border tw-rounded-none tw-cursor-pointer focus:tw-outline-none tw-p-3 tw-flex tw-justify-between hover:tw-bg-grey-lightest tw-text-grey-darker"
+        className="relative z-10 w-full max-w-sm border-grey-light border-solid border rounded-none cursor-pointer focus:outline-none p-3 flex justify-between hover:bg-grey-lightest text-grey-darker"
       >
         {dropdownButtonText}
         <ChevronDown />
@@ -23,9 +23,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({ dropdownButtonText,
           <button
             tabIndex={-1}
             onClick={() => setIsOpen(false)}
-            className="tw-fixed tw-inset-0 tw-w-full tw-h-full tw-cursor-default focus:tw-outline-none"
+            className="fixed inset-0 w-full h-full cursor-default focus:outline-none"
           />
-          <div className="tw-absolute tw-w-full tw-max-w-sm tw-mt-1 tw-rounded tw-bg-white tw-border tw-border-solid tw-border-grey-light tw-py-2 tw-shadow-lg">
+          <div className="absolute w-full max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg">
             {children}
           </div>
         </>
@@ -41,10 +41,7 @@ interface DropdownItemProps {
 
 export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ onClick, itemText }) => {
   return (
-    <div
-      className="hover:tw-bg-grey-lightest tw-p-3 tw-cursor-pointer tw-text-grey-darker active:tw-bg-blue"
-      onClick={onClick}
-    >
+    <div className="hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker active:bg-blue" onClick={onClick}>
       {itemText}
     </div>
   );

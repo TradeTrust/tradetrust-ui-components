@@ -95,7 +95,7 @@ export const AddressBook = styled(
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
         <div className="overlay-actionsbar">
-          <div className="tw-mb-2">
+          <div className="mb-2">
             <Dropdown dropdownButtonText={isLocal ? "Local" : name}>
               <DropdownItem
                 itemText="Local"
@@ -119,30 +119,30 @@ export const AddressBook = styled(
               })}
             </Dropdown>
           </div>
-          <div className="tw-flex tw-items-start tw-flex-col md:tw-flex-row">
-            <div className="tw-flex tw-mb-2 tw-flex-grow ">
+          <div className="flex items-start flex-col md:flex-row">
+            <div className="flex mb-2 flex-grow ">
               <div className="overlay-searchbar">
-                <div className="tw-flex tw-mx-0 tw-items-center tw-w-64">
+                <div className="flex mx-0 items-center w-64">
                   <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
                   <Search />
                 </div>
               </div>
             </div>
-            <div className="tw-flex tw-mx-0">
-              <div className="tw-flex tw-mb-2">
+            <div className="flex mx-0">
+              <div className="flex mb-2">
                 <AnchorLinkButtonSolidWhiteBlue
                   href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
                   download="template.csv"
                 >
-                  <div className="tw-flex tw-items-center tw-mx-0">
-                    <div className="tw-col-auto tw-mr-2">
+                  <div className="flex items-center mx-0">
+                    <div className="col-auto mr-2">
                       <Download />
                     </div>
-                    <div className="tw-col-auto">Download template</div>
+                    <div className="col-auto">Download template</div>
                   </div>
                 </AnchorLinkButtonSolidWhiteBlue>
               </div>
-              <div className="tw-flex">
+              <div className="flex">
                 <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
               </div>
             </div>

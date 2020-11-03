@@ -2,6 +2,10 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   theme: {
+    container: (theme) => ({
+      center: true,
+      padding: theme("spacing.4"),
+    }),
     screens: {
       sm: "576px",
       md: "768px",
@@ -22,11 +26,6 @@ module.exports = {
       0: "0",
       xs: "18rem",
     },
-    text: {
-      h1: "40px",
-      h2: "32px",
-      h3: "28px",
-    },
     extend: {
       spacing: {
         72: "18rem",
@@ -43,14 +42,10 @@ module.exports = {
       },
     },
     colors: {
-      brandOrange: {
-        default: "#ff9933",
-      },
-      brandBlue: {
-        default: "#0099cc",
-      },
-      brandNavy: {
-        default: "#324353",
+      brand: {
+        blue: "#0099cc",
+        orange: "#ff9933",
+        navy: "#324353",
       },
       grey: {
         lightest: "#f5f5f5",
@@ -114,7 +109,6 @@ module.exports = {
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
   },
-  prefix: "tw-",
   plugins: [
     plugin(function ({ addBase, config }) {
       addBase({

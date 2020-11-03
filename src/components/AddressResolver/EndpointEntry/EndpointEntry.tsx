@@ -158,7 +158,7 @@ export const EndpointEntry = styled(
         <td>
           {isEditable ? (
             <InputDefault
-              className="tw-mb-0 tw-w-full"
+              className="mb-0 w-full"
               placeholder="Name"
               value={endpointName}
               onChange={onEndpointNameChanged}
@@ -171,7 +171,7 @@ export const EndpointEntry = styled(
         <td>
           {isEditable ? (
             <InputDefault
-              className="tw-mb-0 tw-w-full"
+              className="mb-0 w-full"
               placeholder="Endpoint"
               value={endpointApi}
               onChange={onEndpointApiChanged}
@@ -184,7 +184,7 @@ export const EndpointEntry = styled(
         <td>
           {isEditable ? (
             <InputDefault
-              className="tw-mb-0 tw-w-full"
+              className="mb-0 w-full"
               placeholder="API Header"
               value={endpointApiHeader}
               onChange={onEndpointApiHeaderChanged}
@@ -197,7 +197,7 @@ export const EndpointEntry = styled(
         <td>
           {isEditable ? (
             <InputDefault
-              className="tw-mb-0 tw-w-full"
+              className="mb-0 w-full"
               placeholder="API Key"
               value={endpointApiKey}
               onChange={onEndpointApiKeyChanged}
@@ -209,11 +209,11 @@ export const EndpointEntry = styled(
         </td>
         {isLoading ? (
           <td className={isEditable ? "is-editable" : ""}>
-            <LoaderSpinner className="tw-inline-block tw-mx-2" />
+            <LoaderSpinner className="inline-block mx-2" />
           </td>
         ) : (
           <td className={isEditable ? "is-editable" : ""}>
-            <div className="tw-flex">
+            <div className="flex">
               {isEditable ? (
                 <Save onClick={onSave} data-testid="save-icon" />
               ) : (

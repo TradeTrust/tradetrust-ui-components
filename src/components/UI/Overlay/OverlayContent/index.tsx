@@ -28,14 +28,13 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
   useLockBodyScroll();
 
   return (
-    // <CSSTransition in={isOverlayVisible} timeout={300} classNames="fadescale" appear>
     <>
       {isOverlayVisible && (
         <div className={`${className}`} {...props}>
           <div className="overlay-header">
-            <div className="tw-flex tw-mx-0 tw-items-center">
+            <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
-                <div className="tw-col-auto tw-mr-1">
+                <div className="col-auto mr-1">
                   <div className="title-icon">
                     {isSuccess ? <CheckCircle color={`${vars.teal}`} /> : <XCircle color={`${vars.red}`} />}
                   </div>
@@ -50,11 +49,10 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             </div>
           </div>
           <div className="overlay-body">
-            <div className="tw-flex tw-flex-col tw-h-full tw-text-black-light">{children}</div>
+            <div className="flex flex-col h-full text-black-light">{children}</div>
           </div>
         </div>
       )}
     </>
-    // </CSSTransition>
   );
 };

@@ -3,9 +3,9 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.js";
 const fullConfig = resolveConfig(tailwindConfig);
 
-export const brandOrange = `${fullConfig.theme.colors.brandOrange.default}`;
-export const brandBlue = `${fullConfig.theme.colors.brandBlue.default}`;
-export const brandNavy = `${fullConfig.theme.colors.brandNavy.default}`;
+export const brandOrange = `${fullConfig.theme.colors.brand.orange}`;
+export const brandBlue = `${fullConfig.theme.colors.brand.blue}`;
+export const brandNavy = `${fullConfig.theme.colors.brand.navy}`;
 
 export const grey = `${fullConfig.theme.colors.grey.default}`;
 export const greyDark = `${fullConfig.theme.colors.grey.dark}`;
