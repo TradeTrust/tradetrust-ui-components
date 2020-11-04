@@ -1,4 +1,4 @@
-import { AddressBookLocalProps as AddressBookProps } from "@govtechsg/address-identity-resolver";
+import { useAddressBook } from "@govtechsg/address-identity-resolver";
 import { isEmpty } from "lodash";
 import React, { FunctionComponent } from "react";
 import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
@@ -6,16 +6,15 @@ import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTab
 interface AddressBookLocalProps {
   onAddressSelect: (address: string) => void;
   searchTerm: string;
-  addressBook: AddressBookProps;
   network: string;
 }
 
 export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
   onAddressSelect,
   searchTerm,
-  addressBook,
   network,
 }: AddressBookLocalProps) => {
+  const { addressBook } = useAddressBook();
   const filteredAddresses = Object.keys(addressBook).filter((key) => {
     const identifier = addressBook[key];
     return (
