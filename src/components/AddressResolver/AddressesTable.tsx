@@ -4,7 +4,7 @@ import { lighten } from "polished";
 import React from "react";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { fontSize } from "../../styles/abstracts/mixin";
-import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent/DeleteResolverConfirmation";
+import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { vars } from "./../../styles";
 import { EndpointEntry } from "./EndpointEntry";
 
