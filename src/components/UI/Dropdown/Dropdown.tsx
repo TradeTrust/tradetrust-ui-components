@@ -15,8 +15,10 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({ dropdownButtonText,
         onClick={() => setIsOpen(!isOpen)}
         className="relative z-10 w-full max-w-sm border-grey-light border-solid border rounded-none cursor-pointer focus:outline-none p-3 flex justify-between hover:bg-grey-lightest text-grey-darker"
       >
-        {dropdownButtonText}
-        <ChevronDown />
+        <span className="truncate">{dropdownButtonText}</span>
+        <span>
+          <ChevronDown />
+        </span>
       </button>
       {isOpen && (
         <>
@@ -42,7 +44,7 @@ interface DropdownItemProps {
 export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ onClick, itemText }) => {
   return (
     <div className="hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker active:bg-blue" onClick={onClick}>
-      {itemText}
+      <span className="truncate">{itemText}</span>
     </div>
   );
 };

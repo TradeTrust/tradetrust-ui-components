@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, FunctionComponent } from "react";
+import React, { createContext, FunctionComponent, useContext, useEffect, useState } from "react";
 import { useKeyPress } from "./../../common/hooks/useKeyPress";
 
 interface OverlayContextProps {
