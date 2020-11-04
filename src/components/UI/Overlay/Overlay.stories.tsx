@@ -2,8 +2,8 @@ import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../../common/context/OverlayContext";
 import { ButtonSolid } from "../Button";
 import { Overlay, OverlayUnStyled } from "./Overlay";
-import { DeleteResolverConfirmation } from "./OverlayContent/DeleteResolverConfirmation";
 import {
+  DeleteResolverConfirmation,
   DocumentTransferMessage,
   MessageBeneficiarySuccess,
   MessageHolderSuccess,
@@ -14,9 +14,9 @@ import {
   MessageSurrenderSuccess,
   MessageTitle,
   MessageTransactionError,
-} from "./OverlayContent/DocumentTransferMessage";
-import { Textual } from "./OverlayContent/Textual";
-import { Youtube } from "./OverlayContent/Youtube";
+  Textual,
+  Youtube,
+} from "./OverlayContent";
 
 export interface OverlayDemoProps {
   buttonText: string;
