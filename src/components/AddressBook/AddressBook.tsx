@@ -3,6 +3,7 @@ import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
   ThirdPartyAPIEntryProps,
+  useAddressBook,
 } from "@govtechsg/address-identity-resolver";
 import { debounce } from "lodash";
 import React, { useCallback, useState } from "react";
@@ -28,14 +29,14 @@ export interface AddressBookDropdownProps {
 
 export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
-  handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
   thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
   network: string;
 }
 
 export const AddressBook = styled(
-  ({ onAddressSelected, handleLocalAddressBookCsv, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
+  ({ onAddressSelected, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
     const { setOverlayVisible } = useOverlayContext();
+    const { handleLocalAddressBookCsv } = useAddressBook();
     const [searchTerm, setSearchTerm] = useState("");
 
     const [isLocal, setIsLocal] = useState(true);

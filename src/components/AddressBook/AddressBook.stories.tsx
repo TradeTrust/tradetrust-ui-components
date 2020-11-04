@@ -1,4 +1,3 @@
-import { useAddressBook } from "@govtechsg/address-identity-resolver";
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
@@ -29,14 +28,11 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
 };
 
 export const DefaultAddressBook = (): ReactElement => {
-  const { handleLocalAddressBookCsv } = useAddressBook();
-
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Default Address Book">
         <AddressBook
           onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          handleLocalAddressBookCsv={handleLocalAddressBookCsv}
           thirdPartyAPIEndpoints={[]}
           network="ropsten"
           title="Address Book"
