@@ -11,8 +11,8 @@ export default {
 export const Default = (): ReactElement => {
   return (
     <Dropdown dropdownButtonText="Local">
-      <DropdownItem itemText="Local" onClick={() => alert("local clicked!!")} />
-      <DropdownItem itemText="Thirdparty endpoint" onClick={() => alert("thirdparty clicked!!")} />
+      <DropdownItem itemText="Local" onClick={() => console.log("local clicked!!")} />
+      <DropdownItem itemText="Thirdparty endpoint" onClick={() => console.log("thirdparty clicked!!")} />
     </Dropdown>
   );
 };
