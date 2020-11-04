@@ -27,7 +27,10 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({ dropdownButtonText,
             onClick={() => setIsOpen(false)}
             className="fixed inset-0 w-full h-full cursor-default focus:outline-none"
           />
-          <div className="absolute w-full max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg">
+          <div
+            onClick={() => setIsOpen(false)}
+            className="absolute w-full max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg"
+          >
             {children}
           </div>
         </>
@@ -43,8 +46,11 @@ interface DropdownItemProps {
 
 export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ onClick, itemText }) => {
   return (
-    <div className="hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker active:bg-blue" onClick={onClick}>
-      <span className="truncate">{itemText}</span>
+    <div
+      className="hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker active:bg-blue truncate"
+      onClick={onClick}
+    >
+      {itemText}
     </div>
   );
 };
