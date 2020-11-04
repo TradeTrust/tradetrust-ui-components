@@ -1,7 +1,7 @@
+import { useAddressBook } from "@govtechsg/address-identity-resolver";
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
-import { sampleAddressBook } from "../../test/fixtures/sampleAddressBook";
 import { ButtonSolid } from "../UI/Button";
 import { Overlay } from "../UI/Overlay";
 import { AddressBook } from "./AddressBook";
@@ -29,35 +29,15 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
 };
 
 export const DefaultAddressBook = (): ReactElement => {
+  const { handleLocalAddressBookCsv } = useAddressBook();
+
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Default Address Book">
         <AddressBook
           onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          handleLocalAddressBookCsv={() => {
-            return Promise.resolve();
-          }}
+          handleLocalAddressBookCsv={handleLocalAddressBookCsv}
           thirdPartyAPIEndpoints={[]}
-          addressBook={{}}
-          network="ropsten"
-          title="Address Book"
-        />
-      </OverlayDemo>
-    </OverlayContextProvider>
-  );
-};
-
-export const FilledAddressBook = (): ReactElement => {
-  return (
-    <OverlayContextProvider>
-      <OverlayDemo buttonText="Filled Address Book">
-        <AddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          handleLocalAddressBookCsv={() => {
-            return Promise.resolve();
-          }}
-          thirdPartyAPIEndpoints={[]}
-          addressBook={sampleAddressBook}
           network="ropsten"
           title="Address Book"
         />

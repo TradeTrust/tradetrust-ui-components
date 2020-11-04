@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import {
-  AddressBookLocalProps,
   AddressBookThirdPartyResultsProps,
   entityLookup,
   ThirdPartyAPIEntryProps,
@@ -31,19 +30,11 @@ export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
   thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
-  addressBook: AddressBookLocalProps;
   network: string;
 }
 
 export const AddressBook = styled(
-  ({
-    onAddressSelected,
-    handleLocalAddressBookCsv,
-    thirdPartyAPIEndpoints,
-    addressBook,
-    network,
-    ...props
-  }: AddressBookProps) => {
+  ({ onAddressSelected, handleLocalAddressBookCsv, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
     const { setOverlayVisible } = useOverlayContext();
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -150,12 +141,7 @@ export const AddressBook = styled(
         </div>
         <div className="table-responsive">
           {isLocal ? (
-            <AddressBookLocal
-              addressBook={addressBook}
-              onAddressSelect={onAddressSelect}
-              searchTerm={searchTerm}
-              network={network}
-            />
+            <AddressBookLocal onAddressSelect={onAddressSelect} searchTerm={searchTerm} network={network} />
           ) : (
             <AddressBookThirdParty
               onAddressSelect={onAddressSelect}
