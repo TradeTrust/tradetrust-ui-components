@@ -1,3 +1,4 @@
+import { useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
@@ -28,12 +29,14 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
 };
 
 export const DefaultAddressBook = (): ReactElement => {
+  const { thirdPartyAPIEndpoints } = useThirdPartyAPIEndpoints();
+
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Default Address Book">
         <AddressBook
           onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          thirdPartyAPIEndpoints={[]}
+          thirdPartyAPIEndpoints={thirdPartyAPIEndpoints}
           network="ropsten"
           title="Address Book"
         />

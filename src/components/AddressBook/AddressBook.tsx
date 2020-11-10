@@ -6,7 +6,7 @@ import {
   useAddressBook,
 } from "@govtechsg/address-identity-resolver";
 import { debounce } from "lodash";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
@@ -14,6 +14,7 @@ import { TableStyle } from "../AddressResolver/AddressesTable";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
+import { Pagination } from "../UI/Pagination";
 import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
@@ -32,10 +33,13 @@ export interface AddressBookProps extends OverlayContentProps {
   network: string;
 }
 
+const DEFAULT_OFFSET = 0;
+const DEFAULT_LIMIT = 20;
+
 export const AddressBook = styled(
   ({ onAddressSelected, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
     const { setOverlayVisible } = useOverlayContext();
-    const { handleLocalAddressBookCsv } = useAddressBook();
+    const { handleLocalAddressBookCsv, addressBook } = useAddressBook();
     const [searchTerm, setSearchTerm] = useState("");
 
     const [isLocal, setIsLocal] = useState(true);
@@ -45,6 +49,28 @@ export const AddressBook = styled(
       AddressBookThirdPartyResultsProps[]
     >([]);
     const { name, endpoint, apiHeader, apiKey } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
+    const [addressBookThirdPartyTotalResults, setAddressBookThirdPartyTotalResults] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const filteredLocalAddresses = Object.keys(addressBook).filter((key) => {
+      const identifier = addressBook[key];
+      return (
+        identifier.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        key.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+
+    useEffect(() => {
+      setCurrentPage(1);
+    }, [isLocal]);
+
+    const totalNoOfPages = isLocal
+      ? Math.ceil(filteredLocalAddresses.length / DEFAULT_LIMIT)
+      : addressBookThirdPartyTotalResults;
+
+    const offset = (currentPage - 1) * DEFAULT_LIMIT || DEFAULT_OFFSET;
+
+    const localPageResults = filteredLocalAddresses.slice(offset, offset + DEFAULT_LIMIT);
 
     const onAddressSelect = (address: string): void => {
       if (onAddressSelected) {
@@ -55,32 +81,42 @@ export const AddressBook = styled(
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const queryEndpoint = useCallback(
-      debounce(async (search) => {
+      debounce(async (search, pageOffset = offset) => {
         setIsPendingRemoteResults(true);
-
         try {
           const results = await entityLookup({
+            offset: pageOffset.toString(),
+            limit: DEFAULT_LIMIT.toString(),
             query: search,
             endpoint,
             apiHeader,
             apiKey,
           });
-          setAddressBookThirdPartyResults(results);
+          setAddressBookThirdPartyResults(results.identities);
+          setAddressBookThirdPartyTotalResults(Math.ceil(results.total / DEFAULT_LIMIT));
         } catch (e) {
           setAddressBookThirdPartyResults([]);
+          setAddressBookThirdPartyTotalResults(1);
           queryEndpoint.cancel();
           console.log(e, "error");
         }
 
         setIsPendingRemoteResults(false);
-      }, 1000),
+      }, 700),
       []
     );
 
     const onSearchTermChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
       const inputText = event.target.value;
       setSearchTerm(inputText);
+      setCurrentPage(1);
       if (!isLocal) queryEndpoint(inputText);
+    };
+
+    const switchPage = (pageNumber: number): void => {
+      if (isLocal) return;
+      const pageOffset = (pageNumber - 1) * DEFAULT_LIMIT;
+      queryEndpoint(searchTerm, pageOffset);
     };
 
     return (
@@ -148,7 +184,11 @@ export const AddressBook = styled(
         </div>
         <div className="table-responsive">
           {isLocal ? (
-            <AddressBookLocal onAddressSelect={onAddressSelect} searchTerm={searchTerm} network={network} />
+            <AddressBookLocal
+              onAddressSelect={onAddressSelect}
+              filteredLocalAddresses={localPageResults}
+              network={network}
+            />
           ) : (
             <AddressBookThirdParty
               onAddressSelect={onAddressSelect}
@@ -157,6 +197,14 @@ export const AddressBook = styled(
               network={network}
             />
           )}
+        </div>
+        <div className="mt-4">
+          <Pagination
+            onPageClick={switchPage}
+            totalNoOfPages={totalNoOfPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </OverlayContent>
     );
