@@ -15,6 +15,7 @@ export const TableStyle = (): string => {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      max-height: 360px;
     }
 
     .table {
