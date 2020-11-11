@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Pagination } from "./Pagination";
 
 export default {
@@ -10,16 +10,15 @@ export default {
 };
 
 export const Default = (): ReactElement => {
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <Pagination
       onPageClick={() => {
-        alert("page changed!!");
+        console.log("page changed!!");
       }}
       totalNoOfPages={3}
-      currentPage={1}
-      setCurrentPage={() => {
-        console.log("current page set to 1");
-      }}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
     />
   );
 };
