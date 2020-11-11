@@ -32,13 +32,19 @@ export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
   thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
   network: string;
+  paginationOffset?: number;
+  paginationLimit?: number;
 }
 
-const DEFAULT_OFFSET = 0;
-const DEFAULT_LIMIT = 20;
-
 export const AddressBook = styled(
-  ({ onAddressSelected, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
+  ({
+    onAddressSelected,
+    thirdPartyAPIEndpoints,
+    network,
+    paginationOffset = 0,
+    paginationLimit = 20,
+    ...props
+  }: AddressBookProps) => {
     const { setOverlayVisible } = useOverlayContext();
     const { handleLocalAddressBookCsv, addressBook } = useAddressBook();
     const [searchTerm, setSearchTerm] = useState("");
@@ -66,12 +72,12 @@ export const AddressBook = styled(
     }, [isLocal]);
 
     const totalNoOfPages = isLocal
-      ? Math.ceil(filteredLocalAddresses.length / DEFAULT_LIMIT)
+      ? Math.ceil(filteredLocalAddresses.length / paginationLimit)
       : addressBookThirdPartyTotalResults;
 
-    const offset = (currentPage - 1) * DEFAULT_LIMIT || DEFAULT_OFFSET;
+    const offset = (currentPage - 1) * paginationLimit || paginationOffset;
 
-    const localPageResults = filteredLocalAddresses.slice(offset, offset + DEFAULT_LIMIT);
+    const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
     const onAddressSelect = (address: string): void => {
       if (onAddressSelected) {
@@ -80,21 +86,20 @@ export const AddressBook = styled(
       }
     };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const queryEndpoint = useCallback(
       debounce(async (search, pageOffset = offset) => {
         setIsPendingRemoteResults(true);
         try {
           const results = await entityLookup({
             offset: pageOffset.toString(),
-            limit: DEFAULT_LIMIT.toString(),
+            limit: paginationLimit.toString(),
             query: search,
             endpoint,
             apiHeader,
             apiKey,
           });
           setAddressBookThirdPartyResults(results.identities);
-          setAddressBookThirdPartyTotalResults(Math.ceil(results.total / DEFAULT_LIMIT));
+          setAddressBookThirdPartyTotalResults(Math.ceil(results.total / paginationLimit));
         } catch (e) {
           setAddressBookThirdPartyResults([]);
           setAddressBookThirdPartyTotalResults(1);
@@ -116,7 +121,7 @@ export const AddressBook = styled(
 
     const switchPage = (pageNumber: number): void => {
       if (isLocal) return;
-      const pageOffset = (pageNumber - 1) * DEFAULT_LIMIT;
+      const pageOffset = (pageNumber - 1) * paginationLimit;
       queryEndpoint(searchTerm, pageOffset);
     };
 

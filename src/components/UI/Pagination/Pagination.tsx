@@ -17,6 +17,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
   const pageNumberComponent = (i: number): ReactNode => {
     return (
       <button
+        key={i}
         onClick={() => {
           setCurrentPage(i);
           onPageClick(i);
@@ -56,14 +57,18 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
     <div className="flex">
       <div className="border border-solid border-grey-light flex ml-auto items-center justify-center">
         <button
-          className="p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none"
+          className={`p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none ${
+            currentPage === 1 && "opacity-25 cursor-not-allowed"
+          }`}
           onClick={goPreviousPage}
         >
           <ArrowLeft size={14} />
         </button>
         {totalNoOfPages && totalNoOfPages > 1 ? generateNumberOfPages() : pageNumberComponent(1)}
         <button
-          className="p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none"
+          className={`p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none ${
+            currentPage === totalNoOfPages && "opacity-25 cursor-not-allowed"
+          }`}
           onClick={goNextPage}
         >
           <ArrowRight size={14} />
