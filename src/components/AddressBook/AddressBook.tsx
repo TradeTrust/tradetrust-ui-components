@@ -86,6 +86,7 @@ export const AddressBook = styled(
       }
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const queryEndpoint = useCallback(
       debounce(async (search, pageOffset = offset) => {
         setIsPendingRemoteResults(true);
