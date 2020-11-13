@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { X } from "react-feather";
-import "../../index.css";
 import { vars } from "../../styles";
 
 const NetworkWrap = styled.div`
