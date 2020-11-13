@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { Dropdown, DropdownItem } from "./Dropdown";
 export default {
   title: "UI/Dropdown",
@@ -9,14 +9,28 @@ export default {
 };
 
 export const AddressBookDefault = (): ReactElement => {
+  const [dropdownButtonText, setDropdownButtonText] = useState("Local");
+
   return (
     <Dropdown
       fullWidth
-      dropdownButtonText="Local"
+      dropdownButtonText={dropdownButtonText}
       className="border-grey-light border-solid border rounded-none p-3 hover:bg-grey-lightest"
     >
-      <DropdownItem itemText="Local" onClick={() => console.log("local clicked!!")} />
-      <DropdownItem itemText="Thirdparty endpoint" onClick={() => console.log("thirdparty clicked!!")} />
+      <DropdownItem
+        onClick={() => {
+          setDropdownButtonText("Local");
+        }}
+      >
+        Local
+      </DropdownItem>
+      <DropdownItem
+        onClick={() => {
+          setDropdownButtonText("Thirdparty endpoint");
+        }}
+      >
+        Thirdparty endpoint
+      </DropdownItem>
     </Dropdown>
   );
 };
@@ -28,12 +42,21 @@ export const ButtonDefault = (): ReactElement => {
       alignRight
       className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-dark w-40"
     >
-      <DropdownItem itemText="Local" onClick={() => console.log("local clicked!!")} />
-      <DropdownItem itemText="Thirdparty endpoint" onClick={() => console.log("thirdparty clicked!!")} />
+      <DropdownItem className="active:bg-orange-dark active:text-white" onClick={() => console.log("local clicked!!")}>
+        Local
+      </DropdownItem>
       <DropdownItem
-        itemText="Thirdparty endpoint long longkadshfkhkahkjdshfkahk haskjfkjashdkfhakdshfk"
+        className="active:bg-orange-dark active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
-      />
+      >
+        Thirdparty endpoint
+      </DropdownItem>
+      <DropdownItem
+        className="active:bg-orange-dark active:text-white"
+        onClick={() => console.log("thirdparty clicked!!")}
+      >
+        Thirdparty endpoint long longkadshfkhkahkjdshfkahk haskjfkjashdkfhakdshfk
+      </DropdownItem>
     </Dropdown>
   );
 };
@@ -41,8 +64,8 @@ export const ButtonDefault = (): ReactElement => {
 export const NavBarDefault = (): ReactElement => {
   return (
     <Dropdown dropdownButtonText="Info" className="font-bold text-greyblue hover:none">
-      <DropdownItem itemText="Local" onClick={() => console.log("local clicked!!")} />
-      <DropdownItem itemText="Thirdparty endpoint" onClick={() => console.log("thirdparty clicked!!")} />
+      <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
+      <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
     </Dropdown>
   );
 };

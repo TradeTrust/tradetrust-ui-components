@@ -23,8 +23,8 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`relative z-10 max-w-sm cursor-pointer focus:outline-none flex justify-between text-grey-darker ${className} ${
-          fullWidth ? "w-full " : " "
-        } ${alignRight ? "ml-auto " : " "}`}
+          fullWidth ? " w-full" : ""
+        } ${alignRight ? " ml-auto" : ""}`}
       >
         <span className="truncate">{dropdownButtonText}</span>
         <span>
@@ -40,11 +40,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute${
-              fullWidth ? "w-full " : " "
-            }max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg ${
-              alignRight ? "right-0 " : " "
-            }`}
+            className={`absolute max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg${
+              fullWidth ? " w-full" : ""
+            } ${alignRight ? " right-0" : ""}`}
           >
             {children}
           </div>
@@ -55,25 +53,18 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
 };
 
 interface DropdownItemProps {
+  children?: React.ReactNode;
   onClick?: () => void;
-  itemText: string;
-  "data-testid"?: string;
   className?: string;
 }
 
-export const DropdownItem: FunctionComponent<DropdownItemProps> = ({
-  onClick,
-  itemText,
-  "data-testid": dataTestid,
-  className,
-}) => {
+export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ className, children, ...props }) => {
   return (
     <div
-      className={`hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker active:bg-blue truncate w-full w-max-sm ${className}`}
-      onClick={onClick}
-      data-testid={dataTestid}
+      className={`hover:bg-grey-lightest p-3 cursor-pointer text-grey-darker truncate w-full w-max-sm active:bg-grey-light ${className}`}
+      {...props}
     >
-      {itemText}
+      {children}
     </div>
   );
 };
