@@ -38,6 +38,7 @@ export const AddressBookDefault = (): ReactElement => {
 export const ButtonDefault = (): ReactElement => {
   return (
     <Dropdown
+      data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
       alignRight
       className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-dark w-40"
