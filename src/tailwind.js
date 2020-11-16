@@ -108,6 +108,7 @@ module.exports = {
   },
   variants: {
     backgroundColor: ["responsive", "hover", "focus", "active"],
+    textColor: ["responsive", "hover", "focus", "active", "group-hover"],
   },
   plugins: [
     plugin(function ({ addBase, config }) {
