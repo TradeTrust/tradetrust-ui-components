@@ -15,12 +15,14 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   className,
   alignRight,
   fullWidth,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
       <button
+        {...props}
         onClick={() => setIsOpen(!isOpen)}
         className={`relative z-10 max-w-sm cursor-pointer focus:outline-none flex justify-between text-grey-darker ${className} ${
           fullWidth ? " w-full" : ""
