@@ -88,14 +88,18 @@ export const AddressBook = styled(
       <OverlayContent data-testid="overlay-addressbook" {...props}>
         <div className="overlay-actionsbar">
           <div className="mb-2">
-            <Dropdown dropdownButtonText={isLocal ? "Local" : name}>
+            <Dropdown
+              dropdownButtonText={isLocal ? "Local" : name}
+              className="w-full border-grey-light border-solid border rounded-none p-3"
+            >
               <DropdownItem
-                itemText="Local"
                 onClick={() => {
                   setIsLocal(true);
                   setSearchTerm("");
                 }}
-              />
+              >
+                Local
+              </DropdownItem>
               {thirdPartyAPIEndpoints.map((item, index) => {
                 return (
                   <DropdownItem
@@ -105,8 +109,9 @@ export const AddressBook = styled(
                       setSearchTerm("");
                       setRemoteEndpointIndex(index);
                     }}
-                    itemText={item.name}
-                  />
+                  >
+                    {item.name}
+                  </DropdownItem>
                 );
               })}
             </Dropdown>
