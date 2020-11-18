@@ -6,12 +6,6 @@ module.exports = {
       center: true,
       padding: theme("spacing.4"),
     }),
-    screens: {
-      sm: "576px",
-      md: "768px",
-      lg: "992px",
-      xl: "1200px",
-    },
     fontFamily: {
       sans: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
       display: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
