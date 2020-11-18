@@ -42,7 +42,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg${
+            className={`absolute z-10 max-w-sm mt-1 rounded bg-white border border-solid border-grey-light py-2 shadow-lg${
               fullWidth ? " w-full" : ""
             } ${alignRight ? " right-0" : ""}`}
           >
