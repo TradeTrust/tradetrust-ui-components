@@ -42,3 +42,9 @@ Your app is ready to be deployed!
 - Overlay
 
 Checkout storybook mode for more information.
+
+## Styles
+
+- Note that exported components are bare without styles.
+- It is expected for external application(s) to setup their own tailwind config, using the exported `tailwindConfig` const from `/build` folder.
+- Otherwise, can use the combined minified stylesheet in `/build/index.css` directly.
