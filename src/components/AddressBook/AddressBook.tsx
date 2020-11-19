@@ -9,7 +9,6 @@ import { debounce } from "lodash";
 import React, { useCallback, useState } from "react";
 import { Download, Search } from "react-feather";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import "../../index.css";
 import { vars } from "../../styles";
 import { TableStyle } from "../AddressResolver/AddressesTable";
 import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";

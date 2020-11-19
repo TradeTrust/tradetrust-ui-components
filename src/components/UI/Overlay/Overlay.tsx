@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { rgba } from "polished";
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
-import "../../../index.css";
 import { mixin, vars } from "../../../styles";
 
 // TODO check for twin styles

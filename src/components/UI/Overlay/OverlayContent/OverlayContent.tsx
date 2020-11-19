@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import { CheckCircle, X, XCircle } from "react-feather";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
-import "../../../../index.css";
 import { vars } from "../../../../styles";
 
 export interface OverlayContentProps {
