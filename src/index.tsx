@@ -8,3 +8,5 @@ export * from "./components/UI/Input";
 export * from "./components/UI/Loader";
 export * from "./components/UI/Overlay";
 export * from "./components/UI/Overlay/OverlayContent";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+export const tailwindConfig = require("./tailwind.js");
