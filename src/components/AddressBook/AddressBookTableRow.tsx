@@ -29,7 +29,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       <td>{address}</td>
       {!isLocal && <td>{source ? source : "-"}</td>}
       <td>
-        <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-brand-blue">
+        <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-blue">
           <ExternalLink />
         </a>
       </td>

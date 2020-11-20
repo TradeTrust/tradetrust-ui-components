@@ -64,7 +64,7 @@ export const baseStyleButton = ({ bgColor, textColor }: BaseStyleButtonProps): s
     letter-spacing: 0.01rem;
     min-height: 40px;
     cursor: pointer;
-    border-radius: ${vars.buttonRadius};
+    border-radius: 4px;
     box-shadow: 0 2px 8px ${rgba(vars.black, 0.15)};
     background-color: ${bgColor};
     color: ${textColor};
@@ -128,12 +128,12 @@ const iconButtonStyle = (): string => {
 const bgWhiteTextSecondary = `
   ${baseStyleButton({
     bgColor: vars.white,
-    textColor: vars.brandBlue,
+    textColor: vars.blue,
   })}
 
   ${bgWhiteModifier({
-    hoverTextColor: vars.brandBlue,
-    hoverColor: vars.brandBlue,
+    hoverTextColor: vars.blue,
+    hoverColor: vars.blue,
   })}
 `;
 
@@ -146,7 +146,7 @@ export const ButtonSolid = styled(Button)`
 
 export const ButtonSolidOrangeWhite = styled(Button)`
   ${baseStyleButton({
-    bgColor: vars.brandOrange,
+    bgColor: vars.orange,
     textColor: vars.white,
   })}
 `;
@@ -167,7 +167,7 @@ export const ButtonSolidWhiteGrey = styled(Button)`
 
 export const ButtonSolidGreenWhite = styled(Button)`
   ${baseStyleButton({
-    bgColor: vars.green,
+    bgColor: vars.green900,
     textColor: vars.white,
   })}
 `;
@@ -190,11 +190,11 @@ export const ButtonBorderedBlue = styled(Button)`
 export const ButtonSolidWhiteOrange = styled(Button)`
   ${baseStyleButton({
     bgColor: vars.white,
-    textColor: vars.brandOrange,
+    textColor: vars.orange,
   })}
 
   ${bgWhiteModifier({
-    hoverColor: vars.brandOrange,
+    hoverColor: vars.orange,
   })}
 `;
 
@@ -205,11 +205,11 @@ export const ButtonSolidWhiteBlue = styled(Button)`
 export const ButtonIconWhiteOrange = styled(Button)`
   ${baseStyleButton({
     bgColor: vars.white,
-    textColor: vars.brandOrange,
+    textColor: vars.orange,
   })}
 
   ${bgWhiteModifier({
-    hoverColor: vars.brandOrange,
+    hoverColor: vars.orange,
   })}
 
   ${iconButtonStyle()};
@@ -230,12 +230,12 @@ export const ButtonIconWhiteBlue = styled(Button)`
 
 export const ButtonIconOrangeWhite = styled(Button)`
   ${baseStyleButton({
-    bgColor: vars.brandOrange,
+    bgColor: vars.orange,
     textColor: vars.white,
   })}
 
   ${bgWhiteModifier({
-    hoverColor: vars.brandOrange,
+    hoverColor: vars.orange,
   })}
 
   ${iconButtonStyle()};
@@ -243,7 +243,7 @@ export const ButtonIconOrangeWhite = styled(Button)`
 
 export const ButtonCircleGreylight = styled(Button)`
   ${baseStyleButton({
-    bgColor: vars.greyLight,
+    bgColor: vars.grey300,
     textColor: vars.white,
   })}
 
@@ -261,7 +261,7 @@ export const ButtonCircleGreylight = styled(Button)`
     margin-right: auto;
 
     line {
-      color: ${vars.greyDarker};
+      color: ${vars.grey800};
       stroke-width: 3px;
     }
   }
@@ -274,7 +274,7 @@ export const LabelWhiteSecondary = styled(Label)`
 
 export const AnchorLinkButtonSolidOrangeWhite = styled(AnchorLink)`
   ${baseStyleButton({
-    bgColor: vars.brandOrange,
+    bgColor: vars.orange,
     textColor: vars.white,
   })} :hover {
     text-decoration: none;

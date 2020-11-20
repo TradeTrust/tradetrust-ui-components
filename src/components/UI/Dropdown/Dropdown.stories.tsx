@@ -15,7 +15,7 @@ export const AddressBookDefault = (): ReactElement => {
     <Dropdown
       fullWidth
       dropdownButtonText={dropdownButtonText}
-      className="border-grey-light border-solid border rounded-none p-3 hover:bg-grey-lightest"
+      className="border-grey-300 border-solid border rounded-none p-3 hover:bg-grey-100"
     >
       <DropdownItem
         onClick={() => {
@@ -41,19 +41,19 @@ export const ButtonDefault = (): ReactElement => {
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
       alignRight
-      className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-dark w-40"
+      className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-600 w-40"
     >
-      <DropdownItem className="active:bg-orange-dark active:text-white" onClick={() => console.log("local clicked!!")}>
+      <DropdownItem className="active:bg-orange-600 active:text-white" onClick={() => console.log("local clicked!!")}>
         Local
       </DropdownItem>
       <DropdownItem
-        className="active:bg-orange-dark active:text-white"
+        className="active:bg-orange-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Thirdparty endpoint
       </DropdownItem>
       <DropdownItem
-        className="active:bg-orange-dark active:text-white"
+        className="active:bg-orange-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Thirdparty endpoint long longkadshfkhkahkjdshfkahk haskjfkjashdkfhakdshfk

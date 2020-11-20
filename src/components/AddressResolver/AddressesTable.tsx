@@ -11,7 +11,7 @@ import { EndpointEntry } from "./EndpointEntry";
 export const TableStyle = (): string => {
   return `
     .table-responsive {
-      border: solid 1px ${vars.greyLight};
+      border: solid 1px ${vars.grey300};
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -24,7 +24,7 @@ export const TableStyle = (): string => {
 
     tr {
       white-space: nowrap;
-      border-top: solid 1px ${vars.greyLight};;
+      border-top: solid 1px ${vars.grey300};;
     }
 
     th {
@@ -56,7 +56,7 @@ export const TableStyle = (): string => {
 
       tr {
         &:nth-of-type(even) {
-          background-color: ${vars.greyLightest};
+          background-color: ${vars.grey100};
         }
       }
     }
@@ -237,7 +237,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
       ${fontSize(20)};
 
       &:hover {
-        color: ${vars.greyDarker};
+        color: ${vars.grey800};
       }
 
       &.fa-sort-up {

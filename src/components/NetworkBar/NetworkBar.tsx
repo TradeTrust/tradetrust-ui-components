@@ -4,8 +4,6 @@ import { X } from "react-feather";
 import { vars } from "../../styles";
 
 const NetworkWrap = styled.div`
-  background-color: ${vars.greenDarker};
-  color: ${vars.white};
   padding: 8px 0;
 
   .network {
@@ -38,7 +36,7 @@ export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({ network }
 
   if (!show) return null;
   return (
-    <NetworkWrap data-testid="network-bar">
+    <NetworkWrap className="bg-green-900 text-white" data-testid="network-bar">
       <div className="container">
         <div className="flex flex-wrap">
           <div className="col-auto ml-auto">

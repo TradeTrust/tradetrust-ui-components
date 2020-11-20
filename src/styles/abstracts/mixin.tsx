@@ -60,8 +60,8 @@ export const loaderSpinner = ({
 
 export const baseStyleInput = (): string => {
   return `
-    border: 1px solid ${vars.greyLight};
-    padding: ${vars.inputPadding};
+    border: 1px solid ${vars.grey300};
+    padding: 5px 10px;
     margin-bottom: 10px;
 
     &[type="text"],
@@ -110,8 +110,8 @@ interface loaderSkeletonProps {
 export const loaderSkeleton = ({
   w = "260px",
   h = "24px",
-  bg = vars.greyLighter,
-  loaderBg = vars.greyLightest,
+  bg = vars.grey200,
+  loaderBg = vars.grey100,
   loaderW = "50%",
 }: loaderSkeletonProps): string => {
   return `
