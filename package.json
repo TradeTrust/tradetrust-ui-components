@@ -9,6 +9,9 @@
   ],
   "main": "build/index.js",
   "types": "build/esm/index.d.ts",
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
