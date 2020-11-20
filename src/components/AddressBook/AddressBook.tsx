@@ -89,7 +89,7 @@ export const AddressBook = styled(
           <div className="mb-2">
             <Dropdown
               dropdownButtonText={isLocal ? "Local" : name}
-              className="w-full border-grey-light border-solid border rounded-none p-3"
+              className="w-full border-grey-300 border-solid border rounded-none p-3"
             >
               <DropdownItem
                 onClick={() => {
@@ -167,7 +167,7 @@ export const AddressBook = styled(
   max-height: 600px;
 
   .overlay-searchbar {
-    border: solid 1px ${vars.greyLight};
+    border: solid 1px ${vars.grey300};
     padding: 5px 10px;
     max-width: 100%;
 
@@ -182,7 +182,7 @@ export const AddressBook = styled(
 
       &::placeholder {
         font-style: italic;
-        color: ${vars.greyLight};
+        color: ${vars.grey300};
       }
     }
 
@@ -203,10 +203,10 @@ export const AddressBook = styled(
       cursor: ${(props) => (props.onAddressSelected ? "pointer" : "default")};
 
       &:hover {
-        background-color: ${(props) => (props.onAddressSelected ? vars.greyLighter : "inherit")};
+        background-color: ${(props) => (props.onAddressSelected ? vars.grey200 : "inherit")};
 
         &:nth-of-type(even) {
-          background-color: ${(props) => (props.onAddressSelected ? vars.greyLighter : "inherit")};
+          background-color: ${(props) => (props.onAddressSelected ? vars.grey200 : "inherit")};
         }
       }
 

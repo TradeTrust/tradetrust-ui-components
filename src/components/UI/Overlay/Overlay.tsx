@@ -44,7 +44,7 @@ export const OverlayContentBaseStyle = (): string => {
     background-color: ${vars.white};
     width: calc(100vw - (15px * 2));
     height: calc(100vh - (15px * 2));
-    max-width: ${vars.maxWidth};
+    max-width: 1280px;
     padding: 20px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -83,7 +83,7 @@ export const OverlayContentBaseStyle = (): string => {
 
       &:hover {
         svg {
-          color: ${vars.greyLight};
+          color: ${vars.grey300};
         }
       }
     }

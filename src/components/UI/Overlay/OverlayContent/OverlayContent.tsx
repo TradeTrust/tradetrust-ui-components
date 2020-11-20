@@ -48,7 +48,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             </div>
           </div>
           <div className="overlay-body">
-            <div className="flex flex-col h-full text-black-light">{children}</div>
+            <div className="flex flex-col h-full text-grey-900">{children}</div>
           </div>
         </div>
       )}

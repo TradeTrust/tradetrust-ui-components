@@ -107,7 +107,7 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
   .message {
     h6 {
       ${mixin.fontSourcesansproBold};
-      color: ${vars.greyDark};
+      color: ${vars.grey700};
     }
   }
 `;

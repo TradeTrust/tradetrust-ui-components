@@ -10,9 +10,9 @@ export default {
 };
 
 export const Spinner = (): ReactElement => {
-  return <LoaderSpinner primary="blue" secondary="lightblue" />;
+  return <LoaderSpinner primary="#808080" secondary="#d3d3d3" />;
 };
 
 export const SpinnerCustomWidth = (): ReactElement => {
-  return <LoaderSpinner width="90px" primary="grey" secondary="lightgrey" />;
+  return <LoaderSpinner width="90px" primary="#808080" secondary="#d3d3d3" />;
 };
