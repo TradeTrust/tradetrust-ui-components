@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
-import { mixin, vars } from "../../../styles";
+import tw from "twin.macro";
+import { mixin } from "../../../styles";
 
 export interface InputProps {
   className?: string;
@@ -25,11 +26,11 @@ export const Input: FunctionComponent<InputProps> = ({ className, errorMessage, 
 export const InputDefault = styled(Input)`
   &.is-error {
     input {
-      border: 1px solid ${vars.red};
+      ${tw`border border-solid border-red`}
     }
 
     .message {
-      color: ${vars.red};
+      ${tw`text-red`}
     }
   }
 
@@ -52,7 +53,7 @@ export const InputEditableAssetTitle = styled.input`
   margin-bottom: 0;
   width: 100%;
   min-height: 40px;
-  ${({ hasError }: EditableAssetTitleProps) => hasError && `border: 1px solid ${vars.red}`};
+  ${({ hasError }: EditableAssetTitleProps) => hasError && tw`border border-solid border-red`};
 `;
 
 export const InputEditableWrapper = styled.div`
@@ -60,9 +61,6 @@ export const InputEditableWrapper = styled.div`
 `;
 
 export const InputError = styled.div`
-  width: 100%;
-  font-size: 14px;
-  margin-top: 8px;
-  color: ${vars.red};
+  ${tw`w-full text-sm mt-2 text-red`}
   word-break: keep-all;
 `;

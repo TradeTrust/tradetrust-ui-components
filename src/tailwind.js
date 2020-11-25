@@ -21,7 +21,23 @@ module.exports = {
       0: "0",
       xs: "18rem",
     },
+    opacity: {
+      0: "0",
+      10: ".1",
+      20: ".2",
+      30: ".3",
+      40: ".4",
+      50: ".5",
+      60: ".6",
+      70: ".7",
+      80: ".8",
+      90: ".9",
+      100: "1",
+    },
     colors: {
+      inherit: {
+        default: "inherit",
+      },
       blue: {
         default: "#0099cc",
       },
@@ -66,6 +82,13 @@ module.exports = {
         72: "18rem",
         84: "21rem",
         96: "24rem",
+      },
+      transitionDuration: {
+        0: "0ms",
+        400: "400ms",
+      },
+      transitionTimingFunction: {
+        "out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
       },
     },
   },

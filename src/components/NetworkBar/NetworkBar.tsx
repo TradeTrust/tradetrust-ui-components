@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { X } from "react-feather";
-import { vars } from "../../styles";
+import tw from "twin.macro";
 
 const NetworkWrap = styled.div`
   padding: 8px 0;
@@ -14,7 +14,7 @@ const NetworkWrap = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${vars.grey};
+      ${tw`text-grey`}
     }
   }
 `;

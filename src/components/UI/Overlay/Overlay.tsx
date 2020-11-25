@@ -1,81 +1,43 @@
+import css, { SerializedStyles } from "@emotion/css";
 import styled from "@emotion/styled";
-import { rgba } from "polished";
 import React, { FunctionComponent } from "react";
+import tw from "twin.macro";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
-import { mixin, vars } from "../../../styles";
+import { mixin } from "../../../styles";
 
-// TODO check for twin styles
-
-const OverlayBaseStyle = (): string => {
-  return `
-    transition: visibility 0.4s 0.1s ${vars.easeOutCubic}, opacity 0.4s 0.1s ${vars.easeOutCubic};
-    position: fixed;
-    z-index: 9;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .overlay-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: ${rgba(vars.black, 0.4)};
-    }
-  `;
-};
-
-export const OverlayContentBaseStyle = (): string => {
-  return `
-    transition: visibility 0.4s 0.1s ${vars.easeOutCubic}, opacity 0.4s 0.1s ${
-    vars.easeOutCubic
-  }, transform 0.4s 0.1s ${vars.easeOutCubic};
-    box-shadow: 0 8px 20px ${rgba(vars.black, 0.2)};
-    position: relative;
+export const OverlayContentBaseStyle = (): SerializedStyles => {
+  return css`
+    ${tw`relative flex flex-col p-5 bg-white shadow transition duration-400 ease-out-cubic overflow-auto scrolling-touch`}
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: ${vars.white};
     width: calc(100vw - (15px * 2));
     height: calc(100vh - (15px * 2));
     max-width: 1280px;
-    padding: 20px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
 
     .overlay-header {
-      margin-bottom: 20px;
+      ${tw`mb-5`}
     }
 
     .title-icon {
       svg {
-        margin-right: 8px;
+        ${tw`mr-2`}
 
         .x-circle {
-          color: ${vars.red};
+          ${tw`text-red`}
         }
 
         .check-circle {
-          color: ${vars.teal};
+          ${tw`text-teal`}
         }
       }
     }
 
     .overlay-title {
       ${mixin.fontSourcesansproBold()}
-      color: ${vars.grey};
-      margin-bottom: 0;
-      flex-grow: 1;
+      ${tw`text-grey mb-0 flex-grow`}
     }
 
     .overlay-body {
-      flex: 1;
+      ${tw`flex-1`}
     }
 
     .overlay-cancel {
@@ -83,14 +45,13 @@ export const OverlayContentBaseStyle = (): string => {
 
       &:hover {
         svg {
-          color: ${vars.grey300};
+          ${tw`text-grey-300`}
         }
       }
     }
 
     p {
-      margin-top: 0;
-      margin-bottom: 1rem;
+      ${tw`mt-0 mb-4`}
     }
   `;
 };
@@ -120,5 +81,9 @@ export const OverlayUnStyled: FunctionComponent<OverlayProps> = ({ className }) 
 };
 
 export const Overlay = styled(OverlayUnStyled)`
-  ${OverlayBaseStyle()}
+  ${tw`fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center transition duration-400 ease-out-cubic z-10`}
+
+  .overlay-bg {
+    ${tw`absolute top-0 left-0 w-full h-full bg-black bg-opacity-40`}
+  }
 `;
