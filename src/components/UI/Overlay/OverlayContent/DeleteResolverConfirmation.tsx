@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
-import { ButtonSolidRedWhite, ButtonSolidWhiteGrey } from "../../Button";
+import { Button } from "../../Button";
 import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
 
@@ -21,17 +21,20 @@ export const DeleteResolverConfirmation = styled(
         </div>
         <div className="flex mx-0">
           <div className="col-auto ml-auto mr-2">
-            <ButtonSolidWhiteGrey
+            <Button
+              className="bg-white text-grey hover:bg-grey-100"
               onClick={() => {
                 setOverlayVisible(false);
                 showOverlay(undefined);
               }}
             >
               Cancel
-            </ButtonSolidWhiteGrey>
+            </Button>
           </div>
           <div className="col-auto">
-            <ButtonSolidRedWhite onClick={deleteAddress}>Delete</ButtonSolidRedWhite>
+            <Button className="bg-red text-white hover:bg-red-600" onClick={deleteAddress}>
+              Delete
+            </Button>
           </div>
         </div>
       </OverlayContent>

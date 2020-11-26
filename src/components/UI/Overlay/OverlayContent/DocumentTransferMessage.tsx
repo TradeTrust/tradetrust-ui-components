@@ -3,7 +3,7 @@ import React, { FunctionComponent, ReactNode } from "react";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { mixin } from "../../../../styles";
-import { AnchorLinkButtonSolidOrangeWhite, ButtonSolidOrangeWhite } from "../../Button";
+import { Button, LinkButton } from "../../Button";
 import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
 import { MessageAddressResolver } from "./MessageAddressResolver";
@@ -30,17 +30,22 @@ const ButtonClose: FunctionComponent = () => {
     showOverlay(undefined);
   };
 
-  return <ButtonSolidOrangeWhite onClick={handleCloseOverlay}>Close</ButtonSolidOrangeWhite>;
+  return (
+    <Button className="bg-orange text-white hover:bg-orange-600" onClick={handleCloseOverlay}>
+      Close
+    </Button>
+  );
 };
 
 const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
-    <AnchorLinkButtonSolidOrangeWhite
+    <LinkButton
+      className="bg-orange text-white hover:bg-orange-600"
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
       target="_blank"
     >
       Install Metamask
-    </AnchorLinkButtonSolidOrangeWhite>
+    </LinkButton>
   );
 };
 
@@ -52,9 +57,9 @@ const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
     showOverlay(undefined);
   };
   return (
-    <ButtonSolidOrangeWhite onClick={onClick} data-testid={"confirmActionBtn"}>
+    <Button className="bg-orange text-white hover:bg-orange-600" onClick={onClick} data-testid={"confirmActionBtn"}>
       Confirm
-    </ButtonSolidOrangeWhite>
+    </Button>
   );
 };
 

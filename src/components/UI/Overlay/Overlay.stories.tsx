@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../../common/context/OverlayContext";
-import { ButtonSolid } from "../Button";
+import { Button } from "../Button";
 import { Overlay, OverlayUnStyled } from "./Overlay";
 import {
   DeleteResolverConfirmation,
@@ -29,7 +29,7 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
   return (
     <>
       <Overlay />
-      <ButtonSolid onClick={() => showOverlay(children)}>{buttonText}</ButtonSolid>
+      <Button onClick={() => showOverlay(children)}>{buttonText}</Button>
     </>
   );
 };

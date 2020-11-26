@@ -1,101 +1,88 @@
-import React, { ReactElement } from "react";
-import {
-  Button,
-  ButtonSolid,
-  ButtonSolidOrangeWhite,
-  ButtonBorderedBlue,
-  ButtonSolidWhiteOrange,
-  ButtonSolidWhiteBlue,
-  ButtonSolidRedWhite,
-  ButtonSolidWhiteGrey,
-  ButtonSolidGreenWhite,
-  ButtonIconWhiteOrange,
-  ButtonIconWhiteBlue,
-  ButtonIconOrangeWhite,
-  ButtonCircleGreylight,
-} from "./Button";
+import React from "react";
+
+import { Button, ButtonIcon } from "./Button";
 import { Edit3, X, Printer, Book } from "react-feather";
 
 export default {
   title: "UI/Button",
   component: Button,
   parameters: {
-    componentSubtitle: "ButtonSolid, ButtonBordered, ButtonIcon, ButtonCircle.",
+    componentSubtitle: "Button, ButtonIcon.",
   },
 };
 
-export const Solid = (): ReactElement => {
-  return <ButtonSolid>Solid</ButtonSolid>;
+export const SolidDefault = (): React.ReactNode => {
+  return <Button>SolidDefault</Button>;
 };
 
-export const SolidDisabled = (): ReactElement => {
-  return <ButtonSolid disabled>SolidDisabled</ButtonSolid>;
+export const SolidDisabled = (): React.ReactNode => {
+  return <Button disabled>SolidDisabled</Button>;
 };
 
-export const SolidOrangeWhite = (): ReactElement => {
-  return <ButtonSolidOrangeWhite>SolidOrangeWhite</ButtonSolidOrangeWhite>;
+export const SolidOrangeWhite = (): React.ReactNode => {
+  return <Button className="bg-orange text-white hover:bg-orange-600">SolidOrangeWhite</Button>;
 };
 
-export const SolidWhiteOrange = (): ReactElement => {
-  return <ButtonSolidWhiteOrange>WhiteOrange</ButtonSolidWhiteOrange>;
+export const SolidWhiteOrange = (): React.ReactNode => {
+  return <Button className="bg-white text-orange hover:bg-grey-100">SolidWhiteOrange</Button>;
 };
 
-export const SolidWhiteBlue = (): ReactElement => {
-  return <ButtonSolidWhiteBlue>WhiteBlue</ButtonSolidWhiteBlue>;
+export const SolidWhiteBlue = (): React.ReactNode => {
+  return <Button className="bg-white text-blue hover:bg-grey-100">SolidWhiteBlue</Button>;
 };
 
-export const SolidRedWhite = (): ReactElement => {
-  return <ButtonSolidRedWhite>RedWhite</ButtonSolidRedWhite>;
+export const SolidRedWhite = (): React.ReactNode => {
+  return <Button className="bg-red text-white hover:bg-red-600">SolidRedWhite</Button>;
 };
 
-export const SolidWhiteGrey = (): ReactElement => {
-  return <ButtonSolidWhiteGrey>WhiteGrey</ButtonSolidWhiteGrey>;
+export const SolidWhiteGrey = (): React.ReactNode => {
+  return <Button className="bg-white text-grey hover:bg-grey-100">SolidWhiteGrey</Button>;
 };
 
-export const SolidGreenWhite = (): ReactElement => {
-  return <ButtonSolidGreenWhite>GreenWhite</ButtonSolidGreenWhite>;
+export const SolidGreenWhite = (): React.ReactNode => {
+  return <Button className="bg-green text-white hover:bg-green-600">SolidGreenWhite</Button>;
 };
 
-export const BorderedBlue = (): ReactElement => {
-  return <ButtonBorderedBlue>BorderedBlue</ButtonBorderedBlue>;
+export const BorderedBlue = (): React.ReactNode => {
+  return <Button className="bg-white text-blue border-blue hover:bg-grey-100">BorderedBlue</Button>;
 };
 
-export const IconWhiteOrange = (): ReactElement => {
+export const IconWhiteOrange = (): React.ReactNode => {
   return (
-    <ButtonIconWhiteOrange>
-      <Edit3 />
-    </ButtonIconWhiteOrange>
+    <ButtonIcon className="bg-white hover:bg-grey-100">
+      <Edit3 className="text-orange" />
+    </ButtonIcon>
   );
 };
 
-export const IconWhiteOrangeDisabled = (): ReactElement => {
+export const IconWhiteOrangeDisabled = (): React.ReactNode => {
   return (
-    <ButtonIconWhiteOrange disabled>
-      <Edit3 />
-    </ButtonIconWhiteOrange>
+    <ButtonIcon className="bg-white hover:bg-grey-100" disabled>
+      <Edit3 className="text-orange" />
+    </ButtonIcon>
   );
 };
 
-export const IconWhiteBlue = (): ReactElement => {
+export const IconWhiteBlue = (): React.ReactNode => {
   return (
-    <ButtonIconWhiteBlue>
-      <Printer />
-    </ButtonIconWhiteBlue>
+    <ButtonIcon className="bg-white hover:bg-grey-100">
+      <Printer className="text-blue" />
+    </ButtonIcon>
   );
 };
 
-export const IconOrangeWhite = (): ReactElement => {
+export const IconOrangeWhite = (): React.ReactNode => {
   return (
-    <ButtonIconOrangeWhite>
-      <Book />
-    </ButtonIconOrangeWhite>
+    <ButtonIcon className="bg-orange hover:bg-orange-600">
+      <Book className="text-white" />
+    </ButtonIcon>
   );
 };
 
-export const CircleGreylight = (): ReactElement => {
+export const IconCircle = (): React.ReactNode => {
   return (
-    <ButtonCircleGreylight>
+    <ButtonIcon className="rounded-full bg-grey-300 hover:bg-grey">
       <X />
-    </ButtonCircleGreylight>
+    </ButtonIcon>
   );
 };
