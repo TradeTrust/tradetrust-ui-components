@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 
-interface ButtonProps {
+export interface ButtonProps {
   className?: string;
   children: React.ReactNode;
   disabled?: boolean;
