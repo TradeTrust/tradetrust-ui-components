@@ -1,42 +1,33 @@
+import css, { SerializedStyles } from "@emotion/css";
 import styled from "@emotion/styled";
 import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
-import { lighten } from "polished";
 import React from "react";
+import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { fontSize } from "../../styles/abstracts/mixin";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
-import { vars } from "./../../styles";
 import { EndpointEntry } from "./EndpointEntry";
 
-export const TableStyle = (): string => {
-  return `
+export const TableStyle = (): SerializedStyles => {
+  return css`
     .table-responsive {
-      border: solid 1px ${vars.grey300};
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      ${tw`w-full border border-solid border-grey-300 overflow-x-auto scrolling-touch`}
     }
 
     .table {
-      width: 100%;
-      margin-bottom: 0;
+      ${tw`w-full mb-0`}
     }
 
     tr {
-      white-space: nowrap;
-      border-top: solid 1px ${vars.grey300};;
+      ${tw`whitespace-no-wrap border-solid border-t border-grey-300`}
     }
 
     th {
-      vertical-align: middle;
-      border-top: none;
+      ${tw`mt-0 align-middle`}
     }
 
     td {
-      vertical-align: middle;
-      white-space: nowrap;
-      border-top: none;
-      padding: 0.75rem;
+      ${tw`align-middle whitespace-no-wrap border-t-0 p-3`}
     }
 
     .table-thead {
@@ -47,16 +38,15 @@ export const TableStyle = (): string => {
     }
 
     .table-thead {
-      color: ${vars.white};
-      background-color: ${vars.navy};
+      ${tw`text-white bg-navy`}
     }
 
     .table-tbody {
-      background-color: ${vars.white};
+      ${tw`bg-white`}
 
       tr {
         &:nth-of-type(even) {
-          background-color: ${vars.grey100};
+          ${tw`bg-grey-100`}
         }
       }
     }
@@ -228,24 +218,20 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
     text-align: center;
 
     .fas {
-      transition: color 0.3s ${vars.easeOutCubic}, opacity 0.3s ${vars.easeOutCubic},
-        visibility 0.3s ${vars.easeOutCubic};
-      display: block;
-      cursor: pointer;
-      color: ${vars.grey};
+      ${tw`block text-grey cursor-pointer transition duration-300 ease-out-cubic`}
       line-height: 0.5;
       ${fontSize(20)};
 
       &:hover {
-        color: ${vars.grey800};
+        ${tw`text-grey-800`}
       }
 
       &.fa-sort-up {
-        padding-top: 8px;
+        ${tw`pt-2`}
       }
 
       &.fa-sort-down {
-        padding-bottom: 8px;
+        ${tw`pb-2`}
       }
     }
   }
@@ -258,7 +244,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
             polyline,
             path,
             line {
-              color: ${lighten(0.05, vars.teal)};
+              ${tw`text-teal-lighter`}
             }
           }
         }
@@ -297,7 +283,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
         path,
         line {
           transition: color 0.3s ease-out;
-          color: ${vars.grey};
+          ${tw`text-grey`}
         }
 
         &:first-of-type {
@@ -308,7 +294,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
           polyline,
           path,
           line {
-            color: ${lighten(0.1, vars.grey)};
+            ${tw`text-grey-300`}
           }
         }
       }

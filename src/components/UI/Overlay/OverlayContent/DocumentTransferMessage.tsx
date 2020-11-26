@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent, ReactNode } from "react";
+import tw from "twin.macro";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
-import { mixin, vars } from "../../../../styles";
+import { mixin } from "../../../../styles";
 import { AnchorLinkButtonSolidOrangeWhite, ButtonSolidOrangeWhite } from "../../Button";
 import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
@@ -107,7 +108,7 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
   .message {
     h6 {
       ${mixin.fontSourcesansproBold};
-      color: ${vars.grey700};
+      ${tw`text-grey-700`}
     }
   }
 `;

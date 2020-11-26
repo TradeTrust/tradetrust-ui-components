@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import { CheckCircle, X, XCircle } from "react-feather";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
-import { vars } from "../../../../styles";
 
 export interface OverlayContentProps {
   className?: string;
@@ -35,7 +34,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
               {isSuccess !== undefined && (
                 <div className="col-auto mr-1">
                   <div className="title-icon">
-                    {isSuccess ? <CheckCircle color={`${vars.teal}`} /> : <XCircle color={`${vars.red}`} />}
+                    {isSuccess ? <CheckCircle className="text-teal" /> : <XCircle className="text-red" />}
                   </div>
                 </div>
               )}

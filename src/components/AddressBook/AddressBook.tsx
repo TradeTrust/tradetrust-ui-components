@@ -8,8 +8,8 @@ import {
 import { debounce } from "lodash";
 import React, { useCallback, useState } from "react";
 import { Download, Search } from "react-feather";
+import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import { vars } from "../../styles";
 import { TableStyle } from "../AddressResolver/AddressesTable";
 import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
@@ -167,47 +167,34 @@ export const AddressBook = styled(
   max-height: 600px;
 
   .overlay-searchbar {
-    border: solid 1px ${vars.grey300};
-    padding: 5px 10px;
-    max-width: 100%;
-
-    @media only screen and (min-width: ${vars.md}) {
-      max-width: 300px;
-    }
+    ${tw`max-w-full md:max-w-xs border border-solid border-grey-300 px-3 py-2`}
 
     input {
-      border: none;
-      outline: none;
-      width: 100%;
+      ${tw`border-none outline-none w-full`}
 
       &::placeholder {
-        font-style: italic;
-        color: ${vars.grey300};
+        ${tw`italic text-grey-300`}
       }
     }
 
     svg {
-      color: ${vars.grey};
+      ${tw`text-grey`}
     }
   }
 
   .overlay-actionsbar {
-    margin-bottom: 20px;
+    ${tw`mb-5`}
   }
 
   .table-tbody {
     height: 360px;
 
     tr {
-      transition: background-color 0.3s ${vars.easeOutCubic};
+      ${tw`transition duration-300 ease-out-cubic`}
       cursor: ${(props) => (props.onAddressSelected ? "pointer" : "default")};
 
       &:hover {
-        background-color: ${(props) => (props.onAddressSelected ? vars.grey200 : "inherit")};
-
-        &:nth-of-type(even) {
-          background-color: ${(props) => (props.onAddressSelected ? vars.grey200 : "inherit")};
-        }
+        ${(props) => (props.onAddressSelected ? tw`bg-grey-200` : tw`bg-inherit`)}
       }
 
       a {
@@ -220,9 +207,7 @@ export const AddressBook = styled(
 
   .table {
     th {
-      width: 120px;
-      text-align: left;
-      padding: 0 12px;
+      ${tw`w-48 text-left py-2 px-3 whitespace-normal break-all`}
     }
   }
 `;

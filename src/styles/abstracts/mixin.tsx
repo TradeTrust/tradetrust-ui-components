@@ -1,6 +1,8 @@
+import css, { SerializedStyles } from "@emotion/css";
 import resolveConfig from "tailwindcss/resolveConfig";
+import tw from "twin.macro";
 import tailwindConfig from "../../tailwind.js";
-import { vars } from "../index";
+
 const fullConfig = resolveConfig(tailwindConfig);
 
 export const fontSourcesansproRegular = (): string => {
@@ -40,8 +42,8 @@ export const loaderSpinner = ({
   w = "24px",
   borderW = "4px",
   spd = "0.9s",
-  primary = vars.white,
-  secondary = vars.white,
+  primary = `${fullConfig.theme.colors.white.default}`,
+  secondary = `${fullConfig.theme.colors.white.default}`,
 }: LoaderSpinnerProps): string => {
   return `
     width: ${w};
@@ -58,9 +60,9 @@ export const loaderSpinner = ({
   `;
 };
 
-export const baseStyleInput = (): string => {
-  return `
-    border: 1px solid ${vars.grey300};
+export const baseStyleInput = (): SerializedStyles => {
+  return css`
+    ${tw`border border-solid border-grey-300`}
     padding: 5px 10px;
     margin-bottom: 10px;
 
@@ -70,8 +72,7 @@ export const baseStyleInput = (): string => {
     }
 
     &::placeholder {
-      font-style: italic;
-      color: ${vars.grey};
+      ${tw`italic text-grey`}
       ${fontSize(16)}
     }
   `;
@@ -110,8 +111,8 @@ interface loaderSkeletonProps {
 export const loaderSkeleton = ({
   w = "260px",
   h = "24px",
-  bg = vars.grey200,
-  loaderBg = vars.grey100,
+  bg = `${fullConfig.theme.colors.grey[`200`]}`,
+  loaderBg = `${fullConfig.theme.colors.grey[`100`]}`,
   loaderW = "50%",
 }: loaderSkeletonProps): string => {
   return `
