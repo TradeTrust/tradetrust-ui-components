@@ -1,7 +1,7 @@
 import { withKnobs } from "@storybook/addon-knobs";
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
-import { ButtonSolid } from "../UI/Button";
+import { Button } from "../UI/Button";
 import { Overlay } from "../UI/Overlay";
 import { AddressBook } from "./AddressBook";
 
@@ -22,7 +22,7 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
   return (
     <>
       <Overlay />
-      <ButtonSolid onClick={() => showOverlay(children)}>{buttonText}</ButtonSolid>
+      <Button onClick={() => showOverlay(children)}>{buttonText}</Button>
     </>
   );
 };

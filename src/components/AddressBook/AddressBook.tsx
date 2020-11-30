@@ -11,7 +11,7 @@ import { Download, Search } from "react-feather";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { TableStyle } from "../AddressResolver/AddressesTable";
-import { AnchorLinkButtonSolidWhiteBlue } from "../UI/Button";
+import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
 import { OverlayContentBaseStyle } from "./../UI/Overlay";
@@ -116,7 +116,7 @@ export const AddressBook = styled(
             </Dropdown>
           </div>
           <div className="flex items-start flex-col md:flex-row">
-            <div className="flex mb-2 flex-grow ">
+            <div className="flex mb-2 flex-grow">
               <div className="overlay-searchbar">
                 <div className="flex mx-0 items-center w-64">
                   <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
@@ -125,8 +125,9 @@ export const AddressBook = styled(
               </div>
             </div>
             <div className="flex mx-0">
-              <div className="flex mb-2">
-                <AnchorLinkButtonSolidWhiteBlue
+              <div className="w-auto mb-2">
+                <LinkButton
+                  className="bg-white text-blue hover:bg-grey-100"
                   href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
                   download="template.csv"
                 >
@@ -136,9 +137,9 @@ export const AddressBook = styled(
                     </div>
                     <div className="col-auto">Download template</div>
                   </div>
-                </AnchorLinkButtonSolidWhiteBlue>
+                </LinkButton>
               </div>
-              <div className="flex">
+              <div className="w-auto">
                 <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
               </div>
             </div>

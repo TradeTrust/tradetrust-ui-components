@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { FilePlus } from "react-feather";
-import { LabelWhiteSecondary } from "../UI/Button";
+import { LabelButton } from "../UI/Button";
 
 interface CsvUploadButtonProps {
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
@@ -26,14 +26,14 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
         style={{ display: "none" }}
         accept=".csv"
       />
-      <LabelWhiteSecondary htmlFor="csv-file-input">
+      <LabelButton className="bg-white text-blue hover:bg-grey-100" htmlFor="csv-file-input">
         <div className="flex items-center mx-0">
           <div className="col-auto mr-2">
             <FilePlus />
           </div>
           <div className="col-auto">Import .csv</div>
         </div>
-      </LabelWhiteSecondary>
+      </LabelButton>
     </div>
   );
 };

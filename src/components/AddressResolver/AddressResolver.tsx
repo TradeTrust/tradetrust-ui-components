@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { Plus } from "react-feather";
-import { ButtonSolidOrangeWhite } from "../UI/Button";
+import { Button } from "../UI/Button";
 import { AddressesTable } from "./AddressesTable";
 
 export const AddressResolver: FunctionComponent = () => {
@@ -14,8 +14,8 @@ export const AddressResolver: FunctionComponent = () => {
           <p className="mb-0 text-grey">Add third party’s endpoint to resolve addresses. </p>
         </div>
         <div className="flex">
-          <ButtonSolidOrangeWhite
-            className="my-0"
+          <Button
+            className="bg-orange text-white hover:bg-orange-600"
             onClick={() => {
               setNewEndpoint(true);
             }}
@@ -27,7 +27,7 @@ export const AddressResolver: FunctionComponent = () => {
               </div>
               <div className="col-auto">Add</div>
             </div>
-          </ButtonSolidOrangeWhite>
+          </Button>
         </div>
       </div>
       <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
