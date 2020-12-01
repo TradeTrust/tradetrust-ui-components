@@ -10,7 +10,7 @@
 
 # production
 /build
-/src/index.css
+/docs
 /storybook-static
 
 # misc
@@ -29,5 +29,5 @@ yarn-error.log*
 
 key
 
-.storybook/index.css
-/docs
+.storybook/styles.css
+/src/styles.css
