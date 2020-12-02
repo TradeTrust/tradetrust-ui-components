@@ -70,7 +70,7 @@ module.exports = {
           600: "#ff213d",
         },
         teal: {
-          lighter: "#e5f9f8",
+          300: "#e5f9f8",
           default: "#00cbbc",
         },
         greyblue: {
