@@ -88,8 +88,9 @@ export const AddressBook = styled(
         <div className="overlay-actionsbar">
           <div className="mb-2">
             <Dropdown
+              fullWidth
               dropdownButtonText={isLocal ? "Local" : name}
-              className="w-full border-grey-300 border-solid border rounded-none p-3"
+              className="border-grey-300 border-solid border rounded-none p-3"
             >
               <DropdownItem
                 onClick={() => {

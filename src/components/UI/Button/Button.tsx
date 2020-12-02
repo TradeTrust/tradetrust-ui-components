@@ -28,6 +28,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ className, children, di
         disabled ? "cursor-not-allowed bg-grey-200 text-white hover:bg-grey-200" : ""
       }`}
       type="submit"
+      disabled={disabled}
       {...props}
     >
       {children}
@@ -42,6 +43,7 @@ export const ButtonIcon: FunctionComponent<ButtonProps> = ({ className, children
         disabled && "cursor-not-allowed bg-grey-100 text-grey-300 hover:bg-grey-200"
       }`}
       type="submit"
+      disabled={disabled}
       {...props}
     >
       {children}
