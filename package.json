@@ -24,9 +24,9 @@
     "validator": "^13.1.17"
   },
   "scripts": {
-    "build": "NODE_ENV=production CI=false && npm-run-all build:*",
+    "build": "NODE_ENV=production CI=false npm-run-all build:*",
     "build:tw-config": "cpy 'src/tailwind.js' build",
-    "build:css": "NODE_ENV=production postcss src/tailwind.css -o build/styles.css",
+    "build:css": "postcss src/tailwind.css -o build/styles.css",
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "start": "npm-run-all -p start:css storybook",
