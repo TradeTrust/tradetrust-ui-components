@@ -126,6 +126,13 @@ export const AddressBook = styled(
       queryEndpoint(searchTerm, pageOffset);
     };
 
+    const resetThirdPartyAPIEndpointResult = (): void => {
+      setSearchTerm("");
+      setCurrentPage(1);
+      setAddressBookThirdPartyResults([]);
+      setAddressBookThirdPartyTotalResults(1);
+    };
+
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
         <div className="overlay-actionsbar">
@@ -138,7 +145,7 @@ export const AddressBook = styled(
               <DropdownItem
                 onClick={() => {
                   setIsLocal(true);
-                  setSearchTerm("");
+                  resetThirdPartyAPIEndpointResult();
                 }}
               >
                 Local
@@ -149,8 +156,8 @@ export const AddressBook = styled(
                     key={index}
                     onClick={() => {
                       setIsLocal(false);
-                      setSearchTerm("");
                       setRemoteEndpointIndex(index);
+                      resetThirdPartyAPIEndpointResult();
                     }}
                   >
                     {item.name}
