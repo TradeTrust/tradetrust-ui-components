@@ -99,7 +99,8 @@ export const AddressBook = styled(
             apiKey,
           });
           setAddressBookThirdPartyResults(results.identities);
-          setAddressBookThirdPartyTotalResults(Math.ceil(results.total / paginationLimit));
+          const totalPages = results.total > 0 ? results.total : paginationLimit;
+          setAddressBookThirdPartyTotalResults(Math.ceil(totalPages / paginationLimit));
         } catch (e) {
           setAddressBookThirdPartyResults([]);
           setAddressBookThirdPartyTotalResults(1);
