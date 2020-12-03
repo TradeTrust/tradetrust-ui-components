@@ -70,14 +70,14 @@ module.exports = {
           600: "#ff213d",
         },
         teal: {
-          lighter: "#e5f9f8",
+          300: "#e5f9f8",
           default: "#00cbbc",
         },
         greyblue: {
           default: "#c1c9d1",
         },
         grey: {
-          100: "#f5f5f5",
+          100: "#fafafa",
           200: "#e5e5e5",
           300: "#dddddd",
           400: "#cfcfcf",

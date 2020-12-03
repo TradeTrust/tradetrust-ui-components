@@ -244,7 +244,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
             polyline,
             path,
             line {
-              ${tw`text-teal-lighter`}
+              ${tw`text-teal-300`}
             }
           }
         }
