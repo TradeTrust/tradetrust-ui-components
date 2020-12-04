@@ -1,5 +1,6 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent } from "react";
 import { ArrowLeft, ArrowRight } from "react-feather";
+import { PaginationNumber } from "./PaginationNumber";
 
 export interface PaginationProps {
   totalNoOfPages: number;
@@ -14,31 +15,6 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
   setCurrentPage,
   onPageClick,
 }) => {
-  const pageNumberComponent = (i: number): ReactNode => {
-    return (
-      <button
-        key={i}
-        onClick={() => {
-          setCurrentPage(i);
-          onPageClick(i);
-        }}
-        className={`${i === 1 ? "border-l " : ""}border-r border-solid border-grey-light p-1 inline-block h-8 w-8 ${
-          currentPage === i ? "text-grey bg-grey-light" : "text-brand-blue"
-        } hover:bg-grey-light hover:text-grey focus:outline-none`}
-      >
-        {i}
-      </button>
-    );
-  };
-
-  const generateNumberOfPages = (): ReactNode => {
-    const numberOfPages = [];
-    for (let i = 1; i <= totalNoOfPages; i++) {
-      numberOfPages.push(pageNumberComponent(i));
-    }
-    return numberOfPages;
-  };
-
   const goPreviousPage = (): void => {
     if (currentPage > 1) {
       onPageClick(currentPage - 1);
@@ -64,7 +40,24 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
         >
           <ArrowLeft size={14} />
         </button>
-        {totalNoOfPages && totalNoOfPages > 1 ? generateNumberOfPages() : pageNumberComponent(1)}
+        {totalNoOfPages > 1 ? (
+          [...Array(totalNoOfPages)].map((x, i) => (
+            <PaginationNumber
+              key={i}
+              currentPage={currentPage}
+              pageNumber={i + 1}
+              setCurrentPage={setCurrentPage}
+              onPageClick={onPageClick}
+            />
+          ))
+        ) : (
+          <PaginationNumber
+            currentPage={currentPage}
+            pageNumber={1}
+            setCurrentPage={setCurrentPage}
+            onPageClick={onPageClick}
+          />
+        )}
         <button
           className={`p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none ${
             currentPage === totalNoOfPages && "opacity-25 cursor-not-allowed"
