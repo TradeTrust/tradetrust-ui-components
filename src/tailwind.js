@@ -1,10 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: {
-    layers: ["components", "utilities"],
-    content: ["./src/**/*.ts", "./src/**/*.tsx"],
-  },
   theme: {
     // when in doubt, always put in `extend`
     container: (theme) => ({
