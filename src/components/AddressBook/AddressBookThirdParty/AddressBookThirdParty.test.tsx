@@ -1,5 +1,5 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import React from "react";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
 
 const mockResults = [
@@ -22,7 +22,7 @@ describe("addressBookThirdParty", () => {
     render(
       <AddressBookThirdParty
         onAddressSelect={() => {}}
-        addressBookThirdPartyResults={[]}
+        thirdPartyPageResults={[]}
         isSearchingThirdParty={false}
         network="local"
       />
@@ -34,7 +34,7 @@ describe("addressBookThirdParty", () => {
     render(
       <AddressBookThirdParty
         onAddressSelect={() => {}}
-        addressBookThirdPartyResults={mockResults}
+        thirdPartyPageResults={mockResults}
         isSearchingThirdParty={false}
         network="local"
       />
@@ -46,7 +46,7 @@ describe("addressBookThirdParty", () => {
     render(
       <AddressBookThirdParty
         onAddressSelect={() => {}}
-        addressBookThirdPartyResults={[]}
+        thirdPartyPageResults={[]}
         isSearchingThirdParty={true}
         network="local"
       />
