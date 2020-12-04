@@ -55,7 +55,7 @@ export const AddressBook = styled(
       AddressBookThirdPartyResultsProps[]
     >([]);
     const { name, endpoint, apiHeader, apiKey } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
-    const [addressBookThirdPartyTotalResults, setAddressBookThirdPartyTotalResults] = useState(1);
+    const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
 
     const filteredLocalAddresses = Object.keys(addressBook).filter((key) => {
@@ -70,9 +70,7 @@ export const AddressBook = styled(
       setCurrentPage(1);
     }, [isLocal]);
 
-    const totalNoOfPages = isLocal
-      ? Math.ceil(filteredLocalAddresses.length / paginationLimit)
-      : addressBookThirdPartyTotalResults;
+    const totalNoOfPages = isLocal ? Math.ceil(filteredLocalAddresses.length / paginationLimit) : thirdPartyTotalPages;
 
     const offset = (currentPage - 1) * paginationLimit || paginationOffset;
 
@@ -99,11 +97,11 @@ export const AddressBook = styled(
             apiKey,
           });
           setAddressBookThirdPartyResults(results.identities);
-          const totalPages = results.total > 0 ? results.total : paginationLimit;
-          setAddressBookThirdPartyTotalResults(Math.ceil(totalPages / paginationLimit));
+          const numberOfResults = results.total > 0 ? results.total : paginationLimit;
+          setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
         } catch (e) {
           setAddressBookThirdPartyResults([]);
-          setAddressBookThirdPartyTotalResults(1);
+          setThirdPartyTotalPages(1);
           queryEndpoint.cancel();
           console.log(e, "error");
         }
@@ -130,7 +128,7 @@ export const AddressBook = styled(
       setSearchTerm("");
       setCurrentPage(1);
       setAddressBookThirdPartyResults([]);
-      setAddressBookThirdPartyTotalResults(1);
+      setThirdPartyTotalPages(1);
     };
 
     return (
