@@ -15,7 +15,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@govtechsg/address-identity-resolver": "^1.3.0",
+    "@govtechsg/address-identity-resolver": "^1.4.0",
     "debug": "^4.1.1",
     "polished": "^4.0.3",
     "react-feather": "^2.0.8",
@@ -31,7 +31,7 @@
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "start": "npm-run-all -p start:css storybook",
     "start:css": "postcss src/tailwind.css -o .storybook/styles.css --watch",
-    "precommit": "npm-run-all -s lint lint:type test build",
+    "prep": "npm-run-all -s lint lint:type test build",
     "commit": "git-cz",
     "commit:retry": "npm run commit -- --retry",
     "lint": "eslint . --ext .ts,.tsx,.mdx --max-warnings 0",

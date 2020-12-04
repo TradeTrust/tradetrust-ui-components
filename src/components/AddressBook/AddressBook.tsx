@@ -6,7 +6,7 @@ import {
   useAddressBook,
 } from "@govtechsg/address-identity-resolver";
 import { debounce } from "lodash";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
@@ -14,6 +14,7 @@ import { TableStyle } from "../AddressResolver/AddressesTable";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
+import { Pagination } from "../UI/Pagination";
 import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
@@ -30,21 +31,43 @@ export interface AddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
   thirdPartyAPIEndpoints: ThirdPartyAPIEntryProps[];
   network: string;
+  paginationOffset?: number;
+  paginationLimit?: number;
 }
 
 export const AddressBook = styled(
-  ({ onAddressSelected, thirdPartyAPIEndpoints, network, ...props }: AddressBookProps) => {
+  ({
+    onAddressSelected,
+    thirdPartyAPIEndpoints,
+    network,
+    paginationOffset = 0,
+    paginationLimit = 20,
+    ...props
+  }: AddressBookProps) => {
     const { setOverlayVisible } = useOverlayContext();
-    const { handleLocalAddressBookCsv } = useAddressBook();
+    const { handleLocalAddressBookCsv, addressBook } = useAddressBook();
     const [searchTerm, setSearchTerm] = useState("");
 
     const [isLocal, setIsLocal] = useState(true);
     const [remoteEndpointIndex, setRemoteEndpointIndex] = useState(0);
     const [isPendingRemoteResults, setIsPendingRemoteResults] = useState(false);
-    const [addressBookThirdPartyResults, setAddressBookThirdPartyResults] = useState<
-      AddressBookThirdPartyResultsProps[]
-    >([]);
+    const [thirdPartyPageResults, setThirdPartyPageResults] = useState<AddressBookThirdPartyResultsProps[]>([]);
     const { name, endpoint, apiHeader, apiKey } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
+    const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const filteredLocalAddresses = Object.keys(addressBook).filter((key) => {
+      const identifier = addressBook[key];
+      return (
+        identifier.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        key.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+
+    const localTotalPages = Math.ceil(filteredLocalAddresses.length / paginationLimit);
+    const totalNoOfPages = isLocal ? localTotalPages : thirdPartyTotalPages;
+    const offset = (currentPage - 1) * paginationLimit || paginationOffset;
+    const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
     const onAddressSelect = (address: string): void => {
       if (onAddressSelected) {
@@ -53,35 +76,56 @@ export const AddressBook = styled(
       }
     };
 
+    const queryEndpoint = async (search: string, pageOffset: number): Promise<void> => {
+      setIsPendingRemoteResults(true);
+      try {
+        const results = await entityLookup({
+          offset: pageOffset.toString(),
+          limit: paginationLimit.toString(),
+          query: search,
+          endpoint,
+          apiHeader,
+          apiKey,
+        });
+        setThirdPartyPageResults(results.identities);
+        const numberOfResults = results.total > 0 ? results.total : paginationLimit;
+        setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
+      } catch (e) {
+        setThirdPartyPageResults([]);
+        setThirdPartyTotalPages(1);
+        console.log(e, "error");
+      }
+
+      setIsPendingRemoteResults(false);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    const queryEndpoint = useCallback(
-      debounce(async (search) => {
-        setIsPendingRemoteResults(true);
-
-        try {
-          const results = await entityLookup({
-            query: search,
-            endpoint,
-            apiHeader,
-            apiKey,
-          });
-          setAddressBookThirdPartyResults(results);
-        } catch (e) {
-          setAddressBookThirdPartyResults([]);
-          queryEndpoint.cancel();
-          console.log(e, "error");
-        }
-
-        setIsPendingRemoteResults(false);
-      }, 1000),
+    const queryEndpointWithDebounce = useCallback(
+      debounce(async (search, pageOffset = offset) => {
+        queryEndpoint(search, pageOffset);
+      }, 700),
       []
     );
 
     const onSearchTermChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
       const inputText = event.target.value;
       setSearchTerm(inputText);
-      if (!isLocal) queryEndpoint(inputText);
+      setCurrentPage(1);
+      if (!isLocal) queryEndpointWithDebounce(inputText);
     };
+
+    const resetThirdPartyAPIEndpointResult = (): void => {
+      setSearchTerm("");
+      setCurrentPage(1);
+      setThirdPartyPageResults([]);
+      setThirdPartyTotalPages(1);
+    };
+
+    useEffect(() => {
+      if (isLocal) return;
+      const pageOffset = (currentPage - 1) * paginationLimit;
+      queryEndpoint(searchTerm, pageOffset);
+    }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
@@ -95,7 +139,7 @@ export const AddressBook = styled(
               <DropdownItem
                 onClick={() => {
                   setIsLocal(true);
-                  setSearchTerm("");
+                  resetThirdPartyAPIEndpointResult();
                 }}
               >
                 Local
@@ -106,8 +150,8 @@ export const AddressBook = styled(
                     key={index}
                     onClick={() => {
                       setIsLocal(false);
-                      setSearchTerm("");
                       setRemoteEndpointIndex(index);
+                      resetThirdPartyAPIEndpointResult();
                     }}
                   >
                     {item.name}
@@ -148,15 +192,18 @@ export const AddressBook = styled(
         </div>
         <div className="table-responsive">
           {isLocal ? (
-            <AddressBookLocal onAddressSelect={onAddressSelect} searchTerm={searchTerm} network={network} />
+            <AddressBookLocal onAddressSelect={onAddressSelect} localPageResults={localPageResults} network={network} />
           ) : (
             <AddressBookThirdParty
               onAddressSelect={onAddressSelect}
-              addressBookThirdPartyResults={addressBookThirdPartyResults}
-              isSearchingThirdParty={isPendingRemoteResults}
+              thirdPartyPageResults={thirdPartyPageResults}
               network={network}
+              isSearchingThirdParty={isPendingRemoteResults}
             />
           )}
+        </div>
+        <div className="mt-4">
+          <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
       </OverlayContent>
     );

@@ -5,23 +5,16 @@ import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTab
 
 interface AddressBookLocalProps {
   onAddressSelect: (address: string) => void;
-  searchTerm: string;
+  localPageResults: string[];
   network: string;
 }
 
 export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
   onAddressSelect,
-  searchTerm,
+  localPageResults,
   network,
 }: AddressBookLocalProps) => {
   const { addressBook } = useAddressBook();
-  const filteredAddresses = Object.keys(addressBook).filter((key) => {
-    const identifier = addressBook[key];
-    return (
-      identifier.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      key.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
 
   return (
     <table className="table">
@@ -35,10 +28,10 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
       <tbody className="table-tbody">
         {isEmpty(addressBook) ? (
           <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
-        ) : filteredAddresses.length === 0 ? (
+        ) : localPageResults.length === 0 ? (
           <AddressBookTableRowEmpty message="No address found." />
         ) : (
-          filteredAddresses.map((key) => {
+          localPageResults.map((key) => {
             const identifier = addressBook[key];
 
             return (
