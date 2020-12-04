@@ -39,7 +39,8 @@
     "lint:fix": "npm run lint -- --fix",
     "semantic-release": "semantic-release",
     "storybook": "sleep 2 && start-storybook -p 9009",
-    "storybook:build": "build-storybook -o docs",
+    "storybook:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css",
+    "storybook:build": "npm run storybook:css && build-storybook -o docs",
     "test": "jest --ci",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
