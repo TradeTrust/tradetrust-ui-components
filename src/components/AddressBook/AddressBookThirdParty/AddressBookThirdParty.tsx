@@ -1,18 +1,18 @@
-import React, { FunctionComponent } from "react";
-import { isEmpty } from "lodash";
-import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
+import { isEmpty } from "lodash";
+import React, { FunctionComponent } from "react";
+import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
 
 interface AddressBookThirdPartyProps {
   onAddressSelect: (address: string) => void;
-  addressBookThirdPartyResults: AddressBookThirdPartyResultsProps[];
+  thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
   isSearchingThirdParty: boolean;
   network: string;
 }
 
 export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps> = ({
   onAddressSelect,
-  addressBookThirdPartyResults,
+  thirdPartyPageResults,
   isSearchingThirdParty,
   network,
 }) => {
@@ -29,10 +29,10 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
       <tbody className="table-tbody">
         {isSearchingThirdParty ? (
           <AddressBookTableRowEmpty message="Searching..." />
-        ) : isEmpty(addressBookThirdPartyResults) ? (
+        ) : isEmpty(thirdPartyPageResults) ? (
           <AddressBookTableRowEmpty message="No address found. Try searching?" />
         ) : (
-          addressBookThirdPartyResults.map((item, index) => {
+          thirdPartyPageResults.map((item, index) => {
             return (
               <AddressBookTableRow
                 key={index}

@@ -4,21 +4,18 @@ export interface PaginationNumberProps {
   pageNumber: number;
   currentPage: number;
   setCurrentPage: (currentPage: number) => void;
-  onPageClick: (pageNumber: number) => void;
 }
 
 export const PaginationNumber: FunctionComponent<PaginationNumberProps> = ({
   currentPage,
   pageNumber,
   setCurrentPage,
-  onPageClick,
 }) => {
   return (
     <button
       key={pageNumber}
       onClick={() => {
         setCurrentPage(pageNumber);
-        onPageClick(pageNumber);
       }}
       className={`${
         pageNumber === 1 ? "border-l " : ""

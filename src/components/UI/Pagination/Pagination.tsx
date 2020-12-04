@@ -6,25 +6,17 @@ export interface PaginationProps {
   totalNoOfPages: number;
   currentPage: number;
   setCurrentPage: (currentPage: number) => void;
-  onPageClick: (pageNumber: number) => void;
 }
 
-export const Pagination: FunctionComponent<PaginationProps> = ({
-  totalNoOfPages,
-  currentPage,
-  setCurrentPage,
-  onPageClick,
-}) => {
+export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
   const goPreviousPage = (): void => {
     if (currentPage > 1) {
-      onPageClick(currentPage - 1);
       setCurrentPage(currentPage - 1);
     }
   };
 
   const goNextPage = (): void => {
     if (currentPage < totalNoOfPages) {
-      onPageClick(currentPage + 1);
       setCurrentPage(currentPage + 1);
     }
   };
@@ -42,21 +34,10 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
         </button>
         {totalNoOfPages > 1 ? (
           [...Array(totalNoOfPages)].map((x, i) => (
-            <PaginationNumber
-              key={i}
-              currentPage={currentPage}
-              pageNumber={i + 1}
-              setCurrentPage={setCurrentPage}
-              onPageClick={onPageClick}
-            />
+            <PaginationNumber key={i} currentPage={currentPage} pageNumber={i + 1} setCurrentPage={setCurrentPage} />
           ))
         ) : (
-          <PaginationNumber
-            currentPage={currentPage}
-            pageNumber={1}
-            setCurrentPage={setCurrentPage}
-            onPageClick={onPageClick}
-          />
+          <PaginationNumber currentPage={currentPage} pageNumber={1} setCurrentPage={setCurrentPage} />
         )}
         <button
           className={`p-0 inline-block text-blue h-8 w-8 flex items-center justify-center hover:bg-grey-100 hover:text-grey focus:outline-none ${
