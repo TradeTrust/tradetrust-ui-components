@@ -31,9 +31,9 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
 
   return (
     <div className="flex">
-      <div className="border border-solid border-grey-light flex ml-auto items-center justify-center">
+      <div className="border border-solid border-grey-200 flex ml-auto items-center justify-center">
         <button
-          className={`p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none ${
+          className={`p-0 inline-block text-blue h-8 w-8 flex items-center justify-center hover:bg-grey-100 hover:text-grey focus:outline-none ${
             currentPage === 1 && "opacity-25 cursor-not-allowed"
           }`}
           onClick={goPreviousPage}
@@ -59,7 +59,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
           />
         )}
         <button
-          className={`p-0 inline-block text-brand-blue h-8 w-8 flex items-center justify-center hover:bg-grey-light hover:text-grey focus:outline-none ${
+          className={`p-0 inline-block text-blue h-8 w-8 flex items-center justify-center hover:bg-grey-100 hover:text-grey focus:outline-none ${
             currentPage === totalNoOfPages && "opacity-25 cursor-not-allowed"
           }`}
           onClick={goNextPage}

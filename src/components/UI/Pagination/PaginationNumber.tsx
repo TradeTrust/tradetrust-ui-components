@@ -22,9 +22,9 @@ export const PaginationNumber: FunctionComponent<PaginationNumberProps> = ({
       }}
       className={`${
         pageNumber === 1 ? "border-l " : ""
-      }border-r border-solid border-grey-light p-1 inline-block h-8 w-8 ${
-        currentPage === pageNumber ? "text-grey bg-grey-light" : "text-brand-blue"
-      } hover:bg-grey-light hover:text-grey focus:outline-none`}
+      }border-r border-solid border-grey-200 p-1 inline-block h-8 w-8 ${
+        currentPage === pageNumber ? "text-grey bg-grey-100" : "text-blue"
+      } hover:bg-grey-100 hover:text-grey focus:outline-none`}
     >
       {pageNumber}
     </button>
