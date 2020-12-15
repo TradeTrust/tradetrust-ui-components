@@ -8,6 +8,7 @@ interface AddressBookThirdPartyProps {
   thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
   isSearchingThirdParty: boolean;
   network: string;
+  hasEntityLookupPath: boolean;
 }
 
 export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps> = ({
@@ -15,20 +16,26 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
   thirdPartyPageResults,
   isSearchingThirdParty,
   network,
+  hasEntityLookupPath,
 }) => {
   return (
     <table className="table">
       <thead className="table-thead">
         <tr>
-          <th>Name</th>
+          <th className="w-20">Name</th>
           <td>Address</td>
-          <td>Source</td>
           <td>&nbsp;</td>
+          <td>Source</td>
         </tr>
       </thead>
       <tbody className="table-tbody">
         {isSearchingThirdParty ? (
           <AddressBookTableRowEmpty message="Searching..." />
+        ) : !hasEntityLookupPath ? (
+          <AddressBookTableRowEmpty
+            message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+            textClassName="text-red"
+          />
         ) : isEmpty(thirdPartyPageResults) ? (
           <AddressBookTableRowEmpty message="No address found. Try searching?" />
         ) : (

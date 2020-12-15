@@ -48,6 +48,12 @@ export const TableStyle = (): SerializedStyles => {
         &:nth-of-type(even) {
           ${tw`bg-grey-100`}
         }
+
+        &:hover {
+          &:nth-of-type(even) {
+            ${tw`bg-grey-200`}
+          }
+        }
       }
     }
   `;

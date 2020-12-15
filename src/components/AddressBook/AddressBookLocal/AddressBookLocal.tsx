@@ -23,6 +23,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
           <th>Name</th>
           <td>Address</td>
           <td>&nbsp;</td>
+          <td>&nbsp;</td>
         </tr>
       </thead>
       <tbody className="table-tbody">

@@ -52,9 +52,10 @@ export const AddressBook = styled(
     const [remoteEndpointIndex, setRemoteEndpointIndex] = useState(0);
     const [isPendingRemoteResults, setIsPendingRemoteResults] = useState(false);
     const [thirdPartyPageResults, setThirdPartyPageResults] = useState<AddressBookThirdPartyResultsProps[]>([]);
-    const { name, endpoint, apiHeader, apiKey } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
+    const { name, endpoint, apiHeader, apiKey, path } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
     const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const hasEntityLookupPath = !!path?.entityLookup;
 
     const filteredLocalAddresses = Object.keys(addressBook).filter((key) => {
       const identifier = addressBook[key];
@@ -77,7 +78,12 @@ export const AddressBook = styled(
     };
 
     const queryEndpoint = async (search: string, pageOffset: number): Promise<void> => {
+      if (!path.entityLookup) {
+        throw "This endpoint does not have the entityLookup feature.";
+      }
+
       setIsPendingRemoteResults(true);
+
       try {
         const results = await entityLookup({
           offset: pageOffset.toString(),
@@ -86,6 +92,7 @@ export const AddressBook = styled(
           endpoint,
           apiHeader,
           apiKey,
+          path: path.entityLookup,
         });
         setThirdPartyPageResults(results.identities);
         const numberOfResults = results.total > 0 ? results.total : paginationLimit;
@@ -93,7 +100,7 @@ export const AddressBook = styled(
       } catch (e) {
         setThirdPartyPageResults([]);
         setThirdPartyTotalPages(1);
-        console.log(e, "error");
+        console.log(e);
       }
 
       setIsPendingRemoteResults(false);
@@ -164,7 +171,13 @@ export const AddressBook = styled(
             <div className="flex mb-2 flex-grow">
               <div className="overlay-searchbar">
                 <div className="flex mx-0 items-center w-64">
-                  <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={onSearchTermChanged}
+                    disabled={!isLocal && !hasEntityLookupPath}
+                  />
                   <Search />
                 </div>
               </div>
@@ -199,6 +212,7 @@ export const AddressBook = styled(
               thirdPartyPageResults={thirdPartyPageResults}
               network={network}
               isSearchingThirdParty={isPendingRemoteResults}
+              hasEntityLookupPath={hasEntityLookupPath}
             />
           )}
         </div>
@@ -239,13 +253,6 @@ export const AddressBook = styled(
     height: 360px;
 
     tr {
-      ${tw`transition duration-300 ease-out-cubic`}
-      cursor: ${(props) => (props.onAddressSelected ? "pointer" : "default")};
-
-      &:hover {
-        ${(props) => (props.onAddressSelected ? tw`bg-grey-200` : tw`bg-inherit`)}
-      }
-
       a {
         svg {
           max-width: 16px;
@@ -256,7 +263,7 @@ export const AddressBook = styled(
 
   .table {
     th {
-      ${tw`w-48 text-left py-2 px-3 whitespace-normal break-all`}
+      ${tw`w-48 text-left py-2 px-3`}
     }
   }
 `;

@@ -116,10 +116,50 @@ export const PopulatedThirdpartyAddressBook = (): ReactElement => {
           thirdPartyAPIEndpoints={[
             {
               name: "demo 123",
-              endpoint: "https://demo-resolver.tradetrust.io/",
+              endpoint: "https://demo-resolver.tradetrust.io",
               apiHeader: "x-api-key",
               apiKey: "DEMO",
               path: { addressResolution: "/identifier", entityLookup: "/search" },
+            },
+          ]}
+          network="ropsten"
+          title="Address Book"
+          paginationLimit={3}
+        />
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const ThirdpartyAddressBookNoEntityLookup = (): ReactElement => {
+  localStorage.setItem(
+    "ADDRESS_BOOK",
+    JSON.stringify({
+      "0xa": "Name 1",
+      "0xb": "Name 2",
+      "0xc": "Name 3",
+      "0xd": "Name 4",
+      "0xe": "Name 5",
+      "0xf": "Name 6",
+      "0xg": "Name 7",
+      "0xh": "Name 8",
+      "0xi": "Name 9",
+      "0xj": "Name 10",
+    })
+  );
+
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Third party address book with no entityLookup feature">
+        <AddressBook
+          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
+          thirdPartyAPIEndpoints={[
+            {
+              name: "demo 123",
+              endpoint: "https://demo-resolver.tradetrust.io",
+              apiHeader: "x-api-key",
+              apiKey: "DEMO",
+              path: { addressResolution: "/identifier" },
             },
           ]}
           network="ropsten"

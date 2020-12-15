@@ -25,6 +25,7 @@ describe("addressBookThirdParty", () => {
         thirdPartyPageResults={[]}
         isSearchingThirdParty={false}
         network="local"
+        hasEntityLookupPath={true}
       />
     );
     expect(screen.getByText("No address found. Try searching?")).not.toBeNull();
@@ -37,6 +38,7 @@ describe("addressBookThirdParty", () => {
         thirdPartyPageResults={mockResults}
         isSearchingThirdParty={false}
         network="local"
+        hasEntityLookupPath={true}
       />
     );
     expect(screen.getAllByTestId("table-row")).toHaveLength(2);
@@ -49,8 +51,26 @@ describe("addressBookThirdParty", () => {
         thirdPartyPageResults={[]}
         isSearchingThirdParty={true}
         network="local"
+        hasEntityLookupPath={true}
       />
     );
     expect(screen.getByText("Searching...")).not.toBeNull();
+  });
+
+  it("should show entityLookup error if feature does not exists", () => {
+    render(
+      <AddressBookThirdParty
+        onAddressSelect={() => {}}
+        thirdPartyPageResults={[]}
+        isSearchingThirdParty={false}
+        network="local"
+        hasEntityLookupPath={false}
+      />
+    );
+    expect(
+      screen.getByText(
+        "This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+      )
+    ).not.toBeNull();
   });
 });
