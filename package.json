@@ -10,7 +10,8 @@
   "main": "build/index.js",
   "types": "build/esm/index.d.ts",
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -20,7 +21,7 @@
     "polished": "^4.0.3",
     "react-feather": "^2.0.8",
     "tailwindcss": "^1.9.6",
-    "twin.macro": "^1.11.1",
+    "twin.macro": "^1.12.1",
     "validator": "^13.1.17"
   },
   "scripts": {
@@ -30,7 +31,7 @@
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "start": "npm-run-all -p start:css storybook",
-    "start:css": "postcss src/tailwind.css -o .storybook/styles.css --watch",
+    "start:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css --watch",
     "prep": "npm-run-all -s lint lint:type test build",
     "commit": "git-cz",
     "commit:retry": "npm run commit -- --retry",
