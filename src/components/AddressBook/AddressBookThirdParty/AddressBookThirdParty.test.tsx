@@ -22,7 +22,7 @@ describe("addressBookThirdParty", () => {
   it("should show default message", () => {
     render(
       <AddressBookThirdParty
-        addressBookThirdPartyStatus={AddressBookState.IDLE}
+        addressBookThirdPartyStatus={AddressBookState.EMPTY}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
         network="local"

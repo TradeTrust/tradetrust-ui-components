@@ -80,7 +80,7 @@ describe("addressBookLocal", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: addressBook });
     render(
       <AddressBookLocal
-        addressBookLocalStatus={AddressBookState.IDLE}
+        addressBookLocalStatus={AddressBookState.EMPTY}
         onAddressSelect={() => {}}
         localPageResults={[]}
         network="local"

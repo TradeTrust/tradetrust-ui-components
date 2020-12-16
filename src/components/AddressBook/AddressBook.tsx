@@ -23,9 +23,9 @@ import { CsvUploadButton } from "./CsvUploadButton";
 
 export enum AddressBookState {
   NONE = "NONE",
-  IDLE = "IDLE",
   PENDING = "PENDING",
   SUCCESS = "SUCCESS",
+  EMPTY = "EMPTY",
   ERROR = "ERROR",
 }
 
@@ -79,7 +79,7 @@ export const AddressBook = styled(
     const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
     const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
-      hasEntityLookupPath ? AddressBookState.IDLE : AddressBookState.ERROR
+      hasEntityLookupPath ? AddressBookState.EMPTY : AddressBookState.ERROR
     );
     const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
 
@@ -111,14 +111,14 @@ export const AddressBook = styled(
         const numberOfResults = results.total > 0 ? results.total : paginationLimit;
         setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
         if (isEmpty(results.identities)) {
-          setAddressBookThirdPartyStatus(AddressBookState.IDLE);
+          setAddressBookThirdPartyStatus(AddressBookState.EMPTY);
         } else {
           setAddressBookThirdPartyStatus(AddressBookState.SUCCESS);
         }
       } catch (e) {
         setThirdPartyPageResults([]);
         setThirdPartyTotalPages(1);
-        setAddressBookThirdPartyStatus(AddressBookState.IDLE);
+        setAddressBookThirdPartyStatus(AddressBookState.EMPTY);
         console.log(e);
       }
     };
@@ -155,7 +155,7 @@ export const AddressBook = styled(
       if (isEmpty(addressBook)) {
         setAddressBookLocalStatus(AddressBookState.NONE);
       } else if (isEmpty(localPageResults)) {
-        setAddressBookLocalStatus(AddressBookState.IDLE);
+        setAddressBookLocalStatus(AddressBookState.EMPTY);
       } else {
         setAddressBookLocalStatus(AddressBookState.SUCCESS);
       }

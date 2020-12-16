@@ -32,7 +32,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
         {addressBookLocalStatus === AddressBookState.NONE && (
           <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
         )}
-        {addressBookLocalStatus === AddressBookState.IDLE && (
+        {addressBookLocalStatus === AddressBookState.EMPTY && (
           <AddressBookTableRowEmpty message="No address found. Try searching again?" />
         )}
         {addressBookLocalStatus === AddressBookState.SUCCESS &&

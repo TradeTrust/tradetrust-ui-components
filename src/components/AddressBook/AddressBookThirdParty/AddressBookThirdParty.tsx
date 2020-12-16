@@ -33,7 +33,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
             textClassName="text-red"
           />
         )}
-        {addressBookThirdPartyStatus === AddressBookState.IDLE && (
+        {addressBookThirdPartyStatus === AddressBookState.EMPTY && (
           <AddressBookTableRowEmpty message="No address found. Try searching?" />
         )}
         {addressBookThirdPartyStatus === AddressBookState.PENDING && (
