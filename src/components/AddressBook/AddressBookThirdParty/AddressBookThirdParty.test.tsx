@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
+import { AddressBookState } from "./../AddressBook";
 
 const mockResults = [
   {
@@ -21,9 +22,9 @@ describe("addressBookThirdParty", () => {
   it("should show default message", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.EMPTY}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
-        isSearchingThirdParty={false}
         network="local"
       />
     );
@@ -33,9 +34,9 @@ describe("addressBookThirdParty", () => {
   it("should show 2 mock results", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.SUCCESS}
         onAddressSelect={() => {}}
         thirdPartyPageResults={mockResults}
-        isSearchingThirdParty={false}
         network="local"
       />
     );
@@ -45,12 +46,28 @@ describe("addressBookThirdParty", () => {
   it("should show searching text", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.PENDING}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
-        isSearchingThirdParty={true}
         network="local"
       />
     );
     expect(screen.getByText("Searching...")).not.toBeNull();
+  });
+
+  it("should show entityLookup error if feature does not exists", () => {
+    render(
+      <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.ERROR}
+        onAddressSelect={() => {}}
+        thirdPartyPageResults={[]}
+        network="local"
+      />
+    );
+    expect(
+      screen.getByText(
+        "This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+      )
+    ).not.toBeNull();
   });
 });

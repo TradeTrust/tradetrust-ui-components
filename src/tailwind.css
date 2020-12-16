@@ -12,6 +12,10 @@
   h3 {
     font-size: 28px;
   }
+
+  input[disabled] {
+    @apply cursor-not-allowed;
+  }
 }
 
 @tailwind components;

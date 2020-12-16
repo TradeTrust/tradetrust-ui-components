@@ -1,15 +1,17 @@
 import { useAddressBook } from "@govtechsg/address-identity-resolver";
-import { isEmpty } from "lodash";
 import React, { FunctionComponent } from "react";
+import { AddressBookState } from "./../AddressBook";
 import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
 
 interface AddressBookLocalProps {
+  addressBookLocalStatus: string;
   onAddressSelect: (address: string) => void;
   localPageResults: string[];
   network: string;
 }
 
 export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
+  addressBookLocalStatus,
   onAddressSelect,
   localPageResults,
   network,
@@ -23,14 +25,17 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
           <th>Name</th>
           <td>Address</td>
           <td>&nbsp;</td>
+          <td>&nbsp;</td>
         </tr>
       </thead>
       <tbody className="table-tbody">
-        {isEmpty(addressBook) ? (
+        {addressBookLocalStatus === AddressBookState.NONE && (
           <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
-        ) : localPageResults.length === 0 ? (
-          <AddressBookTableRowEmpty message="No address found." />
-        ) : (
+        )}
+        {addressBookLocalStatus === AddressBookState.EMPTY && (
+          <AddressBookTableRowEmpty message="No address found. Try searching again?" />
+        )}
+        {addressBookLocalStatus === AddressBookState.SUCCESS &&
           localPageResults.map((key) => {
             const identifier = addressBook[key];
 
@@ -46,8 +51,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
                 network={network}
               />
             );
-          })
-        )}
+          })}
       </tbody>
     </table>
   );

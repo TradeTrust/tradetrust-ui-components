@@ -16,7 +16,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@govtechsg/address-identity-resolver": "^1.4.0",
+    "@govtechsg/address-identity-resolver": "^1.4.1",
     "debug": "^4.1.1",
     "polished": "^4.0.3",
     "react-feather": "^2.0.8",

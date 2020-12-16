@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { isEmpty } from "lodash";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
@@ -19,6 +20,14 @@ import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
 import { CsvUploadButton } from "./CsvUploadButton";
+
+export enum AddressBookState {
+  NONE = "NONE",
+  PENDING = "PENDING",
+  SUCCESS = "SUCCESS",
+  EMPTY = "EMPTY",
+  ERROR = "ERROR",
+}
 
 export interface AddressBookDropdownProps {
   name: string;
@@ -50,11 +59,11 @@ export const AddressBook = styled(
 
     const [isLocal, setIsLocal] = useState(true);
     const [remoteEndpointIndex, setRemoteEndpointIndex] = useState(0);
-    const [isPendingRemoteResults, setIsPendingRemoteResults] = useState(false);
     const [thirdPartyPageResults, setThirdPartyPageResults] = useState<AddressBookThirdPartyResultsProps[]>([]);
-    const { name, endpoint, apiHeader, apiKey } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
+    const { name, endpoint, apiHeader, apiKey, path } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
     const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
+    const hasEntityLookupPath = !!path?.entityLookup;
 
     const filteredLocalAddresses = Object.keys(addressBook).filter((key) => {
       const identifier = addressBook[key];
@@ -69,6 +78,11 @@ export const AddressBook = styled(
     const offset = (currentPage - 1) * paginationLimit || paginationOffset;
     const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
+    const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
+      hasEntityLookupPath ? AddressBookState.EMPTY : AddressBookState.ERROR
+    );
+    const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
+
     const onAddressSelect = (address: string): void => {
       if (onAddressSelected) {
         onAddressSelected(address);
@@ -77,7 +91,12 @@ export const AddressBook = styled(
     };
 
     const queryEndpoint = async (search: string, pageOffset: number): Promise<void> => {
-      setIsPendingRemoteResults(true);
+      if (!path.entityLookup) {
+        throw "This endpoint does not have the entityLookup feature.";
+      }
+
+      setAddressBookThirdPartyStatus(AddressBookState.PENDING);
+
       try {
         const results = await entityLookup({
           offset: pageOffset.toString(),
@@ -86,17 +105,22 @@ export const AddressBook = styled(
           endpoint,
           apiHeader,
           apiKey,
+          path: path.entityLookup,
         });
         setThirdPartyPageResults(results.identities);
         const numberOfResults = results.total > 0 ? results.total : paginationLimit;
         setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
+        if (isEmpty(results.identities)) {
+          setAddressBookThirdPartyStatus(AddressBookState.EMPTY);
+        } else {
+          setAddressBookThirdPartyStatus(AddressBookState.SUCCESS);
+        }
       } catch (e) {
         setThirdPartyPageResults([]);
         setThirdPartyTotalPages(1);
-        console.log(e, "error");
+        setAddressBookThirdPartyStatus(AddressBookState.EMPTY);
+        console.log(e);
       }
-
-      setIsPendingRemoteResults(false);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -126,6 +150,16 @@ export const AddressBook = styled(
       const pageOffset = (currentPage - 1) * paginationLimit;
       queryEndpoint(searchTerm, pageOffset);
     }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (isEmpty(addressBook)) {
+        setAddressBookLocalStatus(AddressBookState.NONE);
+      } else if (isEmpty(localPageResults)) {
+        setAddressBookLocalStatus(AddressBookState.EMPTY);
+      } else {
+        setAddressBookLocalStatus(AddressBookState.SUCCESS);
+      }
+    }, [addressBook, localPageResults]);
 
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
@@ -164,7 +198,13 @@ export const AddressBook = styled(
             <div className="flex mb-2 flex-grow">
               <div className="overlay-searchbar">
                 <div className="flex mx-0 items-center w-64">
-                  <input type="text" placeholder="Search" value={searchTerm} onChange={onSearchTermChanged} />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={onSearchTermChanged}
+                    disabled={!isLocal && !hasEntityLookupPath}
+                  />
                   <Search />
                 </div>
               </div>
@@ -192,13 +232,18 @@ export const AddressBook = styled(
         </div>
         <div className="table-responsive">
           {isLocal ? (
-            <AddressBookLocal onAddressSelect={onAddressSelect} localPageResults={localPageResults} network={network} />
+            <AddressBookLocal
+              addressBookLocalStatus={addressBookLocalStatus}
+              onAddressSelect={onAddressSelect}
+              localPageResults={localPageResults}
+              network={network}
+            />
           ) : (
             <AddressBookThirdParty
+              addressBookThirdPartyStatus={addressBookThirdPartyStatus}
               onAddressSelect={onAddressSelect}
               thirdPartyPageResults={thirdPartyPageResults}
               network={network}
-              isSearchingThirdParty={isPendingRemoteResults}
             />
           )}
         </div>
@@ -239,13 +284,6 @@ export const AddressBook = styled(
     height: 360px;
 
     tr {
-      ${tw`transition duration-300 ease-out-cubic`}
-      cursor: ${(props) => (props.onAddressSelected ? "pointer" : "default")};
-
-      &:hover {
-        ${(props) => (props.onAddressSelected ? tw`bg-grey-200` : tw`bg-inherit`)}
-      }
-
       a {
         svg {
           max-width: 16px;
@@ -256,7 +294,7 @@ export const AddressBook = styled(
 
   .table {
     th {
-      ${tw`w-48 text-left py-2 px-3 whitespace-normal break-all`}
+      ${tw`w-48 text-left py-2 px-3`}
     }
   }
 `;
