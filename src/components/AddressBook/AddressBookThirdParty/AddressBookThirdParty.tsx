@@ -1,22 +1,20 @@
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
-import { isEmpty } from "lodash";
 import React, { FunctionComponent } from "react";
+import { AddressBookState } from "./../AddressBook";
 import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
 
 interface AddressBookThirdPartyProps {
+  addressBookThirdPartyStatus: string;
   onAddressSelect: (address: string) => void;
   thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
-  isSearchingThirdParty: boolean;
   network: string;
-  hasEntityLookupPath: boolean;
 }
 
 export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps> = ({
+  addressBookThirdPartyStatus,
   onAddressSelect,
   thirdPartyPageResults,
-  isSearchingThirdParty,
   network,
-  hasEntityLookupPath,
 }) => {
   return (
     <table className="table">
@@ -29,16 +27,19 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
         </tr>
       </thead>
       <tbody className="table-tbody">
-        {isSearchingThirdParty ? (
-          <AddressBookTableRowEmpty message="Searching..." />
-        ) : !hasEntityLookupPath ? (
+        {addressBookThirdPartyStatus === AddressBookState.ERROR && (
           <AddressBookTableRowEmpty
             message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
             textClassName="text-red"
           />
-        ) : isEmpty(thirdPartyPageResults) ? (
+        )}
+        {addressBookThirdPartyStatus === AddressBookState.IDLE && (
           <AddressBookTableRowEmpty message="No address found. Try searching?" />
-        ) : (
+        )}
+        {addressBookThirdPartyStatus === AddressBookState.PENDING && (
+          <AddressBookTableRowEmpty message="Searching..." />
+        )}
+        {addressBookThirdPartyStatus === AddressBookState.SUCCESS &&
           thirdPartyPageResults.map((item, index) => {
             return (
               <AddressBookTableRow
@@ -53,8 +54,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
                 network={network}
               />
             );
-          })
-        )}
+          })}
       </tbody>
     </table>
   );

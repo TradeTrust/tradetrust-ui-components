@@ -46,13 +46,13 @@ interface AddressBookTableRowEmptyProps {
 
 export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({
   message,
-  textClassName,
+  textClassName = "",
 }) => {
   return (
     <tr data-testid="table-row">
       <th>&mdash;</th>
       <td>
-        <p className={`whitespace-pre-wrap mb-0 ${textClassName}`}>{message}</p>
+        <span className={`whitespace-pre-wrap mb-0 ${textClassName}`}>{message}</span>
       </td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>

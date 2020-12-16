@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
+import { AddressBookState } from "./../AddressBook";
 
 const mockResults = [
   {
@@ -21,11 +22,10 @@ describe("addressBookThirdParty", () => {
   it("should show default message", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.IDLE}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
-        isSearchingThirdParty={false}
         network="local"
-        hasEntityLookupPath={true}
       />
     );
     expect(screen.getByText("No address found. Try searching?")).not.toBeNull();
@@ -34,11 +34,10 @@ describe("addressBookThirdParty", () => {
   it("should show 2 mock results", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.SUCCESS}
         onAddressSelect={() => {}}
         thirdPartyPageResults={mockResults}
-        isSearchingThirdParty={false}
         network="local"
-        hasEntityLookupPath={true}
       />
     );
     expect(screen.getAllByTestId("table-row")).toHaveLength(2);
@@ -47,11 +46,10 @@ describe("addressBookThirdParty", () => {
   it("should show searching text", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.PENDING}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
-        isSearchingThirdParty={true}
         network="local"
-        hasEntityLookupPath={true}
       />
     );
     expect(screen.getByText("Searching...")).not.toBeNull();
@@ -60,11 +58,10 @@ describe("addressBookThirdParty", () => {
   it("should show entityLookup error if feature does not exists", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.ERROR}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
-        isSearchingThirdParty={false}
         network="local"
-        hasEntityLookupPath={false}
       />
     );
     expect(

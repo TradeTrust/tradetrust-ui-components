@@ -49,6 +49,10 @@ export const OverlayContentBaseStyle = (): SerializedStyles => {
         }
       }
     }
+
+    p {
+      ${tw`mt-0 mb-4`}
+    }
   `;
 };
 

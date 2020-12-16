@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { isEmpty } from "lodash";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
@@ -19,6 +20,14 @@ import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
 import { CsvUploadButton } from "./CsvUploadButton";
+
+export enum AddressBookState {
+  NONE = "NONE",
+  IDLE = "IDLE",
+  PENDING = "PENDING",
+  SUCCESS = "SUCCESS",
+  ERROR = "ERROR",
+}
 
 export interface AddressBookDropdownProps {
   name: string;
@@ -50,7 +59,6 @@ export const AddressBook = styled(
 
     const [isLocal, setIsLocal] = useState(true);
     const [remoteEndpointIndex, setRemoteEndpointIndex] = useState(0);
-    const [isPendingRemoteResults, setIsPendingRemoteResults] = useState(false);
     const [thirdPartyPageResults, setThirdPartyPageResults] = useState<AddressBookThirdPartyResultsProps[]>([]);
     const { name, endpoint, apiHeader, apiKey, path } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
     const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
@@ -70,6 +78,11 @@ export const AddressBook = styled(
     const offset = (currentPage - 1) * paginationLimit || paginationOffset;
     const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
+    const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
+      hasEntityLookupPath ? AddressBookState.IDLE : AddressBookState.ERROR
+    );
+    const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
+
     const onAddressSelect = (address: string): void => {
       if (onAddressSelected) {
         onAddressSelected(address);
@@ -82,7 +95,7 @@ export const AddressBook = styled(
         throw "This endpoint does not have the entityLookup feature.";
       }
 
-      setIsPendingRemoteResults(true);
+      setAddressBookThirdPartyStatus(AddressBookState.PENDING);
 
       try {
         const results = await entityLookup({
@@ -97,13 +110,17 @@ export const AddressBook = styled(
         setThirdPartyPageResults(results.identities);
         const numberOfResults = results.total > 0 ? results.total : paginationLimit;
         setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
+        if (isEmpty(results.identities)) {
+          setAddressBookThirdPartyStatus(AddressBookState.IDLE);
+        } else {
+          setAddressBookThirdPartyStatus(AddressBookState.SUCCESS);
+        }
       } catch (e) {
         setThirdPartyPageResults([]);
         setThirdPartyTotalPages(1);
+        setAddressBookThirdPartyStatus(AddressBookState.IDLE);
         console.log(e);
       }
-
-      setIsPendingRemoteResults(false);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,6 +150,16 @@ export const AddressBook = styled(
       const pageOffset = (currentPage - 1) * paginationLimit;
       queryEndpoint(searchTerm, pageOffset);
     }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (isEmpty(addressBook)) {
+        setAddressBookLocalStatus(AddressBookState.NONE);
+      } else if (isEmpty(localPageResults)) {
+        setAddressBookLocalStatus(AddressBookState.IDLE);
+      } else {
+        setAddressBookLocalStatus(AddressBookState.SUCCESS);
+      }
+    }, [addressBook, localPageResults]);
 
     return (
       <OverlayContent data-testid="overlay-addressbook" {...props}>
@@ -205,14 +232,18 @@ export const AddressBook = styled(
         </div>
         <div className="table-responsive">
           {isLocal ? (
-            <AddressBookLocal onAddressSelect={onAddressSelect} localPageResults={localPageResults} network={network} />
+            <AddressBookLocal
+              addressBookLocalStatus={addressBookLocalStatus}
+              onAddressSelect={onAddressSelect}
+              localPageResults={localPageResults}
+              network={network}
+            />
           ) : (
             <AddressBookThirdParty
+              addressBookThirdPartyStatus={addressBookThirdPartyStatus}
               onAddressSelect={onAddressSelect}
               thirdPartyPageResults={thirdPartyPageResults}
               network={network}
-              isSearchingThirdParty={isPendingRemoteResults}
-              hasEntityLookupPath={hasEntityLookupPath}
             />
           )}
         </div>

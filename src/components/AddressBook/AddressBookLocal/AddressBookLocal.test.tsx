@@ -2,6 +2,7 @@ import { useAddressBook } from "@govtechsg/address-identity-resolver";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { AddressBookLocal } from "./AddressBookLocal";
+import { AddressBookState } from "./../AddressBook";
 
 jest.mock("@govtechsg/address-identity-resolver", () => ({
   useAddressBook: jest.fn(),
@@ -25,31 +26,66 @@ const localPageResults = [
 describe("addressBookLocal", () => {
   it("should show default message", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: {} });
-    render(<AddressBookLocal onAddressSelect={() => {}} localPageResults={[]} network="local" />);
+    render(
+      <AddressBookLocal
+        addressBookLocalStatus={AddressBookState.NONE}
+        onAddressSelect={() => {}}
+        localPageResults={[]}
+        network="local"
+      />
+    );
     expect(screen.getByText("No address found. Try importing a csv template file?")).not.toBeNull();
   });
 
   it("should show correct result when address is searched", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: addressBook });
-    render(<AddressBookLocal onAddressSelect={() => {}} localPageResults={localPageResults} network="local" />);
+    render(
+      <AddressBookLocal
+        addressBookLocalStatus={AddressBookState.SUCCESS}
+        onAddressSelect={() => {}}
+        localPageResults={localPageResults}
+        network="local"
+      />
+    );
     expect(screen.getByText("DBS")).not.toBeNull();
   });
 
   it("should show correct result when identifier is searched", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: addressBook });
-    render(<AddressBookLocal onAddressSelect={() => {}} localPageResults={localPageResults} network="local" />);
+    render(
+      <AddressBookLocal
+        addressBookLocalStatus={AddressBookState.SUCCESS}
+        onAddressSelect={() => {}}
+        localPageResults={localPageResults}
+        network="local"
+      />
+    );
     expect(screen.getByText("0x28f7ab32c521d13f2e6980d072ca7ca493020145")).not.toBeNull();
   });
 
   it("should show more than 1 result", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: addressBook });
-    render(<AddressBookLocal onAddressSelect={() => {}} localPageResults={localPageResults} network="local" />);
+    render(
+      <AddressBookLocal
+        addressBookLocalStatus={AddressBookState.SUCCESS}
+        onAddressSelect={() => {}}
+        localPageResults={localPageResults}
+        network="local"
+      />
+    );
     expect(screen.getAllByTestId("table-row")).toHaveLength(4);
   });
 
   it("should show no result found message", () => {
     mockUseAddressBook.mockReturnValue({ addressBook: addressBook });
-    render(<AddressBookLocal onAddressSelect={() => {}} localPageResults={[]} network="local" />);
-    expect(screen.getByText("No address found.")).not.toBeNull();
+    render(
+      <AddressBookLocal
+        addressBookLocalStatus={AddressBookState.IDLE}
+        onAddressSelect={() => {}}
+        localPageResults={[]}
+        network="local"
+      />
+    );
+    expect(screen.getByText("No address found. Try searching again?")).not.toBeNull();
   });
 });
