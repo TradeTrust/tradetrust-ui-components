@@ -7,11 +7,6 @@ module.exports = {
       center: true,
       padding: theme("spacing.4"),
     }),
-    fontFamily: {
-      sans: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-      display: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-      body: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-    },
     extend: {
       minWidth: {
         0: "0",

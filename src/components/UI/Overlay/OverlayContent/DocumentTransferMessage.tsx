@@ -112,7 +112,6 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
 
   .message {
     h6 {
-      ${mixin.fontSourcesansproBold};
       ${tw`text-grey-700`}
     }
   }

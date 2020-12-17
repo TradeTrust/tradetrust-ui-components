@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
-import { mixin } from "../../../styles";
 
 export const OverlayContentBaseStyle = (): SerializedStyles => {
   return css`
@@ -32,7 +31,6 @@ export const OverlayContentBaseStyle = (): SerializedStyles => {
     }
 
     .overlay-title {
-      ${mixin.fontSourcesansproBold()}
       ${tw`text-grey mb-0 flex-grow`}
     }
 
