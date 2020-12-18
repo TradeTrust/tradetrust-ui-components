@@ -32,7 +32,7 @@ export const DeleteResolverConfirmation = styled(
             </Button>
           </div>
           <div className="col-auto">
-            <Button className="bg-red text-white hover:bg-red-600" onClick={deleteAddress}>
+            <Button className="bg-red text-white hover:bg-red-400" onClick={deleteAddress}>
               Delete
             </Button>
           </div>
