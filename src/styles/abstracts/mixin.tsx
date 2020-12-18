@@ -5,20 +5,6 @@ import tailwindConfig from "../../tailwind.js";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
-export const fontSourcesansproRegular = (): string => {
-  return `
-    font-family: ${fullConfig.theme.fontFamily.body.join(", ")};
-    font-weight: ${fullConfig.theme.fontWeight.regular};
-  `;
-};
-
-export const fontSourcesansproBold = (): string => {
-  return `
-    font-family: ${fullConfig.theme.fontFamily.body.join(", ")};
-    font-weight: ${fullConfig.theme.fontWeight.bold};
-  `;
-};
-
 const pxToRem = (size: number, base = 16): string => {
   return (size / base) * 1 + "rem";
 };

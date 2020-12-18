@@ -32,7 +32,7 @@ export const SolidWhiteBlue = (): React.ReactNode => {
 };
 
 export const SolidRedWhite = (): React.ReactNode => {
-  return <Button className="bg-red text-white hover:bg-red-600">SolidRedWhite</Button>;
+  return <Button className="bg-red text-white hover:bg-red-400">SolidRedWhite</Button>;
 };
 
 export const SolidWhiteGrey = (): React.ReactNode => {

@@ -7,11 +7,6 @@ module.exports = {
       center: true,
       padding: theme("spacing.4"),
     }),
-    fontFamily: {
-      sans: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-      display: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-      body: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"],
-    },
     extend: {
       minWidth: {
         0: "0",
@@ -46,47 +41,68 @@ module.exports = {
         inherit: {
           default: "inherit", // why need this mmm
         },
+        black: {
+          default: "#000000",
+        },
         blue: {
           default: "#0099cc",
+          300: "#f3f8fc",
+          400: "#a6c1ee",
+          800: "#001F29",
+        },
+        green: {
+          default: "#00c04a",
+          100: "#f5fbf7",
+          400: "#68d391",
+          600: "#008a35",
+          900: "#001f29",
+        },
+        grey: {
+          default: "#8f8f8f",
+          100: "#fafafa",
+          200: "#e5e5e5",
+          300: "#dddddd",
+          400: "#cfcfcf",
+          700: "#5a5a5a",
+          800: "#4f4f4f",
+          900: "#212529",
+        },
+        greyblue: {
+          default: "#c1c9d1",
+          200: "#e2e8f0",
+          700: "#a7afb7",
+          900: "#343a40",
         },
         navy: {
           default: "#324353",
         },
         orange: {
           default: "#ff9933",
+          300: "#fbd38d",
           600: "#ed8936",
         },
-        green: {
-          default: "#00c04a",
-          600: "#008a35",
-          900: "#001f29",
+        pink: {
+          default: "#fbc2eb",
         },
         red: {
           default: "#ff5268",
-          600: "#ff213d",
+          100: "#fbeae9",
+          200: "#f7d7d7",
+          300: "#fc8686",
+          400: "#e46767",
+          900: "#8b0000",
         },
         teal: {
-          300: "#e5f9f8",
           default: "#00cbbc",
-        },
-        greyblue: {
-          default: "#c1c9d1",
-        },
-        grey: {
-          100: "#fafafa",
-          200: "#e5e5e5",
-          300: "#dddddd",
-          400: "#cfcfcf",
-          default: "#8f8f8f",
-          700: "#5a5a5a",
-          800: "#4f4f4f",
-          900: "#212529",
+          300: "#e5f9f8",
         },
         white: {
           default: "#ffffff",
         },
-        black: {
-          default: "#000000",
+        yellow: {
+          300: "#fff48f",
+          default: "#ffe600",
+          600: "#ffbf00",
         },
       },
     },
