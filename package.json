@@ -31,7 +31,7 @@
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "start": "npm-run-all -p start:css storybook",
-    "start:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css --watch",
+    "start:css": "postcss src/tailwind.css -o .storybook/styles.css --watch",
     "prep": "npm-run-all -s lint lint:type test build",
     "commit": "git-cz",
     "commit:retry": "npm run commit -- --retry",
@@ -41,7 +41,7 @@
     "semantic-release": "semantic-release",
     "storybook": "sleep 2 && start-storybook -p 9009",
     "storybook:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css",
-    "storybook:build": "npm run storybook:css && build-storybook -o docs",
+    "storybook:build": "npm run storybook:css && sleep 2 && build-storybook -o docs",
     "test": "jest --ci",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
