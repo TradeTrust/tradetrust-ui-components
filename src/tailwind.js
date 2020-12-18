@@ -1,4 +1,4 @@
-const plugin = require("tailwindcss/plugin");
+const plugin = require("tailwindcss/plugin"); //eslint-disable-line @typescript-eslint/no-var-requires
 
 module.exports = {
   theme: {
@@ -39,7 +39,7 @@ module.exports = {
       },
       colors: {
         inherit: {
-          default: "inherit", // why need this mmm
+          default: "inherit",
         },
         black: {
           default: "#000000",

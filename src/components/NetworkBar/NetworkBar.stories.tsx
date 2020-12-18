@@ -1,4 +1,5 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
+import { Button } from "../UI/Button";
 import { NetworkBar } from "./NetworkBar";
 
 export default {
@@ -10,5 +11,23 @@ export default {
 };
 
 export const Default = (): ReactElement => {
-  return <NetworkBar network="ropsten" />;
+  const [network, setNetwork] = useState("ropsten");
+
+  return (
+    <div>
+      <NetworkBar network={network}>
+        You are currently on <span className="capitalize">{network}</span> network. To change it, please upload a new
+        config file.
+      </NetworkBar>
+      {/* To Simulate change of config file or network by pressing the buttons */}
+      <div className="mt-6 flex justify-around max-w-md mx-auto">
+        <Button className="bg-green text-white hover:bg-green-600" onClick={() => setNetwork("ropsten")}>
+          Change to Ropsten
+        </Button>
+        <Button className="bg-orange text-white hover:bg-orange-600" onClick={() => setNetwork("rinkeby")}>
+          Change to Rinkeby
+        </Button>
+      </div>
+    </div>
+  );
 };
