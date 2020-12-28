@@ -47,4 +47,5 @@ Checkout storybook mode for more information.
 
 - Note that exported components are bare without styles.
 - It is expected for external application(s) to setup their own tailwind config, using the exported tailwind config from `/build` folder. It may look something like this: `const commonUiConfig = require("@govtechsg/tradetrust-ui-components/build/tailwind")`, then merge it with your local config if there is any.
+- Do include `"./node_modules/@govtechsg/tradetrust-ui-components/src/**/*.tsx",` in tailwind config's purge content option, so that the classes will be retained after purged.
 - Otherwise, can use the stylesheet in `/build/styles.css` directly.
