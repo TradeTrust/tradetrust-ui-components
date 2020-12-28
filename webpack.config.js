@@ -1,6 +1,6 @@
 module.exports = {
   entry: "./src/index.tsx",
-  devtool: "source-map",
+  devtool: process.env.NODE_ENV === "production" ? false : "cheap-eval-source-map", // https://webpack.js.org/configuration/devtool/#devtool
   output: {
     path: __dirname + "/build",
     filename: "index.js",

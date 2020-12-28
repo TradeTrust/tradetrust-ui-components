@@ -15,5 +15,10 @@ export const Loader: FunctionComponent<LoaderProps> = ({ children, ...props }) =
 };
 
 export const LoaderSpinner = styled(Loader)`
-  ${(props) => mixin.loaderSpinner({ w: props.width, primary: props.primary, secondary: props.secondary })};
+  ${(props) =>
+    mixin.loaderSpinner({
+      w: props.width,
+      primary: props.primary || "#808080",
+      secondary: props.secondary || "#d3d3d3",
+    })};
 `;
