@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Input, InputDefault, InputEditableAssetTitle } from "./Input";
+import { Input, InputError, InputDefault, InputEditableAssetTitle } from "./Input";
 
 export default {
   title: "UI/Input",
@@ -23,4 +23,8 @@ export const EditableAssetTitle = (): ReactElement => {
 
 export const EditableAssetTitleError = (): ReactElement => {
   return <InputEditableAssetTitle hasError={true} />;
+};
+
+export const TextError = (): ReactElement => {
+  return <InputError>Some Error Occurred</InputError>;
 };

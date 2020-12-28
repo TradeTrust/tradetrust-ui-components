@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import tw from "twin.macro";
 import { mixin } from "../../../styles";
-
 export interface InputProps {
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -60,7 +59,12 @@ export const InputEditableWrapper = styled.div`
   width: 288px;
 `;
 
-export const InputError = styled.div`
-  ${tw`w-full text-sm mt-2 text-red`}
-  word-break: keep-all;
-`;
+interface InputErrorProps {
+  children: React.ReactNode;
+}
+
+export const InputError: FunctionComponent<InputErrorProps> = ({ children, ...props }: InputErrorProps) => (
+  <div className="w-full text-sm mt-2 text-red" {...props}>
+    {children}
+  </div>
+);
