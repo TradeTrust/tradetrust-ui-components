@@ -22,11 +22,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   const addressHref = makeEtherscanAddressURL(address, network);
 
   return (
-    <tr
-      className={`cursor-pointer transition-colors duration-200 ease-out hover:bg-grey-200`}
-      onClick={onAddressSelect}
-      data-testid="table-row"
-    >
+    <tr onClick={onAddressSelect} data-testid="table-row">
       <th>{name}</th>
       <td>{address}</td>
       <td>{!isLocal && source}&nbsp;</td>

@@ -94,7 +94,7 @@ module.exports = {
         },
         teal: {
           default: "#00cbbc",
-          300: "#e5f9f8",
+          300: "#26edde",
         },
         white: {
           default: "#ffffff",

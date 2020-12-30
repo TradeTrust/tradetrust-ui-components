@@ -5,7 +5,7 @@ import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTab
 
 interface AddressBookThirdPartyProps {
   addressBookThirdPartyStatus: string;
-  onAddressSelect: (address: string) => void;
+  onAddressSelect?: (address: string) => void;
   thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
   network: string;
 }
@@ -46,6 +46,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
                 key={index}
                 isLocal={false}
                 onAddressSelect={() => {
+                  if (!onAddressSelect) return;
                   onAddressSelect(item.identifier);
                 }}
                 address={item.identifier}

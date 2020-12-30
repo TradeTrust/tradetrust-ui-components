@@ -1,71 +1,134 @@
-import css, { SerializedStyles } from "@emotion/css";
 import styled from "@emotion/styled";
 import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { fontSize } from "../../styles/abstracts/mixin";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { EndpointEntry } from "./EndpointEntry";
-
-export const TableStyle = (): SerializedStyles => {
-  return css`
-    .table-responsive {
-      ${tw`w-full border border-solid border-grey-300 overflow-x-auto scrolling-touch`}
-    }
-
-    .table {
-      ${tw`w-full mb-0`}
-    }
-
-    tr {
-      ${tw`whitespace-no-wrap border-solid border-t border-grey-300`}
-    }
-
-    th {
-      ${tw`mt-0 align-middle`}
-    }
-
-    td {
-      ${tw`align-middle whitespace-no-wrap border-t-0 p-3`}
-    }
-
-    .table-thead {
-      th,
-      td {
-        border: none;
-      }
-    }
-
-    .table-thead {
-      ${tw`text-white bg-navy`}
-    }
-
-    .table-tbody {
-      ${tw`bg-white`}
-
-      tr {
-        &:nth-of-type(even) {
-          ${tw`bg-grey-100`}
-        }
-
-        &:hover {
-          &:nth-of-type(even) {
-            ${tw`bg-grey-200`}
-          }
-        }
-      }
-    }
-  `;
-};
-
+import { StyledTable } from "../../styles/shared/Table";
 export interface AddressesTableProps {
   className?: string;
   isNewEndpoint: boolean;
   setNewEndpoint: (isNewEndpoint: boolean) => void;
 }
 
-export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint }: AddressesTableProps) => {
+const StyledTableAddressResolver = styled(StyledTable)`
+  th {
+    ${tw`w-8`}
+
+    .fas {
+      ${tw`block text-grey cursor-pointer transition duration-300 ease-out-cubic`}
+      line-height: 0.5;
+      ${fontSize(20)};
+
+      &:hover {
+        ${tw`text-grey-800`}
+      }
+
+      &.fa-sort-up,
+      &.fa-sort-down {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &.fa-sort-up {
+        ${tw`pt-2`}
+      }
+
+      &.fa-sort-down {
+        ${tw`pb-2`}
+      }
+    }
+  }
+
+  tr {
+    &:hover {
+      .fa-sort-up,
+      .fa-sort-down {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  td {
+    &.is-editable {
+      &:last-of-type {
+        svg {
+          polyline,
+          path,
+          line {
+            ${tw`text-teal`}
+          }
+
+          &:hover {
+            polyline,
+            path,
+            line {
+              ${tw`text-teal-300`}
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(1) {
+      width: 80px;
+    }
+
+    &:nth-of-type(2) {
+      width: 200px;
+    }
+
+    &:nth-of-type(3) {
+      width: 360px;
+    }
+
+    &:nth-of-type(4) {
+      width: 200px;
+    }
+
+    &:nth-of-type(5) {
+      width: 200px;
+    }
+
+    &:last-of-type {
+      text-align: right;
+      width: 100px;
+
+      svg {
+        cursor: pointer;
+        margin-left: 15px;
+
+        polyline,
+        path,
+        line {
+          transition: color 0.3s ease-out;
+          ${tw`text-grey`}
+        }
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:hover {
+          polyline,
+          path,
+          line {
+            ${tw`text-grey-900`}
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
+  className,
+  isNewEndpoint,
+  setNewEndpoint,
+}) => {
   const {
     thirdPartyAPIEndpoints,
     addThirdPartyAPIEndpoint,
@@ -144,7 +207,7 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
   return (
     <div className={`${className} flex py-6`}>
       <div className="flex w-full">
-        <div className="table-responsive">
+        <StyledTableAddressResolver className="table-responsive">
           <table className="table">
             <thead className="table-thead">
               <tr>
@@ -212,98 +275,8 @@ export const AddressesTable = styled(({ className, isNewEndpoint, setNewEndpoint
               )}
             </tbody>
           </table>
-        </div>
+        </StyledTableAddressResolver>
       </div>
     </div>
   );
-})`
-  ${TableStyle()}
-
-  th {
-    width: 30px;
-    text-align: center;
-
-    .fas {
-      ${tw`block text-grey cursor-pointer transition duration-300 ease-out-cubic`}
-      line-height: 0.5;
-      ${fontSize(20)};
-
-      &:hover {
-        ${tw`text-grey-800`}
-      }
-
-      &.fa-sort-up {
-        ${tw`pt-2`}
-      }
-
-      &.fa-sort-down {
-        ${tw`pb-2`}
-      }
-    }
-  }
-
-  td {
-    &.is-editable {
-      &:last-of-type {
-        svg {
-          &:hover {
-            polyline,
-            path,
-            line {
-              ${tw`text-teal-300`}
-            }
-          }
-        }
-      }
-    }
-
-    &:nth-of-type(1) {
-      width: 80px;
-    }
-
-    &:nth-of-type(2) {
-      width: 200px;
-    }
-
-    &:nth-of-type(3) {
-      width: 360px;
-    }
-
-    &:nth-of-type(4) {
-      width: 200px;
-    }
-
-    &:nth-of-type(5) {
-      width: 200px;
-    }
-
-    &:last-of-type {
-      text-align: right;
-      width: 100px;
-
-      svg {
-        cursor: pointer;
-        margin-left: 15px;
-
-        polyline,
-        path,
-        line {
-          transition: color 0.3s ease-out;
-          ${tw`text-grey`}
-        }
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        &:hover {
-          polyline,
-          path,
-          line {
-            ${tw`text-grey-300`}
-          }
-        }
-      }
-    }
-  }
-`;
+};
