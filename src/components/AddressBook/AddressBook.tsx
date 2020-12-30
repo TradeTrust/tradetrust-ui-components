@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
-import { isEmpty } from "lodash";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
   ThirdPartyAPIEntryProps,
   useAddressBook,
 } from "@govtechsg/address-identity-resolver";
-import { debounce } from "lodash";
+import { debounce, isEmpty } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
@@ -79,7 +78,7 @@ export const AddressBook = styled(
     const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
     const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
-      hasEntityLookupPath ? AddressBookState.EMPTY : AddressBookState.ERROR
+      hasEntityLookupPath ? AddressBookState.NONE : AddressBookState.ERROR
     );
     const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
 

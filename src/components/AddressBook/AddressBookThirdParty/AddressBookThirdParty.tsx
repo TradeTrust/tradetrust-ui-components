@@ -1,7 +1,7 @@
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
-import { AddressBookState } from "./../AddressBook";
 import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
+import { AddressBookState } from "./../AddressBook";
 
 interface AddressBookThirdPartyProps {
   addressBookThirdPartyStatus: string;
@@ -29,12 +29,15 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
       <tbody className="table-tbody">
         {addressBookThirdPartyStatus === AddressBookState.ERROR && (
           <AddressBookTableRowEmpty
-            message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+            message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnel to set it up."
             textClassName="text-red"
           />
         )}
+        {addressBookThirdPartyStatus === AddressBookState.NONE && (
+          <AddressBookTableRowEmpty message="Try searching with keywords for results." />
+        )}
         {addressBookThirdPartyStatus === AddressBookState.EMPTY && (
-          <AddressBookTableRowEmpty message="No address found. Try searching?" />
+          <AddressBookTableRowEmpty message="No address found. Try searching with another keyword for results." />
         )}
         {addressBookThirdPartyStatus === AddressBookState.PENDING && (
           <AddressBookTableRowEmpty message="Searching..." />
