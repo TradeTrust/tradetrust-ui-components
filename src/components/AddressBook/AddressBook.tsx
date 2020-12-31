@@ -35,6 +35,7 @@ export interface AddressBookProps {
   onAddressSelect?: onAddressSelectType;
   paginationOffset?: number;
   paginationLimit?: number;
+  className?: string;
 }
 
 const StyledTableAddressBook = styled(StyledTable)`
@@ -52,6 +53,12 @@ const StyledTableAddressBook = styled(StyledTable)`
         }
       }
     }
+
+    td {
+      &:last-of-type {
+        text-align: right;
+      }
+    }
   }
 `;
 
@@ -60,6 +67,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
   onAddressSelect,
   paginationOffset = 0,
   paginationLimit = 20,
+  ...props
 }) => {
   const { thirdPartyAPIEndpoints } = useThirdPartyAPIEndpoints();
 
@@ -164,38 +172,36 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
   };
 
   return (
-    <>
+    <div {...props}>
       <div className="mb-5">
-        <div className="mb-2">
-          <Dropdown
-            fullWidth
-            dropdownButtonText={isLocal ? "Local" : name}
-            className="border-grey-300 border-solid border rounded-none p-3"
+        <Dropdown
+          fullWidth
+          dropdownButtonText={isLocal ? "Local" : name}
+          className="border-grey-300 border-solid border rounded-none mb-2 p-3"
+        >
+          <DropdownItem
+            onClick={() => {
+              setIsLocal(true);
+              resetThirdPartyAPIEndpointResult();
+            }}
           >
-            <DropdownItem
-              onClick={() => {
-                setIsLocal(true);
-                resetThirdPartyAPIEndpointResult();
-              }}
-            >
-              Local
-            </DropdownItem>
-            {thirdPartyAPIEndpoints.map((item, index) => {
-              return (
-                <DropdownItem
-                  key={index}
-                  onClick={() => {
-                    setIsLocal(false);
-                    setRemoteEndpointIndex(index);
-                    resetThirdPartyAPIEndpointResult();
-                  }}
-                >
-                  {item.name}
-                </DropdownItem>
-              );
-            })}
-          </Dropdown>
-        </div>
+            Local
+          </DropdownItem>
+          {thirdPartyAPIEndpoints.map((item, index) => {
+            return (
+              <DropdownItem
+                key={index}
+                onClick={() => {
+                  setIsLocal(false);
+                  setRemoteEndpointIndex(index);
+                  resetThirdPartyAPIEndpointResult();
+                }}
+              >
+                {item.name}
+              </DropdownItem>
+            );
+          })}
+        </Dropdown>
         <div className="flex items-start flex-col md:flex-row">
           <div className="flex mb-2 flex-grow">
             <div className="max-w-full md:max-w-xs border border-solid border-grey-300 px-3 py-2">
@@ -253,7 +259,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
       <div className="mt-4">
         <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
-    </>
+    </div>
   );
 };
 
