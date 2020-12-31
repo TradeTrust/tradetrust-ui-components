@@ -1,12 +1,11 @@
 import styled from "@emotion/styled";
-import { isEmpty } from "lodash";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
   useThirdPartyAPIEndpoints,
   useAddressBook,
 } from "@govtechsg/address-identity-resolver";
-import { debounce } from "lodash";
+import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import { useOverlayContext } from "../../common/context/OverlayContext";
@@ -89,7 +88,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
   const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
 
   const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
-    hasEntityLookupPath ? AddressBookState.EMPTY : AddressBookState.ERROR
+    hasEntityLookupPath ? AddressBookState.NONE : AddressBookState.ERROR
   );
   const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
 
