@@ -1,18 +1,18 @@
 import React, { ReactElement } from "react";
-import { NavBack, NavForward } from "./Nav";
+import { BackArrow, TileInfo } from "./Nav";
 
 export default {
   title: "UI/Nav",
-  component: NavForward,
+  component: TileInfo,
   parameters: {
     componentSubtitle: "Types of Links, with custom parameters.",
   },
 };
 
-export const NavBackLink = (): ReactElement => {
-  return <NavBack />;
+export const BackArrowLink = (): ReactElement => {
+  return <BackArrow />;
 };
 
-export const NavForwardLink = (): ReactElement => {
-  return <NavForward title="Address Book" description="Access and update your addresses" />;
+export const TileInfoLink = (): ReactElement => {
+  return <TileInfo title="Address Book" description="Access and update your addresses" />;
 };
