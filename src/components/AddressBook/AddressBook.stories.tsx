@@ -1,8 +1,5 @@
 import { withKnobs } from "@storybook/addon-knobs";
-import React, { FunctionComponent, ReactElement } from "react";
-import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
-import { Button } from "../UI/Button";
-import { Overlay } from "../UI/Overlay";
+import React, { ReactElement } from "react";
 import { AddressBook } from "./AddressBook";
 
 export default {
@@ -11,36 +8,17 @@ export default {
   decorators: [withKnobs],
 };
 
-export interface OverlayDemoProps {
-  buttonText: string;
-  children: React.ReactNode;
-}
-
-const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children }) => {
-  const { showOverlay } = useOverlayContext();
-
-  return (
-    <>
-      <Overlay />
-      <Button onClick={() => showOverlay(children)}>{buttonText}</Button>
-    </>
-  );
-};
-
 export const DefaultAddressBook = (): ReactElement => {
   localStorage.setItem("ADDRESS_BOOK", JSON.stringify({}));
+  localStorage.setItem("ADDRESS_THIRD_PARTY_ENDPOINTS", JSON.stringify([]));
 
   return (
-    <OverlayContextProvider>
-      <OverlayDemo buttonText="Default address book">
-        <AddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          thirdPartyAPIEndpoints={[]}
-          network="ropsten"
-          title="Address Book"
-        />
-      </OverlayDemo>
-    </OverlayContextProvider>
+    <AddressBook
+      network="ropsten"
+      onAddressSelect={(address: string) => {
+        console.log(address);
+      }}
+    />
   );
 };
 
@@ -76,18 +54,15 @@ export const PopulatedLocalAddressBook = (): ReactElement => {
       "0xz": "Name 26",
     })
   );
+  localStorage.setItem("ADDRESS_THIRD_PARTY_ENDPOINTS", JSON.stringify([]));
+
   return (
-    <OverlayContextProvider>
-      <OverlayDemo buttonText="Populated address book">
-        <AddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          thirdPartyAPIEndpoints={[]}
-          network="ropsten"
-          title="Address Book"
-          paginationLimit={10}
-        />
-      </OverlayDemo>
-    </OverlayContextProvider>
+    <AddressBook
+      onAddressSelect={(address: string) => {
+        console.log(address);
+      }}
+      network="ropsten"
+    />
   );
 };
 
@@ -107,27 +82,26 @@ export const PopulatedThirdpartyAddressBook = (): ReactElement => {
       "0xj": "Name 10",
     })
   );
+  localStorage.setItem(
+    "ADDRESS_THIRD_PARTY_ENDPOINTS",
+    JSON.stringify([
+      {
+        name: "demo 123",
+        endpoint: "https://demo-resolver.tradetrust.io",
+        apiHeader: "x-api-key",
+        apiKey: "DEMO",
+        path: { addressResolution: "/identifier", entityLookup: "/search" },
+      },
+    ])
+  );
 
   return (
-    <OverlayContextProvider>
-      <OverlayDemo buttonText="Populated third party address book">
-        <AddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          thirdPartyAPIEndpoints={[
-            {
-              name: "demo 123",
-              endpoint: "https://demo-resolver.tradetrust.io",
-              apiHeader: "x-api-key",
-              apiKey: "DEMO",
-              path: { addressResolution: "/identifier", entityLookup: "/search" },
-            },
-          ]}
-          network="ropsten"
-          title="Address Book"
-          paginationLimit={3}
-        />
-      </OverlayDemo>
-    </OverlayContextProvider>
+    <AddressBook
+      onAddressSelect={(address: string) => {
+        console.log(address);
+      }}
+      network="ropsten"
+    />
   );
 };
 
@@ -147,26 +121,25 @@ export const ThirdpartyAddressBookNoEntityLookup = (): ReactElement => {
       "0xj": "Name 10",
     })
   );
+  localStorage.setItem(
+    "ADDRESS_THIRD_PARTY_ENDPOINTS",
+    JSON.stringify([
+      {
+        name: "demo 123",
+        endpoint: "https://demo-resolver.tradetrust.io",
+        apiHeader: "x-api-key",
+        apiKey: "DEMO",
+        path: { addressResolution: "/identifier" },
+      },
+    ])
+  );
 
   return (
-    <OverlayContextProvider>
-      <OverlayDemo buttonText="Third party address book with no entityLookup feature">
-        <AddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          thirdPartyAPIEndpoints={[
-            {
-              name: "demo 123",
-              endpoint: "https://demo-resolver.tradetrust.io",
-              apiHeader: "x-api-key",
-              apiKey: "DEMO",
-              path: { addressResolution: "/identifier" },
-            },
-          ]}
-          network="ropsten"
-          title="Address Book"
-          paginationLimit={3}
-        />
-      </OverlayDemo>
-    </OverlayContextProvider>
+    <AddressBook
+      onAddressSelect={(address: string) => {
+        console.log(address);
+      }}
+      network="ropsten"
+    />
   );
 };

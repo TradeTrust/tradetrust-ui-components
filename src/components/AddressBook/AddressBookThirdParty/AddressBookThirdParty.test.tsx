@@ -22,13 +22,25 @@ describe("addressBookThirdParty", () => {
   it("should show default message", () => {
     render(
       <AddressBookThirdParty
+        addressBookThirdPartyStatus={AddressBookState.NONE}
+        onAddressSelect={() => {}}
+        thirdPartyPageResults={[]}
+        network="local"
+      />
+    );
+    expect(screen.getByText("Try searching with keywords for results.")).not.toBeNull();
+  });
+
+  it("should show empty message", () => {
+    render(
+      <AddressBookThirdParty
         addressBookThirdPartyStatus={AddressBookState.EMPTY}
         onAddressSelect={() => {}}
         thirdPartyPageResults={[]}
         network="local"
       />
     );
-    expect(screen.getByText("No address found. Try searching?")).not.toBeNull();
+    expect(screen.getByText("No address found. Try searching with another keyword for results.")).not.toBeNull();
   });
 
   it("should show 2 mock results", () => {
@@ -66,7 +78,7 @@ describe("addressBookThirdParty", () => {
     );
     expect(
       screen.getByText(
-        "This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+        "This address book’s endpoint does not have the entityLookup feature, do contact the respective personnel to set it up."
       )
     ).not.toBeNull();
   });

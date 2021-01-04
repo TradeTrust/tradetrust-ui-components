@@ -5,7 +5,7 @@ import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTab
 
 interface AddressBookThirdPartyProps {
   addressBookThirdPartyStatus: string;
-  onAddressSelect: (address: string) => void;
+  onAddressSelect?: (address: string) => void;
   thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
   network: string;
 }
@@ -29,12 +29,15 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
       <tbody className="table-tbody">
         {addressBookThirdPartyStatus === AddressBookState.ERROR && (
           <AddressBookTableRowEmpty
-            message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnal to set it up."
+            message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnel to set it up."
             textClassName="text-red"
           />
         )}
+        {addressBookThirdPartyStatus === AddressBookState.NONE && (
+          <AddressBookTableRowEmpty message="Try searching with keywords for results." />
+        )}
         {addressBookThirdPartyStatus === AddressBookState.EMPTY && (
-          <AddressBookTableRowEmpty message="No address found. Try searching?" />
+          <AddressBookTableRowEmpty message="No address found. Try searching with another keyword for results." />
         )}
         {addressBookThirdPartyStatus === AddressBookState.PENDING && (
           <AddressBookTableRowEmpty message="Searching..." />
@@ -46,6 +49,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
                 key={index}
                 isLocal={false}
                 onAddressSelect={() => {
+                  if (!onAddressSelect) return;
                   onAddressSelect(item.identifier);
                 }}
                 address={item.identifier}

@@ -7,10 +7,10 @@ export const AddressResolver: FunctionComponent = () => {
   const [isNewEndpoint, setNewEndpoint] = useState(false);
 
   return (
-    <div className="container py-4">
+    <>
       <div className="flex items-end">
         <div className="flex-1 flex-col">
-          <h1>Settings: Address Resolver</h1>
+          <h3>Settings: Address Resolver</h3>
           <p className="mb-0 text-grey">Add third party’s endpoint to resolve addresses. </p>
         </div>
         <div className="flex">
@@ -31,6 +31,6 @@ export const AddressResolver: FunctionComponent = () => {
         </div>
       </div>
       <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
-    </div>
+    </>
   );
 };

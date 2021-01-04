@@ -5,7 +5,7 @@ import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTab
 
 interface AddressBookLocalProps {
   addressBookLocalStatus: string;
-  onAddressSelect: (address: string) => void;
+  onAddressSelect?: (address: string) => void;
   localPageResults: string[];
   network: string;
 }
@@ -44,6 +44,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
                 key={key}
                 isLocal={true}
                 onAddressSelect={() => {
+                  if (!onAddressSelect) return;
                   onAddressSelect(key);
                 }}
                 address={key}
