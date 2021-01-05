@@ -31,7 +31,7 @@ export enum AddressBookState {
 type onAddressSelectType = (address: string) => void;
 
 export interface AddressBookProps {
-  network: string;
+  network?: string;
   onAddressSelect?: onAddressSelectType;
   paginationOffset?: number;
   paginationLimit?: number;
@@ -204,7 +204,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         </Dropdown>
         <div className="flex items-start flex-col md:flex-row">
           <div className="flex mb-2 flex-grow">
-            <div className="max-w-full md:max-w-xs border border-solid border-grey-300 px-3 py-2">
+            <div className="max-w-full md:max-w-xs border border-solid border-grey-300 px-3 py-2 bg-white">
               <div className="flex mx-0 items-center w-64">
                 <input
                   className="border-none outline-none w-full placeholder-grey-300"
