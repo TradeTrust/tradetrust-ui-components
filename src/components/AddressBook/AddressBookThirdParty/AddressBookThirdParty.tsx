@@ -7,7 +7,7 @@ interface AddressBookThirdPartyProps {
   addressBookThirdPartyStatus: string;
   onAddressSelect?: (address: string) => void;
   thirdPartyPageResults: AddressBookThirdPartyResultsProps[];
-  network: string;
+  network?: string;
 }
 
 export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps> = ({

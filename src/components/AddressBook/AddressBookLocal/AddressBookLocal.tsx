@@ -7,7 +7,7 @@ interface AddressBookLocalProps {
   addressBookLocalStatus: string;
   onAddressSelect?: (address: string) => void;
   localPageResults: string[];
-  network: string;
+  network?: string;
 }
 
 export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({

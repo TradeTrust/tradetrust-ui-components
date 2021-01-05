@@ -24,7 +24,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
       <button
         {...props}
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative z-10 max-w-sm cursor-pointer focus:outline-none flex items-center justify-between ${className} ${
+        className={`relative z-10 max-w-sm cursor-pointer focus:outline-none flex items-center justify-between bg-white ${className} ${
           fullWidth ? " w-full" : ""
         } ${alignRight ? " ml-auto" : ""}`}
       >

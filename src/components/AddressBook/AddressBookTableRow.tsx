@@ -7,9 +7,23 @@ interface AddressBookTableRowProps {
   address: string;
   isLocal: boolean;
   name: string;
-  network: string;
+  network?: string;
   source?: string;
 }
+
+interface AddressBookEtherscanLinkProps {
+  address: string;
+  network: string;
+}
+
+const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
+  const addressHref = makeEtherscanAddressURL(address, network);
+  return (
+    <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-blue">
+      <ExternalLink className="ml-auto mr-4" />
+    </a>
+  );
+};
 
 export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = ({
   onAddressSelect,
@@ -19,18 +33,12 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   network,
   source,
 }) => {
-  const addressHref = makeEtherscanAddressURL(address, network);
-
   return (
     <tr onClick={onAddressSelect} data-testid="table-row">
       <th>{name}</th>
       <td>{address}</td>
       <td>{!isLocal && source}&nbsp;</td>
-      <td>
-        <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-blue">
-          <ExternalLink className="ml-auto mr-4" />
-        </a>
-      </td>
+      <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
     </tr>
   );
 };
