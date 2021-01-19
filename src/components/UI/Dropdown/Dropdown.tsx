@@ -38,11 +38,11 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           <button
             tabIndex={-1}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 w-full h-full cursor-default focus:outline-none"
+            className="fixed z-20 inset-0 w-full h-full cursor-default focus:outline-none"
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute z-20 max-w-sm mt-1 rounded bg-white border border-solid border-grey-300 py-2 shadow-lg${
+            className={`absolute z-30 max-w-sm mt-1 rounded bg-white border border-solid border-grey-300 py-2 shadow-lg${
               fullWidth ? " w-full" : ""
             } ${alignRight ? " right-0" : ""}`}
           >
