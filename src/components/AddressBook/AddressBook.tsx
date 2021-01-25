@@ -2,13 +2,15 @@ import styled from "@emotion/styled";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
-  useThirdPartyAPIEndpoints,
   useAddressBook,
+  useThirdPartyAPIEndpoints,
 } from "@govtechsg/address-identity-resolver";
 import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
+import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
+import { StyledTable } from "../../styles/shared/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
@@ -17,8 +19,6 @@ import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
 import { CsvUploadButton } from "./CsvUploadButton";
-import { StyledTable } from "../../styles/shared/Table";
-import tw from "twin.macro";
 
 export enum AddressBookState {
   NONE = "NONE",
