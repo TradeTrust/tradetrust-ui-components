@@ -102,7 +102,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   };
 
   return (
-    <div className="flex">
+    <div className="flex overflow-x-auto">
       <div className="border border-solid border-grey-200 border-r-0 flex ml-auto items-center justify-center">
         <PaginationBox onClick={goToFirstPage} disable={currentPage === 1} data-testid="page-first">
           <ChevronsLeft size={14} />
