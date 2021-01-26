@@ -24,7 +24,6 @@ export const PaginationNumberSelected = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(1);
   return (
     <PaginationBox
-      index={0}
       pageNumber={1}
       currentPage={currentPage}
       onClick={() => {
@@ -40,7 +39,6 @@ export const PaginationNumberUnselected = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(2);
   return (
     <PaginationBox
-      index={0}
       pageNumber={1}
       currentPage={currentPage}
       onClick={() => {

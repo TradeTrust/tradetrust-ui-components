@@ -12,7 +12,6 @@ export interface PaginationProps {
 export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
   const [expandLeftPagination, setExpandLeftPagination] = useState(false);
   const [expandRightPagination, setExpandRightPagination] = useState(false);
-  let index = 0;
 
   const goPreviousPage = (): void => {
     if (currentPage > 1) {
@@ -77,7 +76,6 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
       return typeof pages === "number" ? (
         <PaginationBox
           key={i}
-          index={index++}
           currentPage={currentPage}
           pageNumber={pages}
           onClick={() => {
@@ -85,17 +83,17 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             setExpandLeftPagination(false);
             setExpandRightPagination(false);
           }}
+          data-testid={`page-number-${pages}`}
         >
           {pages}
         </PaginationBox>
       ) : (
         <PaginationBox
           key={i}
-          index={index++}
           onClick={() => {
             return i + 1 < currentPage ? setExpandLeftPagination(true) : setExpandRightPagination(true);
           }}
-          testid={`${i + 1 < currentPage ? "truncate-left" : "truncate-right"}`}
+          data-testid={`${i + 1 < currentPage ? "truncate-left" : "truncate-right"}`}
         >
           {pages}
         </PaginationBox>
@@ -106,22 +104,17 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   return (
     <div className="flex">
       <div className="border border-solid border-grey-200 border-r-0 flex ml-auto items-center justify-center">
-        <PaginationBox index={index++} onClick={goToFirstPage} disable={currentPage === 1} testid="page-first">
+        <PaginationBox onClick={goToFirstPage} disable={currentPage === 1} data-testid="page-first">
           <ChevronsLeft size={14} />
         </PaginationBox>
-        <PaginationBox index={index++} onClick={goPreviousPage} disable={currentPage === 1} testid="page-prev">
+        <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
           <ChevronLeft size={14} />
         </PaginationBox>
         {generatePageNumbers()}
-        <PaginationBox index={index++} onClick={goNextPage} disable={currentPage === totalNoOfPages} testid="page-next">
+        <PaginationBox onClick={goNextPage} disable={currentPage === totalNoOfPages} data-testid="page-next">
           <ChevronRight size={14} />
         </PaginationBox>
-        <PaginationBox
-          index={index++}
-          onClick={goToLastPage}
-          disable={currentPage === totalNoOfPages}
-          testid="page-last"
-        >
+        <PaginationBox onClick={goToLastPage} disable={currentPage === totalNoOfPages} data-testid="page-last">
           <ChevronsRight size={14} />
         </PaginationBox>
       </div>
