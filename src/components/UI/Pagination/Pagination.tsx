@@ -11,8 +11,8 @@ export interface PaginationProps {
 export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
   const range = 5; // has to be odd number, so curr active number would be center of range
   const rangeOverflow = ~~(range / 2);
-  const hideLeftTruncate = currentPage <= rangeOverflow + 1;
-  const hideRightTruncate = currentPage > totalNoOfPages - (rangeOverflow + 1);
+  const hideLeftTruncate = currentPage <= rangeOverflow + 2;
+  const hideRightTruncate = currentPage > totalNoOfPages - (rangeOverflow + 2);
   const [expandLeftPagination, setExpandLeftPagination] = useState(false);
   const [expandRightPagination, setExpandRightPagination] = useState(false);
 
@@ -45,6 +45,18 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
         <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
           <ChevronLeft size={14} />
         </PaginationBox>
+        <PaginationBox
+          currentPage={currentPage}
+          pageNumber={1}
+          onClick={() => {
+            setCurrentPage(1);
+            setExpandLeftPagination(false);
+            setExpandRightPagination(false);
+          }}
+          data-testid={`page-number-${1}`}
+        >
+          1
+        </PaginationBox>
         {!expandLeftPagination && !hideLeftTruncate && (
           <PaginationBox
             onClick={() => {
@@ -55,12 +67,12 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             ...
           </PaginationBox>
         )}
-
         {[...Array(totalNoOfPages)].map((value, i) => {
           const pageNumber = i + 1;
           const toHideLeft = expandLeftPagination ? false : pageNumber < currentPage - rangeOverflow;
           const toHideRight = expandRightPagination ? false : pageNumber > currentPage + rangeOverflow;
-          const toHide = toHideLeft || toHideRight;
+          const isFirstOrLastPage = pageNumber === 1 || pageNumber === totalNoOfPages;
+          const toHide = toHideLeft || toHideRight || isFirstOrLastPage;
           if (toHide) return null;
           return (
             <PaginationBox
@@ -69,6 +81,8 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               pageNumber={pageNumber}
               onClick={() => {
                 setCurrentPage(pageNumber);
+                setExpandLeftPagination(false);
+                setExpandRightPagination(false);
               }}
               data-testid={`page-number-${pageNumber}`}
             >
@@ -86,6 +100,18 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             ...
           </PaginationBox>
         )}
+        <PaginationBox
+          currentPage={currentPage}
+          pageNumber={totalNoOfPages}
+          onClick={() => {
+            setCurrentPage(totalNoOfPages);
+            setExpandLeftPagination(false);
+            setExpandRightPagination(false);
+          }}
+          data-testid={`page-number-${totalNoOfPages}`}
+        >
+          {totalNoOfPages}
+        </PaginationBox>
         <PaginationBox onClick={goNextPage} disable={currentPage === totalNoOfPages} data-testid="page-next">
           <ChevronRight size={14} />
         </PaginationBox>
