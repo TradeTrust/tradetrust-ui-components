@@ -19,21 +19,30 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   const goPreviousPage = (): void => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      closeAllTruncation();
     }
   };
 
   const goNextPage = (): void => {
     if (currentPage < totalNoOfPages) {
       setCurrentPage(currentPage + 1);
+      closeAllTruncation();
     }
   };
 
   const goToFirstPage = (): void => {
     setCurrentPage(1);
+    closeAllTruncation();
   };
 
   const goToLastPage = (): void => {
     setCurrentPage(totalNoOfPages);
+    closeAllTruncation();
+  };
+
+  const closeAllTruncation = (): void => {
+    setExpandLeftPagination(false);
+    setExpandRightPagination(false);
   };
 
   return (
@@ -50,8 +59,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           pageNumber={1}
           onClick={() => {
             setCurrentPage(1);
-            setExpandLeftPagination(false);
-            setExpandRightPagination(false);
+            closeAllTruncation();
           }}
           data-testid={`page-number-${1}`}
         >
@@ -81,8 +89,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               pageNumber={pageNumber}
               onClick={() => {
                 setCurrentPage(pageNumber);
-                setExpandLeftPagination(false);
-                setExpandRightPagination(false);
+                closeAllTruncation();
               }}
               data-testid={`page-number-${pageNumber}`}
             >
@@ -106,8 +113,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             pageNumber={totalNoOfPages}
             onClick={() => {
               setCurrentPage(totalNoOfPages);
-              setExpandLeftPagination(false);
-              setExpandRightPagination(false);
+              closeAllTruncation();
             }}
             data-testid={`page-number-${totalNoOfPages}`}
           >
