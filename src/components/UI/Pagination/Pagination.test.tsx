@@ -6,7 +6,7 @@ describe("pagination", () => {
   it("should render pagination component correctly on initial load", () => {
     render(<Pagination totalNoOfPages={8} currentPage={1} setCurrentPage={() => {}} />);
 
-    expect(screen.getAllByTestId(/page-number/)).toHaveLength(3);
+    expect(screen.getAllByTestId(/page-number/)).toHaveLength(4);
     expect(screen.queryAllByTestId("truncate-left")).toHaveLength(0);
     expect(screen.queryAllByTestId("truncate-right")).toHaveLength(1);
     expect(screen.queryAllByTestId("page-first")).toHaveLength(1);
@@ -32,26 +32,26 @@ describe("pagination", () => {
     expect(setCurrentPage).toHaveBeenCalledTimes(9);
   });
 
-  it("should not render left truncate when currentPage is 3", () => {
-    render(<Pagination totalNoOfPages={8} currentPage={3} setCurrentPage={() => {}} />);
+  it("should not render left truncate when currentPage is 4", () => {
+    render(<Pagination totalNoOfPages={8} currentPage={4} setCurrentPage={() => {}} />);
 
     expect(screen.queryAllByTestId("truncate-left")).toHaveLength(0);
   });
 
-  it("should render left truncate when currentPage is 4", () => {
-    render(<Pagination totalNoOfPages={8} currentPage={4} setCurrentPage={() => {}} />);
+  it("should render left truncate when currentPage is 5", () => {
+    render(<Pagination totalNoOfPages={8} currentPage={5} setCurrentPage={() => {}} />);
 
     expect(screen.queryAllByTestId("truncate-left")).toHaveLength(1);
   });
 
   it("should render right truncate when currentPage is 5", () => {
-    render(<Pagination totalNoOfPages={8} currentPage={5} setCurrentPage={() => {}} />);
+    render(<Pagination totalNoOfPages={10} currentPage={5} setCurrentPage={() => {}} />);
 
     expect(screen.queryAllByTestId("truncate-right")).toHaveLength(1);
   });
 
-  it("should not render right truncate when currentPage is 6", () => {
-    render(<Pagination totalNoOfPages={8} currentPage={6} setCurrentPage={() => {}} />);
+  it("should not render right truncate when currentPage is 7", () => {
+    render(<Pagination totalNoOfPages={10} currentPage={7} setCurrentPage={() => {}} />);
 
     expect(screen.queryAllByTestId("truncate-right")).toHaveLength(0);
   });
