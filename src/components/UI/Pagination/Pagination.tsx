@@ -11,8 +11,8 @@ export interface PaginationProps {
 export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
   const range = 5; // has to be odd number, so curr active number would be center of range
   const rangeOverflow = ~~(range / 2);
-  const isLeftTruncatedHide = currentPage <= rangeOverflow + 1;
-  const isRightTruncatedHide = currentPage > totalNoOfPages - (rangeOverflow + 1);
+  const hideLeftTruncate = currentPage <= rangeOverflow + 1;
+  const hideRightTruncate = currentPage > totalNoOfPages - (rangeOverflow + 1);
   const [expandLeftPagination, setExpandLeftPagination] = useState(false);
   const [expandRightPagination, setExpandRightPagination] = useState(false);
 
@@ -45,7 +45,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
         <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
           <ChevronLeft size={14} />
         </PaginationBox>
-        {!expandLeftPagination && !isLeftTruncatedHide && (
+        {!expandLeftPagination && !hideLeftTruncate && (
           <PaginationBox
             onClick={() => {
               setExpandLeftPagination(true);
@@ -76,7 +76,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             </PaginationBox>
           );
         })}
-        {!expandRightPagination && !isRightTruncatedHide && (
+        {!expandRightPagination && !hideRightTruncate && (
           <PaginationBox
             onClick={() => {
               setExpandRightPagination(true);
