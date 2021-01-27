@@ -100,22 +100,24 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             ...
           </PaginationBox>
         )}
-        <PaginationBox
-          currentPage={currentPage}
-          pageNumber={totalNoOfPages}
-          onClick={() => {
-            setCurrentPage(totalNoOfPages);
-            setExpandLeftPagination(false);
-            setExpandRightPagination(false);
-          }}
-          data-testid={`page-number-${totalNoOfPages}`}
-        >
-          {totalNoOfPages}
-        </PaginationBox>
-        <PaginationBox onClick={goNextPage} disable={currentPage === totalNoOfPages} data-testid="page-next">
+        {totalNoOfPages > 1 && (
+          <PaginationBox
+            currentPage={currentPage}
+            pageNumber={totalNoOfPages}
+            onClick={() => {
+              setCurrentPage(totalNoOfPages);
+              setExpandLeftPagination(false);
+              setExpandRightPagination(false);
+            }}
+            data-testid={`page-number-${totalNoOfPages}`}
+          >
+            {totalNoOfPages}
+          </PaginationBox>
+        )}
+        <PaginationBox onClick={goNextPage} disable={currentPage >= totalNoOfPages} data-testid="page-next">
           <ChevronRight size={14} />
         </PaginationBox>
-        <PaginationBox onClick={goToLastPage} disable={currentPage === totalNoOfPages} data-testid="page-last">
+        <PaginationBox onClick={goToLastPage} disable={currentPage >= totalNoOfPages} data-testid="page-last">
           <ChevronsRight size={14} />
         </PaginationBox>
       </div>

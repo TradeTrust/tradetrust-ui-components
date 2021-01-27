@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { Pagination } from "./Pagination";
@@ -54,5 +55,26 @@ describe("pagination", () => {
     render(<Pagination totalNoOfPages={10} currentPage={7} setCurrentPage={() => {}} />);
 
     expect(screen.queryAllByTestId("truncate-right")).toHaveLength(0);
+  });
+
+  it("should only render first page if totalNoOfPages is 1", () => {
+    render(<Pagination totalNoOfPages={1} currentPage={1} setCurrentPage={() => {}} />);
+
+    expect(screen.queryAllByTestId("page-number-1")).toHaveLength(1);
+  });
+
+  it("should disable all arrow when totalNoOfPages is 1", () => {
+    render(<Pagination totalNoOfPages={1} currentPage={1} setCurrentPage={() => {}} />);
+
+    expect(screen.queryAllByTestId("page-first")).toHaveLength(1);
+    expect(screen.getByTestId("page-first")).toHaveAttribute("disabled", "");
+    expect(screen.queryAllByTestId("page-prev")).toHaveLength(1);
+    expect(screen.getByTestId("page-prev")).toHaveAttribute("disabled", "");
+    expect(screen.queryAllByTestId("page-number-1")).toHaveLength(1);
+    expect(screen.getByTestId("page-number-1")).not.toHaveAttribute("disabled");
+    expect(screen.queryAllByTestId("page-next")).toHaveLength(1);
+    expect(screen.getByTestId("page-next")).toHaveAttribute("disabled", "");
+    expect(screen.queryAllByTestId("page-last")).toHaveLength(1);
+    expect(screen.getByTestId("page-last")).toHaveAttribute("disabled", "");
   });
 });
