@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { Pagination } from "./Pagination";
-import { PaginationNumber } from "./PaginationNumber";
+import { PaginationBox } from "./PaginationBox";
 
 export default {
   title: "UI/Pagination",
@@ -10,19 +10,42 @@ export default {
   },
 };
 
-export const Default = (): ReactElement => {
+export const SinglePageDefault = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(1);
-  return <Pagination totalNoOfPages={3} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+  return <Pagination totalNoOfPages={1} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+};
+
+export const MultiPagesDefault = (): ReactElement => {
+  const [currentPage, setCurrentPage] = useState(1);
+  return <Pagination totalNoOfPages={18} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
 };
 
 export const PaginationNumberSelected = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  return <PaginationNumber pageNumber={1} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+  return (
+    <PaginationBox
+      pageNumber={1}
+      currentPage={currentPage}
+      onClick={() => {
+        setCurrentPage(1);
+      }}
+    >
+      1
+    </PaginationBox>
+  );
 };
 
 export const PaginationNumberUnselected = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(2);
-
-  return <PaginationNumber pageNumber={1} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
+  return (
+    <PaginationBox
+      pageNumber={1}
+      currentPage={currentPage}
+      onClick={() => {
+        setCurrentPage(1);
+      }}
+    >
+      1
+    </PaginationBox>
+  );
 };
