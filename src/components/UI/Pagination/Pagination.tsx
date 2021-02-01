@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from "react";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "react-feather";
+import React, { FunctionComponent } from "react";
+import { ChevronLeft, ChevronRight } from "react-feather";
 import { PaginationBox } from "./PaginationBox";
 
 export interface PaginationProps {
@@ -13,45 +13,28 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   const rangeOverflow = ~~(range / 2);
   const hideLeftTruncate = currentPage <= rangeOverflow + 2;
   const hideRightTruncate = currentPage > totalNoOfPages - (rangeOverflow + 2);
-  const [expandLeftPagination, setExpandLeftPagination] = useState(false);
-  const [expandRightPagination, setExpandRightPagination] = useState(false);
 
   const goPreviousPage = (): void => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      closeAllTruncation();
     }
   };
 
   const goNextPage = (): void => {
     if (currentPage < totalNoOfPages) {
       setCurrentPage(currentPage + 1);
-      closeAllTruncation();
     }
-  };
-
-  const goToFirstPage = (): void => {
-    setCurrentPage(1);
-    closeAllTruncation();
-  };
-
-  const goToLastPage = (): void => {
-    setCurrentPage(totalNoOfPages);
-    closeAllTruncation();
-  };
-
-  const closeAllTruncation = (): void => {
-    setExpandLeftPagination(false);
-    setExpandRightPagination(false);
   };
 
   return (
     <div className="flex overflow-x-auto">
       <div className="border border-solid border-grey-200 border-r-0 flex ml-auto items-center justify-center">
-        <PaginationBox onClick={goToFirstPage} disable={currentPage === 1} data-testid="page-first">
-          <ChevronsLeft size={14} />
-        </PaginationBox>
-        <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
+        <PaginationBox
+          onClick={goPreviousPage}
+          disable={currentPage === 1}
+          data-testid="page-prev"
+          className="hover:bg-grey-100 hover:text-grey"
+        >
           <ChevronLeft size={14} />
         </PaginationBox>
         <PaginationBox
@@ -59,26 +42,21 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           pageNumber={1}
           onClick={() => {
             setCurrentPage(1);
-            closeAllTruncation();
           }}
           data-testid={`page-number-${1}`}
+          className="hover:bg-grey-100 hover:text-grey"
         >
           1
         </PaginationBox>
-        {!expandLeftPagination && !hideLeftTruncate && (
-          <PaginationBox
-            onClick={() => {
-              setExpandLeftPagination(true);
-            }}
-            data-testid="truncate-left"
-          >
+        {!hideLeftTruncate && (
+          <PaginationBox data-testid="truncate-left" className="cursor-default">
             ...
           </PaginationBox>
         )}
         {[...Array(totalNoOfPages)].map((value, i) => {
           const pageNumber = i + 1;
-          const toHideLeft = expandLeftPagination ? false : pageNumber < currentPage - rangeOverflow;
-          const toHideRight = expandRightPagination ? false : pageNumber > currentPage + rangeOverflow;
+          const toHideLeft = pageNumber < currentPage - rangeOverflow;
+          const toHideRight = pageNumber > currentPage + rangeOverflow;
           const isFirstOrLastPage = pageNumber === 1 || pageNumber === totalNoOfPages;
           const toHide = toHideLeft || toHideRight || isFirstOrLastPage;
           if (toHide) return null;
@@ -89,21 +67,16 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               pageNumber={pageNumber}
               onClick={() => {
                 setCurrentPage(pageNumber);
-                closeAllTruncation();
               }}
               data-testid={`page-number-${pageNumber}`}
+              className="hover:bg-grey-100 hover:text-grey"
             >
               {pageNumber}
             </PaginationBox>
           );
         })}
-        {!expandRightPagination && !hideRightTruncate && (
-          <PaginationBox
-            onClick={() => {
-              setExpandRightPagination(true);
-            }}
-            data-testid="truncate-right"
-          >
+        {!hideRightTruncate && (
+          <PaginationBox data-testid="truncate-right" className="cursor-default">
             ...
           </PaginationBox>
         )}
@@ -113,18 +86,20 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             pageNumber={totalNoOfPages}
             onClick={() => {
               setCurrentPage(totalNoOfPages);
-              closeAllTruncation();
             }}
             data-testid={`page-number-${totalNoOfPages}`}
+            className="hover:bg-grey-100 hover:text-grey"
           >
             {totalNoOfPages}
           </PaginationBox>
         )}
-        <PaginationBox onClick={goNextPage} disable={currentPage >= totalNoOfPages} data-testid="page-next">
+        <PaginationBox
+          onClick={goNextPage}
+          disable={currentPage >= totalNoOfPages}
+          data-testid="page-next"
+          className="hover:bg-grey-100 hover:text-grey"
+        >
           <ChevronRight size={14} />
-        </PaginationBox>
-        <PaginationBox onClick={goToLastPage} disable={currentPage >= totalNoOfPages} data-testid="page-last">
-          <ChevronsRight size={14} />
         </PaginationBox>
       </div>
     </div>

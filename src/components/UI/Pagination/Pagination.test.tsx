@@ -9,10 +9,8 @@ describe("pagination", () => {
     expect(screen.getAllByTestId(/page-number/)).toHaveLength(4);
     expect(screen.queryAllByTestId("truncate-left")).toHaveLength(0);
     expect(screen.queryAllByTestId("truncate-right")).toHaveLength(1);
-    expect(screen.queryAllByTestId("page-first")).toHaveLength(1);
     expect(screen.queryAllByTestId("page-prev")).toHaveLength(1);
     expect(screen.queryAllByTestId("page-next")).toHaveLength(1);
-    expect(screen.queryAllByTestId("page-last")).toHaveLength(1);
   });
 
   it("should render pagination component correctly despite what the user clicks", () => {
@@ -25,11 +23,9 @@ describe("pagination", () => {
     fireEvent.click(screen.getByTestId("page-number-4"));
     fireEvent.click(screen.getByTestId("truncate-right"));
     fireEvent.click(screen.getByTestId("page-number-8"));
-    fireEvent.click(screen.getByTestId("page-first"));
     fireEvent.click(screen.getByTestId("page-prev"));
     fireEvent.click(screen.getByTestId("page-next"));
-    fireEvent.click(screen.getByTestId("page-last"));
-    expect(setCurrentPage).toHaveBeenCalledTimes(9);
+    expect(setCurrentPage).toHaveBeenCalledTimes(7);
   });
 
   it("should not render left truncate when currentPage is 4", () => {
@@ -65,15 +61,11 @@ describe("pagination", () => {
   it("should disable all arrow when totalNoOfPages is 1", () => {
     render(<Pagination totalNoOfPages={1} currentPage={1} setCurrentPage={() => {}} />);
 
-    expect(screen.queryAllByTestId("page-first")).toHaveLength(1);
-    expect(screen.getByTestId("page-first")).toHaveAttribute("disabled", "");
     expect(screen.queryAllByTestId("page-prev")).toHaveLength(1);
     expect(screen.getByTestId("page-prev")).toHaveAttribute("disabled", "");
     expect(screen.queryAllByTestId("page-number-1")).toHaveLength(1);
     expect(screen.getByTestId("page-number-1")).not.toHaveAttribute("disabled");
     expect(screen.queryAllByTestId("page-next")).toHaveLength(1);
     expect(screen.getByTestId("page-next")).toHaveAttribute("disabled", "");
-    expect(screen.queryAllByTestId("page-last")).toHaveLength(1);
-    expect(screen.getByTestId("page-last")).toHaveAttribute("disabled", "");
   });
 });
