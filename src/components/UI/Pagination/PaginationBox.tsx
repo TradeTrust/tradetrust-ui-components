@@ -3,9 +3,10 @@ import React, { FunctionComponent } from "react";
 export interface PaginationBoxProps {
   children: React.ReactNode;
   disable?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   pageNumber?: number;
   currentPage?: number;
+  className?: string;
 }
 
 export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
@@ -13,6 +14,7 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
   disable,
   pageNumber,
   currentPage,
+  className,
   ...props
 }) => {
   const active = currentPage === pageNumber && (currentPage || pageNumber) ? "text-grey bg-grey-100" : "text-blue";
@@ -20,7 +22,9 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
 
   return (
     <button
-      className={`border-r border-solid border-grey-200 p-0 inline-block h-8 w-8 flex items-center justify-center hover:bg-grey-100 hover:text-grey focus:outline-none ${active} ${disabled}`}
+      className={`border-r border-solid border-grey-200 p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none ${active} ${disabled} ${
+        className ? className : ""
+      } `}
       disabled={disable}
       {...props}
     >
