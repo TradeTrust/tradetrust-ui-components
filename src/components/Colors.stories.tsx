@@ -17,8 +17,9 @@ export default {
 type Color = { [key: string]: string };
 
 export const Colors = (): React.ReactNode => {
-  const { transparent, current, ...colors } = fullConfig.theme.colors;
-  console.log(transparent, current); // remove these 2 tailwind defaults
+  // https://v1.tailwindcss.com/docs/customizing-colors#default-color-palette
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { transparent, current, ...colors } = fullConfig.theme.colors; // omit tailwind defaults of transparent and current, they are not really useful in this palatte showcase
 
   return (
     <ColorPalette>
