@@ -31,17 +31,27 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-## Components Available
+---
 
-- AddressBook
-- AddressResolver
-- NetworkBar
-- Button
-- Input
-- Loader
-- Overlay
+## Why
 
-Checkout storybook mode for more information.
+This repository was created when repeated common styled components were being developed between 2 sites: tradetrust.io and creator.tradetrust.io. Hence, the decision is to host any common ui components that are shared between the 2 sites here. This ensures DRY and design consistency between both sites.
+
+## How is it determined what goes here?
+
+As of now, any potential common components that are used between tradetrust.io and creator.tradetrust.io will be developed here.
+
+## How do I make use of this to kick start any TradeTrust ideas I have?
+
+Refer to [styles](#Styles) section on how.
+
+## What should I take note of if I want to use this?
+
+This repository is always on the work, do look out for any updates that happen along the way : )
+
+## What's available?
+
+Checkout the [storybook](https://ui.tradetrust.io) documentation for more information.
 
 ## Styles
 
