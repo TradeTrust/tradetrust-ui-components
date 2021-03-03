@@ -33,29 +33,28 @@ Your app is ready to be deployed!
 
 ---
 
-## Why
+### Why?
 
-This repository was created when repeated common styled components were being developed between 2 sites: tradetrust.io and creator.tradetrust.io. Hence, the decision is to host any common ui components that are shared between the 2 sites here. This ensures DRY and design consistency between both sites.
+This repository was created when repeated common styled components were being developed between 2 sites: tradetrust.io and creator.tradetrust.io.
 
-## How is it determined what goes here?
+Hence, the decision is to host any common ui components that are shared between the 2 sites here. This ensures DRY and design consistency between both sites.
 
-As of now, any potential common components that are used between tradetrust.io and creator.tradetrust.io will be developed here.
+### How is it determined what goes here?
 
-## How do I make use of this to kick start any TradeTrust ideas I have?
+As of now, any potential common components that are used between tradetrust.io and creator.tradetrust.io will be developed here. This repository is always on the work, do look out for any updates that happen along the way : )
 
-Refer to [styles](#Styles) section on how.
-
-## What should I take note of if I want to use this?
-
-This repository is always on the work, do look out for any updates that happen along the way : )
-
-## What's available?
+### What's available?
 
 Checkout the [storybook](https://ui.tradetrust.io) documentation for more information.
 
-## Styles
+### Styles management
 
+- The components here are built with Tailwind css.
 - Note that exported components are bare without styles.
-- It is expected for external application(s) to setup their own tailwind config, using the exported tailwind config from `/build` folder. It may look something like this: `const commonUiConfig = require("@govtechsg/tradetrust-ui-components/build/tailwind")`, then merge it with your local config if there is any.
+- It is expected for external application(s) to setup their own tailwind config, using the exported tailwind config from `/build` folder. It may look something like this:
+  ```
+  const commonUiConfig = require("@govtechsg/tradetrust-ui-components/build/tailwind")
+  ```
+  Thereafter, do a deep merge with your local tailwind config if there is any.
 - Do include `"./node_modules/@govtechsg/tradetrust-ui-components/src/**/*.tsx",` in tailwind config's purge content option, so that the classes will be retained after purged.
-- Otherwise, can use the stylesheet in `/build/styles.css` directly.
+- Otherwise, can use the stylesheet in `/build/styles.css` directly. Be careful of any conflicting css class names that your application may have.
