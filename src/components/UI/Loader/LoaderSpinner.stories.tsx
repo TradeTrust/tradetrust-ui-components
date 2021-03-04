@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
-import { Loader, LoaderSpinner } from "./Loader";
+import { LoaderSpinner } from "./LoaderSpinner";
 
 export default {
   title: "UI/Loader",
-  component: Loader,
+  component: LoaderSpinner,
   parameters: {
     componentSubtitle: "Types of loaders, with custom parameters.",
   },

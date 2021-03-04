@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { FunctionComponent, ReactNode } from "react";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
-import { mixin } from "../../../../styles";
+import { fontSize } from "../../../../common/styles/shared";
 import { Button, LinkButton } from "../../Button";
 import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
@@ -107,7 +107,7 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
   height: auto;
 
   .overlay-title {
-    ${mixin.fontSize(24)};
+    ${fontSize(24)};
   }
 
   .message {

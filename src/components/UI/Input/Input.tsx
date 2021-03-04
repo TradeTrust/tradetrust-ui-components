@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import tw from "twin.macro";
-import { mixin } from "../../../styles";
+import { StyledInput } from "../../../common/styles/Input";
 export interface InputProps {
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -34,7 +34,7 @@ export const InputDefault = styled(Input)`
   }
 
   input {
-    ${mixin.baseStyleInput()};
+    ${StyledInput()};
     margin-bottom: 0;
   }
 
@@ -48,7 +48,7 @@ interface EditableAssetTitleProps {
 }
 
 export const InputEditableAssetTitle = styled.input`
-  ${mixin.baseStyleInput()};
+  ${StyledInput()};
   margin-bottom: 0;
   width: 100%;
   min-height: 40px;

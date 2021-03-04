@@ -10,7 +10,7 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from "reac
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import { StyledTable } from "../../styles/shared/Table";
+import { StyledTable } from "../../common/styles/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
