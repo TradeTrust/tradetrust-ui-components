@@ -1,6 +1,7 @@
 export * from "./common/context/OverlayContext";
 export * from "./components/AddressBook";
 export * from "./components/AddressResolver";
+export * from "./components/ErrorPage";
 export * from "./components/NetworkBar";
 export * from "./components/UI/Button";
 export * from "./components/UI/Dropdown";
