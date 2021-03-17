@@ -28,11 +28,12 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|jp2|webp)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-        },
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+          },
+        ],
       },
     ],
   },

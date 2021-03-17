@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 // import { Link } from "react-router-dom";
-import errorPage from "../../../public/images/errorPage/error.png";
+import errorPage from "./error.png";
 
 export interface ErrorPageProps {
   title: string;
@@ -11,7 +11,7 @@ export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ title, descriptio
   return (
     <div className="container flex flex-col items-center h-full mt-12 pt-4">
       <div>
-        <img className="mx-auto" src={errorPage} alt="error_img" style={{ height: "15vh" }} />
+        <img className="mx-auto" src={errorPage} alt="error icon" style={{ height: "15vh" }} />
       </div>
       <h2 className="text-orange uppercase pt-5 pb-2 text-3xl md:text-4xl lg:text-5xl font-semibold">{title}</h2>
       <p className="text-black pb-2 text-base md:text-lg lg:text-2xl">{description}</p>
