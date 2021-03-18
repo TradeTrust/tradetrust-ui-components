@@ -1,6 +1,4 @@
-import { createBrowserHistory } from "history";
 import React, { FunctionComponent } from "react";
-import { Router } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
 
 export default {
@@ -11,12 +9,15 @@ export default {
   },
 };
 
-const history = createBrowserHistory();
-
 export const Default: FunctionComponent = () => {
   return (
-    <Router history={history}>
-      <ErrorPage title="ERROR" description="Something went wrong" />
-    </Router>
+    <ErrorPage title="ERROR" description="Something went wrong">
+      <a
+        className="mt-4 inline-block px-8 py-4 bg-navy hover:bg-orange text-white hover:text-white border-none rounded-full font-semibold uppercase no-underline transition duration-300 ease-out text-sm"
+        href="/"
+      >
+        Go back to home
+      </a>
+    </ErrorPage>
   );
 };

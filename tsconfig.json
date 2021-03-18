@@ -15,5 +15,5 @@
     "allowJs": true,
     "types": ["jest", "@emotion/core", "node", "@types/testing-library__jest-dom"]
   },
-  "include": ["src", "index.d.ts"]
+  "include": ["src"]
 }
