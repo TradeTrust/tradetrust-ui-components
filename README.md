@@ -6,7 +6,7 @@
 npm i --save @govtechsg/tradetrust-ui-component
 ```
 
-## Available Scripts
+## Development
 
 In the project directory, you can run:
 
