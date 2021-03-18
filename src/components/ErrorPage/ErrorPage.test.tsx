@@ -7,6 +7,6 @@ describe("errorPage", () => {
     render(<ErrorPage title="Error" description="Something went wrong" />);
 
     expect(screen.getAllByText("Error")).toHaveLength(1);
-    expect(screen.getAllByText("Something went wrong!")).toHaveLength(1);
+    expect(screen.getAllByText("Something went wrong")).toHaveLength(1);
   });
 });
