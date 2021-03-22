@@ -34,7 +34,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
               {isSuccess !== undefined && (
                 <div className="col-auto mr-1">
                   <div className="title-icon">
-                    {isSuccess ? <CheckCircle className="text-teal" /> : <XCircle className="text-red" />}
+                    {isSuccess ? <CheckCircle className="text-teal-500" /> : <XCircle className="text-red-500" />}
                   </div>
                 </div>
               )}

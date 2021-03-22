@@ -33,7 +33,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           onClick={goPreviousPage}
           disable={currentPage === 1}
           data-testid="page-prev"
-          className="hover:bg-grey-100 hover:text-grey"
+          className="hover:bg-grey-100 hover:text-grey-500"
         >
           <ChevronLeft size={14} />
         </PaginationBox>
@@ -44,7 +44,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             setCurrentPage(1);
           }}
           data-testid={`page-number-${1}`}
-          className="hover:bg-grey-100 hover:text-grey"
+          className="hover:bg-grey-100 hover:text-grey-500"
         >
           1
         </PaginationBox>
@@ -69,7 +69,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
                 setCurrentPage(pageNumber);
               }}
               data-testid={`page-number-${pageNumber}`}
-              className="hover:bg-grey-100 hover:text-grey"
+              className="hover:bg-grey-100 hover:text-grey-500"
             >
               {pageNumber}
             </PaginationBox>
@@ -88,7 +88,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               setCurrentPage(totalNoOfPages);
             }}
             data-testid={`page-number-${totalNoOfPages}`}
-            className="hover:bg-grey-100 hover:text-grey"
+            className="hover:bg-grey-100 hover:text-grey-500"
           >
             {totalNoOfPages}
           </PaginationBox>
@@ -97,7 +97,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           onClick={goNextPage}
           disable={currentPage >= totalNoOfPages}
           data-testid="page-next"
-          className="hover:bg-grey-100 hover:text-grey"
+          className="hover:bg-grey-100 hover:text-grey-500"
         >
           <ChevronRight size={14} />
         </PaginationBox>

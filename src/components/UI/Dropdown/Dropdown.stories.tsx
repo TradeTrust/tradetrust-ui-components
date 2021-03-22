@@ -41,7 +41,7 @@ export const ButtonDefault = (): ReactElement => {
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
       alignRight
-      className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-600"
+      className="rounded px-3 py-2 font-bold text-white bg-orange-500 hover:bg-orange-600"
     >
       <DropdownItem className="active:bg-orange-600 active:text-white" onClick={() => console.log("local clicked!!")}>
         Transfer holdership
@@ -64,7 +64,7 @@ export const ButtonDefault = (): ReactElement => {
 
 export const NavBarDefault = (): ReactElement => {
   return (
-    <Dropdown dropdownButtonText="Info" className="font-bold text-greyblue hover:none">
+    <Dropdown dropdownButtonText="Info" className="font-bold text-greyblue-500 hover:none">
       <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
       <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
     </Dropdown>

@@ -25,11 +25,11 @@ export const Input: FunctionComponent<InputProps> = ({ className, errorMessage, 
 export const InputDefault = styled(Input)`
   &.is-error {
     input {
-      ${tw`border border-solid border-red`}
+      ${tw`border border-solid border-red-500`}
     }
 
     .message {
-      ${tw`text-red`}
+      ${tw`text-red-500`}
     }
   }
 
@@ -52,7 +52,7 @@ export const InputEditableAssetTitle = styled.input`
   margin-bottom: 0;
   width: 100%;
   min-height: 40px;
-  ${({ hasError }: EditableAssetTitleProps) => hasError && tw`border border-solid border-red`};
+  ${({ hasError }: EditableAssetTitleProps) => hasError && tw`border border-solid border-red-500`};
 `;
 
 export const InputEditableWrapper = styled.div`
@@ -64,7 +64,7 @@ interface InputErrorProps {
 }
 
 export const InputError: FunctionComponent<InputErrorProps> = ({ children, ...props }: InputErrorProps) => (
-  <div className="w-full text-sm mt-2 text-red" {...props}>
+  <div className="w-full text-sm mt-2 text-red-500" {...props}>
     {children}
   </div>
 );

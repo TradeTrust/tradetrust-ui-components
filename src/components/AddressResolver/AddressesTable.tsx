@@ -4,9 +4,9 @@ import React, { FunctionComponent } from "react";
 import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { fontSize } from "../../common/styles/shared";
+import { StyledTable } from "../../common/styles/Table";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { EndpointEntry } from "./EndpointEntry";
-import { StyledTable } from "../../common/styles/Table";
 
 export interface AddressesTableProps {
   className?: string;
@@ -19,7 +19,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
     ${tw`w-8`}
 
     .fas {
-      ${tw`block text-grey cursor-pointer transition duration-300 ease-out-cubic`}
+      ${tw`block text-grey-500 cursor-pointer transition duration-300 ease-out-cubic`}
       line-height: 0.5;
       ${fontSize(20)};
 
@@ -60,7 +60,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
           polyline,
           path,
           line {
-            ${tw`text-teal`}
+            ${tw`text-teal-500`}
           }
 
           &:hover {
@@ -106,7 +106,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
         path,
         line {
           transition: color 0.3s ease-out;
-          ${tw`text-grey`}
+          ${tw`text-grey-500`}
         }
 
         &:first-of-type {

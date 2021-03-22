@@ -22,7 +22,7 @@ export const DeleteResolverConfirmation = styled(
         <div className="flex mx-0">
           <div className="col-auto ml-auto mr-2">
             <Button
-              className="bg-white text-grey hover:bg-grey-100"
+              className="bg-white text-grey-500 hover:bg-grey-100"
               onClick={() => {
                 setOverlayVisible(false);
                 showOverlay(undefined);
@@ -32,7 +32,7 @@ export const DeleteResolverConfirmation = styled(
             </Button>
           </div>
           <div className="col-auto">
-            <Button className="bg-red text-white hover:bg-red-400" onClick={deleteAddress}>
+            <Button className="bg-red-500 text-white hover:bg-red-400" onClick={deleteAddress}>
               Delete
             </Button>
           </div>

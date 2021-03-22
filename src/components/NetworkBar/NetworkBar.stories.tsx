@@ -21,10 +21,10 @@ export const Default = (): ReactElement => {
       </NetworkBar>
       {/* To Simulate change of config file or network by pressing the buttons */}
       <div className="mt-6 flex justify-around max-w-md mx-auto">
-        <Button className="bg-green text-white hover:bg-green-600" onClick={() => setNetwork("ropsten")}>
+        <Button className="bg-green-500 text-white hover:bg-green-600" onClick={() => setNetwork("ropsten")}>
           Change to Ropsten
         </Button>
-        <Button className="bg-orange text-white hover:bg-orange-600" onClick={() => setNetwork("rinkeby")}>
+        <Button className="bg-orange-500 text-white hover:bg-orange-600" onClick={() => setNetwork("rinkeby")}>
           Change to Rinkeby
         </Button>
       </div>

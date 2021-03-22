@@ -214,14 +214,14 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
                   onChange={onSearchTermChanged}
                   disabled={!isLocal && !hasEntityLookupPath}
                 />
-                <Search className="text-grey" />
+                <Search className="text-grey-500" />
               </div>
             </div>
           </div>
           <div className="flex mx-0">
             <div className="w-auto mb-2">
               <LinkButton
-                className="bg-white text-blue hover:bg-grey-100"
+                className="bg-white text-blue-500 hover:bg-grey-100"
                 href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
                 download="template.csv"
               >

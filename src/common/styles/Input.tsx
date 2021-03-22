@@ -14,7 +14,7 @@ export const StyledInput = (): SerializedStyles => {
     }
 
     &::placeholder {
-      ${tw`italic text-grey`}
+      ${tw`italic text-grey-500`}
       ${fontSize(16)}
     }
   `;

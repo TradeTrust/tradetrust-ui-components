@@ -21,17 +21,17 @@ export const OverlayContentBaseStyle = (): SerializedStyles => {
         ${tw`mr-2`}
 
         .x-circle {
-          ${tw`text-red`}
+          ${tw`text-red-500`}
         }
 
         .check-circle {
-          ${tw`text-teal`}
+          ${tw`text-teal-500`}
         }
       }
     }
 
     .overlay-title {
-      ${tw`text-grey mb-0 flex-grow`}
+      ${tw`text-grey-500 mb-0 flex-grow`}
     }
 
     .overlay-body {
