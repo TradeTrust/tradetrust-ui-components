@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
+import React, { FunctionComponent } from "react";
 
 export interface LoaderProps {
   className?: string;
@@ -19,7 +19,7 @@ const Loader: FunctionComponent<LoaderProps> = ({
 }) => {
   return (
     <div
-      className={`spinning ${className}`}
+      className={`animate-spin ${className}`}
       {...props}
       style={{
         width: width,

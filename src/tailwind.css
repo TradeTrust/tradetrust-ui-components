@@ -23,10 +23,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  .spinning {
-    animation: spinning 0.9s linear infinite;
-  }
-
   .aspect-16-9 {
     position: relative;
     width: 100%;
@@ -45,14 +41,5 @@
     content: "";
     display: table;
     clear: both;
-  }
-}
-
-@keyframes spinning {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
