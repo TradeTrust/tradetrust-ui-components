@@ -23,6 +23,13 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      // https://github.com/storybookjs/storybook/issues/10179#issuecomment-602390300
+      {
+        test: /\.(stories|story)\.[tj]sx?$/,
+        loader: require.resolve("@storybook/source-loader"),
+        exclude: [/node_modules/],
+        enforce: "pre",
+      },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
