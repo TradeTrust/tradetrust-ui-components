@@ -3,7 +3,7 @@ import React, { FunctionComponent, useState } from "react";
 import { Edit, Save, Trash2 } from "react-feather";
 import isEmpty from "validator/lib/isEmpty";
 import isURL from "validator/lib/isURL";
-import { InputDefault } from "../../UI/Input";
+import { Input } from "../../UI/Input";
 import { LoaderSpinner } from "../../UI/Loader";
 
 interface EndpointEntryProps {
@@ -154,8 +154,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       <td>{orderNumber}</td>
       <td>
         {isEditable ? (
-          <InputDefault
-            className="mb-0 w-full"
+          <Input
             placeholder="Name"
             value={endpointName}
             onChange={onEndpointNameChanged}
@@ -167,8 +166,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </td>
       <td>
         {isEditable ? (
-          <InputDefault
-            className="mb-0 w-full"
+          <Input
             placeholder="Endpoint"
             value={endpointApi}
             onChange={onEndpointApiChanged}
@@ -180,8 +178,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </td>
       <td>
         {isEditable ? (
-          <InputDefault
-            className="mb-0 w-full"
+          <Input
             placeholder="API Header"
             value={endpointApiHeader}
             onChange={onEndpointApiHeaderChanged}
@@ -193,8 +190,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </td>
       <td>
         {isEditable ? (
-          <InputDefault
-            className="mb-0 w-full"
+          <Input
             placeholder="API Key"
             value={endpointApiKey}
             onChange={onEndpointApiKeyChanged}
