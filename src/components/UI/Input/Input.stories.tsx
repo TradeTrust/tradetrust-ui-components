@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Input, InputError, InputDefault, InputEditableAssetTitle } from "./Input";
+import { Input } from "./Input";
 
 export default {
   title: "UI/Input",
@@ -10,21 +10,13 @@ export default {
 };
 
 export const Default = (): ReactElement => {
-  return <InputDefault type="text" name="test" placeholder="Placeholder" />;
+  return <Input type="text" placeholder="Placeholder" hasError={false} />;
 };
 
-export const Error = (): ReactElement => {
-  return <InputDefault type="text" name="test" placeholder="Placeholder" errorMessage="Some error occurred." />;
+export const ErrorNoMessage = (): ReactElement => {
+  return <Input type="text" placeholder="Placeholder" hasError={true} />;
 };
 
-export const EditableAssetTitle = (): ReactElement => {
-  return <InputEditableAssetTitle hasError={false} />;
-};
-
-export const EditableAssetTitleError = (): ReactElement => {
-  return <InputEditableAssetTitle hasError={true} />;
-};
-
-export const TextError = (): ReactElement => {
-  return <InputError>Some Error Occurred</InputError>;
+export const ErrorWithMessage = (): ReactElement => {
+  return <Input type="text" placeholder="Placeholder" hasError={true} errorMessage="Some error occurred." />;
 };

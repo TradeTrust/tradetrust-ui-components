@@ -1,12 +1,5 @@
 import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
-
-export interface ButtonProps {
-  className?: string;
-  children: React.ReactNode;
-  disabled?: boolean;
-  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
-}
+import React, { FunctionComponent, AnchorHTMLAttributes, ButtonHTMLAttributes, LabelHTMLAttributes } from "react";
 
 const ButtonWithSvg = styled.button`
   width: 40px;
@@ -21,7 +14,12 @@ const ButtonWithSvg = styled.button`
 
 const ButtonClasses = `transition-colors duration-200 ease-out cursor-pointer font-bold p-2 rounded shadow-md border border-transparent`;
 
-export const Button: FunctionComponent<ButtonProps> = ({ className, children, disabled, ...props }) => {
+export const Button: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  className,
+  children,
+  disabled,
+  ...props
+}) => {
   return (
     <button
       className={`${ButtonClasses} ${className} ${
@@ -36,7 +34,12 @@ export const Button: FunctionComponent<ButtonProps> = ({ className, children, di
   );
 };
 
-export const ButtonIcon: FunctionComponent<ButtonProps> = ({ className, children, disabled, ...props }) => {
+export const ButtonIcon: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  className,
+  children,
+  disabled,
+  ...props
+}) => {
   return (
     <ButtonWithSvg
       className={`${ButtonClasses} ${className} ${
@@ -50,15 +53,12 @@ export const ButtonIcon: FunctionComponent<ButtonProps> = ({ className, children
     </ButtonWithSvg>
   );
 };
-interface LinkButtonProps {
-  className?: string;
-  children: React.ReactNode;
-  href: string;
-  target?: string;
-  download?: string;
-}
 
-export const LinkButton: FunctionComponent<LinkButtonProps> = ({ className, children, ...props }) => {
+export const LinkButton: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+  className,
+  children,
+  ...props
+}) => {
   return (
     <a className={`block ${ButtonClasses} ${className}`} rel="noopener noreferrer" {...props}>
       {children}
@@ -66,13 +66,11 @@ export const LinkButton: FunctionComponent<LinkButtonProps> = ({ className, chil
   );
 };
 
-export interface LabelButtonProps {
-  className?: string;
-  children: React.ReactNode;
-  htmlFor: string;
-}
-
-export const LabelButton: FunctionComponent<LabelButtonProps> = ({ className, children, ...props }) => {
+export const LabelButton: FunctionComponent<LabelHTMLAttributes<HTMLLabelElement>> = ({
+  className,
+  children,
+  ...props
+}) => {
   return (
     <label className={`block ${ButtonClasses} ${className}`} {...props}>
       {children}

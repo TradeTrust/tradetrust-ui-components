@@ -1,70 +1,32 @@
 import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, InputHTMLAttributes } from "react";
 import tw from "twin.macro";
-import { StyledInput } from "../../../common/styles/Input";
-export interface InputProps {
-  className?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  name?: string;
-  type?: string;
-  value?: string | number | string[];
-  placeholder?: string;
-  required?: boolean;
+import { fontSize } from "./../../../common/styles/shared";
+
+const InputStyled = styled.input`
+  min-height: 40px;
+
+  &::placeholder {
+    ${tw`italic text-grey`}
+    ${fontSize(16)}
+  }
+`;
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean;
   errorMessage?: string;
 }
 
-export const Input: FunctionComponent<InputProps> = ({ className, errorMessage, ...props }) => {
+export const Input: FunctionComponent<InputProps> = ({ className, hasError, errorMessage, ...props }) => {
   return (
-    <div className={`${className} ${errorMessage ? "is-error" : ""}`}>
-      <input type="text" {...props} />
-      {errorMessage && <p className="message">{errorMessage}</p>}
-    </div>
+    <>
+      <InputStyled
+        className={`w-full border border-solid px-2 py-1 mb-0 ${className ? className : ""} ${
+          hasError || errorMessage ? "border-red" : "border-grey-300"
+        }`}
+        {...props}
+      />
+      {errorMessage && <p className="text-red my-2">{errorMessage}</p>}
+    </>
   );
 };
-
-export const InputDefault = styled(Input)`
-  &.is-error {
-    input {
-      ${tw`border border-solid border-red`}
-    }
-
-    .message {
-      ${tw`text-red`}
-    }
-  }
-
-  input {
-    ${StyledInput()};
-    margin-bottom: 0;
-  }
-
-  .message {
-    margin: 8px 0;
-  }
-`;
-
-interface EditableAssetTitleProps {
-  hasError?: boolean;
-}
-
-export const InputEditableAssetTitle = styled.input`
-  ${StyledInput()};
-  margin-bottom: 0;
-  width: 100%;
-  min-height: 40px;
-  ${({ hasError }: EditableAssetTitleProps) => hasError && tw`border border-solid border-red`};
-`;
-
-export const InputEditableWrapper = styled.div`
-  width: 288px;
-`;
-
-interface InputErrorProps {
-  children: React.ReactNode;
-}
-
-export const InputError: FunctionComponent<InputErrorProps> = ({ children, ...props }: InputErrorProps) => (
-  <div className="w-full text-sm mt-2 text-red" {...props}>
-    {children}
-  </div>
-);
