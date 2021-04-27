@@ -15,7 +15,6 @@ import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
 import { Pagination } from "../UI/Pagination";
-import { OverlayContentBaseStyle } from "./../UI/Overlay";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
 import { CsvUploadButton } from "./CsvUploadButton";
@@ -44,6 +43,8 @@ const StyledTableAddressBook = styled(StyledTable)`
   }
 
   .table-tbody {
+    height: 360px;
+
     tr {
       ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-grey-200`}
 
@@ -268,7 +269,11 @@ export interface OverlayAddressBookProps extends OverlayContentProps {
   onAddressSelected?: (newValue: string) => void;
 }
 
-export const OverlayAddressBook = styled(({ network, onAddressSelected, ...props }: OverlayAddressBookProps) => {
+export const OverlayAddressBook: FunctionComponent<OverlayAddressBookProps> = ({
+  network,
+  onAddressSelected,
+  ...props
+}: OverlayAddressBookProps) => {
   const { setOverlayVisible } = useOverlayContext();
 
   const onAddressSelect: onAddressSelectType = (address) => {
@@ -279,17 +284,8 @@ export const OverlayAddressBook = styled(({ network, onAddressSelected, ...props
   };
 
   return (
-    <OverlayContent data-testid="overlay-addressbook" {...props}>
+    <OverlayContent data-testid="overlay-addressbook" className="max-w-6xl" {...props} css={{ maxHeight: "600px" }}>
       <AddressBook network={network} onAddressSelect={onAddressSelect} />
     </OverlayContent>
   );
-})`
-  ${OverlayContentBaseStyle()}
-
-  max-width: 960px;
-  max-height: 600px;
-
-  .table-tbody {
-    height: 360px;
-  }
-`;
+};

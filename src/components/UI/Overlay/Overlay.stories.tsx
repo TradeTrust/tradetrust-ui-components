@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../../common/context/OverlayContext";
 import { Button } from "../Button";
-import { Overlay, OverlayUnStyled } from "./Overlay";
+import { Overlay } from "./Overlay";
 import {
   DeleteResolverConfirmation,
   DocumentTransferMessage,
@@ -36,7 +36,7 @@ const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children
 
 export default {
   title: "UI/Overlay",
-  component: OverlayUnStyled,
+  component: Overlay,
   parameters: {
     componentSubtitle:
       "Types of overlays, Textual, Video, AddressBook, Metamask messages, Document transfer messages, Address resolver messages.",

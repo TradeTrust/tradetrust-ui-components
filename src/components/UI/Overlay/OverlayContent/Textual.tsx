@@ -1,10 +1,10 @@
 import React from "react";
-import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
-import styled from "@emotion/styled";
 
-export const Textual = styled(({ children, ...props }: OverlayContentProps) => {
-  return <OverlayContent {...props}>{children}</OverlayContent>;
-})`
-  ${OverlayContentBaseStyle()}
-`;
+export const Textual: React.FunctionComponent<OverlayContentProps> = ({ children, ...props }) => {
+  return (
+    <OverlayContent className="max-w-6xl" {...props}>
+      {children}
+    </OverlayContent>
+  );
+};
