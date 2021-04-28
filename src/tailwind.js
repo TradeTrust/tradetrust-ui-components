@@ -12,10 +12,6 @@ module.exports = {
         0: "0",
         xs: "18rem",
       },
-      maxHeight: {
-        0: "0",
-        full: "1000px",
-      },
       opacity: {
         0: "0",
         10: ".1",

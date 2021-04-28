@@ -94,6 +94,14 @@ const NavigationBarStyle = styled.nav`
   .dropdown-item {
     font-size: 14px;
   }
+
+  .max-h-0 {
+    max-height: 0px;
+  }
+
+  .max-h-full {
+    max-height: 100vh;
+  }
 `;
 
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {

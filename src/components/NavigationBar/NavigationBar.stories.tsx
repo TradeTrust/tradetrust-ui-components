@@ -16,8 +16,32 @@ export default {
     },
   },
 };
-
 const navItems: NavigationItem[] = [
+  {
+    schema: NavigationItemType.NavigationLink,
+    id: "demo",
+    label: "Demo",
+    path: "/demo",
+    position: "left",
+  },
+  {
+    schema: NavigationItemType.DropDownList,
+    id: "resources",
+    label: "Resources",
+    position: "left",
+    dropdownItems: [
+      {
+        id: "learn",
+        label: "Learn",
+        path: "/learn",
+      },
+      {
+        id: "faq",
+        label: "FAQ",
+        path: "/faq",
+      },
+    ],
+  },
   {
     schema: NavigationItemType.DropDownList,
     id: "news_events",
@@ -53,6 +77,14 @@ const navItems: NavigationItem[] = [
   },
   {
     schema: NavigationItemType.LabelButton,
+    id: "create-documents",
+    label: "Create Doc",
+    path: "https://creator.tradetrust.io/",
+    position: "right",
+    className: "create-btn",
+  },
+  {
+    schema: NavigationItemType.LabelButton,
     id: "verify",
     label: "Verify Doc",
     path: "/verify",
@@ -60,6 +92,7 @@ const navItems: NavigationItem[] = [
     className: "verify-btn",
   },
 ];
+
 export const Default: FunctionComponent = () => {
   return <NavigationBar navigationItems={navItems} />;
 };

@@ -6,7 +6,7 @@ import { NavigationItemType, NavigationItem, NavigationBar } from "./NavigationB
 const navItems: NavigationItem[] = [
   {
     schema: NavigationItemType.DropDownList,
-    id: "news_events",
+    id: "news-events",
     label: "News & Events",
     position: "left",
     dropdownItems: [
