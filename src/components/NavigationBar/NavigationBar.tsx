@@ -70,29 +70,24 @@ const NavigationBarStyle = styled.nav`
       width: 22px;
       height: 2px;
       border-radius: 1px;
-      transition: all 0.2s;
-    }
-
-    .icon-bar + .icon-bar {
-      margin-top: 10px;
+      transition: transform 0.2s ease-out;
+      position: absolute;
     }
 
     .top-bar {
-      transform: rotate(45deg);
-      transform-origin: 10% 10%;
+      transform: translateY(0) rotate(45deg);
     }
 
     .bottom-bar {
-      transform: rotate(-45deg);
-      transform-origin: 10% 90%;
+      transform: translateY(0) rotate(-45deg);
     }
 
     &.collapsed .top-bar {
-      transform: rotate(0);
+      transform: translateY(-4px) rotate(0);
     }
 
     &.collapsed .bottom-bar {
-      transform: rotate(0);
+      transform: translateY(4px) rotate(0);
     }
   }
 
