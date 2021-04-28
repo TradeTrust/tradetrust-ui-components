@@ -37,6 +37,9 @@ module.exports = {
       transitionTimingFunction: {
         "out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
       },
+      transitionProperty: {
+        height: "max-height",
+      },
       colors: {
         inherit: {
           default: "inherit",
@@ -105,6 +108,9 @@ module.exports = {
           default: "#ffe600",
           600: "#ffbf00",
         },
+      },
+      boxShadow: {
+        dropdown: `0px 4px 20px rgba(0, 0, 0, 0.15)`,
       },
     },
   },
