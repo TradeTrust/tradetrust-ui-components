@@ -12,6 +12,10 @@ module.exports = {
         0: "0",
         xs: "18rem",
       },
+      maxHeight: {
+        0: "0",
+        full: "1000px",
+      },
       opacity: {
         0: "0",
         10: ".1",
@@ -36,6 +40,9 @@ module.exports = {
       },
       transitionTimingFunction: {
         "out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
+      },
+      transitionProperty: {
+        height: "max-height",
       },
       colors: {
         inherit: {
@@ -105,6 +112,9 @@ module.exports = {
           default: "#ffe600",
           600: "#ffbf00",
         },
+      },
+      boxShadow: {
+        dropdown: `0px 4px 20px rgba(0, 0, 0, 0.15)`,
       },
     },
   },

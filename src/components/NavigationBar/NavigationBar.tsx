@@ -1,43 +1,45 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
-import { NavHashLink } from "react-router-hash-link";
+import { IconItem } from "@storybook/components";
+import React, { useState, FunctionComponent } from "react";
+import { Icon } from "react-feather";
 
-export enum NavItemPropsType {
-  NavLinks = "NavLinks",
+export enum NavigationItemType {
+  NavigationLink = "NavigationLink",
   DropDownList = "DropDownList",
-  StaticButton = "StaticButton",
+  LabelButton = "LabelButton",
   IconButton = "IconButton",
 }
 
-interface NavLinks {
-  schema: NavItemPropsType.NavLinks;
+interface NavigationLink {
+  schema: NavigationItemType.NavigationLink;
   id: string;
   label: string;
   className?: string;
   path: string;
   position: "left" | "center" | "right";
-  type: "internal" | "external";
 }
 
-interface DropDownList extends Omit<NavLinks, "schema"> {
-  schema: NavItemPropsType.DropDownList;
+interface DropDownList extends Omit<NavigationLink, "schema" | "path"> {
+  schema: NavigationItemType.DropDownList;
   dropdownItems: { id: string; label: string; path: string }[];
 }
 
-interface StaticButton extends Omit<NavLinks, "schema"> {
-  schema: NavItemPropsType.StaticButton;
-  path: string;
+interface LabelButton extends Omit<NavigationLink, "schema"> {
+  schema: NavigationItemType.LabelButton;
 }
 
-interface IconButton extends Omit<NavLinks, "schema"> {
-  schema: NavItemPropsType.IconButton;
-  path: string;
-  icon: string;
+interface IconButton extends Omit<NavigationLink, "schema"> {
+  schema: NavigationItemType.IconButton;
+  icon: Icon;
 }
 
-export type NavItemsProps = NavLinks | DropDownList | StaticButton | IconButton;
+export type NavigationItem = NavigationLink | DropDownList | LabelButton | IconButton;
 
-export const NavBarStyle = styled.nav`
+export interface NavigationBarProps {
+  navigationItems: NavigationItem[];
+}
+
+const NavigationBarStyle = styled.nav`
   button {
     color: #6e787f;
     font-size: 16px;
@@ -98,32 +100,12 @@ export const NavBarStyle = styled.nav`
   .dropdown-item {
     font-size: 14px;
   }
-
-  .create-btn {
-    font-size: 16px;
-    color: #3b8cc5;
-    background: #ffffff;
-    border: 1px solid #e7eaec;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-  }
-
-  .verify-btn {
-    font-size: 16px;
-    color: #ffffff;
-    background: #3b8cc5;
-    border: 2px solid #3b8cc5;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-  }
 `;
 
-export const NavigationBar: React.FunctionComponent<NavItemsProps[]> = (navItems) => {
+export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   const [isOn, setIsOn] = useState(false);
   return (
-    <NavBarStyle>
+    <NavigationBarStyle>
       <div className={`container py-2`}>
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
@@ -150,11 +132,24 @@ export const NavigationBar: React.FunctionComponent<NavItemsProps[]> = (navItems
             </div>
             <div className="hidden lg:block md:ml-12">
               <div className="flex h-full items-center">
-                {navItems.map((item, index) => {
+                {props.navigationItems.map((item, index) => {
+                  if (item.position == "left") {
+                    return (
+                      <div key={index} className="text-lg w-auto lg:ml-6">
+                        <NavigationBarItem item={item} onClick={setIsOn} />
+                      </div>
+                    );
+                  }
+                  return "";
+                })}
+              </div>
+
+              <div className="flex h-full mx-auto items-center">
+                {props.navigationItems.map((item, index) => {
                   if (item.position == "center") {
                     return (
                       <div key={index} className="text-lg w-auto lg:ml-6">
-                        {NavBarItem(item, setIsOn)}
+                        <NavigationBarItem item={item} onClick={setIsOn} />
                       </div>
                     );
                   }
@@ -164,11 +159,11 @@ export const NavigationBar: React.FunctionComponent<NavItemsProps[]> = (navItems
             </div>
             <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
               <div className="flex h-full items-center">
-                {navItems.map((item, index) => {
+                {props.navigationItems.map((item, index) => {
                   if (item.position == "right") {
                     return (
                       <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
-                        {NavBarItem(item, setIsOn)}
+                        <NavigationBarItem item={item} onClick={setIsOn} />
                       </div>
                     );
                   }
@@ -185,40 +180,93 @@ export const NavigationBar: React.FunctionComponent<NavItemsProps[]> = (navItems
             isOn ? "max-h-full" : ""
           }`}
         >
-          {navItems.map((item, index) => {
+          {props.navigationItems.map((item, index) => {
             if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
               return (
                 <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
-                  {NavBarItem(item, setIsOn)}
+                  <NavigationBarItem item={item} onClick={setIsOn} />
                 </div>
               );
             }
             return (
               <div key={index} className="text-lg font-normal w-full py-4">
-                {NavBarItem(item, setIsOn)}
+                <NavigationBarItem item={item} onClick={setIsOn} />
               </div>
             );
           })}
         </div>
       </div>
-    </NavBarStyle>
+    </NavigationBarStyle>
   );
 };
 
-export const NavBarItem = (item: NavItemsProps, offNavBar: (isOn: boolean) => void): React.ReactNode => {
+const NavigationBarItem: FunctionComponent<{ item: NavigationItem; onClick: (isOn: boolean) => void }> = ({
+  item,
+  onClick,
+}) => {
   switch (item.schema) {
-    case NavItemPropsType.DropDownList:
-      return DropdownList(item, offNavBar);
-    case NavItemPropsType.StaticButton:
-      return StaticButton(item, offNavBar);
-    case NavItemPropsType.IconButton:
-      return IconButton(item, offNavBar);
+    case NavigationItemType.IconButton:
+      return <IconButton item={item} onClick={onClick} />;
+    case NavigationItemType.LabelButton:
+      return <LabelButton item={item} onClick={onClick} />;
+    case NavigationItemType.DropDownList:
+      return <DropDownList item={item} onClick={onClick} />;
     default:
-      return NavLink(item, offNavBar);
+      return <NavigationLink item={item} onClick={onClick} />;
   }
 };
 
-export const DropdownList = (item: DropDownList, offNavBar: (isOn: boolean) => void): React.ReactNode => {
+const NavigationLink: FunctionComponent<{ item: NavigationLink; onClick: (isOn: boolean) => void }> = ({
+  item,
+  onClick,
+}) => {
+  return (
+    <a
+      className={`font-medium ${item.className}`}
+      href={item.path}
+      onClick={() => {
+        onClick(false);
+      }}
+    >
+      {item.label}
+    </a>
+  );
+};
+
+const LabelButton: FunctionComponent<{ item: LabelButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
+  return (
+    <a href={item.path} className="w-full">
+      <button
+        className={`font-bold py-2 px-3 ${item.className}`}
+        onClick={() => {
+          onClick(false);
+        }}
+      >
+        {item.label}
+      </button>
+    </a>
+  );
+};
+
+const IconButton: FunctionComponent<{ item: IconButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
+  const Icon = item.icon;
+  return (
+    <a
+      className={`font-medium ${item.className}`}
+      href={item.path}
+      onClick={() => {
+        onClick(false);
+      }}
+    >
+      <Icon />
+    </a>
+  );
+};
+
+const DropDownList: FunctionComponent<{ item: DropDownList; onClick: (isOn: boolean) => void }> = ({
+  item,
+  onClick,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative">
@@ -230,6 +278,7 @@ export const DropdownList = (item: DropDownList, offNavBar: (isOn: boolean) => v
         onClick={() => {
           setIsOpen(!isOpen);
         }}
+        id={item.id + "-button"}
       >
         {item.label}
         <svg
@@ -261,29 +310,21 @@ export const DropdownList = (item: DropDownList, offNavBar: (isOn: boolean) => v
             className={`mt-2 w-full bg-white focus:outline-none rounded-md z-30 lg:origin-top-right lg:absolute lg:right-0 lg:mt-2 lg:shadow-dropdown lg:ring-1 lg:ring-black lg:ring-opacity-5`}
           >
             <div className="py-1" role="none">
-              {item.dropdownItems.map((dropdownItem: any, index: number) => {
-                if ((item.type = "internal")) {
-                  return (
-                    <NavHashLink
-                      to={dropdownItem.path}
-                      key={index}
-                      className="block px-4 py-2 font-medium dropdown-item"
-                      role="menuitem"
-                      onClick={() => {
-                        offNavBar(false);
-                        setIsOpen(false);
-                      }}
-                    >
-                      {dropdownItem.label}
-                    </NavHashLink>
-                  );
-                } else {
-                  return (
-                    <a href={item.path} className="block px-4 py-2 font-medium dropdown-item" role="menuitem">
-                      {dropdownItem.label}
-                    </a>
-                  );
-                }
+              {item.dropdownItems?.map((dropdownItem: any, index: number) => {
+                return (
+                  <a
+                    key={index}
+                    role="menuitem"
+                    className="block px-4 py-2 font-medium dropdown-item"
+                    href={dropdownItem.path}
+                    onClick={() => {
+                      onClick(false);
+                      setIsOpen(false);
+                    }}
+                  >
+                    {dropdownItem.label}
+                  </a>
+                );
               })}
             </div>
           </div>
@@ -291,67 +332,4 @@ export const DropdownList = (item: DropDownList, offNavBar: (isOn: boolean) => v
       )}
     </div>
   );
-};
-
-export const StaticButton = (item: StaticButton, offNavBar: (isOn: boolean) => void): React.ReactNode => {
-  return (
-    <a href={item.path} className="w-full">
-      <button
-        className={`font-bold py-2 px-3 ${item.className}`}
-        onClick={() => {
-          offNavBar(false);
-        }}
-      >
-        {item.label}
-      </button>
-    </a>
-  );
-};
-
-export const IconButton = (item: IconButton, offNavBar: (isOn: boolean) => void): React.ReactNode => {
-  if ((item.type = "internal")) {
-    return (
-      <NavHashLink
-        to={item.path}
-        className={`font-medium ${item.className}`}
-        activeClassName=""
-        onClick={() => {
-          offNavBar(false);
-        }}
-        smooth
-      >
-        {item.icon}
-      </NavHashLink>
-    );
-  } else {
-    return (
-      <a href={item.path} className={`font-medium ${item.className}`}>
-        {item.icon}
-      </a>
-    );
-  }
-};
-
-export const NavLink = (item: NavLinks, offNavBar: (isOn: boolean) => void): React.ReactNode => {
-  if ((item.type = "internal")) {
-    return (
-      <NavHashLink
-        to={item.path}
-        className={`font-medium ${item.className}`}
-        activeClassName=""
-        smooth
-        onClick={() => {
-          offNavBar(false);
-        }}
-      >
-        {item.label}
-      </NavHashLink>
-    );
-  } else {
-    return (
-      <a href={item.path} className={`font-medium ${item.className}`}>
-        {item.label}
-      </a>
-    );
-  }
 };

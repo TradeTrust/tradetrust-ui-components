@@ -3,6 +3,7 @@ export * from "./components/AddressBook";
 export * from "./components/AddressResolver";
 export * from "./components/ErrorPage";
 export * from "./components/NetworkBar";
+export * from "./components/NavigationBar";
 export * from "./components/UI/Button";
 export * from "./components/UI/Dropdown";
 export * from "./components/UI/Input";
