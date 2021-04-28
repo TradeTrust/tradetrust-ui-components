@@ -29,14 +29,13 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
     <>
       {isOverlayVisible && (
         <div
-          className={`relative flex flex-col p-5 bg-white shadow overflow-auto scrolling-touch h-auto ${className}`}
+          className={`relative flex flex-col p-5 bg-white shadow-lg overflow-auto scrolling-touch h-auto ${className}`}
           {...props}
           style={{
-            zIndex: 1,
             width: "calc(100vw - (15px * 2))",
           }}
         >
-          <div className="mb-5">
+          <div className="mb-4">
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
                 <div className="col-auto mr-3">
