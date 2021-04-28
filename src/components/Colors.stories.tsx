@@ -10,7 +10,7 @@ export default {
     componentSubtitle: "Colors.",
     // https://github.com/storybookjs/storybook/issues/12111#issuecomment-679962444
     viewMode: "docs",
-    previewTabs: { "storybook/docs/panel": null, canvas: { hidden: true } },
+    previewTabs: { "storybook/docs": null, canvas: { hidden: true } },
   },
 };
 
