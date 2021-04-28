@@ -1,10 +1,6 @@
-import styled from "@emotion/styled";
 import React, { FunctionComponent, ReactNode } from "react";
-import tw from "twin.macro";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
-import { fontSize } from "../../../../common/styles/shared";
 import { Button, LinkButton } from "../../Button";
-import { OverlayContentBaseStyle } from "../Overlay";
 import { OverlayContent, OverlayContentProps } from "./index";
 import { MessageAddressResolver } from "./MessageAddressResolver";
 
@@ -70,52 +66,39 @@ interface DocumentTransferMessageProps extends OverlayContentProps {
   onConfirmationAction?: () => void;
 }
 
-export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageProps> = styled(
-  ({ isButtonMetamaskInstall, isConfirmationMessage, onConfirmationAction, children, ...props }) => {
-    const documentTransferButton = (): ReactNode => {
-      if (isButtonMetamaskInstall) {
-        return <ButtonMetamaskInstall />;
-      }
-      if (isConfirmationMessage && onConfirmationAction) {
-        return (
-          <div className="flex mx-0">
-            <div className="col-auto ml-2">
-              <ButtonClose />
-            </div>
-            <div className="col-auto ml-2">{ButtonConfirmAction(onConfirmationAction)}</div>
-          </div>
-        );
-      }
-      return <ButtonClose />;
-    };
-
-    return (
-      <OverlayContent {...props}>
-        <div className="flex-1">
-          <div className="message">{children}</div>
-        </div>
-        <div className="flex mx-0">
-          <div className="col-auto ml-auto">{documentTransferButton()}</div>
-        </div>
-      </OverlayContent>
-    );
-  }
-)`
-  ${OverlayContentBaseStyle()}
-
-  max-width: 420px;
-  height: auto;
-
-  .overlay-title {
-    ${fontSize(24)};
-  }
-
-  .message {
-    h6 {
-      ${tw`text-grey-700`}
+export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageProps> = ({
+  isButtonMetamaskInstall,
+  isConfirmationMessage,
+  onConfirmationAction,
+  children,
+  ...props
+}) => {
+  const documentTransferButton = (): ReactNode => {
+    if (isButtonMetamaskInstall) {
+      return <ButtonMetamaskInstall />;
     }
-  }
-`;
+    if (isConfirmationMessage && onConfirmationAction) {
+      return (
+        <div className="flex mx-0">
+          <div className="col-auto ml-2">
+            <ButtonClose />
+          </div>
+          <div className="col-auto ml-2">{ButtonConfirmAction(onConfirmationAction)}</div>
+        </div>
+      );
+    }
+    return <ButtonClose />;
+  };
+
+  return (
+    <OverlayContent className="max-w-md" {...props}>
+      <div className="flex-1 mb-4">{children}</div>
+      <div className="flex mx-0">
+        <div className="col-auto ml-auto">{documentTransferButton()}</div>
+      </div>
+    </OverlayContent>
+  );
+};
 
 interface MessageProps {
   address?: string;
