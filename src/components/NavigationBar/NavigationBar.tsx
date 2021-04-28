@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { IconItem } from "@storybook/components";
 import React, { useState, FunctionComponent } from "react";
 import { Icon } from "react-feather";
 
@@ -125,7 +124,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 <img
                   data-testid="nav-logo-home"
                   className="img-fluid h-12"
-                  src="/static/images/tradetrust_logo.svg"
+                  src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
                   alt="TradeTrust"
                 />
               </a>
@@ -254,6 +253,7 @@ const IconButton: FunctionComponent<{ item: IconButton; onClick: (isOn: boolean)
     <a
       className={`font-medium ${item.className}`}
       href={item.path}
+      data-testid={item.id}
       onClick={() => {
         onClick(false);
       }}
