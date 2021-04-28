@@ -240,6 +240,7 @@ const LabelButton: FunctionComponent<{ item: LabelButton; onClick: (isOn: boolea
     <a href={item.path} className="w-full">
       <button
         className={`font-bold py-2 px-3 ${item.className}`}
+        data-testid={item.id}
         onClick={() => {
           onClick(false);
         }}
