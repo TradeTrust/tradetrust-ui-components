@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import { Settings } from "react-feather";
 import { NavigationItemType, NavigationItem, NavigationBar } from "./NavigationBar";
@@ -16,6 +17,29 @@ export default {
     },
   },
 };
+
+const NavigationBarStyle = styled.nav`
+  .create-btn {
+    font-size: 16px;
+    color: #3b8cc5;
+    background: #ffffff;
+    border: 1px solid #e7eaec;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+
+  .verify-btn {
+    font-size: 16px;
+    color: #ffffff;
+    background: #3b8cc5;
+    border: 2px solid #3b8cc5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+`;
+
 const navItems: NavigationItem[] = [
   {
     schema: NavigationItemType.NavigationLink,
@@ -94,5 +118,9 @@ const navItems: NavigationItem[] = [
 ];
 
 export const Default: FunctionComponent = () => {
-  return <NavigationBar navigationItems={navItems} />;
+  return (
+    <NavigationBarStyle>
+      <NavigationBar navigationItems={navItems} />
+    </NavigationBarStyle>
+  );
 };
