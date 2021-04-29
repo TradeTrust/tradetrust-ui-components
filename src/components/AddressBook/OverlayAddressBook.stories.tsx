@@ -1,4 +1,3 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React, { FunctionComponent, ReactElement } from "react";
 import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
 import { Button } from "../UI/Button";
@@ -8,7 +7,6 @@ import { OverlayAddressBook } from "./AddressBook";
 export default {
   title: "AddressBook/OverlayAddressBook",
   component: OverlayAddressBook,
-  decorators: [withKnobs],
 };
 
 export interface OverlayDemoProps {
