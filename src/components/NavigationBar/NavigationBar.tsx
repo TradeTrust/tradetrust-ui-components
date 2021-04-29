@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
 import React, { useState, FunctionComponent } from "react";
 import { Icon } from "react-feather";
+import { BrowserRouter } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 export enum NavigationItemType {
   NavigationLink = "NavigationLink",
   DropDownList = "DropDownList",
   LabelButton = "LabelButton",
   IconButton = "IconButton",
+  ToggleButton = "ToggleButton",
 }
 
 interface NavigationLink {
@@ -25,6 +28,7 @@ interface DropDownList extends Omit<NavigationLink, "schema" | "path"> {
 
 interface LabelButton extends Omit<NavigationLink, "schema"> {
   schema: NavigationItemType.LabelButton;
+  onClick?: () => void;
 }
 
 interface IconButton extends Omit<NavigationLink, "schema"> {
@@ -32,7 +36,14 @@ interface IconButton extends Omit<NavigationLink, "schema"> {
   icon: Icon;
 }
 
-export type NavigationItem = NavigationLink | DropDownList | LabelButton | IconButton;
+interface ToggleButton extends Omit<NavigationLink, "schema"> {
+  schema: NavigationItemType.ToggleButton;
+  toggle: boolean;
+  trueButton: LabelButton;
+  falseButton: LabelButton;
+}
+
+export type NavigationItem = NavigationLink | DropDownList | LabelButton | IconButton | ToggleButton;
 
 export interface NavigationBarProps {
   navigationItems: NavigationItem[];
@@ -107,98 +118,100 @@ const NavigationBarStyle = styled.nav`
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   const [isOn, setIsOn] = useState(false);
   return (
-    <NavigationBarStyle>
-      <div className={`container py-2`}>
-        <div className="relative flex items-center justify-between h-16">
-          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
-            <button
-              className={`navbar-toggler outline-none ${isOn ? "" : "collapsed"}`}
-              onClick={() => {
-                setIsOn(!isOn);
-              }}
-            >
-              <span className="icon-bar top-bar" />
-              <span className="icon-bar bottom-bar" />
-            </button>
-          </div>
-          <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
-            <div className="flex-shrink-0">
-              <a href="https://www.tradetrust.io/">
-                <img
-                  data-testid="nav-logo-home"
-                  className="img-fluid h-12"
-                  src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
-                  alt="TradeTrust"
-                />
-              </a>
+    <BrowserRouter>
+      <NavigationBarStyle>
+        <div className={`container py-2`}>
+          <div className="relative flex items-center justify-between h-16">
+            <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
+              <button
+                className={`navbar-toggler outline-none ${isOn ? "" : "collapsed"}`}
+                onClick={() => {
+                  setIsOn(!isOn);
+                }}
+              >
+                <span className="icon-bar top-bar" />
+                <span className="icon-bar bottom-bar" />
+              </button>
             </div>
-            <div className="hidden lg:block md:ml-12">
-              <div className="flex h-full items-center">
-                {props.navigationItems.map((item, index) => {
-                  if (item.position == "left") {
-                    return (
-                      <div key={index} className="text-lg w-auto lg:ml-6">
-                        <NavigationBarItem item={item} onClick={setIsOn} />
-                      </div>
-                    );
-                  }
-                  return "";
-                })}
+            <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
+              <div className="flex-shrink-0">
+                <a href="https://www.tradetrust.io/">
+                  <img
+                    data-testid="nav-logo-home"
+                    className="img-fluid h-12"
+                    src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
+                    alt="TradeTrust"
+                  />
+                </a>
               </div>
+              <div className="hidden lg:block md:ml-12">
+                <div className="flex h-full items-center">
+                  {props.navigationItems.map((item, index) => {
+                    if (item.position == "left") {
+                      return (
+                        <div key={index} className="text-lg w-auto lg:ml-6">
+                          <NavigationBarItem item={item} onClick={setIsOn} />
+                        </div>
+                      );
+                    }
+                    return "";
+                  })}
+                </div>
 
-              <div className="flex h-full mx-auto items-center">
-                {props.navigationItems.map((item, index) => {
-                  if (item.position == "center") {
-                    return (
-                      <div key={index} className="text-lg w-auto lg:ml-6">
-                        <NavigationBarItem item={item} onClick={setIsOn} />
-                      </div>
-                    );
-                  }
-                  return "";
-                })}
+                <div className="flex h-full mx-auto items-center">
+                  {props.navigationItems.map((item, index) => {
+                    if (item.position == "center") {
+                      return (
+                        <div key={index} className="text-lg w-auto lg:ml-6">
+                          <NavigationBarItem item={item} onClick={setIsOn} />
+                        </div>
+                      );
+                    }
+                    return "";
+                  })}
+                </div>
               </div>
-            </div>
-            <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
-              <div className="flex h-full items-center">
-                {props.navigationItems.map((item, index) => {
-                  if (item.position == "right") {
-                    return (
-                      <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
-                        <NavigationBarItem item={item} onClick={setIsOn} />
-                      </div>
-                    );
-                  }
-                  return "";
-                })}
+              <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
+                <div className="flex h-full items-center">
+                  {props.navigationItems.map((item, index) => {
+                    if (item.position == "right") {
+                      return (
+                        <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
+                          <NavigationBarItem item={item} onClick={setIsOn} />
+                        </div>
+                      );
+                    }
+                    return "";
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={`lg:hidden`}>
-        <div
-          className={`container  w-full bg-white overflow-auto  transition-height ease-in-out duration-700 h-full max-h-0 ${
-            isOn ? "max-h-full" : ""
-          }`}
-        >
-          {props.navigationItems.map((item, index) => {
-            if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
+        <div className={`lg:hidden`}>
+          <div
+            className={`container  w-full bg-white overflow-auto  transition-height ease-in-out duration-700 h-full max-h-0 ${
+              isOn ? "max-h-full" : ""
+            }`}
+          >
+            {props.navigationItems.map((item, index) => {
+              if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
+                return (
+                  <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
+                    <NavigationBarItem item={item} onClick={setIsOn} />
+                  </div>
+                );
+              }
               return (
-                <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
+                <div key={index} className="text-lg font-normal w-full py-4">
                   <NavigationBarItem item={item} onClick={setIsOn} />
                 </div>
               );
-            }
-            return (
-              <div key={index} className="text-lg font-normal w-full py-4">
-                <NavigationBarItem item={item} onClick={setIsOn} />
-              </div>
-            );
-          })}
+            })}
+          </div>
         </div>
-      </div>
-    </NavigationBarStyle>
+      </NavigationBarStyle>
+    </BrowserRouter>
   );
 };
 
@@ -213,6 +226,8 @@ const NavigationBarItem: FunctionComponent<{ item: NavigationItem; onClick: (isO
       return <LabelButton item={item} onClick={onClick} />;
     case NavigationItemType.DropDownList:
       return <DropDownList item={item} onClick={onClick} />;
+    case NavigationItemType.ToggleButton:
+      return <ToggleButton item={item} onClick={onClick} />;
     default:
       return <NavigationLink item={item} onClick={onClick} />;
   }
@@ -222,49 +237,104 @@ const NavigationLink: FunctionComponent<{ item: NavigationLink; onClick: (isOn: 
   item,
   onClick,
 }) => {
-  return (
-    <a
-      className={`font-medium ${item.className}`}
-      href={item.path}
-      onClick={() => {
-        onClick(false);
-      }}
-    >
-      {item.label}
-    </a>
-  );
-};
-
-const LabelButton: FunctionComponent<{ item: LabelButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
-  return (
-    <a href={item.path} className="w-full">
-      <button
-        className={`font-bold py-2 px-3 ${item.className}`}
-        data-testid={item.id}
+  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
+    return (
+      <a
+        className={`font-medium ${item.className}`}
+        href={item.path}
         onClick={() => {
           onClick(false);
         }}
       >
         {item.label}
-      </button>
-    </a>
-  );
+      </a>
+    );
+  } else {
+    return (
+      <NavHashLink
+        className={`font-medium ${item.className}`}
+        to={item.path}
+        onClick={() => {
+          onClick(false);
+        }}
+      >
+        {item.label}
+      </NavHashLink>
+    );
+  }
+};
+
+const LabelButton: FunctionComponent<{ item: LabelButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
+  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
+    return (
+      <a href={item.path} className="w-full">
+        <button
+          className={`font-bold py-2 px-3 ${item.className}`}
+          data-testid={item.id}
+          onClick={() => {
+            onClick(false);
+            {
+              if (typeof item.onClick === "function") {
+                item.onClick();
+              }
+            }
+          }}
+        >
+          {item.label}
+        </button>
+      </a>
+    );
+  } else {
+    return (
+      <NavHashLink to={item.path} className="w-full">
+        <button
+          className={`font-bold py-2 px-3 ${item.className}`}
+          data-testid={item.id}
+          onClick={() => {
+            onClick(false);
+            {
+              if (typeof item.onClick === "function") {
+                item.onClick();
+              }
+            }
+          }}
+        >
+          {item.label}
+        </button>
+      </NavHashLink>
+    );
+  }
 };
 
 const IconButton: FunctionComponent<{ item: IconButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
   const Icon = item.icon;
-  return (
-    <a
-      className={`font-medium ${item.className}`}
-      href={item.path}
-      data-testid={item.id}
-      onClick={() => {
-        onClick(false);
-      }}
-    >
-      <Icon />
-    </a>
-  );
+  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
+    return (
+      <a
+        className={`font-medium ${item.className}`}
+        href={item.path}
+        data-testid={item.id}
+        onClick={() => {
+          onClick(false);
+        }}
+      >
+        <Icon />
+      </a>
+    );
+  } else {
+    return (
+      <NavHashLink
+        className={`font-medium ${item.className}`}
+        to={item.path}
+        data-testid={item.id}
+        onClick={() => {
+          onClick(false);
+        }}
+      >
+        <Icon />
+      </NavHashLink>
+    );
+  }
 };
 
 const DropDownList: FunctionComponent<{ item: DropDownList; onClick: (isOn: boolean) => void }> = ({
@@ -315,20 +385,37 @@ const DropDownList: FunctionComponent<{ item: DropDownList; onClick: (isOn: bool
           >
             <div className="py-1" role="none">
               {item.dropdownItems?.map((dropdownItem: any, index: number) => {
-                return (
-                  <a
-                    key={index}
-                    role="menuitem"
-                    className="block px-4 py-2 font-medium dropdown-item"
-                    href={dropdownItem.path}
-                    onClick={() => {
-                      onClick(false);
-                      setIsOpen(false);
-                    }}
-                  >
-                    {dropdownItem.label}
-                  </a>
-                );
+                if (dropdownItem.path.indexOf("http://") == 0 || dropdownItem.path.indexOf("https://") == 0) {
+                  return (
+                    <a
+                      key={index}
+                      role="menuitem"
+                      className="block px-4 py-2 font-medium dropdown-item"
+                      href={dropdownItem.path}
+                      onClick={() => {
+                        onClick(false);
+                        setIsOpen(false);
+                      }}
+                    >
+                      {dropdownItem.label}
+                    </a>
+                  );
+                } else {
+                  return (
+                    <NavHashLink
+                      key={index}
+                      role="menuitem"
+                      className="block px-4 py-2 font-medium dropdown-item"
+                      to={dropdownItem.path}
+                      onClick={() => {
+                        onClick(false);
+                        setIsOpen(false);
+                      }}
+                    >
+                      {dropdownItem.label}
+                    </NavHashLink>
+                  );
+                }
               })}
             </div>
           </div>
@@ -336,4 +423,15 @@ const DropDownList: FunctionComponent<{ item: DropDownList; onClick: (isOn: bool
       )}
     </div>
   );
+};
+
+const ToggleButton: FunctionComponent<{ item: ToggleButton; onClick: (isOn: boolean) => void }> = ({
+  item,
+  onClick,
+}) => {
+  if (item.toggle) {
+    return <LabelButton item={item.trueButton} onClick={onClick} />;
+  } else {
+    return <LabelButton item={item.falseButton} onClick={onClick} />;
+  }
 };
