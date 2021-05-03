@@ -1,55 +1,33 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
-import { Settings } from "react-feather";
-import { NavigationItemType, NavigationItem, NavigationBar } from "./NavigationBar";
+import React, { useState } from "react";
+import { NavigationBar } from "./NavigationBar";
+import {
+  NavigationBarStyle,
+  MockLeftMenu,
+  MockRightMenu,
+  MockMobileMenu,
+  MockLeftNavItems,
+  MockRightNavItems,
+} from "./MockNavigationBar";
 
-const navItems: NavigationItem[] = [
-  {
-    schema: NavigationItemType.DropDownList,
-    id: "news-events",
-    label: "News & Events",
-    position: "left",
-    dropdownItems: [
-      {
-        id: "media",
-        label: "Media",
-        path: "/media",
-      },
-      {
-        id: "event",
-        label: "Event",
-        path: "/event",
-      },
-    ],
-  },
-  {
-    schema: NavigationItemType.NavigationLink,
-    id: "contact",
-    label: "Contact",
-    path: "/contact",
-    position: "left",
-  },
-  {
-    schema: NavigationItemType.IconButton,
-    id: "settings",
-    label: "Settings",
-    path: "/settings",
-    icon: Settings,
-    position: "right",
-  },
-  {
-    schema: NavigationItemType.LabelButton,
-    id: "verify",
-    label: "Verify Doc",
-    path: "/verify",
-    position: "right",
-    className: "verify-btn",
-  },
-];
+const NavBar: React.FunctionComponent = () => {
+  const [toggleNavBar, setToggleNavBar] = useState(false);
+  return (
+    <NavigationBarStyle>
+      <NavigationBar
+        leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
+        rightMenuChildren={MockRightMenu(MockRightNavItems)}
+        mobileMenuChildren={MockMobileMenu(MockLeftNavItems.concat(MockRightNavItems))}
+        setToggleNavBar={setToggleNavBar}
+        toggleNavBar={toggleNavBar}
+      />
+    </NavigationBarStyle>
+  );
+};
 
 describe("errorPage", () => {
   it("should render correctly with the given title and description", () => {
-    render(<NavigationBar navigationItems={navItems} />);
+    render(<NavBar />);
     expect(screen.getAllByText("News & Events")).toHaveLength(2);
     expect(screen.getAllByText("Contact")).toHaveLength(2);
     expect(screen.getAllByText("Verify Doc")).toHaveLength(2);
