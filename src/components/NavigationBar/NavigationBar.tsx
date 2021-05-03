@@ -1,52 +1,13 @@
 import styled from "@emotion/styled";
-import React, { useState, FunctionComponent } from "react";
-import { Icon } from "react-feather";
+import React, { FunctionComponent } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { NavHashLink } from "react-router-hash-link";
-
-export enum NavigationItemType {
-  NavigationLink = "NavigationLink",
-  DropDownList = "DropDownList",
-  LabelButton = "LabelButton",
-  IconButton = "IconButton",
-  ToggleButton = "ToggleButton",
-}
-
-interface NavigationLink {
-  schema: NavigationItemType.NavigationLink;
-  id: string;
-  label: string;
-  className?: string;
-  path: string;
-  position: "left" | "center" | "right";
-}
-
-interface DropDownList extends Omit<NavigationLink, "schema" | "path"> {
-  schema: NavigationItemType.DropDownList;
-  dropdownItems: { id: string; label: string; path: string }[];
-}
-
-interface LabelButton extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.LabelButton;
-  onClick?: () => void;
-}
-
-interface IconButton extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.IconButton;
-  icon: Icon;
-}
-
-interface ToggleButton extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.ToggleButton;
-  toggle: boolean;
-  trueButton: LabelButton;
-  falseButton: LabelButton;
-}
-
-export type NavigationItem = NavigationLink | DropDownList | LabelButton | IconButton | ToggleButton;
 
 export interface NavigationBarProps {
-  navigationItems: NavigationItem[];
+  leftMenuChildren: React.ReactNode;
+  rightMenuChildren?: React.ReactNode;
+  mobileMenuChildren?: React.ReactNode;
+  toggleNavBar: boolean;
+  onClick: (isOn: boolean) => void;
 }
 
 const NavigationBarStyle = styled.nav`
@@ -116,7 +77,6 @@ const NavigationBarStyle = styled.nav`
 `;
 
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
-  const [isOn, setIsOn] = useState(false);
   return (
     <BrowserRouter>
       <NavigationBarStyle>
@@ -124,9 +84,9 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
               <button
-                className={`navbar-toggler outline-none ${isOn ? "" : "collapsed"}`}
+                className={`navbar-toggler outline-none ${props.toggleNavBar ? "" : "collapsed"}`}
                 onClick={() => {
-                  setIsOn(!isOn);
+                  props.onClick(!props.toggleNavBar);
                 }}
               >
                 <span className="icon-bar top-bar" />
@@ -145,45 +105,10 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 </a>
               </div>
               <div className="hidden lg:block md:ml-12">
-                <div className="flex h-full items-center">
-                  {props.navigationItems.map((item, index) => {
-                    if (item.position == "left") {
-                      return (
-                        <div key={index} className="text-lg w-auto lg:ml-6">
-                          <NavigationBarItem item={item} onClick={setIsOn} />
-                        </div>
-                      );
-                    }
-                    return "";
-                  })}
-                </div>
-
-                <div className="flex h-full mx-auto items-center">
-                  {props.navigationItems.map((item, index) => {
-                    if (item.position == "center") {
-                      return (
-                        <div key={index} className="text-lg w-auto lg:ml-6">
-                          <NavigationBarItem item={item} onClick={setIsOn} />
-                        </div>
-                      );
-                    }
-                    return "";
-                  })}
-                </div>
+                <div className="flex h-full items-center">{props.leftMenuChildren}</div>
               </div>
               <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
-                <div className="flex h-full items-center">
-                  {props.navigationItems.map((item, index) => {
-                    if (item.position == "right") {
-                      return (
-                        <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
-                          <NavigationBarItem item={item} onClick={setIsOn} />
-                        </div>
-                      );
-                    }
-                    return "";
-                  })}
-                </div>
+                <div className="flex h-full items-center">{props.rightMenuChildren}</div>
               </div>
             </div>
           </div>
@@ -191,247 +116,13 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
         <div className={`lg:hidden`}>
           <div
             className={`container  w-full bg-white overflow-auto  transition-height ease-in-out duration-700 h-full max-h-0 ${
-              isOn ? "max-h-full" : ""
+              props.toggleNavBar ? "max-h-full" : ""
             }`}
           >
-            {props.navigationItems.map((item, index) => {
-              if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
-                return (
-                  <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
-                    <NavigationBarItem item={item} onClick={setIsOn} />
-                  </div>
-                );
-              }
-              return (
-                <div key={index} className="text-lg font-normal w-full py-4">
-                  <NavigationBarItem item={item} onClick={setIsOn} />
-                </div>
-              );
-            })}
+            {props.mobileMenuChildren}
           </div>
         </div>
       </NavigationBarStyle>
     </BrowserRouter>
   );
-};
-
-const NavigationBarItem: FunctionComponent<{ item: NavigationItem; onClick: (isOn: boolean) => void }> = ({
-  item,
-  onClick,
-}) => {
-  switch (item.schema) {
-    case NavigationItemType.IconButton:
-      return <IconButton item={item} onClick={onClick} />;
-    case NavigationItemType.LabelButton:
-      return <LabelButton item={item} onClick={onClick} />;
-    case NavigationItemType.DropDownList:
-      return <DropDownList item={item} onClick={onClick} />;
-    case NavigationItemType.ToggleButton:
-      return <ToggleButton item={item} onClick={onClick} />;
-    default:
-      return <NavigationLink item={item} onClick={onClick} />;
-  }
-};
-
-const NavigationLink: FunctionComponent<{ item: NavigationLink; onClick: (isOn: boolean) => void }> = ({
-  item,
-  onClick,
-}) => {
-  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
-    return (
-      <a
-        className={`font-medium ${item.className}`}
-        href={item.path}
-        onClick={() => {
-          onClick(false);
-        }}
-      >
-        {item.label}
-      </a>
-    );
-  } else {
-    return (
-      <NavHashLink
-        className={`font-medium ${item.className}`}
-        to={item.path}
-        onClick={() => {
-          onClick(false);
-        }}
-      >
-        {item.label}
-      </NavHashLink>
-    );
-  }
-};
-
-const LabelButton: FunctionComponent<{ item: LabelButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
-  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
-    return (
-      <a href={item.path} className="w-full">
-        <button
-          className={`font-bold py-2 px-3 ${item.className}`}
-          data-testid={item.id}
-          onClick={() => {
-            onClick(false);
-            {
-              if (typeof item.onClick === "function") {
-                item.onClick();
-              }
-            }
-          }}
-        >
-          {item.label}
-        </button>
-      </a>
-    );
-  } else {
-    return (
-      <NavHashLink to={item.path} className="w-full">
-        <button
-          className={`font-bold py-2 px-3 ${item.className}`}
-          data-testid={item.id}
-          onClick={() => {
-            onClick(false);
-            {
-              if (typeof item.onClick === "function") {
-                item.onClick();
-              }
-            }
-          }}
-        >
-          {item.label}
-        </button>
-      </NavHashLink>
-    );
-  }
-};
-
-const IconButton: FunctionComponent<{ item: IconButton; onClick: (isOn: boolean) => void }> = ({ item, onClick }) => {
-  const Icon = item.icon;
-  if (item.path.indexOf("http://") == 0 || item.path.indexOf("https://") == 0) {
-    return (
-      <a
-        className={`font-medium ${item.className}`}
-        href={item.path}
-        data-testid={item.id}
-        onClick={() => {
-          onClick(false);
-        }}
-      >
-        <Icon />
-      </a>
-    );
-  } else {
-    return (
-      <NavHashLink
-        className={`font-medium ${item.className}`}
-        to={item.path}
-        data-testid={item.id}
-        onClick={() => {
-          onClick(false);
-        }}
-      >
-        <Icon />
-      </NavHashLink>
-    );
-  }
-};
-
-const DropDownList: FunctionComponent<{ item: DropDownList; onClick: (isOn: boolean) => void }> = ({
-  item,
-  onClick,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="relative">
-      <button
-        type="button"
-        className="inline-flex w-full font-medium focus:outline-none items-center dropdown-link"
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-        id={item.id + "-button"}
-      >
-        {item.label}
-        <svg
-          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-linear transform ${
-            isOpen ? "rotate-0" : "-rotate-90"
-          }`}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      {isOpen && (
-        <>
-          <button
-            tabIndex={-1}
-            onClick={() => {
-              setIsOpen(false);
-            }}
-            className="md:fixed z-20 inset-0 w-full h-full cursor-default focus:outline-none sm:hidden lg:block"
-          />
-          <div
-            className={`mt-2 w-full bg-white focus:outline-none rounded-md z-30 lg:origin-top-right lg:absolute lg:right-0 lg:mt-2 lg:shadow-dropdown lg:ring-1 lg:ring-black lg:ring-opacity-5`}
-          >
-            <div className="py-1" role="none">
-              {item.dropdownItems?.map((dropdownItem: any, index: number) => {
-                if (dropdownItem.path.indexOf("http://") == 0 || dropdownItem.path.indexOf("https://") == 0) {
-                  return (
-                    <a
-                      key={index}
-                      role="menuitem"
-                      className="block px-4 py-2 font-medium dropdown-item"
-                      href={dropdownItem.path}
-                      onClick={() => {
-                        onClick(false);
-                        setIsOpen(false);
-                      }}
-                    >
-                      {dropdownItem.label}
-                    </a>
-                  );
-                } else {
-                  return (
-                    <NavHashLink
-                      key={index}
-                      role="menuitem"
-                      className="block px-4 py-2 font-medium dropdown-item"
-                      to={dropdownItem.path}
-                      onClick={() => {
-                        onClick(false);
-                        setIsOpen(false);
-                      }}
-                    >
-                      {dropdownItem.label}
-                    </NavHashLink>
-                  );
-                }
-              })}
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-const ToggleButton: FunctionComponent<{ item: ToggleButton; onClick: (isOn: boolean) => void }> = ({
-  item,
-  onClick,
-}) => {
-  if (item.toggle) {
-    return <LabelButton item={item.trueButton} onClick={onClick} />;
-  } else {
-    return <LabelButton item={item.falseButton} onClick={onClick} />;
-  }
 };

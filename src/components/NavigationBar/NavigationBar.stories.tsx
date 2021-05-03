@@ -1,7 +1,8 @@
-import styled from "@emotion/styled";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { Settings } from "react-feather";
-import { NavigationItemType, NavigationItem, NavigationBar } from "./NavigationBar";
+import styled from "@emotion/styled";
+import { NavigationBar } from "./NavigationBar";
+import { NavigationBarItem, NavigationItem, NavigationItemType } from "./type";
 
 export default {
   title: "Navigation/NavigationBar",
@@ -18,7 +19,7 @@ export default {
   },
 };
 
-const NavigationBarStyle = styled.nav`
+const NavigationBarStyle = styled.div`
   .create-btn {
     font-size: 16px;
     color: #3b8cc5;
@@ -40,19 +41,12 @@ const NavigationBarStyle = styled.nav`
   }
 `;
 
-const navItems: NavigationItem[] = [
-  {
-    schema: NavigationItemType.NavigationLink,
-    id: "demo",
-    label: "Demo",
-    path: "/demo",
-    position: "left",
-  },
+const leftNavItems: NavigationItem[] = [
   {
     schema: NavigationItemType.DropDownList,
     id: "resources",
     label: "Resources",
-    position: "left",
+    path: "",
     dropdownItems: [
       {
         id: "learn",
@@ -70,7 +64,7 @@ const navItems: NavigationItem[] = [
     schema: NavigationItemType.DropDownList,
     id: "news_events",
     label: "News & Events",
-    position: "left",
+    path: "",
     dropdownItems: [
       {
         id: "media",
@@ -89,22 +83,39 @@ const navItems: NavigationItem[] = [
     id: "contact",
     label: "Contact",
     path: "/contact",
-    position: "left",
   },
+];
+
+const LeftMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) => void): React.ReactNode => {
+  return (
+    <div className="hidden lg:block md:ml-12">
+      <div className="flex h-full items-center">
+        {navigationItems.map((item, index) => {
+          return (
+            <div key={index} className="text-lg w-auto lg:ml-6">
+              <NavigationBarItem item={item} onClick={onClick} />
+            </div>
+          );
+          return "";
+        })}
+      </div>
+    </div>
+  );
+};
+
+const rightNavItems: NavigationItem[] = [
   {
     schema: NavigationItemType.IconButton,
     id: "settings",
     label: "Settings",
-    path: "/settings",
+    path: "settings",
     icon: Settings,
-    position: "right",
   },
   {
     schema: NavigationItemType.LabelButton,
     id: "create-documents",
     label: "Create Doc",
     path: "https://creator.tradetrust.io/",
-    position: "right",
     className: "create-btn",
   },
   {
@@ -112,15 +123,54 @@ const navItems: NavigationItem[] = [
     id: "verify",
     label: "Verify Doc",
     path: "/verify",
-    position: "right",
     className: "verify-btn",
   },
 ];
 
+const RightMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) => void): React.ReactNode => {
+  return (
+    <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
+      <div className="flex h-full items-center">
+        {navigationItems.map((item, index) => {
+          return (
+            <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
+              <NavigationBarItem item={item} onClick={onClick} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const MobileMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) => void): React.ReactNode => {
+  return navigationItems.map((item, index) => {
+    if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
+      return (
+        <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
+          <NavigationBarItem item={item} onClick={onClick} />
+        </div>
+      );
+    }
+    return (
+      <div key={index} className="text-lg font-normal w-full py-4">
+        <NavigationBarItem item={item} onClick={onClick} />
+      </div>
+    );
+  });
+};
+
 export const Default: FunctionComponent = () => {
+  const [isOn, setIsOn] = useState(false);
   return (
     <NavigationBarStyle>
-      <NavigationBar navigationItems={navItems} />
+      <NavigationBar
+        leftMenuChildren={LeftMenu(leftNavItems, setIsOn)}
+        rightMenuChildren={RightMenu(rightNavItems, setIsOn)}
+        mobileMenuChildren={MobileMenu(leftNavItems.concat(rightNavItems), setIsOn)}
+        onClick={setIsOn}
+        toggleNavBar={isOn}
+      />
     </NavigationBarStyle>
   );
 };
