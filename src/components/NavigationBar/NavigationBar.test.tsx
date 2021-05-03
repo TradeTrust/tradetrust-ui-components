@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import React, { useState } from "react";
+import React from "react";
 import { Settings } from "react-feather";
 import styled from "@emotion/styled";
 import { NavigationBar } from "./NavigationBar";
@@ -32,6 +32,7 @@ const leftNavItems: NavigationItem[] = [
     schema: NavigationItemType.DropDownList,
     id: "resources",
     label: "Resources",
+    path: "",
     dropdownItems: [
       {
         id: "learn",
@@ -47,8 +48,9 @@ const leftNavItems: NavigationItem[] = [
   },
   {
     schema: NavigationItemType.DropDownList,
-    id: "news_events",
-    label: "News & Events",
+    id: "media_events",
+    label: "Media & Events",
+    path: "",
     dropdownItems: [
       {
         id: "media",
@@ -146,19 +148,18 @@ const mobileMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) 
 
 describe("errorPage", () => {
   it("should render correctly with the given title and description", () => {
-    const [isOn, setIsOn] = useState(false);
     render(
       <NavigationBarStyle>
         <NavigationBar
-          leftMenuChildren={leftMenu(leftNavItems, setIsOn)}
-          rightMenuChildren={rightMenu(rightNavItems, setIsOn)}
-          mobileMenuChildren={mobileMenu(leftNavItems.concat(rightNavItems), setIsOn)}
-          onClick={setIsOn}
-          toggleNavBar={isOn}
+          leftMenuChildren={leftMenu(leftNavItems, () => {})}
+          rightMenuChildren={rightMenu(rightNavItems, () => {})}
+          mobileMenuChildren={mobileMenu(leftNavItems.concat(rightNavItems), () => {})}
+          onClick={() => {}}
+          toggleNavBar={false}
         />
       </NavigationBarStyle>
     );
-    expect(screen.getAllByText("News & Events")).toHaveLength(2);
+    expect(screen.getAllByText("Media & Events")).toHaveLength(2);
     expect(screen.getAllByText("Contact")).toHaveLength(2);
     expect(screen.getAllByText("Verify Doc")).toHaveLength(2);
     expect(screen.getAllByTestId("settings")).toHaveLength(2);
