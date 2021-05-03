@@ -75,6 +75,28 @@ const NavigationBarStyle = styled.nav`
   }
 `;
 
+export const NavigationButtonStyle = styled.div`
+  .create-btn {
+    font-size: 16px;
+    color: #3b8cc5;
+    background: #ffffff;
+    border: 1px solid #e7eaec;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+
+  .verify-btn {
+    font-size: 16px;
+    color: #ffffff;
+    background: #3b8cc5;
+    border: 2px solid #3b8cc5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+`;
+
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   return (
     <NavigationBarStyle>
