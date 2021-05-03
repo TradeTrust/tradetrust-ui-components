@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
-import { BrowserRouter } from "react-router-dom";
 
 export interface NavigationBarProps {
   leftMenuChildren: React.ReactNode;
   rightMenuChildren?: React.ReactNode;
   mobileMenuChildren?: React.ReactNode;
+  setToggleNavBar: (toggleNavBar: boolean) => void;
   toggleNavBar: boolean;
-  onClick: (isOn: boolean) => void;
 }
 
 const NavigationBarStyle = styled.nav`
@@ -78,51 +77,51 @@ const NavigationBarStyle = styled.nav`
 
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   return (
-    <BrowserRouter>
-      <NavigationBarStyle>
-        <div className={`container py-2`}>
-          <div className="relative flex items-center justify-between h-16">
-            <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
-              <button
-                className={`navbar-toggler outline-none ${props.toggleNavBar ? "" : "collapsed"}`}
-                onClick={() => {
-                  props.onClick(!props.toggleNavBar);
-                }}
-              >
-                <span className="icon-bar top-bar" />
-                <span className="icon-bar bottom-bar" />
-              </button>
+    <NavigationBarStyle>
+      <div className={`container py-2`}>
+        <div className="relative flex items-center justify-between h-16">
+          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
+            <button
+              className={`navbar-toggler outline-none ${props.toggleNavBar ? "" : "collapsed"}`}
+              onClick={() => {
+                props.setToggleNavBar(!props.toggleNavBar);
+                console.log("NavigationBar: ", props.toggleNavBar);
+                // props.onClick(!props.toggleNavBar);
+              }}
+            >
+              <span className="icon-bar top-bar" />
+              <span className="icon-bar bottom-bar" />
+            </button>
+          </div>
+          <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
+            <div className="flex-shrink-0">
+              <a href="https://www.tradetrust.io/">
+                <img
+                  data-testid="nav-logo-home"
+                  className="img-fluid h-12"
+                  src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
+                  alt="TradeTrust"
+                />
+              </a>
             </div>
-            <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
-              <div className="flex-shrink-0">
-                <a href="https://www.tradetrust.io/">
-                  <img
-                    data-testid="nav-logo-home"
-                    className="img-fluid h-12"
-                    src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
-                    alt="TradeTrust"
-                  />
-                </a>
-              </div>
-              <div className="hidden lg:block md:ml-12">
-                <div className="flex h-full items-center">{props.leftMenuChildren}</div>
-              </div>
-              <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
-                <div className="flex h-full items-center">{props.rightMenuChildren}</div>
-              </div>
+            <div className="hidden lg:block md:ml-12">
+              <div className="flex h-full items-center">{props.leftMenuChildren}</div>
+            </div>
+            <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
+              <div className="flex h-full items-center">{props.rightMenuChildren}</div>
             </div>
           </div>
         </div>
-        <div className={`lg:hidden`}>
-          <div
-            className={`container  w-full bg-white overflow-auto  transition-height ease-in-out duration-700 h-full max-h-0 ${
-              props.toggleNavBar ? "max-h-full" : ""
-            }`}
-          >
-            {props.mobileMenuChildren}
-          </div>
+      </div>
+      <div className={`lg:hidden`}>
+        <div
+          className={`container  w-full bg-white overflow-auto  transition-height ease-in-out duration-700 h-full max-h-0 ${
+            props.toggleNavBar ? "max-h-full" : ""
+          }`}
+        >
+          {props.mobileMenuChildren}
         </div>
-      </NavigationBarStyle>
-    </BrowserRouter>
+      </div>
+    </NavigationBarStyle>
   );
 };
