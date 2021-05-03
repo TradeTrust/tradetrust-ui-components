@@ -109,7 +109,7 @@ const rightNavItems: NavigationItem[] = [
     schema: NavigationItemType.IconButton,
     id: "settings",
     label: "Settings",
-    path: "settings",
+    path: "/settings",
     icon: Settings,
   },
   {
