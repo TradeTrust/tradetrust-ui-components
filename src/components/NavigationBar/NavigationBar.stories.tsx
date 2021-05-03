@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState } from "react";
 import { Settings } from "react-feather";
 import styled from "@emotion/styled";
 import { NavigationBar } from "./NavigationBar";
-import { NavigationBarItem, NavigationItem, NavigationItemType } from "./type";
+import { NavigationItem, NavigationItemType } from "./type";
+import { NavigationBarItem } from "./NavigationBarItem";
 
 export default {
   title: "Navigation/NavigationBar",
@@ -145,7 +146,7 @@ const RightMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) =
 
 const MobileMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) => void): React.ReactNode => {
   return navigationItems.map((item, index) => {
-    if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
+    if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
       return (
         <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
           <NavigationBarItem item={item} onClick={onClick} />

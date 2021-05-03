@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
+import React, { useState } from "react";
 import { Settings } from "react-feather";
 import styled from "@emotion/styled";
-import { NavigationBar } from "./NavigationBar";
-import { NavigationBarItem, NavigationItem, NavigationItemType } from "./type";
+import { NavigationBar as NavBar } from "./NavigationBar";
+import { NavigationItem, NavigationItemType } from "./type";
+import { NavigationBarItem } from "./NavigationBarItem";
 
 const NavigationBarStyle = styled.div`
   .create-btn {
@@ -48,7 +49,7 @@ const leftNavItems: NavigationItem[] = [
   },
   {
     schema: NavigationItemType.DropDownList,
-    id: "media_events",
+    id: "media-events",
     label: "Media & Events",
     path: "",
     dropdownItems: [
@@ -82,7 +83,6 @@ const leftMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) =>
               <NavigationBarItem item={item} onClick={onClick} />
             </div>
           );
-          return "";
         })}
       </div>
     </div>
@@ -94,7 +94,7 @@ const rightNavItems: NavigationItem[] = [
     schema: NavigationItemType.IconButton,
     id: "settings",
     label: "Settings",
-    path: "settings",
+    path: "/settings",
     icon: Settings,
   },
   {
@@ -131,7 +131,7 @@ const rightMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) =
 
 const mobileMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) => void): React.ReactNode => {
   return navigationItems.map((item, index) => {
-    if (item.id == "create-documents" || item.id == "verify" || item.id == "settings") {
+    if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
       return (
         <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
           <NavigationBarItem item={item} onClick={onClick} />
@@ -146,19 +146,24 @@ const mobileMenu = (navigationItems: NavigationItem[], onClick: (isOn: boolean) 
   });
 };
 
+const NavigationBar: React.FunctionComponent = () => {
+  const [isOn, setIsOn] = useState(false);
+  return (
+    <NavigationBarStyle>
+      <NavBar
+        leftMenuChildren={leftMenu(leftNavItems, setIsOn)}
+        rightMenuChildren={rightMenu(rightNavItems, setIsOn)}
+        mobileMenuChildren={mobileMenu(leftNavItems.concat(rightNavItems), setIsOn)}
+        onClick={setIsOn}
+        toggleNavBar={isOn}
+      />
+    </NavigationBarStyle>
+  );
+};
+
 describe("errorPage", () => {
   it("should render correctly with the given title and description", () => {
-    render(
-      <NavigationBarStyle>
-        <NavigationBar
-          leftMenuChildren={leftMenu(leftNavItems, () => {})}
-          rightMenuChildren={rightMenu(rightNavItems, () => {})}
-          mobileMenuChildren={mobileMenu(leftNavItems.concat(rightNavItems), () => {})}
-          onClick={() => {}}
-          toggleNavBar={false}
-        />
-      </NavigationBarStyle>
-    );
+    render(<NavigationBar />);
     expect(screen.getAllByText("Media & Events")).toHaveLength(2);
     expect(screen.getAllByText("Contact")).toHaveLength(2);
     expect(screen.getAllByText("Verify Doc")).toHaveLength(2);
