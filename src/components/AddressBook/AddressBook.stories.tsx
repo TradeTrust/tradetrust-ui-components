@@ -1,11 +1,9 @@
-import { withKnobs } from "@storybook/addon-knobs";
 import React, { ReactElement } from "react";
 import { AddressBook } from "./AddressBook";
 
 export default {
   title: "AddressBook/AddressBook",
   component: AddressBook,
-  decorators: [withKnobs],
 };
 
 export const DefaultAddressBook = (): ReactElement => {
