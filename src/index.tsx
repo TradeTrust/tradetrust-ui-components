@@ -9,5 +9,6 @@ export * from "./components/UI/Dropdown";
 export * from "./components/UI/Input";
 export * from "./components/UI/Loader";
 export * from "./components/UI/Nav";
+export * from "./components/UI/Pagination";
 export * from "./components/UI/Overlay";
 export * from "./components/UI/Overlay/OverlayContent";
