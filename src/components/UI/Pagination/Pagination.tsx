@@ -28,12 +28,12 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
 
   return (
     <div className="flex overflow-x-auto">
-      <div className="border border-solid border-gray-200 border-r-0 flex ml-auto items-center justify-center">
+      <div className="flex ml-auto items-center justify-center">
         <PaginationBox
           onClick={goPreviousPage}
           disable={currentPage === 1}
           data-testid="page-prev"
-          className="hover:bg-gray-50 hover:text-gray-500"
+          className="hover:bg-blue hover:text-white hover:rounded-md"
         >
           <ChevronLeft size={14} />
         </PaginationBox>
@@ -44,7 +44,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             setCurrentPage(1);
           }}
           data-testid={`page-number-${1}`}
-          className="hover:bg-gray-50 hover:text-gray-500"
+          className="hover:bg-blue hover:text-white hover:rounded-md"
         >
           1
         </PaginationBox>
@@ -69,7 +69,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
                 setCurrentPage(pageNumber);
               }}
               data-testid={`page-number-${pageNumber}`}
-              className="hover:bg-gray-50 hover:text-gray-500"
+              className="hover:bg-blue hover:text-white hover:rounded-md"
             >
               {pageNumber}
             </PaginationBox>
@@ -88,7 +88,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               setCurrentPage(totalNoOfPages);
             }}
             data-testid={`page-number-${totalNoOfPages}`}
-            className="hover:bg-gray-50 hover:text-gray-500"
+            className="hover:bg-blue hover:text-white hover:rounded-md"
           >
             {totalNoOfPages}
           </PaginationBox>
@@ -97,7 +97,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           onClick={goNextPage}
           disable={currentPage >= totalNoOfPages}
           data-testid="page-next"
-          className="hover:bg-gray-50 hover:text-gray-500"
+          className="hover:bg-blue hover:text-white hover:rounded-md"
         >
           <ChevronRight size={14} />
         </PaginationBox>

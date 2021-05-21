@@ -92,9 +92,7 @@ module.exports = {
     // https://v1.tailwindcss.com/docs/configuring-variants#ordering-variants
     backgroundColor: ["responsive", "hover", "focus", "active"],
     textColor: ["responsive", "hover", "focus", "active"],
-    extend: {
-      fontWeight: ["hover", "focus"],
-    },
+    borderRadius: ["responsive", "hover", "focus", "active"],
   },
   plugins: [
     plugin(function ({ addBase, config }) {
