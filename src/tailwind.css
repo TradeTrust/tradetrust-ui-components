@@ -23,6 +23,14 @@
 @tailwind utilities;
 
 @layer utilities {
+  .max-h-0 {
+    max-height: 0;
+  }
+
+  .max-h-screen {
+    max-height: 100vh;
+  }
+
   .aspect-16-9 {
     position: relative;
     width: 100%;
