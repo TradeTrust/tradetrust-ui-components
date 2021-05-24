@@ -1,19 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import React, { useState } from "react";
-import { NavigationBar } from "./NavigationBar";
-import {
-  NavigationBarStyle,
-  MockLeftMenu,
-  MockRightMenu,
-  MockMobileMenu,
-  MockLeftNavItems,
-  MockRightNavItems,
-} from "./MockNavigationBar";
+import { NavigationBar, NavigationBarStyled } from "./NavigationBar";
+import { MockLeftMenu, MockRightMenu, MockMobileMenu, MockLeftNavItems, MockRightNavItems } from "./MockNavigationBar";
 
 const NavBar: React.FunctionComponent = () => {
   const [toggleNavBar, setToggleNavBar] = useState(false);
   return (
-    <NavigationBarStyle>
+    <NavigationBarStyled>
       <NavigationBar
         leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
         rightMenuChildren={MockRightMenu(MockRightNavItems)}
@@ -21,7 +14,7 @@ const NavBar: React.FunctionComponent = () => {
         setToggleNavBar={setToggleNavBar}
         toggleNavBar={toggleNavBar}
       />
-    </NavigationBarStyle>
+    </NavigationBarStyled>
   );
 };
 

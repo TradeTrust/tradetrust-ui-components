@@ -19,7 +19,10 @@ export const NavigationBarItem: FunctionComponent<{
 
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
   return (
-    <a className={`font-medium ${item.className}`} href={item.path}>
+    <a
+      className={`text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium ${item.className}`}
+      href={item.path}
+    >
       {item.label}
     </a>
   );
@@ -27,10 +30,12 @@ const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ i
 
 const LabelButton: FunctionComponent<{ item: NavType.LabelButton }> = ({ item }) => {
   return (
-    <a href={item.path} className="w-full">
-      <button className={`font-bold py-2 px-3 ${item.className}`} data-testid={item.id}>
-        {item.label}
-      </button>
+    <a
+      href={item.path}
+      className={`font-bold transition-color duration-200 ease-out shadow-lg rounded-xl border p-2 ${item.className}`}
+      data-testid={item.id}
+    >
+      {item.label}
     </a>
   );
 };
@@ -38,8 +43,12 @@ const LabelButton: FunctionComponent<{ item: NavType.LabelButton }> = ({ item })
 const IconButton: FunctionComponent<{ item: NavType.IconButton }> = ({ item }) => {
   const ButtonIcon = item.icon;
   return (
-    <a className={`font-medium ${item.className}`} href={item.path} data-testid={item.id}>
-      <ButtonIcon />
+    <a
+      className={`text-greyblue-800 hover:text-black transition-color duration-200 ease-out  ${item.className}`}
+      href={item.path}
+      data-testid={item.id}
+    >
+      <ButtonIcon className="stroke-current" />
     </a>
   );
 };
@@ -50,7 +59,7 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
     <div className="relative">
       <button
         type="button"
-        className="inline-flex w-full font-medium focus:outline-none items-center dropdown-link"
+        className="flex items-center focus:outline-none"
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={() => {
@@ -58,9 +67,11 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
         }}
         id={item.id + "-button"}
       >
-        {item.label}
+        <span className="text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium">
+          {item.label}
+        </span>
         <svg
-          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-linear transform ${
+          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-out transform text-greyblue-800 ${
             isOpen ? "rotate-0" : "-rotate-90"
           }`}
           xmlns="http://www.w3.org/2000/svg"
@@ -87,13 +98,12 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
           <div
             className={`mt-2 w-full bg-white focus:outline-none rounded-md z-30 lg:origin-top-right lg:absolute lg:right-0 lg:mt-2 lg:shadow-dropdown lg:ring-1 lg:ring-black lg:ring-opacity-5`}
           >
-            <div className="py-1" role="none">
+            <div className="dropdown py-1">
               {item.dropdownItems?.map((dropdownItem: any, index: number) => {
                 return (
                   <a
                     key={index}
-                    role="menuitem"
-                    className="block px-4 py-2 font-medium dropdown-item"
+                    className="text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium block px-4 py-2"
                     href={dropdownItem.path}
                     onClick={() => {
                       setIsOpen(false);

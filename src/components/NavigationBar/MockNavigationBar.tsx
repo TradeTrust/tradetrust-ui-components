@@ -1,30 +1,7 @@
 import React from "react";
 import { Settings } from "react-feather";
-import styled from "@emotion/styled";
 import { NavigationItem, NavigationItemType } from "./type";
 import { NavigationBarItem } from "./NavigationBarItem";
-
-export const NavigationBarStyle = styled.div`
-  .create-btn {
-    font-size: 16px;
-    color: #3b8cc5;
-    background: #ffffff;
-    border: 1px solid #e7eaec;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-  }
-
-  .verify-btn {
-    font-size: 16px;
-    color: #ffffff;
-    background: #3b8cc5;
-    border: 2px solid #3b8cc5;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-  }
-`;
 
 export const MockLeftNavItems: NavigationItem[] = [
   {
@@ -73,16 +50,14 @@ export const MockLeftNavItems: NavigationItem[] = [
 
 export const MockLeftMenu = (navigationItems: NavigationItem[]): React.ReactNode => {
   return (
-    <div className="hidden lg:block md:ml-12">
-      <div className="flex h-full items-center">
-        {navigationItems.map((item, index) => {
-          return (
-            <div key={index} className="text-lg w-auto lg:ml-6">
-              <NavigationBarItem item={item} />
-            </div>
-          );
-        })}
-      </div>
+    <div className="flex items-center">
+      {navigationItems.map((item, index) => {
+        return (
+          <div key={index} className="lg:ml-6">
+            <NavigationBarItem item={item} />
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -100,29 +75,27 @@ export const MockRightNavItems: NavigationItem[] = [
     id: "create-documents",
     label: "Create Doc",
     path: "https://creator.tradetrust.io/",
-    className: "create-btn",
+    className: "bg-white text-brand-500 border-brand-100 hover:bg-gray-100",
   },
   {
     schema: NavigationItemType.LabelButton,
     id: "verify",
     label: "Verify Doc",
     path: "/verify",
-    className: "verify-btn",
+    className: "bg-brand-500 text-white border-brand-500 hover:bg-brand-300",
   },
 ];
 
 export const MockRightMenu = (navigationItems: NavigationItem[]): React.ReactNode => {
   return (
-    <div className="hidden md:block md:absolute md:right-0 lg:relative lg:ml-auto">
-      <div className="flex h-full items-center">
-        {navigationItems.map((item, index) => {
-          return (
-            <div key={index} className="text-lg font-normal w-auto md:ml-3 lg:ml-6">
-              <NavigationBarItem item={item} />
-            </div>
-          );
-        })}
-      </div>
+    <div className="flex items-center">
+      {navigationItems.map((item, index) => {
+        return (
+          <div key={index} className="md:ml-2 lg:ml-4">
+            <NavigationBarItem item={item} />
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -131,13 +104,13 @@ export const MockMobileMenu = (navigationItems: NavigationItem[]): React.ReactNo
   return navigationItems.map((item, index) => {
     if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
       return (
-        <div key={index} className="text-lg font-normal w-full py-4 md:hidden">
+        <div key={index} className="py-4 md:hidden">
           <NavigationBarItem item={item} />
         </div>
       );
     }
     return (
-      <div key={index} className="text-lg font-normal w-full py-4">
+      <div key={index} className="py-4">
         <NavigationBarItem item={item} />
       </div>
     );

@@ -41,6 +41,13 @@ module.exports = {
         height: "max-height",
       },
       colors: {
+        // START - redesign
+        brand: {
+          100: "#f7f8fc",
+          300: "#1fabd8",
+          500: "#3b8cc5",
+        },
+        // END - redesign
         inherit: {
           default: "inherit",
         },
@@ -75,6 +82,7 @@ module.exports = {
           default: "#c1c9d1",
           200: "#e2e8f0",
           700: "#a7afb7",
+          800: "#6e787f",
           900: "#343a40",
         },
         navy: {

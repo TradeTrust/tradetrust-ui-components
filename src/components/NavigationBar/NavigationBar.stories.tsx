@@ -1,33 +1,19 @@
 import React, { FunctionComponent, useState } from "react";
-import { NavigationBar } from "./NavigationBar";
-import {
-  NavigationBarStyle,
-  MockLeftMenu,
-  MockRightMenu,
-  MockMobileMenu,
-  MockLeftNavItems,
-  MockRightNavItems,
-} from "./MockNavigationBar";
+import { NavigationBar, NavigationBarStyled } from "./NavigationBar";
+import { MockLeftMenu, MockRightMenu, MockMobileMenu, MockLeftNavItems, MockRightNavItems } from "./MockNavigationBar";
 
 export default {
   title: "Navigation/NavigationBar",
   component: NavigationBar,
   parameters: {
     componentSubtitle: "Navigation bar for Tradetrust website",
-    backgrounds: {
-      default: "twitter",
-      values: [
-        { name: "twitter", value: "#000000" },
-        { name: "facebook", value: "#3b5998" },
-      ],
-    },
   },
 };
 
 export const Default: FunctionComponent = () => {
   const [toggleNavBar, setToggleNavBar] = useState(false);
   return (
-    <NavigationBarStyle>
+    <NavigationBarStyled>
       <NavigationBar
         leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
         rightMenuChildren={MockRightMenu(MockRightNavItems)}
@@ -35,6 +21,6 @@ export const Default: FunctionComponent = () => {
         setToggleNavBar={setToggleNavBar}
         toggleNavBar={toggleNavBar}
       />
-    </NavigationBarStyle>
+    </NavigationBarStyled>
   );
 };
