@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 import tw from "twin.macro";
 
 export const StyledTable = styled.div`
-  ${tw`w-full border border-solid border-grey-300 overflow-x-auto scrolling-touch`}
+  ${tw`w-full border border-solid border-gray-300 overflow-x-auto`}
 
   .table {
     ${tw`w-full mb-0`}
   }
 
   tr {
-    ${tw`whitespace-no-wrap border-solid border-t border-grey-300`}
+    ${tw`whitespace-nowrap border-solid border-t border-gray-300`}
   }
 
   th {
@@ -17,7 +17,7 @@ export const StyledTable = styled.div`
   }
 
   td {
-    ${tw`align-middle whitespace-no-wrap border-t-0 p-3`}
+    ${tw`align-middle whitespace-nowrap border-t-0 p-3`}
   }
 
   .table-thead {
@@ -36,7 +36,7 @@ export const StyledTable = styled.div`
 
     tr {
       &:nth-of-type(even) {
-        ${tw`bg-grey-100`}
+        ${tw`bg-gray-100`}
       }
     }
   }

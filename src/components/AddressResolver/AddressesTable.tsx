@@ -19,12 +19,12 @@ const StyledTableAddressResolver = styled(StyledTable)`
     ${tw`w-8`}
 
     .fas {
-      ${tw`block text-grey cursor-pointer transition duration-300 ease-out-cubic`}
+      ${tw`block text-gray cursor-pointer transition duration-300 ease-out-cubic`}
       line-height: 0.5;
       ${fontSize(20)};
 
       &:hover {
-        ${tw`text-grey-800`}
+        ${tw`text-gray-800`}
       }
 
       &.fa-sort-up,
@@ -106,7 +106,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
         path,
         line {
           transition: color 0.3s ease-out;
-          ${tw`text-grey`}
+          ${tw`text-gray`}
         }
 
         &:first-of-type {
@@ -117,7 +117,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
           polyline,
           path,
           line {
-            ${tw`text-grey-900`}
+            ${tw`text-gray-900`}
           }
         }
       }

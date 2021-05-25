@@ -59,8 +59,8 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 props.setToggleNavBar(!props.toggleNavBar);
               }}
             >
-              <span className="w-full bg-greyblue-800 transition-transform duration-200 ease-out absolute block top-bar" />
-              <span className="w-full bg-greyblue-800 transition-transform duration-200 ease-out absolute block bottom-bar" />
+              <span className="w-full bg-grayblue-800 transition-transform duration-200 ease-out absolute block top-bar" />
+              <span className="w-full bg-grayblue-800 transition-transform duration-200 ease-out absolute block bottom-bar" />
             </button>
           </div>
           <a href="https://www.tradetrust.io/">

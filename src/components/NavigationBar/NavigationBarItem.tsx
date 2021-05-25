@@ -20,7 +20,7 @@ export const NavigationBarItem: FunctionComponent<{
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
   return (
     <a
-      className={`text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium ${item.className}`}
+      className={`text-grayblue-800 hover:text-black transition-color duration-200 ease-out font-medium ${item.className}`}
       href={item.path}
     >
       {item.label}
@@ -44,7 +44,7 @@ const IconButton: FunctionComponent<{ item: NavType.IconButton }> = ({ item }) =
   const ButtonIcon = item.icon;
   return (
     <a
-      className={`text-greyblue-800 hover:text-black transition-color duration-200 ease-out  ${item.className}`}
+      className={`text-grayblue-800 hover:text-black transition-color duration-200 ease-out  ${item.className}`}
       href={item.path}
       data-testid={item.id}
     >
@@ -67,11 +67,11 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
         }}
         id={item.id + "-button"}
       >
-        <span className="text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium">
+        <span className="text-grayblue-800 hover:text-black transition-color duration-200 ease-out font-medium">
           {item.label}
         </span>
         <svg
-          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-out transform text-greyblue-800 ${
+          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-out transform text-grayblue-800 ${
             isOpen ? "rotate-0" : "-rotate-90"
           }`}
           xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
                 return (
                   <a
                     key={index}
-                    className="text-greyblue-800 hover:text-black transition-color duration-200 ease-out font-medium block px-4 py-2"
+                    className="text-grayblue-800 hover:text-black transition-color duration-200 ease-out font-medium block px-4 py-2"
                     href={dropdownItem.path}
                     onClick={() => {
                       setIsOpen(false);

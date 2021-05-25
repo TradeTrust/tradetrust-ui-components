@@ -25,7 +25,7 @@ export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({ network, 
           <div className="col-auto ml-auto">
             <p className="mb-0">{children}</p>
           </div>
-          <div className="col-auto ml-auto cursor-pointer hover:text-grey">
+          <div className="col-auto ml-auto cursor-pointer hover:text-gray">
             <X data-testid="network-bar-close" onClick={() => setShow(false)} />
           </div>
         </div>

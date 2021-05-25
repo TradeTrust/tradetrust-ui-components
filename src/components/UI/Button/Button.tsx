@@ -23,7 +23,7 @@ export const Button: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement>> 
   return (
     <button
       className={`${ButtonClasses} ${className} ${
-        disabled ? "cursor-not-allowed bg-grey-200 text-white hover:bg-grey-200" : ""
+        disabled ? "cursor-not-allowed bg-gray-200 text-white hover:bg-gray-200" : ""
       }`}
       type="submit"
       disabled={disabled}
@@ -43,7 +43,7 @@ export const ButtonIcon: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElemen
   return (
     <ButtonWithSvg
       className={`${ButtonClasses} ${className} ${
-        disabled && "cursor-not-allowed bg-grey-100 text-grey-300 hover:bg-grey-200"
+        disabled && "cursor-not-allowed bg-gray-100 text-gray-300 hover:bg-gray-200"
       }`}
       type="submit"
       disabled={disabled}

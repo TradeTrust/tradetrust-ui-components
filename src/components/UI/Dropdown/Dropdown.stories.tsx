@@ -15,7 +15,7 @@ export const AddressBookDefault = (): ReactElement => {
     <Dropdown
       fullWidth
       dropdownButtonText={dropdownButtonText}
-      className="border-grey-300 border-solid border rounded-none p-3 hover:bg-grey-100"
+      className="border-gray-300 border-solid border rounded-none p-3 hover:bg-gray-100"
     >
       <DropdownItem
         onClick={() => {
@@ -64,7 +64,7 @@ export const ButtonDefault = (): ReactElement => {
 
 export const NavBarDefault = (): ReactElement => {
   return (
-    <Dropdown dropdownButtonText="Info" className="font-bold text-greyblue hover:none">
+    <Dropdown dropdownButtonText="Info" className="font-bold text-grayblue hover:none">
       <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
       <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
     </Dropdown>

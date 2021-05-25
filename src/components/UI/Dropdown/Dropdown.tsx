@@ -42,7 +42,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute z-30 max-w-sm mt-1 rounded bg-white border border-solid border-grey-300 py-2 shadow-lg${
+            className={`absolute z-30 max-w-sm mt-1 rounded bg-white border border-solid border-gray-300 py-2 shadow-lg${
               fullWidth ? " w-full" : ""
             } ${alignRight ? " right-0" : ""}`}
           >
@@ -63,7 +63,7 @@ interface DropdownItemProps {
 export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ className, children, ...props }) => {
   return (
     <div
-      className={`hover:bg-grey-100 p-3 cursor-pointer text-grey-800 truncate w-full w-max-sm active:bg-grey-300 ${className}`}
+      className={`hover:bg-gray-100 p-3 cursor-pointer text-gray-800 truncate w-full w-max-sm active:bg-gray-300 ${className}`}
       {...props}
     >
       {children}

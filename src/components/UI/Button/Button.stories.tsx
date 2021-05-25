@@ -24,11 +24,11 @@ export const SolidOrangeWhite = (): React.ReactNode => {
 };
 
 export const SolidWhiteOrange = (): React.ReactNode => {
-  return <Button className="bg-white text-orange hover:bg-grey-100">SolidWhiteOrange</Button>;
+  return <Button className="bg-white text-orange hover:bg-gray-100">SolidWhiteOrange</Button>;
 };
 
 export const SolidWhiteBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-blue hover:bg-grey-100">SolidWhiteBlue</Button>;
+  return <Button className="bg-white text-blue hover:bg-gray-100">SolidWhiteBlue</Button>;
 };
 
 export const SolidRedWhite = (): React.ReactNode => {
@@ -36,7 +36,7 @@ export const SolidRedWhite = (): React.ReactNode => {
 };
 
 export const SolidWhiteGrey = (): React.ReactNode => {
-  return <Button className="bg-white text-grey hover:bg-grey-100">SolidWhiteGrey</Button>;
+  return <Button className="bg-white text-gray hover:bg-gray-100">SolidWhiteGrey</Button>;
 };
 
 export const SolidGreenWhite = (): React.ReactNode => {
@@ -44,12 +44,12 @@ export const SolidGreenWhite = (): React.ReactNode => {
 };
 
 export const BorderedBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-blue border-blue hover:bg-grey-100">BorderedBlue</Button>;
+  return <Button className="bg-white text-blue border-blue hover:bg-gray-100">BorderedBlue</Button>;
 };
 
 export const IconWhiteOrange = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100">
+    <ButtonIcon className="bg-white hover:bg-gray-100">
       <Edit3 className="text-orange" />
     </ButtonIcon>
   );
@@ -57,7 +57,7 @@ export const IconWhiteOrange = (): React.ReactNode => {
 
 export const IconWhiteOrangeDisabled = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100" disabled>
+    <ButtonIcon className="bg-white hover:bg-gray-100" disabled>
       <Edit3 className="text-orange" />
     </ButtonIcon>
   );
@@ -65,7 +65,7 @@ export const IconWhiteOrangeDisabled = (): React.ReactNode => {
 
 export const IconWhiteBlue = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100">
+    <ButtonIcon className="bg-white hover:bg-gray-100">
       <Printer className="text-blue" />
     </ButtonIcon>
   );
@@ -81,7 +81,7 @@ export const IconOrangeWhite = (): React.ReactNode => {
 
 export const IconCircle = (): React.ReactNode => {
   return (
-    <ButtonIcon className="rounded-full bg-grey-300 hover:bg-grey">
+    <ButtonIcon className="rounded-full bg-gray-300 hover:bg-gray">
       <X />
     </ButtonIcon>
   );
