@@ -41,6 +41,31 @@ module.exports = {
           300: "#1fabd8",
           500: "#3b8cc5",
         },
+        primary: {
+          100: "#F7F8FC",
+          300: "#4BC3E9",
+          DEFAULT: "#3B8CC5",
+        },
+        secondary: {
+          DEFAULT: "#F57A29",
+        },
+        tertiary: {
+          DEFAULT: "#FDC53F",
+          700: "#E3A002",
+        },
+        error: {
+          DEFAULT: "#E62617",
+        },
+        success: {
+          DEFAULT: "#3AAF86",
+        },
+        grey: {
+          100: "#E7EAEC",
+          200: "#D1D5D9",
+          300: "#B4BCC2",
+          500: "#6E787F",
+          900: "#454B50",
+        },
         // END - redesign
         inherit: {
           DEFAULT: "inherit",
