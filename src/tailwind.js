@@ -36,18 +36,17 @@ module.exports = {
       },
       colors: {
         // START - redesign
-        brand: {
-          100: "#f7f8fc",
-          300: "#1fabd8",
-          500: "#3b8cc5",
-        },
         primary: {
-          100: "#F7F8FC",
-          300: "#4BC3E9",
           DEFAULT: "#3B8CC5",
+          50: "#F7F8FC",
+          200: "#4BC3E9",
+          300: "#1fabd8",
+          500: "#0099cc",
         },
         secondary: {
           DEFAULT: "#F57A29",
+          300: "#fbd38d",
+          600: "#ed8936",
         },
         tertiary: {
           DEFAULT: "#FDC53F",
@@ -55,9 +54,13 @@ module.exports = {
         },
         error: {
           DEFAULT: "#E62617",
+          400: "#ff5268",
         },
         success: {
           DEFAULT: "#3AAF86",
+          400: "#68d391",
+          500: "#00c04a",
+          700: "#008a35",
         },
         grey: {
           100: "#E7EAEC",
@@ -70,65 +73,14 @@ module.exports = {
         inherit: {
           DEFAULT: "inherit",
         },
-        blue: {
-          DEFAULT: "#0099cc",
-          300: "#f3f8fc",
-          400: "#a6c1ee",
-          700: "#006080",
-          800: "#001F29",
-        },
-        green: {
-          DEFAULT: "#00c04a",
-          100: "#f5fbf7",
-          400: "#68d391",
-          600: "#008a35",
-          900: "#001f29",
-        },
-        gray: {
-          DEFAULT: "#8f8f8f",
-          100: "#fafafa",
-          200: "#e5e5e5",
-          300: "#dddddd",
-          400: "#cfcfcf",
-          700: "#5a5a5a",
-          800: "#4f4f4f",
-          900: "#212529",
-        },
-        grayblue: {
-          DEFAULT: "#c1c9d1",
-          200: "#e2e8f0",
-          700: "#a7afb7",
-          800: "#6e787f",
-          900: "#343a40",
-        },
         navy: {
           DEFAULT: "#324353",
-        },
-        orange: {
-          DEFAULT: "#ff9933",
-          300: "#fbd38d",
-          600: "#ed8936",
-        },
-        pink: {
-          DEFAULT: "#fbc2eb",
-        },
-        red: {
-          DEFAULT: "#ff5268",
-          100: "#fbeae9",
-          200: "#f7d7d7",
-          300: "#fc8686",
-          400: "#e46767",
-          900: "#8b0000",
+          400: "#006080",
+          900: "#001F29",
         },
         teal: {
           DEFAULT: "#00cbbc",
           300: "#26edde",
-        },
-        yellow: {
-          DEFAULT: "#ffe600",
-          300: "#fff48f",
-          400: "#ffee4f",
-          600: "#ffbf00",
         },
       },
       boxShadow: {
