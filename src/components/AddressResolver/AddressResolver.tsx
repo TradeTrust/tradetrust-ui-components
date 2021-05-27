@@ -11,11 +11,11 @@ export const AddressResolver: FunctionComponent = () => {
       <div className="flex items-end">
         <div className="flex-1 flex-col">
           <h3>Settings: Address Resolver</h3>
-          <p className="mb-0 text-gray">Add third party’s endpoint to resolve addresses. </p>
+          <p className="mb-0 text-gray-500">Add third party’s endpoint to resolve addresses. </p>
         </div>
         <div className="flex">
           <Button
-            className="bg-orange text-white hover:bg-orange-600"
+            className="bg-secondary text-white hover:bg-secondary-600"
             onClick={() => {
               setNewEndpoint(true);
             }}

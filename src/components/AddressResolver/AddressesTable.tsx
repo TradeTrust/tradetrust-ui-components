@@ -19,7 +19,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
     ${tw`w-8`}
 
     .fas {
-      ${tw`block text-gray cursor-pointer transition duration-300 ease-out-cubic`}
+      ${tw`block text-gray-500 cursor-pointer transition duration-300 ease-out-cubic`}
       line-height: 0.5;
       ${fontSize(20)};
 
@@ -106,7 +106,7 @@ const StyledTableAddressResolver = styled(StyledTable)`
         path,
         line {
           transition: color 0.3s ease-out;
-          ${tw`text-gray`}
+          ${tw`text-gray-500`}
         }
 
         &:first-of-type {

@@ -36,7 +36,7 @@ export const StyledTable = styled.div`
 
     tr {
       &:nth-of-type(even) {
-        ${tw`bg-gray-100`}
+        ${tw`bg-gray-50`}
       }
     }
   }

@@ -26,7 +26,7 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
         style={{ display: "none" }}
         accept=".csv"
       />
-      <LabelButton className="bg-white text-blue hover:bg-gray-100" htmlFor="csv-file-input">
+      <LabelButton className="bg-white text-primary-500 hover:bg-gray-50" htmlFor="csv-file-input">
         <div className="flex items-center mx-0">
           <div className="col-auto mr-2">
             <FilePlus />

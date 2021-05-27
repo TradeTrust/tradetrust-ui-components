@@ -17,7 +17,8 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
   className,
   ...props
 }) => {
-  const active = currentPage === pageNumber && (currentPage || pageNumber) ? "text-gray bg-gray-100" : "text-blue";
+  const active =
+    currentPage === pageNumber && (currentPage || pageNumber) ? "text-gray-500 bg-gray-50" : "text-primary-500";
   const disabled = disable ? "bg-opacity-25 text-opacity-25 cursor-not-allowed" : "";
 
   return (

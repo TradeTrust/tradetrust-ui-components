@@ -24,7 +24,7 @@ export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ title, descriptio
         </g>
       </svg>
 
-      <h2 className="text-orange uppercase pt-5 pb-2 text-3xl md:text-4xl lg:text-5xl font-semibold">{title}</h2>
+      <h2 className="text-secondary uppercase pt-5 pb-2 text-3xl md:text-4xl lg:text-5xl font-semibold">{title}</h2>
       <p className="text-black pb-2 text-base md:text-lg lg:text-2xl">{description}</p>
       {children}
     </div>

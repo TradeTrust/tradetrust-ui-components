@@ -7,7 +7,7 @@ const InputStyled = styled.input`
   min-height: 40px;
 
   &::placeholder {
-    ${tw`italic text-gray`}
+    ${tw`italic text-gray-500`}
     ${fontSize(16)}
   }
 `;
@@ -22,11 +22,11 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
     <>
       <InputStyled
         className={`w-full border border-solid px-2 py-1 mb-0 ${className ? className : ""} ${
-          hasError || errorMessage ? "border-red" : "border-gray-300"
+          hasError || errorMessage ? "border-error-400" : "border-gray-300"
         }`}
         {...props}
       />
-      {errorMessage && <p className="text-red my-2">{errorMessage}</p>}
+      {errorMessage && <p className="text-error-400 my-2">{errorMessage}</p>}
     </>
   );
 };
