@@ -39,11 +39,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
                 <div className="col-auto mr-3">
-                  {isSuccess ? (
-                    <CheckCircle className="text-robin-teal" />
-                  ) : (
-                    <XCircle className="text-crimson-red-400" />
-                  )}
+                  {isSuccess ? <CheckCircle className="text-turquoise" /> : <XCircle className="text-rose-400" />}
                 </div>
               )}
               <h3 className="text-gray-500 mb-0 flex-grow leading-8">{title}</h3>

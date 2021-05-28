@@ -28,7 +28,7 @@ export const StyledTable = styled.div`
   }
 
   .table-thead {
-    ${tw`text-white bg-deep-blue`}
+    ${tw`text-white bg-denim`}
   }
 
   .table-tbody {

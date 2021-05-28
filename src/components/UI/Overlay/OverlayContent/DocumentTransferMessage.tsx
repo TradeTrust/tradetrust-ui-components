@@ -27,7 +27,7 @@ const ButtonClose: FunctionComponent = () => {
   };
 
   return (
-    <Button className="bg-ecstasy-orange text-white hover:bg-ecstasy-orange-600" onClick={handleCloseOverlay}>
+    <Button className="bg-tangerine text-white hover:bg-tangerine-600" onClick={handleCloseOverlay}>
       Close
     </Button>
   );
@@ -36,7 +36,7 @@ const ButtonClose: FunctionComponent = () => {
 const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
     <LinkButton
-      className="bg-ecstasy-orange text-white hover:bg-ecstasy-orange-600"
+      className="bg-tangerine text-white hover:bg-tangerine-600"
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
       target="_blank"
     >
@@ -54,7 +54,7 @@ const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
   };
   return (
     <Button
-      className="bg-ecstasy-orange text-white hover:bg-ecstasy-orange-600"
+      className="bg-tangerine text-white hover:bg-tangerine-600"
       onClick={onClick}
       data-testid={"confirmActionBtn"}
     >
