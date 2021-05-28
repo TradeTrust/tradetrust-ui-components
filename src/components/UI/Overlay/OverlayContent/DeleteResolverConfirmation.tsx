@@ -33,7 +33,7 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
           </Button>
         </div>
         <div className="col-auto">
-          <Button className="bg-error-400 text-white hover:bg-red-400" onClick={deleteAddress}>
+          <Button className="bg-crimson-red-400 text-white hover:bg-red-400" onClick={deleteAddress}>
             Delete
           </Button>
         </div>

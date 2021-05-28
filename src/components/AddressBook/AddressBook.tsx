@@ -222,7 +222,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
           <div className="flex mx-0">
             <div className="w-auto mb-2">
               <LinkButton
-                className="bg-white text-primary-500 hover:bg-gray-50"
+                className="bg-white text-boston-blue-500 hover:bg-gray-50"
                 href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
                 download="template.csv"
               >

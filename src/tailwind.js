@@ -36,33 +36,33 @@ module.exports = {
       },
       colors: {
         // START - redesign
-        primary: {
+        "boston-blue": {
           DEFAULT: "#3B8CC5",
           50: "#F7F8FC",
           200: "#4BC3E9",
           300: "#1fabd8",
           500: "#0099cc",
         },
-        secondary: {
+        "ecstasy-orange": {
           DEFAULT: "#F57A29",
           300: "#fbd38d",
           600: "#ed8936",
         },
-        tertiary: {
+        "sun-yellow": {
           DEFAULT: "#FDC53F",
           700: "#E3A002",
         },
-        error: {
+        "crimson-red": {
           DEFAULT: "#E62617",
           400: "#ff5268",
         },
-        success: {
+        "keppel-green": {
           DEFAULT: "#3AAF86",
           400: "#68d391",
           500: "#00c04a",
           700: "#008a35",
         },
-        grey: {
+        "pale-sky-grey": {
           100: "#E7EAEC",
           200: "#D1D5D9",
           300: "#B4BCC2",
@@ -73,12 +73,12 @@ module.exports = {
         inherit: {
           DEFAULT: "inherit",
         },
-        navy: {
+        "deep-blue": {
           DEFAULT: "#324353",
           400: "#006080",
           900: "#001F29",
         },
-        teal: {
+        "robin-teal": {
           DEFAULT: "#00cbbc",
           300: "#26edde",
         },

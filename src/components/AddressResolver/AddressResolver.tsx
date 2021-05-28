@@ -15,7 +15,7 @@ export const AddressResolver: FunctionComponent = () => {
         </div>
         <div className="flex">
           <Button
-            className="bg-secondary text-white hover:bg-secondary-600"
+            className="bg-ecstasy-orange text-white hover:bg-ecstasy-orange-600"
             onClick={() => {
               setNewEndpoint(true);
             }}

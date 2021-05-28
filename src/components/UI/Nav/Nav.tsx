@@ -15,7 +15,7 @@ export interface TileInfoProps {
 
 export const TileInfo: FunctionComponent<TileInfoProps> = ({ title, description }) => (
   <div className="p-4 w-full max-w-lg bg-white shadow-md inline-block mb-2 transition-colors duration-200 hover:bg-gray-50">
-    <h4 className="text-primary-500">{title}</h4>
+    <h4 className="text-boston-blue-500">{title}</h4>
     <p className="text-gray-700">{description}</p>
   </div>
 );

@@ -19,7 +19,7 @@ export const NetworkBar: React.FunctionComponent<NetworkBarProps> = ({ network, 
 
   if (!show) return null;
   return (
-    <div className="bg-navy-900 text-white py-2 px-0" data-testid="network-bar">
+    <div className="bg-deep-blue-900 text-white py-2 px-0" data-testid="network-bar">
       <div className="container">
         <div className="flex flex-wrap">
           <div className="col-auto ml-auto">

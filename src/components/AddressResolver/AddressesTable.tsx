@@ -60,14 +60,14 @@ const StyledTableAddressResolver = styled(StyledTable)`
           polyline,
           path,
           line {
-            ${tw`text-teal`}
+            ${tw`text-robin-teal`}
           }
 
           &:hover {
             polyline,
             path,
             line {
-              ${tw`text-teal-300`}
+              ${tw`text-robin-teal-300`}
             }
           }
         }

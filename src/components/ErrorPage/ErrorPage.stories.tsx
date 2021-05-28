@@ -13,7 +13,7 @@ export const Default: FunctionComponent = () => {
   return (
     <ErrorPage title="ERROR" description="Something went wrong">
       <a
-        className="mt-4 inline-block px-8 py-4 bg-navy hover:bg-secondary text-white hover:text-white border-none rounded-full font-semibold uppercase no-underline transition duration-300 ease-out text-sm"
+        className="mt-4 inline-block px-8 py-4 bg-deep-blue hover:bg-ecstasy-orange text-white hover:text-white border-none rounded-full font-semibold uppercase no-underline transition duration-300 ease-out text-sm"
         href="/"
       >
         Go back to home

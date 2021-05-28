@@ -41,22 +41,22 @@ export const ButtonDefault = (): ReactElement => {
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
       alignRight
-      className="rounded px-3 py-2 font-bold text-white bg-secondary hover:bg-secondary-600"
+      className="rounded px-3 py-2 font-bold text-white bg-ecstasy-orange hover:bg-ecstasy-orange-600"
     >
       <DropdownItem
-        className="active:bg-secondary-600 active:text-white"
+        className="active:bg-ecstasy-orange-600 active:text-white"
         onClick={() => console.log("local clicked!!")}
       >
         Transfer holdership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-secondary-600 active:text-white"
+        className="active:bg-ecstasy-orange-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Endorse change of ownership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-secondary-600 active:text-white"
+        className="active:bg-ecstasy-orange-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Surrender document
@@ -67,7 +67,7 @@ export const ButtonDefault = (): ReactElement => {
 
 export const NavBarDefault = (): ReactElement => {
   return (
-    <Dropdown dropdownButtonText="Info" className="font-bold text-grey-300 hover:none">
+    <Dropdown dropdownButtonText="Info" className="font-bold text-pale-sky-grey-300 hover:none">
       <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
       <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
     </Dropdown>

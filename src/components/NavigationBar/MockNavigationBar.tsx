@@ -75,14 +75,14 @@ export const MockRightNavItems: NavigationItem[] = [
     id: "create-documents",
     label: "Create Doc",
     path: "https://creator.tradetrust.io/",
-    className: "bg-white text-primary border-primary-100 hover:bg-gray-50",
+    className: "bg-white text-boston-blue border-boston-blue-100 hover:bg-gray-50",
   },
   {
     schema: NavigationItemType.LabelButton,
     id: "verify",
     label: "Verify Doc",
     path: "/verify",
-    className: "bg-primary text-white border-primary hover:bg-primary-300 hover:border-primary-300",
+    className: "bg-boston-blue text-white border-boston-blue hover:bg-boston-blue-300 hover:border-boston-blue-300",
   },
 ];
 
