@@ -45,9 +45,13 @@ Hence, the decision is to host any common ui components that are shared between 
 
 As of now, any potential common components that are used between tradetrust.io and creator.tradetrust.io will be developed here. This repository is always on the work, do look out for any updates that happen along the way : )
 
-### What's available?
+### What's here?
 
-Checkout the [storybook](https://ui.tradetrust.io) documentation for more information.
+Checkout the [documentation](https://ui.tradetrust.io) for the available components.
+
+### Styleguide
+
+Color palette [here](https://ui.tradetrust.io/?path=/docs/styleguide--colors).
 
 ### Styles management
 

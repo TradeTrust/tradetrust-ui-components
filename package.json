@@ -19,8 +19,8 @@
     "@govtechsg/address-identity-resolver": "^1.4.1",
     "debug": "^4.3.1",
     "react-feather": "^2.0.9",
-    "tailwindcss": "^1.9.6",
-    "twin.macro": "^1.12.1",
+    "tailwindcss": "^2.1.2",
+    "twin.macro": "^2.4.2",
     "validator": "^13.6.0"
   },
   "scripts": {

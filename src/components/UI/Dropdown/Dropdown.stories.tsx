@@ -15,7 +15,7 @@ export const AddressBookDefault = (): ReactElement => {
     <Dropdown
       fullWidth
       dropdownButtonText={dropdownButtonText}
-      className="border-grey-300 border-solid border rounded-none p-3 hover:bg-grey-100"
+      className="border-gray-300 border-solid border rounded-none p-3 hover:bg-gray-50"
     >
       <DropdownItem
         onClick={() => {
@@ -41,19 +41,22 @@ export const ButtonDefault = (): ReactElement => {
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
       alignRight
-      className="rounded px-3 py-2 font-bold text-white bg-orange hover:bg-orange-600"
+      className="rounded px-3 py-2 font-bold text-white bg-tangerine hover:bg-tangerine-600"
     >
-      <DropdownItem className="active:bg-orange-600 active:text-white" onClick={() => console.log("local clicked!!")}>
+      <DropdownItem
+        className="active:bg-tangerine-600 active:text-white"
+        onClick={() => console.log("local clicked!!")}
+      >
         Transfer holdership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-orange-600 active:text-white"
+        className="active:bg-tangerine-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Endorse change of ownership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-orange-600 active:text-white"
+        className="active:bg-tangerine-600 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Surrender document
@@ -64,7 +67,7 @@ export const ButtonDefault = (): ReactElement => {
 
 export const NavBarDefault = (): ReactElement => {
   return (
-    <Dropdown dropdownButtonText="Info" className="font-bold text-greyblue hover:none">
+    <Dropdown dropdownButtonText="Info" className="font-bold text-cloud-300 hover:none">
       <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
       <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
     </Dropdown>

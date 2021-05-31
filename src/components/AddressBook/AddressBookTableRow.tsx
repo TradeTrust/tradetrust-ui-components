@@ -19,7 +19,7 @@ interface AddressBookEtherscanLinkProps {
 const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
-    <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-blue">
+    <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-cerulean-500">
       <ExternalLink className="ml-auto mr-4" />
     </a>
   );

@@ -17,12 +17,13 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
   className,
   ...props
 }) => {
-  const active = currentPage === pageNumber && (currentPage || pageNumber) ? "text-grey bg-grey-100" : "text-blue";
+  const active =
+    currentPage === pageNumber && (currentPage || pageNumber) ? "text-gray-500 bg-gray-50" : "text-cerulean-500";
   const disabled = disable ? "bg-opacity-25 text-opacity-25 cursor-not-allowed" : "";
 
   return (
     <button
-      className={`border-r border-solid border-grey-200 p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none ${active} ${disabled} ${
+      className={`border-r border-solid border-gray-200 p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none ${active} ${disabled} ${
         className ? className : ""
       } `}
       disabled={disable}

@@ -46,7 +46,7 @@ const StyledTableAddressBook = styled(StyledTable)`
     height: 360px;
 
     tr {
-      ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-grey-200`}
+      ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
 
       a {
         svg {
@@ -178,7 +178,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <Dropdown
           fullWidth
           dropdownButtonText={isLocal ? "Local" : name}
-          className="border-grey-300 border-solid border rounded-none mb-2 p-3 bg-white"
+          className="border-gray-300 border-solid border rounded-none mb-2 p-3 bg-white"
         >
           <DropdownItem
             onClick={() => {
@@ -205,24 +205,24 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         </Dropdown>
         <div className="flex items-start flex-col md:flex-row">
           <div className="flex mb-2 flex-grow">
-            <div className="max-w-full md:max-w-xs border border-solid border-grey-300 px-3 py-2 bg-white">
+            <div className="max-w-full md:max-w-xs border border-solid border-gray-300 px-3 py-2 bg-white">
               <div className="flex mx-0 items-center w-64">
                 <input
-                  className="border-none outline-none w-full placeholder-grey-300"
+                  className="border-none outline-none w-full placeholder-gray-300"
                   type="text"
                   placeholder="Search"
                   value={searchTerm}
                   onChange={onSearchTermChanged}
                   disabled={!isLocal && !hasEntityLookupPath}
                 />
-                <Search className="text-grey" />
+                <Search className="text-gray-500" />
               </div>
             </div>
           </div>
           <div className="flex mx-0">
             <div className="w-auto mb-2">
               <LinkButton
-                className="bg-white text-blue hover:bg-grey-100"
+                className="bg-white text-cerulean-500 hover:bg-gray-50"
                 href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
                 download="template.csv"
               >

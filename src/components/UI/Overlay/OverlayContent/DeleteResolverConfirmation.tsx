@@ -23,7 +23,7 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
       <div className="flex mx-0">
         <div className="col-auto ml-auto mr-2">
           <Button
-            className="bg-white text-grey hover:bg-grey-100"
+            className="bg-white text-gray-500 hover:bg-gray-50"
             onClick={() => {
               setOverlayVisible(false);
               showOverlay(undefined);
@@ -33,7 +33,7 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
           </Button>
         </div>
         <div className="col-auto">
-          <Button className="bg-red text-white hover:bg-red-400" onClick={deleteAddress}>
+          <Button className="bg-rose-400 text-white hover:bg-red-400" onClick={deleteAddress}>
             Delete
           </Button>
         </div>

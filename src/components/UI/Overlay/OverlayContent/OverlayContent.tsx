@@ -29,7 +29,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
     <>
       {isOverlayVisible && (
         <div
-          className={`relative flex flex-col p-5 bg-white shadow-lg overflow-auto scrolling-touch h-auto ${className}`}
+          className={`relative flex flex-col p-5 bg-white shadow-lg overflow-auto h-auto ${className}`}
           {...props}
           style={{
             width: "calc(100vw - (15px * 2))",
@@ -39,17 +39,17 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
                 <div className="col-auto mr-3">
-                  {isSuccess ? <CheckCircle className="text-teal" /> : <XCircle className="text-red" />}
+                  {isSuccess ? <CheckCircle className="text-turquoise" /> : <XCircle className="text-rose-400" />}
                 </div>
               )}
-              <h3 className="text-grey mb-0 flex-grow leading-8">{title}</h3>
+              <h3 className="text-gray-500 mb-0 flex-grow leading-8">{title}</h3>
               <div className="cursor-pointer" onClick={handleCloseOverlay}>
                 <X />
               </div>
             </div>
           </div>
           <div className="flex-1">
-            <div className="flex flex-col h-full text-grey-900">{children}</div>
+            <div className="flex flex-col h-full text-gray-900">{children}</div>
           </div>
         </div>
       )}

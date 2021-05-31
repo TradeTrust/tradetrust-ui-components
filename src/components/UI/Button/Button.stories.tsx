@@ -20,60 +20,60 @@ export const SolidDisabled = (): React.ReactNode => {
 };
 
 export const SolidOrangeWhite = (): React.ReactNode => {
-  return <Button className="bg-orange text-white hover:bg-orange-600">SolidOrangeWhite</Button>;
+  return <Button className="bg-tangerine text-white hover:bg-tangerine-600">SolidOrangeWhite</Button>;
 };
 
 export const SolidWhiteOrange = (): React.ReactNode => {
-  return <Button className="bg-white text-orange hover:bg-grey-100">SolidWhiteOrange</Button>;
+  return <Button className="bg-white text-tangerine hover:bg-gray-50">SolidWhiteOrange</Button>;
 };
 
 export const SolidWhiteBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-blue hover:bg-grey-100">SolidWhiteBlue</Button>;
+  return <Button className="bg-white text-cerulean-500 hover:bg-gray-50">SolidWhiteBlue</Button>;
 };
 
 export const SolidRedWhite = (): React.ReactNode => {
-  return <Button className="bg-red text-white hover:bg-red-400">SolidRedWhite</Button>;
+  return <Button className="bg-rose-400 text-white hover:bg-red-400">SolidRedWhite</Button>;
 };
 
 export const SolidWhiteGrey = (): React.ReactNode => {
-  return <Button className="bg-white text-grey hover:bg-grey-100">SolidWhiteGrey</Button>;
+  return <Button className="bg-white text-gray-500 hover:bg-gray-50">SolidWhiteGrey</Button>;
 };
 
 export const SolidGreenWhite = (): React.ReactNode => {
-  return <Button className="bg-green text-white hover:bg-green-600">SolidGreenWhite</Button>;
+  return <Button className="bg-emerald-500 text-white hover:bg-emerald-700">SolidGreenWhite</Button>;
 };
 
 export const BorderedBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-blue border-blue hover:bg-grey-100">BorderedBlue</Button>;
+  return <Button className="bg-white text-cerulean-500 border-cerulean-500 hover:bg-gray-50">BorderedBlue</Button>;
 };
 
 export const IconWhiteOrange = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100">
-      <Edit3 className="text-orange" />
+    <ButtonIcon className="bg-white hover:bg-gray-50">
+      <Edit3 className="text-tangerine" />
     </ButtonIcon>
   );
 };
 
 export const IconWhiteOrangeDisabled = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100" disabled>
-      <Edit3 className="text-orange" />
+    <ButtonIcon className="bg-white hover:bg-gray-50" disabled>
+      <Edit3 className="text-tangerine" />
     </ButtonIcon>
   );
 };
 
 export const IconWhiteBlue = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-white hover:bg-grey-100">
-      <Printer className="text-blue" />
+    <ButtonIcon className="bg-white hover:bg-gray-50">
+      <Printer className="text-cerulean-500" />
     </ButtonIcon>
   );
 };
 
 export const IconOrangeWhite = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-orange hover:bg-orange-600">
+    <ButtonIcon className="bg-tangerine hover:bg-tangerine-600">
       <Book className="text-white" />
     </ButtonIcon>
   );
@@ -81,7 +81,7 @@ export const IconOrangeWhite = (): React.ReactNode => {
 
 export const IconCircle = (): React.ReactNode => {
   return (
-    <ButtonIcon className="rounded-full bg-grey-300 hover:bg-grey">
+    <ButtonIcon className="rounded-full bg-gray-300 hover:bg-gray-500">
       <X />
     </ButtonIcon>
   );
