@@ -33,7 +33,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           onClick={goPreviousPage}
           disable={currentPage === 1}
           data-testid="page-prev"
-          className="hover:bg-blue hover:text-white hover:rounded-md"
+          className="text-cerulean-200 hover:bg-cerulean-200 hover:text-white hover:rounded-md"
         >
           <ChevronLeft size={14} />
         </PaginationBox>
@@ -97,7 +97,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           onClick={goNextPage}
           disable={currentPage >= totalNoOfPages}
           data-testid="page-next"
-          className="hover:bg-blue hover:text-white hover:rounded-md"
+          className="text-cerulean-200 hover:bg-cerulean-200 hover:text-white hover:rounded-md"
         >
           <ChevronRight size={14} />
         </PaginationBox>
