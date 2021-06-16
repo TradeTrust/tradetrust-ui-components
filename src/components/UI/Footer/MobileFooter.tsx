@@ -7,14 +7,18 @@ const Top = (props: Pick<FooterProps, "title">): React.ReactElement => {
   const { title } = props;
   return (
     <div className={"flex justify-center items-center pb-12"}>
-      <p className={"text-xl"}>{title}</p>
+      <p className={"text-xl font-bold font-headings"}>{title}</p>
     </div>
   );
 };
 
 const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
   const { render = defaultRender } = item;
-  return <React.Fragment key={`row-${index}`}>{render({ ...item })}</React.Fragment>;
+  return (
+    <div className={"pb-3"} key={`row-${index}`}>
+      {render({ ...item })}
+    </div>
+  );
 };
 const MobileFooterColumn = (props: FooterColumnProps): React.ReactElement => {
   const { category, items } = props;
