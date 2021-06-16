@@ -6,7 +6,7 @@ const Left = (props: Pick<FooterProps, "title">): React.ReactElement => {
   const { title } = props;
   return (
     <div className={"w-52"}>
-      <p className={"text-3xl"}>{title}</p>
+      <p className={"text-3xl font-headings font-bold"}>{title}</p>
     </div>
   );
 };
@@ -14,7 +14,7 @@ const Left = (props: Pick<FooterProps, "title">): React.ReactElement => {
 const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
   const { render = defaultRender } = item;
   return (
-    <div key={`row-${index}`} className={"pb-4"}>
+    <div key={`row-${index}`} className={"pb-3"}>
       {render({ ...item })}
     </div>
   );
@@ -33,7 +33,7 @@ export const Footer = (props: FooterProps): React.ReactElement => {
   const { className = "", title, copyright, data } = props;
   return (
     <footer className={`bg-white py-6 no-print hidden md:block container ${className}`}>
-      <div className="flex">
+      <div className="flex pb-3.5">
         <Left title={title} />
         {data ? (
           data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
