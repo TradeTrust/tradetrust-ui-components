@@ -29,12 +29,7 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   return (
     <div className="flex overflow-x-auto">
       <div className="flex ml-auto items-center justify-center">
-        <PaginationBox
-          onClick={goPreviousPage}
-          disable={currentPage === 1}
-          data-testid="page-prev"
-          className="text-cerulean-200 hover:bg-cerulean-200 hover:text-white hover:rounded-md"
-        >
+        <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
           <ChevronLeft size={14} />
         </PaginationBox>
         <PaginationBox
@@ -44,7 +39,6 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             setCurrentPage(1);
           }}
           data-testid={`page-number-${1}`}
-          className="hover:bg-blue hover:text-white hover:rounded-md"
         >
           1
         </PaginationBox>
@@ -69,7 +63,6 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
                 setCurrentPage(pageNumber);
               }}
               data-testid={`page-number-${pageNumber}`}
-              className="hover:bg-blue hover:text-white hover:rounded-md"
             >
               {pageNumber}
             </PaginationBox>
@@ -88,17 +81,11 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
               setCurrentPage(totalNoOfPages);
             }}
             data-testid={`page-number-${totalNoOfPages}`}
-            className="hover:bg-blue hover:text-white hover:rounded-md"
           >
             {totalNoOfPages}
           </PaginationBox>
         )}
-        <PaginationBox
-          onClick={goNextPage}
-          disable={currentPage >= totalNoOfPages}
-          data-testid="page-next"
-          className="text-cerulean-200 hover:bg-cerulean-200 hover:text-white hover:rounded-md"
-        >
+        <PaginationBox onClick={goNextPage} disable={currentPage >= totalNoOfPages} data-testid="page-next">
           <ChevronRight size={14} />
         </PaginationBox>
       </div>

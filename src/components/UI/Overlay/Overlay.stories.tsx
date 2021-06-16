@@ -1,6 +1,6 @@
-import React, { FunctionComponent, ReactElement } from "react";
-import { OverlayContextProvider, useOverlayContext } from "../../../common/context/OverlayContext";
-import { Button } from "../Button";
+import React, { ReactElement } from "react";
+import { OverlayContextProvider } from "../../../common/context/OverlayContext";
+import { OverlayDemo } from "./Overlay.mock";
 import { Overlay } from "./Overlay";
 import {
   DeleteResolverConfirmation,
@@ -17,22 +17,6 @@ import {
   Textual,
   Youtube,
 } from "./OverlayContent";
-
-export interface OverlayDemoProps {
-  buttonText: string;
-  children: React.ReactNode;
-}
-
-const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children }) => {
-  const { showOverlay } = useOverlayContext();
-
-  return (
-    <>
-      <Overlay />
-      <Button onClick={() => showOverlay(children)}>{buttonText}</Button>
-    </>
-  );
-};
 
 export default {
   title: "UI/Overlay",
