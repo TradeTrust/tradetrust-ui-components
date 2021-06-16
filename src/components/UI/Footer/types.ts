@@ -11,3 +11,15 @@ interface FooterColumnItem {
   label: string;
   to: string;
 }
+
+export interface FooterColumnProps {
+  category: string;
+  items: FooterColumnData[];
+}
+
+export interface FooterProps {
+  className?: string;
+  title: string;
+  copyright: string;
+  data?: FooterColumnProps[];
+}
