@@ -6,18 +6,18 @@ export default {
   title: "UI/Footer",
   component: Footer,
   parameters: {
-    componentSubtitle: "Footer"
+    componentSubtitle: "Footer",
   },
 };
 
-const render = ({ label }: FooterColumnItemProps) => <div>{label}</div>;
-const renderSomethingElse = ({ to }: FooterColumnItemProps) => <div>{to}</div>;
-const renderSpecial = ({someOther}: FooterColumnItemProps) => <div>{someOther}</div>
+const render = ({ label }: FooterColumnItemProps): React.ReactElement => <div>{label}</div>;
+const renderSomethingElse = ({ to }: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
+const renderSpecial = ({ someOther }: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
 const data = [
   [
-    { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther:"1-1" },
-    { label: "2-1", to: "https://google.com"  },
-    { label: "3-1", to: "somewhere"},
+    { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "1-1" },
+    { label: "2-1", to: "https://google.com" },
+    { label: "3-1", to: "somewhere" },
   ],
   [
     { label: "label", to: "1-2", render: renderSomethingElse },
@@ -32,6 +32,6 @@ const data = [
   [{ label: "1-4", to: "somewhere", render }],
 ];
 
-export const Default = () => {
+export const Default: React.FunctionComponent = () => {
   return <Footer title={"Title"} copyright={"Copyright \u00A9 2020"} data={data} />;
 };

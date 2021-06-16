@@ -10,7 +10,7 @@ const defaultProps = {
   title: "title",
   copyright: "copyright",
 };
-describe("MobileFooter component", () => {
+describe("mobileFooter component", () => {
   it("should render the title and copyright if data is null", () => {
     const { getByText } = render(<MobileFooter {...defaultProps} />);
     expect(getByText("title")).toBeInTheDocument();
