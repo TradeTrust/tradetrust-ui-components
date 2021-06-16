@@ -42,7 +42,9 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
                   {isSuccess ? <CheckCircle className="text-turquoise" /> : <XCircle className="text-rose-400" />}
                 </div>
               )}
-              <h4 className="text-gray-500 mb-0 flex-grow leading-8">{title}</h4>
+              <h4 data-testid="overlay-title" className="text-gray-500 mb-0 flex-grow leading-8">
+                {title}
+              </h4>
               <div className="cursor-pointer" onClick={handleCloseOverlay}>
                 <X />
               </div>
