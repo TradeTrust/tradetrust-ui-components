@@ -1,5 +1,6 @@
+import React from "react";
 export interface FooterColumnData extends FooterColumnItem {
-  render?: (props: FooterColumnItemProps) => JSX.Element;
+  render?: (props: FooterColumnItemProps) => React.ReactElement;
 }
 
 export interface FooterColumnItemProps extends FooterColumnItem {

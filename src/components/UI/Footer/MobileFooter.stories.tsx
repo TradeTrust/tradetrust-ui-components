@@ -1,7 +1,7 @@
 import React from "react";
-import {MobileFooter} from "./";
+import { MobileFooter } from "./";
 import { FooterColumnItemProps } from "./types";
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 export default {
   title: "UI/MobileFooter",
@@ -10,20 +10,20 @@ export default {
     componentSubtitle: "Mobile Footer component",
     viewport: {
       viewports: INITIAL_VIEWPORTS,
-      defaultViewport: "iphone6"
-    }
+      defaultViewport: "iphone6",
+    },
   },
 };
 
-const render = ({ label }: FooterColumnItemProps) => <div>{label}</div>;
-const renderSomethingElse = ({ to }: FooterColumnItemProps) => <div>{to}</div>;
-const renderSpecial = ({ someOther }: FooterColumnItemProps) => <div>{someOther}</div>;
+const render = ({ label }: FooterColumnItemProps): React.ReactElement => <div>{label}</div>;
+const renderSomethingElse = ({ to }: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
+const renderSpecial = ({ someOther }: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
 const data = [
   {
     category: "Category A",
     items: [
       { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
-      { label: "A-2", to: "https://google.com"},
+      { label: "A-2", to: "https://google.com" },
       { label: "A-3", to: "somewhere", render },
     ],
   },
@@ -57,6 +57,6 @@ const data = [
   },
 ];
 
-export const Default = () => {
+export const Default: React.FunctionComponent = () => {
   return <MobileFooter title={"Title"} copyright={"Copyright \u00A9 2020"} data={data} />;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { FooterColumnData } from "./types";
-import { defaultRender } from "./helpers"
+import { defaultRender } from "./helpers";
 
 export interface FooterProps {
   className?: string;
@@ -13,7 +13,7 @@ interface FooterColumnProps {
   columnData?: FooterColumnData[];
 }
 
-const Left = (props: Pick<FooterProps, "title">) => {
+const Left = (props: Pick<FooterProps, "title">): React.ReactElement => {
   const { title } = props;
   return (
     <div className={"w-52"}>
@@ -22,7 +22,7 @@ const Left = (props: Pick<FooterProps, "title">) => {
   );
 };
 
-const Right = (props: Pick<FooterProps, "copyright">) => {
+const Right = (props: Pick<FooterProps, "copyright">): React.ReactElement => {
   const { copyright } = props;
   return (
     <div className={"flex flex-row items-end"}>
@@ -31,7 +31,7 @@ const Right = (props: Pick<FooterProps, "copyright">) => {
   );
 };
 
-const mapper = (item: FooterColumnData, index: number) => {
+const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
   const { render = defaultRender } = item;
   return (
     <div key={`row-${index}`} className={"pb-4"}>
@@ -39,12 +39,12 @@ const mapper = (item: FooterColumnData, index: number) => {
     </div>
   );
 };
-const FooterColumn = (props: FooterColumnProps) => {
+const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
   const { columnData } = props;
   return <div className={"flex flex-col flex-auto max-w-xs"}>{columnData?.map(mapper)}</div>;
 };
 
-export const Footer = (props: FooterProps) => {
+export const Footer = (props: FooterProps): React.ReactElement => {
   const { className = "", title, copyright, data } = props;
   return (
     <footer className={`bg-white py-6 no-print hidden md:block ${className}`}>

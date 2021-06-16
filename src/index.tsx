@@ -12,4 +12,4 @@ export * from "./components/UI/Nav";
 export * from "./components/UI/Pagination";
 export * from "./components/UI/Overlay";
 export * from "./components/UI/Overlay/OverlayContent";
-export * from "./components/UI/Footer"
+export * from "./components/UI/Footer";

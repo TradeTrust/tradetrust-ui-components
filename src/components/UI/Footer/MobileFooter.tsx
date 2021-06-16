@@ -15,7 +15,7 @@ interface MobileFooterColumnData {
   items: FooterColumnData[];
 }
 
-const Top = (props: Pick<MobileFooterProps, "title">) => {
+const Top = (props: Pick<MobileFooterProps, "title">): React.ReactElement => {
   const { title } = props;
   return (
     <div className={"flex justify-center items-center pb-12"}>
@@ -24,7 +24,7 @@ const Top = (props: Pick<MobileFooterProps, "title">) => {
   );
 };
 
-const Bottom = (props: Pick<MobileFooterProps, "copyright">) => {
+const Bottom = (props: Pick<MobileFooterProps, "copyright">): React.ReactElement => {
   const { copyright } = props;
   return (
     <div className={"flex justify-center items-center pt-5 pb-7"}>
@@ -33,11 +33,11 @@ const Bottom = (props: Pick<MobileFooterProps, "copyright">) => {
   );
 };
 
-const mapper = (item: FooterColumnData, index: number) => {
+const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
   const { render = defaultRender } = item;
   return <React.Fragment key={`row-${index}`}>{render({ ...item })}</React.Fragment>;
 };
-const MobileFooterColumn = (props: MobileFooterColumnData) => {
+const MobileFooterColumn = (props: MobileFooterColumnData): React.ReactElement => {
   const { category, items } = props;
   return (
     <div className="flex flex-auto flex-col pb-7">
@@ -48,7 +48,7 @@ const MobileFooterColumn = (props: MobileFooterColumnData) => {
 };
 
 const CHUNK_SIZE = 2;
-const chunkMapper = (chunk: MobileFooterColumnData[], i: number) => {
+const chunkMapper = (chunk: MobileFooterColumnData[], i: number): React.ReactElement => {
   return (
     <div className={"flex"} key={i}>
       {chunk.map((columnData, index) => (
@@ -58,12 +58,12 @@ const chunkMapper = (chunk: MobileFooterColumnData[], i: number) => {
   );
 };
 
-export const MobileFooter = (props: MobileFooterProps) => {
+export const MobileFooter = (props: MobileFooterProps): React.ReactElement => {
   const { className = "", title, copyright, data } = props;
   const [chunks, setChunks] = React.useState<MobileFooterColumnData[][]>([[]]);
 
   React.useEffect(() => {
-      setChunks(chunk(data, CHUNK_SIZE));
+    setChunks(chunk(data, CHUNK_SIZE));
   }, [data]);
   return (
     <footer className={`bg-white py-7 md:hidden ${className}`}>
