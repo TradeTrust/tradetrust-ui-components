@@ -18,34 +18,42 @@ describe("footer component", () => {
   });
   it("should render a column of data if an array of array are passed in", () => {
     const data = [
-      [
-        { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "1-1" },
-        { label: "2-1", to: "https://google.com" },
-        { label: "3-1", to: "somewhere", render: renderLabel },
-        { label: "lala", to: "4-1", render: renderSomethingElse },
-      ],
+      {
+        category: "Category A",
+        items: [
+          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          { label: "A-2", to: "https://google.com" },
+          { label: "A-3", to: "somewhere", render: renderLabel },
+        ],
+      },
     ];
     const { getByText } = render(<Footer {...defaultProps} data={data} />);
-    expect(getByText("1-1")).toBeInTheDocument();
-    expect(getByText("2-1")).toBeInTheDocument();
-    expect(getByText("3-1")).toBeInTheDocument();
-    expect(getByText("4-1")).toBeInTheDocument();
+    expect(getByText("A-1")).toBeInTheDocument();
+    expect(getByText("A-2")).toBeInTheDocument();
+    expect(getByText("A-3")).toBeInTheDocument();
   });
   it("should render columns of data if an array of array are passed in", () => {
     const data = [
-      [
-        { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "1-1" },
-        { label: "2-1", to: "https://google.com" },
-        { label: "3-1", to: "somewhere", render: renderLabel },
-        { label: "lala", to: "4-1", render: renderSomethingElse },
-      ],
-      [
-        { label: "label", to: "1-2", render: renderSomethingElse },
-        { label: "2-2", to: "somewhere", render: renderLabel },
-      ],
+      {
+        category: "Category A",
+        items: [
+          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          { label: "A-2", to: "https://google.com" },
+          { label: "A-3", to: "somewhere", render: renderLabel },
+        ],
+      },
+      {
+        category: "Category B",
+        items: [
+          { label: "label", to: "B-1", render: renderSomethingElse },
+          { label: "B-2", to: "somewhere", render: renderLabel },
+        ],
+      },
     ];
     const { getByText } = render(<Footer {...defaultProps} data={data} />);
-    expect(getByText("1-2")).toBeInTheDocument();
-    expect(getByText("2-2")).toBeInTheDocument();
+    expect(getByText("Category B")).toBeInTheDocument();
+    expect(getByText("A-2")).toBeInTheDocument();
+    expect(getByText("B-1")).toBeInTheDocument();
+    expect(getByText("B-2")).toBeInTheDocument();
   });
 });
