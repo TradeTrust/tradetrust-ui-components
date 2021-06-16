@@ -12,6 +12,9 @@
   h3 {
     font-size: 28px;
   }
+  h4 {
+    font-size: 24px;
+  }
 
   input[disabled] {
     @apply cursor-not-allowed;

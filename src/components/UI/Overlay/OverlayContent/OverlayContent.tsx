@@ -35,14 +35,14 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             width: "calc(100vw - (15px * 2))",
           }}
         >
-          <div className="mb-4">
+          <div className="mb-2">
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
                 <div className="col-auto mr-3">
                   {isSuccess ? <CheckCircle className="text-turquoise" /> : <XCircle className="text-rose-400" />}
                 </div>
               )}
-              <h3 className="text-gray-500 mb-0 flex-grow leading-8">{title}</h3>
+              <h4 className="text-gray-500 mb-0 flex-grow leading-8">{title}</h4>
               <div className="cursor-pointer" onClick={handleCloseOverlay}>
                 <X />
               </div>
