@@ -18,12 +18,14 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
   ...props
 }) => {
   const active =
-    currentPage === pageNumber && (currentPage || pageNumber) ? "text-gray-500 bg-gray-50" : "text-cerulean-500";
-  const disabled = disable ? "bg-opacity-25 text-opacity-25 cursor-not-allowed" : "";
+    currentPage === pageNumber && (currentPage || pageNumber)
+      ? "bg-cerulean-200 text-white rounded-md "
+      : "text-cerulean-200";
+  const disabled = disable ? "bg-opacity-25 hover:bg-cloud-200 text-cloud-300 text-opacity-60 cursor-not-allowed" : "";
 
   return (
     <button
-      className={`border-r border-solid border-gray-200 p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none ${active} ${disabled} ${
+      className={`p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none ${active} ${disabled} ${
         className ? className : ""
       } `}
       disabled={disable}
