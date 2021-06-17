@@ -116,3 +116,8 @@ export const MockMobileMenu = (navigationItems: NavigationItem[]): React.ReactNo
     );
   });
 };
+
+export const websiteLogo = {
+  logo: "https://www.tradetrust.io/static/images/tradetrust_logo.svg",
+  link: "https://www.tradetrust.io/",
+};

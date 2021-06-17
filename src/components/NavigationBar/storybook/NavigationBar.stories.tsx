@@ -1,6 +1,13 @@
 import React, { FunctionComponent, useState } from "react";
-import { NavigationBar, NavigationBarStyled } from "./NavigationBar";
-import { MockLeftMenu, MockRightMenu, MockMobileMenu, MockLeftNavItems, MockRightNavItems } from "./MockNavigationBar";
+import { NavigationBar, NavigationBarStyled } from "../NavigationBar";
+import {
+  MockLeftMenu,
+  MockRightMenu,
+  MockMobileMenu,
+  MockLeftNavItems,
+  MockRightNavItems,
+  websiteLogo,
+} from "./MockNavigationBar";
 
 export default {
   title: "Navigation/NavigationBar",
@@ -18,6 +25,7 @@ export const Default: FunctionComponent = () => {
         leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
         rightMenuChildren={MockRightMenu(MockRightNavItems)}
         mobileMenuChildren={MockMobileMenu(MockLeftNavItems.concat(MockRightNavItems))}
+        websiteLogo={websiteLogo}
         setToggleNavBar={setToggleNavBar}
         toggleNavBar={toggleNavBar}
       />

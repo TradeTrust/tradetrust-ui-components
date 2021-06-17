@@ -5,8 +5,14 @@ export interface NavigationBarProps {
   leftMenuChildren: React.ReactNode;
   rightMenuChildren?: React.ReactNode;
   mobileMenuChildren?: React.ReactNode;
+  websiteLogo?: WebsiteLogo;
   setToggleNavBar: (toggleNavBar: boolean) => void;
   toggleNavBar: boolean;
+}
+
+interface WebsiteLogo {
+  logo: string;
+  link: string;
 }
 
 export const NavigationBarStyled = styled.nav`
@@ -63,16 +69,18 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
               <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
             </button>
           </div>
-          <a href="https://www.tradetrust.io/">
+          <a href={props.websiteLogo?.link}>
             <img
               data-testid="nav-logo-home"
               className="img-fluid h-10"
-              src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
+              src={props.websiteLogo?.logo}
               alt="TradeTrust"
             />
           </a>
           <div className="hidden lg:block md:ml-12">{props.leftMenuChildren}</div>
-          <div className="hidden md:block lg:ml-auto absolute right-0 lg:relative">{props.rightMenuChildren}</div>
+          <div className="hidden md:block lg:ml-auto absolute right-0 lg:relative">
+            <div className="flex items-center">{props.rightMenuChildren}</div>
+          </div>
         </div>
       </div>
       <div className={`lg:hidden`}>
