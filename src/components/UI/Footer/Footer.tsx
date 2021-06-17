@@ -40,7 +40,7 @@ export const Footer = (props: FooterProps): React.ReactElement => {
         ) : (
           <div className="flex-auto" />
         )}
-      <div className={"hidden md:block md:w-44"} />
+        <div className={"hidden md:block md:w-44"} />
       </div>
       <hr />
       <Bottom copyright={copyright} />
