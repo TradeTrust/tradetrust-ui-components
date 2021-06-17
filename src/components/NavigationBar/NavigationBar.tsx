@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
+import { NavigationBarItem } from "./NavigationBarItem";
+import { NavigationItem } from "./type";
 
 export interface NavigationBarProps {
-  leftMenuChildren: React.ReactNode;
-  rightMenuChildren?: React.ReactNode;
-  mobileMenuChildren?: React.ReactNode;
+  logo: React.ReactElement;
+  menuLeft: NavigationItem[];
+  menuRight?: NavigationItem[];
+  menuMobile: NavigationItem[];
   setToggleNavBar: (toggleNavBar: boolean) => void;
   toggleNavBar: boolean;
 }
@@ -63,16 +66,31 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
               <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
             </button>
           </div>
-          <a href="https://www.tradetrust.io/">
-            <img
-              data-testid="nav-logo-home"
-              className="img-fluid h-10"
-              src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
-              alt="TradeTrust"
-            />
-          </a>
-          <div className="hidden lg:block md:ml-12">{props.leftMenuChildren}</div>
-          <div className="hidden md:block lg:ml-auto absolute right-0 lg:relative">{props.rightMenuChildren}</div>
+          {props.logo}
+          <div className="hidden lg:block md:ml-12">
+            <div className="flex items-center">
+              {props.menuLeft.map((item, index) => {
+                return (
+                  <div key={index} className="lg:ml-6">
+                    <NavigationBarItem item={item} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="hidden md:block lg:ml-auto absolute right-0 lg:relative">
+            {props.menuRight && (
+              <div className="flex items-center">
+                {props.menuRight.map((item, index) => {
+                  return (
+                    <div key={index} className="md:ml-2 lg:ml-4">
+                      <NavigationBarItem item={item} />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className={`lg:hidden`}>
@@ -81,7 +99,24 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
             props.toggleNavBar ? "max-h-screen" : "max-h-0"
           }`}
         >
-          {props.mobileMenuChildren}
+          {props.menuMobile && (
+            <>
+              {props.menuMobile.map((item, index) => {
+                if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
+                  return (
+                    <div key={index} className="py-4 md:hidden">
+                      <NavigationBarItem item={item} />
+                    </div>
+                  );
+                }
+                return (
+                  <div key={index} className="py-4">
+                    <NavigationBarItem item={item} />
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
     </NavigationBarStyled>

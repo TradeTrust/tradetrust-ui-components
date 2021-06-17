@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
-import { NavigationBar, NavigationBarStyled } from "./NavigationBar";
-import { MockLeftMenu, MockRightMenu, MockMobileMenu, MockLeftNavItems, MockRightNavItems } from "./MockNavigationBar";
+import { NavigationBar } from "./NavigationBar";
+import { MockLogo, MockLeftNavItems, MockRightNavItems } from "./NavigationBar.mock";
 
 export default {
   title: "Navigation/NavigationBar",
@@ -13,14 +13,13 @@ export default {
 export const Default: FunctionComponent = () => {
   const [toggleNavBar, setToggleNavBar] = useState(false);
   return (
-    <NavigationBarStyled>
-      <NavigationBar
-        leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
-        rightMenuChildren={MockRightMenu(MockRightNavItems)}
-        mobileMenuChildren={MockMobileMenu(MockLeftNavItems.concat(MockRightNavItems))}
-        setToggleNavBar={setToggleNavBar}
-        toggleNavBar={toggleNavBar}
-      />
-    </NavigationBarStyled>
+    <NavigationBar
+      logo={<MockLogo />}
+      menuLeft={MockLeftNavItems}
+      menuRight={MockRightNavItems}
+      menuMobile={MockLeftNavItems.concat(MockRightNavItems)}
+      setToggleNavBar={setToggleNavBar}
+      toggleNavBar={toggleNavBar}
+    />
   );
 };

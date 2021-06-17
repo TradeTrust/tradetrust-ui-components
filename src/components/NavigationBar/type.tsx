@@ -1,37 +1,42 @@
+import React from "react";
 import { Icon } from "react-feather";
 
-export interface NavigationBarProps {
-  navigationItems: NavigationItem[];
-}
-
-export enum NavigationItemType {
+export enum NAVIGATION_ITEM_TYPE {
   NavigationLink = "NavigationLink",
-  DropDownList = "DropDownList",
-  LabelButton = "LabelButton",
-  IconButton = "IconButton",
+  NavigationDropDownList = "NavigationDropDownList",
+  NavigationLabelButton = "NavigationLabelButton",
+  NavigationIconButton = "NavigationIconButton",
 }
 
 export interface NavigationLink {
-  schema: NavigationItemType.NavigationLink;
+  schema: NAVIGATION_ITEM_TYPE.NavigationLink;
   id: string;
   label: string;
   className?: string;
   path: string;
+  customLink?: React.ReactElement;
 }
 
-export interface DropDownList extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.DropDownList;
-  dropdownItems: { id: string; label: string; path: string }[];
+export interface NavigationDropDownItems {
+  id: string;
+  label: string;
+  path: string;
+  customLink?: React.ReactElement;
 }
 
-export interface LabelButton extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.LabelButton;
+export interface NavigationDropDownList extends Omit<NavigationLink, "schema"> {
+  schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList;
+  dropdownItems: NavigationDropDownItems[];
+}
+
+export interface NavigationLabelButton extends Omit<NavigationLink, "schema"> {
+  schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton;
   onClick?: () => void;
 }
 
-export interface IconButton extends Omit<NavigationLink, "schema"> {
-  schema: NavigationItemType.IconButton;
+export interface NavigationIconButton extends Omit<NavigationLink, "schema"> {
+  schema: NAVIGATION_ITEM_TYPE.NavigationIconButton;
   icon: Icon;
 }
 
-export type NavigationItem = NavigationLink | DropDownList | LabelButton | IconButton;
+export type NavigationItem = NavigationLink | NavigationDropDownList | NavigationLabelButton | NavigationIconButton;
