@@ -13,6 +13,7 @@ localConfig = {
       sans: ["Roboto", "sans-serif"],
       display: ["Roboto", "sans-serif"],
       body: ["Roboto", "sans-serif"],
+      headings: ["Ubuntu", "sans-serif"]
     },
   },
 };
