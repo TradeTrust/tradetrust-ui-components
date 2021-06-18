@@ -1,29 +1,63 @@
 import { render, screen } from "@testing-library/react";
-import React, { useState } from "react";
-import { NavigationBar, NavigationBarStyled } from "./NavigationBar";
-import { MockLeftMenu, MockRightMenu, MockMobileMenu, MockLeftNavItems, MockRightNavItems } from "./MockNavigationBar";
+import React from "react";
+import { NavigationBar } from "./NavigationBar";
+import { MockLogo, MockLeftNavItems, MockRightNavItems, MockMobileNavItems } from "./NavigationBar.mock";
 
-const NavBar: React.FunctionComponent = () => {
-  const [toggleNavBar, setToggleNavBar] = useState(false);
-  return (
-    <NavigationBarStyled>
+describe("Navigation Bar", () => {
+  it("should render correctly with the given input on desktop menu", () => {
+    render(
       <NavigationBar
-        leftMenuChildren={MockLeftMenu(MockLeftNavItems)}
-        rightMenuChildren={MockRightMenu(MockRightNavItems)}
-        mobileMenuChildren={MockMobileMenu(MockLeftNavItems.concat(MockRightNavItems))}
-        setToggleNavBar={setToggleNavBar}
-        toggleNavBar={toggleNavBar}
+        logo={<MockLogo />}
+        menuLeft={MockLeftNavItems}
+        menuRight={MockRightNavItems}
+        menuMobile={[]}
+        setToggleNavBar={() => {}}
+        toggleNavBar={false}
       />
-    </NavigationBarStyled>
-  );
-};
+    );
 
-describe("errorPage", () => {
-  it("should render correctly with the given title and description", () => {
-    render(<NavBar />);
-    expect(screen.getAllByText("News & Events")).toHaveLength(2);
-    expect(screen.getAllByText("Contact")).toHaveLength(2);
-    expect(screen.getAllByText("Verify Doc")).toHaveLength(2);
-    expect(screen.getAllByTestId("settings")).toHaveLength(2);
+    expect(screen.getAllByText("Desktop News & Events")).toHaveLength(1);
+    expect(screen.getAllByText("Desktop Contact")).toHaveLength(1);
+    expect(screen.getAllByText("Desktop Verify Doc")).toHaveLength(1);
+    expect(screen.getAllByTestId("desktop-settings")).toHaveLength(1);
+  });
+
+  it("should render correctly with the given input on mobile menu", () => {
+    render(
+      <NavigationBar
+        logo={<MockLogo />}
+        menuLeft={[]}
+        menuRight={[]}
+        menuMobile={MockMobileNavItems}
+        setToggleNavBar={() => {}}
+        toggleNavBar={false}
+      />
+    );
+    expect(screen.getAllByText("Mobile News & Events")).toHaveLength(1);
+    expect(screen.getAllByText("Mobile Contact")).toHaveLength(1);
+    expect(screen.getAllByText("Mobile Verify Doc")).toHaveLength(1);
+    expect(screen.getAllByTestId("mobile-settings")).toHaveLength(1);
+  });
+
+  it("should render correctly with the given input on desktop and mobile menu", () => {
+    render(
+      <NavigationBar
+        logo={<MockLogo />}
+        menuLeft={MockLeftNavItems}
+        menuRight={MockRightNavItems}
+        menuMobile={MockMobileNavItems}
+        setToggleNavBar={() => {}}
+        toggleNavBar={false}
+      />
+    );
+
+    expect(screen.getAllByText("Desktop News & Events")).toHaveLength(1);
+    expect(screen.getAllByText("Desktop Contact")).toHaveLength(1);
+    expect(screen.getAllByText("Desktop Verify Doc")).toHaveLength(1);
+    expect(screen.getAllByTestId("desktop-settings")).toHaveLength(1);
+    expect(screen.getAllByText("Mobile News & Events")).toHaveLength(1);
+    expect(screen.getAllByText("Mobile Contact")).toHaveLength(1);
+    expect(screen.getAllByText("Mobile Verify Doc")).toHaveLength(1);
+    expect(screen.getAllByTestId("mobile-settings")).toHaveLength(1);
   });
 });

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { FunctionComponent } from "react";
-import * as NavType from "./type";
+import * as NavType from "./../type";
+import { LinkButton } from "./../../UI/Button";
 
 export const NavigationBarItem: FunctionComponent<{
   item: NavType.NavigationItem;
 }> = ({ item }) => {
   switch (item.schema) {
-    case NavType.NavigationItemType.IconButton:
+    case NavType.NAVIGATION_ITEM_TYPE.NavigationIconButton:
       return <IconButton item={item} />;
-    case NavType.NavigationItemType.LabelButton:
+    case NavType.NAVIGATION_ITEM_TYPE.NavigationLabelButton:
       return <LabelButton item={item} />;
-    case NavType.NavigationItemType.DropDownList:
+    case NavType.NAVIGATION_ITEM_TYPE.NavigationDropDownList:
       return <DropDownList item={item} />;
     default:
       return <NavigationLink item={item} />;
@@ -19,41 +20,55 @@ export const NavigationBarItem: FunctionComponent<{
 
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
   return (
-    <a
-      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium ${item.className}`}
-      href={item.path}
+    <div
+      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium ${
+        item.className ? item.className : ""
+      }`}
     >
-      {item.label}
-    </a>
+      {item.customLink ? item.customLink : <a href={item.path}>{item.label}</a>}
+    </div>
   );
 };
 
-const LabelButton: FunctionComponent<{ item: NavType.LabelButton }> = ({ item }) => {
+const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = ({ item }) => {
   return (
-    <a
-      href={item.path}
-      className={`font-bold transition-color duration-200 ease-out shadow-lg rounded-xl border p-2 ${item.className}`}
-      data-testid={item.id}
+    <div
+      className={`font-bold transition-color duration-200 ease-out shadow-lg rounded-xl border ${
+        item.className ? item.className : ""
+      }`}
     >
-      {item.label}
-    </a>
+      {item.customLink ? (
+        item.customLink
+      ) : (
+        <LinkButton href={item.path} className={`p-2`} data-testid={item.id}>
+          {item.label}
+        </LinkButton>
+      )}
+    </div>
   );
 };
 
-const IconButton: FunctionComponent<{ item: NavType.IconButton }> = ({ item }) => {
+const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({ item }) => {
   const ButtonIcon = item.icon;
+
   return (
-    <a
-      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out  ${item.className}`}
-      href={item.path}
-      data-testid={item.id}
+    <div
+      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out ${
+        item.className ? item.className : ""
+      }`}
     >
-      <ButtonIcon className="stroke-current" />
-    </a>
+      {item.customLink ? (
+        item.customLink
+      ) : (
+        <a href={item.path} className={`p-2`} data-testid={item.id}>
+          <ButtonIcon className="stroke-current" />
+        </a>
+      )}
+    </div>
   );
 };
 
-const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item }) => {
+const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative">
@@ -99,18 +114,27 @@ const DropDownList: FunctionComponent<{ item: NavType.DropDownList }> = ({ item 
             className={`mt-2 w-full bg-white focus:outline-none rounded-md z-30 lg:origin-top-right lg:absolute lg:right-0 lg:mt-2 lg:shadow-dropdown lg:ring-1 lg:ring-black lg:ring-opacity-5`}
           >
             <div className="dropdown py-1">
-              {item.dropdownItems?.map((dropdownItem: any, index: number) => {
+              {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
                 return (
-                  <a
+                  <div
                     key={index}
-                    className="text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium block px-4 py-2"
-                    href={dropdownItem.path}
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
+                    className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium block`}
                   >
-                    {dropdownItem.label}
-                  </a>
+                    {dropdownItem.customLink ? (
+                      dropdownItem.customLink
+                    ) : (
+                      <a
+                        key={index}
+                        className="px-4 py-2"
+                        href={dropdownItem.path}
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
+                      >
+                        {dropdownItem.label}
+                      </a>
+                    )}
+                  </div>
                 );
               })}
             </div>
