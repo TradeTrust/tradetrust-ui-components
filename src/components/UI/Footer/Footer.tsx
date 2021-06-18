@@ -33,7 +33,7 @@ export const Footer = (props: FooterProps): React.ReactElement => {
   const { className = "", title, copyright, data } = props;
   return (
     <footer className={`bg-white py-6 no-print container ${className}`}>
-      <div className="flex flex-wrap pb-3.5 md:justify-between">
+      <div className="flex flex-wrap md:flex-nowrap pb-3.5 md:justify-between">
         <Left title={title} />
         {data ? (
           data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
