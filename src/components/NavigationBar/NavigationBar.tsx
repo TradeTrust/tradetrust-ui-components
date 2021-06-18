@@ -99,24 +99,20 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
             props.toggleNavBar ? "max-h-screen" : "max-h-0"
           }`}
         >
-          {props.menuMobile && (
-            <>
-              {props.menuMobile.map((item, index) => {
-                if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
-                  return (
-                    <div key={index} className="py-4 md:hidden">
-                      <NavigationBarItem item={item} />
-                    </div>
-                  );
-                }
-                return (
-                  <div key={index} className="py-4">
-                    <NavigationBarItem item={item} />
-                  </div>
-                );
-              })}
-            </>
-          )}
+          {props.menuMobile.map((item, index) => {
+            if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
+              return (
+                <div key={index} className="py-4 md:hidden">
+                  <NavigationBarItem item={item} />
+                </div>
+              );
+            }
+            return (
+              <div key={index} className="py-4">
+                <NavigationBarItem item={item} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </NavigationBarStyled>
