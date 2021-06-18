@@ -12,14 +12,13 @@ describe("NavigationLink", () => {
       label: "Default NavigationLink",
       path: "/verify",
       customLink: (
-        <a className="block w-full p-2 text-current hover:text-current" href={"/verify"}>
+        <a href={"/verify"}>
           CustomLink NavigationLink
         </a>
       ),
     };
 
     render(<NavigationBarItem item={NavigationLink} />);
-    expect(screen.queryByText("Default NavigationLink")).not.toBeInTheDocument();
     expect(screen.getAllByText("CustomLink NavigationLink")).toHaveLength(1);
   });
 
@@ -33,7 +32,6 @@ describe("NavigationLink", () => {
 
     render(<NavigationBarItem item={NavigationLink} />);
     expect(screen.getAllByText("Default NavigationLink")).toHaveLength(1);
-    expect(screen.queryByText("CustomLink NavigationLink")).not.toBeInTheDocument();
   });
 });
 
@@ -45,14 +43,13 @@ describe("NavigationLabelButton", () => {
       label: "Default NavigationLabelButton",
       path: "/verify",
       customLink: (
-        <a className="block w-full p-2 text-current hover:text-current" href={"/verify"}>
+        <a href={"/verify"}>
           CustomLink NavigationLabelButton
         </a>
       ),
     };
 
     render(<NavigationBarItem item={NavigationLabelButton} />);
-    expect(screen.queryByText("Default NavigationLabelButton")).not.toBeInTheDocument();
     expect(screen.getAllByText("CustomLink NavigationLabelButton")).toHaveLength(1);
   });
 
@@ -66,7 +63,6 @@ describe("NavigationLabelButton", () => {
 
     render(<NavigationBarItem item={NavigationLabelButton} />);
     expect(screen.getAllByText("Default NavigationLabelButton")).toHaveLength(1);
-    expect(screen.queryByText("CustomLink NavigationLabelButton")).not.toBeInTheDocument();
   });
 });
 
@@ -79,14 +75,13 @@ describe("NavigationIconButton", () => {
       path: "/settings",
       icon: Settings,
       customLink: (
-        <a className="block w-full p-2 text-current hover:text-current" href={"/verify"}>
+        <a href={"/verify"}>
           CustomLink NavigationIconButton
         </a>
       ),
     };
 
     render(<NavigationBarItem item={NavigationIconButton} />);
-    expect(screen.queryByTestId("settings")).toBeFalsy();
     expect(screen.getAllByText("CustomLink NavigationIconButton")).toHaveLength(1);
   });
 
@@ -101,7 +96,6 @@ describe("NavigationIconButton", () => {
 
     render(<NavigationBarItem item={NavigationIconButton} />);
     expect(screen.getAllByTestId("settings")).toHaveLength(1);
-    expect(screen.queryByText("CustomLink NavigationLabelButton")).not.toBeInTheDocument();
   });
 });
 
@@ -118,7 +112,7 @@ describe("NavigationDropDownList", () => {
           label: "Default News",
           path: "/news",
           customLink: (
-            <a className="block w-full px-4 py-2" href={"/news"}>
+            <a href={"/news"}>
               CustomLink News
             </a>
           ),
@@ -128,7 +122,7 @@ describe("NavigationDropDownList", () => {
           label: "Default Event",
           path: "/event",
           customLink: (
-            <a className="block w-full px-4 py-2" href={"/event"}>
+            <a href={"/event"}>
               CustomLink Event
             </a>
           ),
@@ -139,8 +133,6 @@ describe("NavigationDropDownList", () => {
     const NavBarItem = render(<NavigationBarItem item={NavigationDropDownList} />);
     const NewEventButton = NavBarItem.container.querySelector("#news-events-button");
     fireEvent.click(NewEventButton);
-    expect(screen.queryByText("Default News")).not.toBeInTheDocument();
-    expect(screen.queryByText("Default Event")).not.toBeInTheDocument();
     expect(screen.getAllByText("CustomLink News")).toHaveLength(1);
     expect(screen.getAllByText("CustomLink Event")).toHaveLength(1);
   });
@@ -170,7 +162,5 @@ describe("NavigationDropDownList", () => {
     fireEvent.click(NewEventButton);
     expect(screen.getAllByText("Default News")).toHaveLength(1);
     expect(screen.getAllByText("Default Event")).toHaveLength(1);
-    expect(screen.queryByText("CustomLink News")).not.toBeInTheDocument();
-    expect(screen.queryByText("CustomLink Event")).not.toBeInTheDocument();
   });
 });

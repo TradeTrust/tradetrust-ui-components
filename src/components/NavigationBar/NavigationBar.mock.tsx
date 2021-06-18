@@ -19,7 +19,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "resources",
-    label: "Resources",
+    label: "Desktop Resources",
     path: "",
     dropdownItems: [
       {
@@ -37,7 +37,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "news_events",
-    label: "News & Events",
+    label: "Desktop News & Events",
     path: "",
     dropdownItems: [
       {
@@ -55,7 +55,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLink,
     id: "contact",
-    label: "Contact",
+    label: "Desktop Contact",
     path: "/contact",
   },
 ];
@@ -63,7 +63,7 @@ export const MockLeftNavItems: NavigationItem[] = [
 export const MockRightNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationIconButton,
-    id: "settings",
+    id: "desktop-settings",
     label: "Settings",
     path: "/settings",
     icon: Settings,
@@ -71,14 +71,80 @@ export const MockRightNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "create-documents",
-    label: "Create Doc",
+    label: "Desktop Create Doc",
     path: "https://creator.tradetrust.io/",
     className: "bg-white text-cerulean border-cerulean-100 hover:bg-gray-50",
   },
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "verify",
-    label: "Verify Doc",
+    label: "Desktop Verify Doc",
+    path: "/verify",
+    className: "bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300",
+  },
+];
+
+export const MockMobileNavItems: NavigationItem[] = [
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
+    id: "resources",
+    label: "Mobile Resources",
+    path: "",
+    dropdownItems: [
+      {
+        id: "learn",
+        label: "Learn",
+        path: "/learn",
+      },
+      {
+        id: "faq",
+        label: "FAQ",
+        path: "/faq",
+      },
+    ],
+  },
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
+    id: "news_events",
+    label: "Mobile News & Events",
+    path: "",
+    dropdownItems: [
+      {
+        id: "media",
+        label: "Media",
+        path: "/media",
+      },
+      {
+        id: "event",
+        label: "Event",
+        path: "/event",
+      },
+    ],
+  },
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationLink,
+    id: "contact",
+    label: "Mobile Contact",
+    path: "/contact",
+  },
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationIconButton,
+    id: "mobile-settings",
+    label: "Settings",
+    path: "/settings",
+    icon: Settings,
+  },
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
+    id: "create-documents",
+    label: "Mobile Create Doc",
+    path: "https://creator.tradetrust.io/",
+    className: "bg-white text-cerulean border-cerulean-100 hover:bg-gray-50",
+  },
+  {
+    schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
+    id: "verify",
+    label: "Mobile Verify Doc",
     path: "/verify",
     className: "bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300",
   },
