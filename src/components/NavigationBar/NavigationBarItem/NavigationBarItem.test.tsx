@@ -130,9 +130,8 @@ describe("NavigationDropDownList", () => {
       ],
     };
 
-    const NavBarItem = render(<NavigationBarItem item={NavigationDropDownList} />);
-    const NewEventButton = NavBarItem.container.querySelector("#news-events-button");
-    fireEvent.click(NewEventButton);
+    render(<NavigationBarItem item={NavigationDropDownList} />);
+    fireEvent.click(screen.getByText("News & Events"));
     expect(screen.getAllByText("CustomLink News")).toHaveLength(1);
     expect(screen.getAllByText("CustomLink Event")).toHaveLength(1);
   });
@@ -157,9 +156,8 @@ describe("NavigationDropDownList", () => {
       ],
     };
 
-    const NavBarItem = render(<NavigationBarItem item={NavigationDropDownList} />);
-    const NewEventButton = NavBarItem.container.querySelector("#news-events-button");
-    fireEvent.click(NewEventButton);
+    render(<NavigationBarItem item={NavigationDropDownList} />);
+    fireEvent.click(screen.getByText("News & Events"));
     expect(screen.getAllByText("Default News")).toHaveLength(1);
     expect(screen.getAllByText("Default Event")).toHaveLength(1);
   });
