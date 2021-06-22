@@ -178,7 +178,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <Dropdown
           dropdownButtonText={isLocal ? "Local" : name}
           className="border-gray-300 border rounded-none mb-2 p-3 bg-white"
-          shared="w-full max-w-sm"
+          classNameShared="w-full max-w-sm"
         >
           <DropdownItem
             onClick={() => {

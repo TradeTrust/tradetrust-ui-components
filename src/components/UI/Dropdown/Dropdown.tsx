@@ -6,7 +6,7 @@ export interface DropdownProps {
   children: React.ReactNode;
   className?: string;
   alignRight?: boolean;
-  shared?: string;
+  classNameShared?: string;
 }
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
@@ -14,13 +14,13 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   children,
   className,
   alignRight,
-  shared,
+  classNameShared,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const addonStylesShared = `${shared ? shared : ""}`;
-  const addonStylesButton = `${alignRight ? "ml-auto" : ""}`;
-  const addonStylesItem = `${alignRight ? "right-0" : ""}`;
+  const addonStylesShared = classNameShared ? classNameShared : "";
+  const addonStylesButton = alignRight ? "ml-auto" : "";
+  const addonStylesItem = alignRight ? "right-0" : "";
 
   return (
     <div className="relative">
