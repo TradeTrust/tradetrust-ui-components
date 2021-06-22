@@ -6,7 +6,7 @@ export interface DropdownProps {
   children: React.ReactNode;
   className?: string;
   alignRight?: boolean;
-  fullWidth?: boolean;
+  classNameShared?: string;
 }
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
@@ -14,19 +14,20 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   children,
   className,
   alignRight,
-  fullWidth,
+  classNameShared,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const addonStylesShared = classNameShared ? classNameShared : "";
+  const addonStylesButton = alignRight ? "ml-auto" : "";
+  const addonStylesItem = alignRight ? "right-0" : "";
 
   return (
     <div className="relative">
       <button
         {...props}
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative z-10 max-w-sm cursor-pointer focus:outline-none flex items-center justify-between ${className} ${
-          fullWidth ? " w-full" : ""
-        } ${alignRight ? " ml-auto" : ""}`}
+        className={`relative z-10 cursor-pointer focus:outline-none flex items-center justify-between ${className} ${addonStylesShared} ${addonStylesButton}`}
       >
         <span className="truncate">{dropdownButtonText}</span>
         <span>
@@ -42,9 +43,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute z-30 max-w-sm mt-1 rounded bg-white border border-solid border-gray-300 py-2 shadow-lg${
-              fullWidth ? " w-full" : ""
-            } ${alignRight ? " right-0" : ""}`}
+            className={`absolute z-30 rounded bg-white border border-gray-300 py-2 shadow-lg ${addonStylesShared} ${addonStylesItem}`}
           >
             {children}
           </div>
@@ -63,7 +62,7 @@ interface DropdownItemProps {
 export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ className, children, ...props }) => {
   return (
     <div
-      className={`hover:bg-gray-50 p-3 cursor-pointer text-gray-800 truncate w-full w-max-sm active:bg-gray-300 ${className}`}
+      className={`truncate cursor-pointer text-gray-800 p-3 hover:bg-gray-50 active:bg-gray-300 ${className}`}
       {...props}
     >
       {children}

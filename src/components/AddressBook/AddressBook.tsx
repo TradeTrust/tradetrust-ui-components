@@ -176,9 +176,9 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
     <div {...props}>
       <div className="mb-5">
         <Dropdown
-          fullWidth
           dropdownButtonText={isLocal ? "Local" : name}
-          className="border-gray-300 border-solid border rounded-none mb-2 p-3 bg-white"
+          className="border-gray-300 border rounded-none mb-2 p-3 bg-white"
+          classNameShared="w-full max-w-sm"
         >
           <DropdownItem
             onClick={() => {

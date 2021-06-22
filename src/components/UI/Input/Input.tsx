@@ -1,14 +1,10 @@
 import styled from "@emotion/styled";
 import React, { FunctionComponent, InputHTMLAttributes } from "react";
 import tw from "twin.macro";
-import { fontSize } from "./../../../common/styles/shared";
 
 const InputStyled = styled.input`
-  min-height: 40px;
-
   &::placeholder {
-    ${tw`italic text-gray-500`}
-    ${fontSize(16)}
+    ${tw`text-gray-500 text-base`}
   }
 `;
 
@@ -21,7 +17,7 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
   return (
     <>
       <InputStyled
-        className={`w-full border border-solid px-2 py-1 mb-0 ${className ? className : ""} ${
+        className={`w-full border px-2 py-1 mb-0 ${className ? className : ""} ${
           hasError || errorMessage ? "border-rose-400" : "border-gray-300"
         }`}
         {...props}

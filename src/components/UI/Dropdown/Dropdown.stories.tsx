@@ -13,9 +13,9 @@ export const AddressBookDefault = (): ReactElement => {
 
   return (
     <Dropdown
-      fullWidth
       dropdownButtonText={dropdownButtonText}
       className="border-gray-300 border-solid border rounded-none p-3 hover:bg-gray-50"
+      classNameShared="w-full max-w-sm"
     >
       <DropdownItem
         onClick={() => {
