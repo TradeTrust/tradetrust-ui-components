@@ -23,7 +23,7 @@ export const getPaginatedPagesTotal = ({ posts, postsPerPage }: GetPaginatedPage
   return Math.ceil(posts.length / postsPerPage);
 };
 
-export const getPaginatedPosts = ({ postsPerPage, posts, currentPage }: GetPaginatedPosts): any[] => {
+export const getPaginatedPosts = ({ posts, postsPerPage, currentPage }: GetPaginatedPosts): any[] => {
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   const paginatedPosts = posts.filter((post: any, index: number) => {

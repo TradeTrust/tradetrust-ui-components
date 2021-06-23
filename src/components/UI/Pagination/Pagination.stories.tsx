@@ -54,7 +54,7 @@ export const SimpleExample = (): ReactElement => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 4;
   const posts = [{ title: "a" }, { title: "b" }, { title: "c" }, { title: "d" }, { title: "e" }, { title: "f" }];
-  const paginatedPosts = getPaginatedPosts({ currentPage, postsPerPage, posts });
+  const paginatedPosts = getPaginatedPosts({ posts, postsPerPage, currentPage });
   const totalNoOfPages = getPaginatedPagesTotal({ posts, postsPerPage });
 
   return (

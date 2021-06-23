@@ -73,13 +73,13 @@ describe("pagination", () => {
     const total0 = getPaginatedPagesTotal({ posts: [], postsPerPage: 5 });
     expect(total0).toBe(0);
 
-    const total2 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 4 });
-    expect(total2).toBe(2);
+    const total1 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 4 });
+    expect(total1).toBe(2);
 
-    const total3 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 5 });
+    const total2 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 5 });
+    expect(total2).toBe(1);
+
+    const total3 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 6 });
     expect(total3).toBe(1);
-
-    const total4 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 6 });
-    expect(total4).toBe(1);
   });
 });
