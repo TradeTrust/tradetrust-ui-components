@@ -8,6 +8,31 @@ export interface PaginationProps {
   setCurrentPage: (currentPage: number) => void;
 }
 
+interface GetPaginatedPosts {
+  postsPerPage: number;
+  posts: any;
+  currentPage: number;
+}
+
+interface GetPaginatedPagesTotal {
+  postsPerPage: number;
+  posts: any[];
+}
+
+export const getPaginatedPagesTotal = ({ posts, postsPerPage }: GetPaginatedPagesTotal): number => {
+  return Math.ceil(posts.length / postsPerPage);
+};
+
+export const getPaginatedPosts = ({ posts, postsPerPage, currentPage }: GetPaginatedPosts): any[] => {
+  const indexOfLastEvent = currentPage * postsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
+  const paginatedPosts = posts.filter((post: any, index: number) => {
+    return index >= indexOfFirstEvent && index < indexOfLastEvent ? post : null;
+  });
+
+  return paginatedPosts;
+};
+
 export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
   const range = 5; // has to be odd number, so curr active number would be center of range
   const rangeOverflow = ~~(range / 2);

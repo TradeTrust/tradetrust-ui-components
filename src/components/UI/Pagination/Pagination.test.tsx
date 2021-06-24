@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import { Pagination } from "./Pagination";
+import { Pagination, getPaginatedPagesTotal } from "./Pagination";
 
 describe("pagination", () => {
   it("should render pagination component correctly on initial load", () => {
@@ -67,5 +67,19 @@ describe("pagination", () => {
     expect(screen.getByTestId("page-number-1")).not.toHaveAttribute("disabled");
     expect(screen.queryAllByTestId("page-next")).toHaveLength(1);
     expect(screen.getByTestId("page-next")).toHaveAttribute("disabled", "");
+  });
+
+  it("should give correct total pages based on postPerPage", () => {
+    const total0 = getPaginatedPagesTotal({ posts: [], postsPerPage: 5 });
+    expect(total0).toBe(0);
+
+    const total1 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 4 });
+    expect(total1).toBe(2);
+
+    const total2 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 5 });
+    expect(total2).toBe(1);
+
+    const total3 = getPaginatedPagesTotal({ posts: [{}, {}, {}, {}, {}], postsPerPage: 6 });
+    expect(total3).toBe(1);
   });
 });
