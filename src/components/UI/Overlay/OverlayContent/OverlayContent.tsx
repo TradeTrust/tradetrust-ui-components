@@ -45,7 +45,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
               <h4 data-testid="overlay-title" className="text-gray-500 mb-0 flex-grow leading-8">
                 {title}
               </h4>
-              <div className="cursor-pointer" onClick={handleCloseOverlay}>
+              <div className="cursor-pointer" onClick={handleCloseOverlay} data-testid="overlay-close">
                 <X />
               </div>
             </div>
