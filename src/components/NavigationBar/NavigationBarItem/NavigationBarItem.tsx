@@ -70,11 +70,12 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
 
 const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative">
       <button
         type="button"
-        className="flex items-center text-cloud-500 hover:text-cloud-900 focus:outline-none transition-color duration-200 ease-out "
+        className="flex items-center text-cloud-500 hover:text-cloud-900 focus:outline-none outline-none transition-color duration-200 ease-out "
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={() => {
@@ -119,7 +120,16 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                     className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
                   >
                     {dropdownItem.customLink ? (
-                      dropdownItem.customLink
+                      <div className="relative">
+                        <div
+                          className="absolute w-full h-full"
+                          onClick={(event) => {
+                            event.currentTarget.parentElement?.getElementsByTagName("a")[0].click();
+                            setIsOpen(false);
+                          }}
+                        />
+                        {dropdownItem.customLink}
+                      </div>
                     ) : (
                       <a
                         key={index}
