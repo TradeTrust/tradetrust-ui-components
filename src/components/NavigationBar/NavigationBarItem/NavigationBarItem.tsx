@@ -33,14 +33,14 @@ const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ i
 const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = ({ item }) => {
   return (
     <div
-      className={`font-bold transition-color duration-200 ease-out shadow-lg rounded-xl border ${
+      className={`font-bold transition-color duration-200 ease-out rounded-xl border ${
         item.className ? item.className : ""
       }`}
     >
       {item.customLink ? (
         item.customLink
       ) : (
-        <LinkButton href={item.path} className={`p-2`} data-testid={item.id}>
+        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-lg`} data-testid={item.id}>
           {item.label}
         </LinkButton>
       )}
@@ -74,7 +74,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
     <div className="relative">
       <button
         type="button"
-        className="flex items-center focus:outline-none"
+        className="flex items-center text-cloud-500 hover:text-black focus:outline-none transition-color duration-200 ease-out "
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={() => {
@@ -82,12 +82,10 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
         }}
         id={item.id + "-button"}
       >
-        <span className="text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium">
-          {item.label}
-        </span>
+        <span className="font-medium">{item.label}</span>
         <svg
-          className={`-mr-1 ml-2 h-5 w-5 transition-transform duration-200 ease-out transform text-cloud-500 ${
-            isOpen ? "rotate-0" : "-rotate-90"
+          className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
+            isOpen ? "rotate-180" : "rotate-0"
           }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
