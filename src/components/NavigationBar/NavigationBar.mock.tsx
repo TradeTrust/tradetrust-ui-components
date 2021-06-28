@@ -73,14 +73,14 @@ export const MockRightNavItems: NavigationItem[] = [
     id: "create-documents",
     label: "Desktop Create Doc",
     path: "https://creator.tradetrust.io/",
-    className: "bg-white text-cerulean border-cerulean-100 hover:bg-gray-50",
+    className: "text-cerulean border-cerulean-100 bg-white hover:bg-gray-50 rounded-xl max-w-max",
   },
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "verify",
     label: "Desktop Verify Doc",
     path: "/verify",
-    className: "bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300",
+    className: "text-white border-cerulean bg-cerulean-DEFAULT hover:bg-cerulean-300 max-w-max",
   },
 ];
 

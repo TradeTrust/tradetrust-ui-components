@@ -40,7 +40,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
       {item.customLink ? (
         item.customLink
       ) : (
-        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-none`} data-testid={item.id}>
+        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-none text-inherit`} data-testid={item.id}>
           {item.label}
         </LinkButton>
       )}
@@ -117,10 +117,10 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                 return (
                   <div
                     key={index}
-                    className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
+                    className={`relative text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block cursor-pointer`}
                   >
                     {dropdownItem.customLink ? (
-                      <div className="relative">
+                      <>
                         <div
                           className="absolute w-full h-full"
                           onClick={(event) => {
@@ -129,11 +129,11 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                           }}
                         />
                         {dropdownItem.customLink}
-                      </div>
+                      </>
                     ) : (
                       <a
                         key={index}
-                        className="px-4 py-2"
+                        className="block w-full px-4 py-2"
                         href={dropdownItem.path}
                         onClick={() => {
                           setIsOpen(false);
