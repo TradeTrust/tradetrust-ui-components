@@ -35,7 +35,9 @@ module.exports = {
         height: "max-height",
       },
       colors: {
-        // START - redesign
+        inherit: {
+          DEFAULT: "inherit",
+        },
         cerulean: {
           DEFAULT: "#3B8CC5",
           50: "#F7F8FC",
@@ -68,10 +70,6 @@ module.exports = {
           300: "#B4BCC2",
           500: "#6E787F",
           900: "#454B50",
-        },
-        // END - redesign
-        inherit: {
-          DEFAULT: "inherit",
         },
         denim: {
           DEFAULT: "#324353",
