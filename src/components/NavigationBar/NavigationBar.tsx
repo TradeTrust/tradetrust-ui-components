@@ -57,7 +57,9 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
         <div className="relative flex items-center justify-center">
           <div className="lg:hidden absolute left-0">
             <button
-              className={`navbar-toggler relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
+              className={`navbar-toggler relative w-6 h-6 outline-none focus:outline-none ${
+                props.toggleNavBar ? "" : "collapsed"
+              }`}
               onClick={() => {
                 props.setToggleNavBar(!props.toggleNavBar);
               }}

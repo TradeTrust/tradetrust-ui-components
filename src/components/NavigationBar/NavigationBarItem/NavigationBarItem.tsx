@@ -21,7 +21,7 @@ export const NavigationBarItem: FunctionComponent<{
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
   return (
     <div
-      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium ${
+      className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium ${
         item.className ? item.className : ""
       }`}
     >
@@ -40,7 +40,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
       {item.customLink ? (
         item.customLink
       ) : (
-        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-lg`} data-testid={item.id}>
+        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-none`} data-testid={item.id}>
           {item.label}
         </LinkButton>
       )}
@@ -53,7 +53,7 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
 
   return (
     <div
-      className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out ${
+      className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out ${
         item.className ? item.className : ""
       }`}
     >
@@ -70,11 +70,12 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
 
 const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative">
       <button
         type="button"
-        className="flex items-center text-cloud-500 hover:text-black focus:outline-none transition-color duration-200 ease-out "
+        className="flex items-center text-cloud-500 hover:text-cloud-900 focus:outline-none outline-none transition-color duration-200 ease-out "
         aria-expanded={isOpen}
         aria-haspopup="true"
         onClick={() => {
@@ -116,10 +117,19 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                 return (
                   <div
                     key={index}
-                    className={`text-cloud-500 hover:text-black transition-color duration-200 ease-out font-medium block`}
+                    className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
                   >
                     {dropdownItem.customLink ? (
-                      dropdownItem.customLink
+                      <div className="relative">
+                        <div
+                          className="absolute w-full h-full"
+                          onClick={(event) => {
+                            event.currentTarget.parentElement?.getElementsByTagName("a")[0].click();
+                            setIsOpen(false);
+                          }}
+                        />
+                        {dropdownItem.customLink}
+                      </div>
                     ) : (
                       <a
                         key={index}
