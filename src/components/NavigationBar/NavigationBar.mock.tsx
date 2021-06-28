@@ -19,7 +19,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "resources",
-    label: "Desktop Resources",
+    label: "Resources",
     path: "",
     dropdownItems: [
       {
@@ -37,7 +37,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "news_events",
-    label: "Desktop News & Events",
+    label: "News & Events",
     path: "",
     dropdownItems: [
       {
@@ -55,7 +55,7 @@ export const MockLeftNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLink,
     id: "contact",
-    label: "Desktop Contact",
+    label: "Contact",
     path: "/contact",
   },
 ];
@@ -71,16 +71,16 @@ export const MockRightNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "create-documents",
-    label: "Desktop Create Doc",
+    label: "Create Doc",
     path: "https://creator.tradetrust.io/",
-    className: "text-cerulean border-cerulean-100 bg-white hover:bg-gray-50 rounded-xl max-w-max",
+    className: "bg-white text-cerulean border-cerulean-100 hover:bg-gray-50",
   },
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "verify",
-    label: "Desktop Verify Doc",
+    label: "Verify Doc",
     path: "/verify",
-    className: "text-white border-cerulean bg-cerulean-DEFAULT hover:bg-cerulean-300 max-w-max",
+    className: "bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300",
   },
 ];
 
@@ -88,7 +88,7 @@ export const MockMobileNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "resources",
-    label: "Mobile Resources",
+    label: "Resources",
     path: "",
     dropdownItems: [
       {
@@ -106,7 +106,7 @@ export const MockMobileNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationDropDownList,
     id: "news_events",
-    label: "Mobile News & Events",
+    label: "News & Events",
     path: "",
     dropdownItems: [
       {
@@ -124,7 +124,7 @@ export const MockMobileNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLink,
     id: "contact",
-    label: "Mobile Contact",
+    label: "Contact",
     path: "/contact",
   },
   {
@@ -137,14 +137,14 @@ export const MockMobileNavItems: NavigationItem[] = [
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "create-documents",
-    label: "Mobile Create Doc",
+    label: "Create Doc",
     path: "https://creator.tradetrust.io/",
     className: "bg-white text-cerulean border-cerulean-100 hover:bg-gray-50",
   },
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "verify",
-    label: "Mobile Verify Doc",
+    label: "Verify Doc",
     path: "/verify",
     className: "bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300",
   },

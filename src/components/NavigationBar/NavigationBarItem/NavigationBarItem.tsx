@@ -120,16 +120,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                     className={`relative text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block cursor-pointer`}
                   >
                     {dropdownItem.customLink ? (
-                      <>
-                        <div
-                          className="absolute w-full h-full"
-                          onClick={(event) => {
-                            event.currentTarget.parentElement?.getElementsByTagName("a")[0].click();
-                            setIsOpen(false);
-                          }}
-                        />
-                        {dropdownItem.customLink}
-                      </>
+                      dropdownItem.customLink
                     ) : (
                       <a
                         key={index}
