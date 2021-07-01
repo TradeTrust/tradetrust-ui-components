@@ -130,12 +130,8 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
   isNewEndpoint,
   setNewEndpoint,
 }) => {
-  const {
-    thirdPartyAPIEndpoints,
-    addThirdPartyAPIEndpoint,
-    removeThirdPartyAPIEndpoint,
-    setThirdPartyAPIEndpoints,
-  } = useThirdPartyAPIEndpoints();
+  const { thirdPartyAPIEndpoints, addThirdPartyAPIEndpoint, removeThirdPartyAPIEndpoint, setThirdPartyAPIEndpoints } =
+    useThirdPartyAPIEndpoints();
   const { showOverlay, setOverlayVisible } = useOverlayContext();
 
   const deleteAddress = (index: number): void => {
