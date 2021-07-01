@@ -7,6 +7,14 @@ module.exports = {
       padding: theme("spacing.4"),
     }),
     extend: {
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+        ubuntu: ["Ubuntu", "sans-serif"],
+      },
+      fontSize: {
+        '1.625': '1.625rem',
+        '2.5': '2.5rem',
+      },
       minWidth: {
         xs: "18rem",
       },
