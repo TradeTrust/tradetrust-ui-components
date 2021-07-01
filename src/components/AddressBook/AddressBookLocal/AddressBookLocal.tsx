@@ -19,16 +19,16 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
   const { addressBook } = useAddressBook();
 
   return (
-    <table className="table">
-      <thead className="table-thead">
-        <tr>
-          <th>Name</th>
-          <td>Address</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+    <div className="table">
+      <div className="table">
+        <tr className="bg-white text-cloud-900 text-xl">
+          <th className="text-left w-56">Name</th>
+          <th className="text-left w-56">Address</th>
+          <th className="text-left w-56">&nbsp;</th>
+          <th className="text-left w-56">&nbsp;</th>
         </tr>
-      </thead>
-      <tbody className="table-tbody">
+      </div>
+      <div className="table w-full">
         {addressBookLocalStatus === AddressBookState.NONE && (
           <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
         )}
@@ -36,12 +36,13 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
           <AddressBookTableRowEmpty message="No address found. Try searching again?" />
         )}
         {addressBookLocalStatus === AddressBookState.SUCCESS &&
-          localPageResults.map((key) => {
+          localPageResults.map((key, index) => {
             const identifier = addressBook[key];
 
             return (
               <AddressBookTableRow
                 key={key}
+                id={index}
                 isLocal={true}
                 onAddressSelect={() => {
                   if (!onAddressSelect) return;
@@ -53,7 +54,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
               />
             );
           })}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 };
