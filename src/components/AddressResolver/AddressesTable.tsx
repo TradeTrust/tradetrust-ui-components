@@ -54,20 +54,20 @@ const StyledTableAddressResolver = styled(StyledTable)`
   }
 
   td {
-    &.is-editable {
+    &.edit-delete {
       &:last-of-type {
         svg {
           polyline,
           path,
           line {
-            ${tw`text-turquoise`}
+            ${tw`text-cerulean-200`}
           }
 
           &:hover {
             polyline,
             path,
             line {
-              ${tw`text-turquoise-300`}
+              ${tw`text-cerulean-200`}
             }
           }
         }
@@ -209,26 +209,33 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
             <thead className="table-thead">
               <tr>
                 <th />
-                <td>Order</td>
-                <td>Name</td>
-                <td>Endpoint</td>
-                <td>API Header</td>
-                <td>API Key</td>
-                <td>&nbsp;</td>
+                <th>Order</th>
+                <th>Name</th>
+                <th>Endpoint</th>
+                <th>API Header</th>
+                <th>API Key</th>
+                <th>&nbsp;</th>
               </tr>
             </thead>
+            {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
+              <td colSpan={100}>
+                <div className="bg-cerulean-50 h-12" data-testid="table-row">
+                  <p className="flex text-cloud-900 h-full justify-center items-center">
+                    No third party&apos;s endpoint found.{" "}
+                  </p>
+                </div>
+              </td>
+              // <tr>
+              //   <td>Order </td>
+              //   <td>&mdash;</td>
+              //   <td>&mdash;</td>
+              //   <td>No third party&apos;s endpoint found.</td>
+              //   <td>&nbsp;</td>
+              //   <td>&nbsp;</td>
+              //   <td>&nbsp;</td>
+              // </tr>
+            )}
             <tbody className="table-tbody">
-              {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
-                <tr>
-                  <th />
-                  <td>&mdash;</td>
-                  <td>&mdash;</td>
-                  <td>No third party&apos;s endpoint found.</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              )}
               {thirdPartyAPIEndpoints.map((item, index) => {
                 const orderNumber = index + 1;
 

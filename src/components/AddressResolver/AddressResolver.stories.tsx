@@ -29,3 +29,9 @@ export const DefaultAddressResolver = (): ReactElement => {
 
   return <AddressResolver />;
 };
+
+export const AddressResolverNoThirdPartyEndPoint = (): ReactElement => {
+  localStorage.setItem("ADDRESS_THIRD_PARTY_ENDPOINTS", JSON.stringify([]));
+
+  return <AddressResolver />;
+};

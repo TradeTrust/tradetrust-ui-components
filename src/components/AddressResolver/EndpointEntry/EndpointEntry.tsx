@@ -1,10 +1,12 @@
 import { getFeatures, ThirdPartyAPIEntryProps } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent, useState } from "react";
-import { Edit, Save, Trash2 } from "react-feather";
+import { Edit, Trash2 } from "react-feather";
 import isEmpty from "validator/lib/isEmpty";
 import isURL from "validator/lib/isURL";
 import { Input } from "../../UI/Input";
 import { LoaderSpinner } from "../../UI/Loader";
+import { useOverlayContext } from "../../../common/context/OverlayContext";
+import { AddResolverConfirmation } from "../../UI/Overlay/OverlayContent";
 
 interface EndpointEntryProps {
   className?: string;
@@ -45,6 +47,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
   const [endpointName, setEndpointName] = useState(name);
   const [endpointApiHeader, setEndpointApiHeader] = useState(apiHeader);
   const [endpointApiKey, setEndpointApiKey] = useState(apiKey);
+  const { showOverlay } = useOverlayContext();
 
   const onEndpointApiChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEndpointApi(event.target.value);
@@ -135,6 +138,8 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           entityLookup: features.entityLookup?.location,
         },
       });
+
+      showOverlay(<AddResolverConfirmation />);
     } catch (e) {
       onSetAllError(e.message);
     }
@@ -142,85 +147,149 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
   };
 
   return (
-    <tr className={className}>
-      <th>
-        {!isEditable && (
+    <>
+      <tr className={`${className} ${orderNumber % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
+        <th>
+          {!isEditable && (
+            <>
+              <i className="fas fa-sort-up" onClick={onMoveEntryUp} />
+              <i className="fas fa-sort-down" onClick={onMoveEntryDown} />
+            </>
+          )}
+        </th>
+        <td>{orderNumber}</td>
+        <td>
+          {isEditable ? (
+            <Input
+              placeholder="Name"
+              value={endpointName}
+              onChange={onEndpointNameChanged}
+              errorMessage={inputErrorMessageName}
+            />
+          ) : (
+            <>{name}</>
+          )}
+        </td>
+        <td>
+          {isEditable ? (
+            <Input
+              placeholder="Endpoint"
+              value={endpointApi}
+              onChange={onEndpointApiChanged}
+              errorMessage={inputErrorMessageEndpoint}
+            />
+          ) : (
+            <>{api}</>
+          )}
+        </td>
+        <td>
+          {isEditable ? (
+            <Input
+              placeholder="API Header"
+              value={endpointApiHeader}
+              onChange={onEndpointApiHeaderChanged}
+              errorMessage={inputErrorMessageApiHeader}
+            />
+          ) : (
+            <>{apiHeader}</>
+          )}
+        </td>
+        <td colSpan={isEditable ? 2 : 0}>
+          {isEditable ? (
+            <Input
+              placeholder="API Key"
+              value={endpointApiKey}
+              onChange={onEndpointApiKeyChanged}
+              errorMessage={inputErrorMessageApiKey}
+            />
+          ) : (
+            <>{apiKey}</>
+          )}
+        </td>
+        {isLoading ? (
+          <td className={isEditable ? "" : ""}>
+            <LoaderSpinner className="inline-block mx-2" />
+          </td>
+        ) : (
           <>
-            <i className="fas fa-sort-up" onClick={onMoveEntryUp} />
-            <i className="fas fa-sort-down" onClick={onMoveEntryDown} />
+            {!isEditable && (
+              <td className={"edit-delete"}>
+                <div className="flex">
+                  <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
+                  <Edit
+                    onClick={() => {
+                      setEditable(true);
+                    }}
+                    data-testid="edit-icon"
+                  />
+                </div>
+              </td>
+            )}
           </>
         )}
-      </th>
-      <td>{orderNumber}</td>
-      <td>
-        {isEditable ? (
-          <Input
-            placeholder="Name"
-            value={endpointName}
-            onChange={onEndpointNameChanged}
-            errorMessage={inputErrorMessageName}
-          />
+        {/* {isLoading ? (
+          <td className={isEditable ? "is-editable" : ""}>
+            <LoaderSpinner className="inline-block mx-2" />
+          </td>
         ) : (
-          <>{name}</>
-        )}
-      </td>
-      <td>
-        {isEditable ? (
-          <Input
-            placeholder="Endpoint"
-            value={endpointApi}
-            onChange={onEndpointApiChanged}
-            errorMessage={inputErrorMessageEndpoint}
-          />
-        ) : (
-          <>{api}</>
-        )}
-      </td>
-      <td>
-        {isEditable ? (
-          <Input
-            placeholder="API Header"
-            value={endpointApiHeader}
-            onChange={onEndpointApiHeaderChanged}
-            errorMessage={inputErrorMessageApiHeader}
-          />
-        ) : (
-          <>{apiHeader}</>
-        )}
-      </td>
-      <td>
-        {isEditable ? (
-          <Input
-            placeholder="API Key"
-            value={endpointApiKey}
-            onChange={onEndpointApiKeyChanged}
-            errorMessage={inputErrorMessageApiKey}
-          />
-        ) : (
-          <>{apiKey}</>
-        )}
-      </td>
-      {isLoading ? (
-        <td className={isEditable ? "is-editable" : ""}>
-          <LoaderSpinner className="inline-block mx-2" />
-        </td>
-      ) : (
-        <td className={isEditable ? "is-editable" : ""}>
-          <div className="flex">
-            {isEditable ? (
-              <Save onClick={onSave} data-testid="save-icon" />
-            ) : (
+          <td className={isEditable ? "hidden" : "is-editable"}>
+            <div className="flex">
+              <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
               <Edit
                 onClick={() => {
                   setEditable(true);
                 }}
                 data-testid="edit-icon"
               />
-            )}
-            <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
-          </div>
-        </td>
+            </div>
+          </td>
+        )} */}
+
+        {/* {isLoading ? (
+          <td className={isEditable ? "is-editable" : ""}>
+            <LoaderSpinner className="inline-block mx-2" />
+          </td>
+        ) : (
+          <td className={isEditable ? "is-editable" : ""}>
+            <div className="flex">
+              {isEditable ? (
+                <Save onClick={onSave} data-testid="save-icon" />
+              ) : (
+                <Edit
+                  onClick={() => {
+                    setEditable(true);
+                  }}
+                  data-testid="edit-icon"
+                />
+              )}
+              <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
+            </div>
+          </td>
+        )} */}
+      </tr>
+      {isEditable && (
+        <tr className={`${className} ${orderNumber % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
+          <th />
+          {/* <td className={isEditable ? "is-editable" : ""} colSpan={6}> */}
+          <td className="edit-delete" colSpan={isLoading ? 7 : 6}>
+            <div className="flex flex-row text-white justify-center">
+              <div
+                className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
+                onClick={removeEndpoint}
+              >
+                Delete
+              </div>
+              <div
+                className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
+                onClick={onSave}
+              >
+                Save
+              </div>
+            </div>
+          </td>
+          <th />
+        </tr>
       )}
-    </tr>
+    </>
   );
 };

@@ -4,7 +4,7 @@ import tw from "twin.macro";
 
 const InputStyled = styled.input`
   &::placeholder {
-    ${tw`text-gray-500 text-base`}
+    ${tw`text-cloud-300 text-base`}
   }
 `;
 
@@ -17,12 +17,12 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
   return (
     <>
       <InputStyled
-        className={`w-full border px-2 py-1 mb-0 ${className ? className : ""} ${
-          hasError || errorMessage ? "border-rose-400" : "border-gray-300"
+        className={`w-full border rounded-md px-2 py-1 mb-0 ${className ? className : ""} ${
+          hasError || errorMessage ? "border-rose" : "border-cloud-100"
         }`}
         {...props}
       />
-      {errorMessage && <p className="text-rose-400 my-2">{errorMessage}</p>}
+      {errorMessage && <p className="text-rose my-2">{errorMessage}</p>}
     </>
   );
 };

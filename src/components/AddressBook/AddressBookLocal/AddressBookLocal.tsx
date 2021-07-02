@@ -19,30 +19,39 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
   const { addressBook } = useAddressBook();
 
   return (
-    <div className="table">
-      <div className="table">
-        <tr className="bg-white text-cloud-900 text-xl">
-          <th className="text-left w-56">Name</th>
+    <table className="table">
+      <thead className="table-thead">
+        <tr>
+          {/* <th className="text-left w-56">Name</th>
           <th className="text-left w-56">Address</th>
           <th className="text-left w-56">&nbsp;</th>
-          <th className="text-left w-56">&nbsp;</th>
+          <th className="text-left w-56">&nbsp;</th> */}
+          <th>Name</th>
+          <th>Address</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
         </tr>
-      </div>
-      <div className="table w-full">
-        {addressBookLocalStatus === AddressBookState.NONE && (
+      </thead>
+      {addressBookLocalStatus === AddressBookState.NONE && (
+        <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
+      )}
+      {addressBookLocalStatus === AddressBookState.EMPTY && (
+        <AddressBookTableRowEmpty message="No address found. Try searching again?" />
+      )}
+      <tbody className="table-tbody">
+        {/* {addressBookLocalStatus === AddressBookState.NONE && (
           <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
         )}
         {addressBookLocalStatus === AddressBookState.EMPTY && (
           <AddressBookTableRowEmpty message="No address found. Try searching again?" />
-        )}
+        )} */}
         {addressBookLocalStatus === AddressBookState.SUCCESS &&
-          localPageResults.map((key, index) => {
+          localPageResults.map((key) => {
             const identifier = addressBook[key];
 
             return (
               <AddressBookTableRow
                 key={key}
-                id={index}
                 isLocal={true}
                 onAddressSelect={() => {
                   if (!onAddressSelect) return;
@@ -54,7 +63,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
               />
             );
           })}
-      </div>
-    </div>
+      </tbody>
+    </table>
   );
 };

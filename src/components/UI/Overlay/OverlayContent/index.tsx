@@ -1,3 +1,4 @@
+export * from "./AddResolverConfirmation";
 export * from "./DeleteResolverConfirmation";
 export * from "./DocumentTransferMessage";
 export * from "./MessageAddressResolver";
