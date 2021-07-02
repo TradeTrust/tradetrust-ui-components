@@ -1,6 +1,6 @@
 module.exports = {
   entry: "./src/index.tsx",
-  devtool: process.env.NODE_ENV === "production" ? false : "cheap-eval-source-map", // https://webpack.js.org/configuration/devtool/#devtool
+  devtool: process.env.NODE_ENV === "production" ? false : "eval-cheap-source-map", // https://webpack.js.org/configuration/devtool/#devtool
   output: {
     path: __dirname + "/build",
     filename: "index.js",
@@ -13,6 +13,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    fallback: {
+      path: require.resolve("path-browserify"),
+    },
   },
   module: {
     rules: [
