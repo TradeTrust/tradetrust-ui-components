@@ -3,6 +3,7 @@ import { ExternalLink } from "react-feather";
 import { makeEtherscanAddressURL } from "../../utils";
 
 interface AddressBookTableRowProps {
+  id: number;
   onAddressSelect: () => void;
   address: string;
   isLocal: boolean;
@@ -26,6 +27,7 @@ const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps>
 };
 
 export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = ({
+  id,
   onAddressSelect,
   isLocal,
   address,
@@ -48,7 +50,11 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
     //   <td>{!isLocal && source}&nbsp;</td>
     //   <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
     // </table>
-    <tr onClick={onAddressSelect} data-testid="table-row">
+    <tr
+      className={`${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
+      onClick={onAddressSelect}
+      data-testid="table-row"
+    >
       <td>{name}</td>
       <td>{address}</td>
       <td>{!isLocal && source}&nbsp;</td>

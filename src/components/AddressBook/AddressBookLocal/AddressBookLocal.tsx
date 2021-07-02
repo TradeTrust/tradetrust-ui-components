@@ -46,12 +46,13 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
           <AddressBookTableRowEmpty message="No address found. Try searching again?" />
         )} */}
         {addressBookLocalStatus === AddressBookState.SUCCESS &&
-          localPageResults.map((key) => {
+          localPageResults.map((key, index) => {
             const identifier = addressBook[key];
 
             return (
               <AddressBookTableRow
                 key={key}
+                id={index}
                 isLocal={true}
                 onAddressSelect={() => {
                   if (!onAddressSelect) return;
