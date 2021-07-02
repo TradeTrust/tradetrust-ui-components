@@ -1,4 +1,5 @@
 // import styled from "@emotion/styled";
+import styled from "@emotion/styled";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
@@ -8,8 +9,10 @@ import {
 import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
+import tw from "twin.macro";
 // import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
+import { StyledTable } from "../../common/styles/Table";
 // import { StyledTable } from "../../common/styles/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
@@ -37,37 +40,37 @@ export interface AddressBookProps {
   className?: string;
 }
 
-// const StyledTableAddressBook = styled(StyledTable)`
-//   th {
-//     ${tw`text-left w-56`}
-//   }
+const StyledTableAddressBook = styled(StyledTable)`
+  th {
+    ${tw`text-left w-56`}
+  }
 
-//   .table-tbody {
-//     height: 360px;
+  .table-tbody {
+    height: 360px;
 
-//     tr {
-//       ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
+    tr {
+      ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
 
-//       a {
-//         svg {
-//           max-width: 16px;
-//         }
-//       }
-//     }
+      a {
+        svg {
+          ${tw`max-w-1.5 text-cerulean-200`}
+        }
+      }
+    }
 
-//     td {
-//       &:last-of-type {
-//         text-align: right;
-//       }
-//     }
-//   }
-// `;
+    td {
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+`;
 
 export const AddressBook: FunctionComponent<AddressBookProps> = ({
   network,
   onAddressSelect,
   paginationOffset = 0,
-  paginationLimit = 20,
+  paginationLimit = 10,
   ...props
 }) => {
   const { thirdPartyAPIEndpoints } = useThirdPartyAPIEndpoints();
@@ -174,59 +177,59 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
 
   return (
     <div {...props}>
-      <h3 className="font-ubuntu text-2.5 text-cloud-900">Address Book</h3>
-      <p className="mb-5 text-gray-500">Please select an address book to view. </p>
-      <div className="">
-        <div className="flex items-start flex-col md:flex-row">
-          <div className="flex flex-grow">
-            <Dropdown
-              dropdownButtonText={isLocal ? "Local" : name}
-              className="text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3 bg-white"
-              classNameShared="w-full max-w-sm"
+      <div className="flex-1 flex-col">
+        <h3 className="font-ubuntu text-2.5 text-cloud-900">Address Book</h3>
+        <p className="mb-5 text-cloud-900">Please select an address book to view. </p>
+      </div>
+      <div className="flex items-start flex-col md:flex-row">
+        <div className="flex flex-grow">
+          <Dropdown
+            dropdownButtonText={isLocal ? "Local" : name}
+            className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3 w-60"
+            // classNameShared="w-full max-w-sm"
+          >
+            <DropdownItem
+              onClick={() => {
+                setIsLocal(true);
+                resetThirdPartyAPIEndpointResult();
+              }}
             >
-              <DropdownItem
-                onClick={() => {
-                  setIsLocal(true);
-                  resetThirdPartyAPIEndpointResult();
-                }}
-              >
-                Local
-              </DropdownItem>
-              {thirdPartyAPIEndpoints.map((item, index) => {
-                return (
-                  <DropdownItem
-                    key={index}
-                    onClick={() => {
-                      setIsLocal(false);
-                      setRemoteEndpointIndex(index);
-                      resetThirdPartyAPIEndpointResult();
-                    }}
-                  >
-                    {item.name}
-                  </DropdownItem>
-                );
-              })}
-            </Dropdown>
-          </div>
-          <div className="flex mx-0">
-            <div className="w-auto mb-2">
-              <LinkButton
-                className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
-                href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
-                download="template.csv"
-              >
-                <div className="flex items-center mx-0">
-                  <div className="col-auto mr-2">
-                    <Download />
-                  </div>
-                  <h5 className="col-auto">Download Template</h5>
-                  {/* <div className="text-cerulean col-auto">Download template</div> */}
+              Local
+            </DropdownItem>
+            {thirdPartyAPIEndpoints.map((item, index) => {
+              return (
+                <DropdownItem
+                  key={index}
+                  onClick={() => {
+                    setIsLocal(false);
+                    setRemoteEndpointIndex(index);
+                    resetThirdPartyAPIEndpointResult();
+                  }}
+                >
+                  {item.name}
+                </DropdownItem>
+              );
+            })}
+          </Dropdown>
+        </div>
+        <div className="flex mx-0">
+          <div className="w-auto mb-2">
+            <LinkButton
+              className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
+              href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
+              download="template.csv"
+            >
+              <div className="flex items-center mx-0">
+                <div className="col-auto mr-2">
+                  <Download />
                 </div>
-              </LinkButton>
-            </div>
-            <div className="w-auto">
-              <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
-            </div>
+                <h5 className="col-auto">Download Template</h5>
+                {/* <div className="text-cerulean col-auto">Download template</div> */}
+              </div>
+            </LinkButton>
+          </div>
+          <div className="w-auto">
+            <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
           </div>
         </div>
       </div>
@@ -247,7 +250,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </div>
           </div>
         </div>
-        <div className="table-responsive mt-14">
+        <StyledTableAddressBook className="table-responsive mt-14">
           {isLocal ? (
             <AddressBookLocal
               addressBookLocalStatus={addressBookLocalStatus}
@@ -263,7 +266,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
               network={network}
             />
           )}
-        </div>
+        </StyledTableAddressBook>
       </div>
       <div className="mt-4">
         <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

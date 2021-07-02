@@ -18,6 +18,9 @@ module.exports = {
       minWidth: {
         xs: "18rem",
       },
+      maxWidth: {
+        '1.5': '1.5rem',
+      },
       opacity: {
         0: "0",
         10: ".1",

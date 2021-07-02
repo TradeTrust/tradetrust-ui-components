@@ -3,7 +3,6 @@ import { ExternalLink } from "react-feather";
 import { makeEtherscanAddressURL } from "../../utils";
 
 interface AddressBookTableRowProps {
-  id: number;
   onAddressSelect: () => void;
   address: string;
   isLocal: boolean;
@@ -20,14 +19,13 @@ interface AddressBookEtherscanLinkProps {
 const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
-    <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-cerulean-200">
+    <a href={addressHref} target="_blank" rel="noreferrer noopener">
       <ExternalLink className="ml-auto mr-4" />
     </a>
   );
 };
 
 export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = ({
-  id,
   onAddressSelect,
   isLocal,
   address,
@@ -36,18 +34,26 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   source,
 }) => {
   return (
-    <div
-      className={`table-row h-12 text-cloud-900 text-sm ${id % 2 === 0 ? "bg-cerulean-50" : "bg-white"}`}
-      onClick={onAddressSelect}
-      data-testid="table-row"
-    >
-      <div className="table-cell w-56 ml-7">{name}</div>
-      <div className="table-cell w-56">{address}</div>
-      <div className="table-cell w-56">{!isLocal && source}&nbsp;</div>
-      <div className="table-cell w-56">
-        {network && <AddressBookEtherscanLink address={address} network={network} />}
-      </div>
-    </div>
+    // <table
+    //   // className={`table-row h-12 text-cloud-900 text-sm ${id % 2 === 0 ? "bg-cerulean-50" : "bg-white"}`}
+    //   onClick={onAddressSelect}
+    //   data-testid="table-row"
+    // >
+    //   {/* <td className="table-cell w-56 ml-7">{name}</td>
+    //   <td className="table-cell w-56">{address}</td>
+    //   <td className="table-cell w-56">{!isLocal && source}&nbsp;</td>
+    //   <td className="table-cell w-56">{network && <AddressBookEtherscanLink address={address} network={network} />}</td> */}
+    //   <td>{name}</td>
+    //   <td>{address}</td>
+    //   <td>{!isLocal && source}&nbsp;</td>
+    //   <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
+    // </table>
+    <tr onClick={onAddressSelect} data-testid="table-row">
+      <td>{name}</td>
+      <td>{address}</td>
+      <td>{!isLocal && source}&nbsp;</td>
+      <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
+    </tr>
   );
 };
 
@@ -61,14 +67,16 @@ export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmpt
   // textClassName = "",
 }) => {
   return (
-    <div className="bg-cerulean-50 h-12" data-testid="table-row">
-      {/* <th>&mdash;</th> */}
-      <p className="flex text-cloud-900 h-full justify-center items-center">{message} </p>
-      {/* <td>
+    <td colSpan={100}>
+      <div className="bg-cerulean-50 h-12" data-testid="table-row">
+        {/* <th>&mdash;</th> */}
+        <p className="flex text-cloud-900 h-full justify-center items-center">{message} </p>
+        {/* <td>
         <span className={`whitespace-pre-wrap mb-0 ${textClassName}`}>{message}</span>
       </td>
       <td>&nbsp;</td>
       <td>&nbsp;</td> */}
-    </div>
+      </div>
+    </td>
   );
 };

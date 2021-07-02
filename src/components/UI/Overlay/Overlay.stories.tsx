@@ -3,6 +3,7 @@ import { OverlayContextProvider } from "../../../common/context/OverlayContext";
 import { OverlayDemo } from "./Overlay.mock";
 import { Overlay } from "./Overlay";
 import {
+  AddResolverConfirmation,
   DeleteResolverConfirmation,
   DocumentTransferMessage,
   MessageBeneficiarySuccess,
@@ -210,6 +211,16 @@ export const DeleteAddressResolver = (): ReactElement => {
             alert("delete address");
           }}
         />
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+export const AddAddressResolver = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Add Address Resolver">
+        <AddResolverConfirmation />
       </OverlayDemo>
     </OverlayContextProvider>
   );
