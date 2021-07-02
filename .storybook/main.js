@@ -5,8 +5,8 @@ const toPath = (_path) => path.join(process.cwd(), _path);
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
   addons: ["@storybook/addon-essentials", "@storybook/addon-postcss"],
-  typescript: {
-    reactDocgen: "react-docgen", // once react-docgen-typescript v2 in included in storybook, remove this config
+  core: {
+    builder: "webpack5",
   },
   webpackFinal: (config) => {
     return {
