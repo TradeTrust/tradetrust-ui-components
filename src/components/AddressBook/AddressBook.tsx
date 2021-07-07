@@ -46,7 +46,7 @@ const StyledTableAddressBook = styled(StyledTable)`
   }
 
   .table-tbody {
-    height: 360px;
+    // height: 360px;
 
     tr {
       ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
@@ -58,11 +58,11 @@ const StyledTableAddressBook = styled(StyledTable)`
       }
     }
 
-    td {
-      &:last-of-type {
-        text-align: right;
-      }
-    }
+    // td {
+    //   &:last-of-type {
+    //     text-align: right;
+    //   }
+    // }
   }
 `;
 
@@ -189,6 +189,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             // classNameShared="w-full max-w-sm"
           >
             <DropdownItem
+              className="w-60"
               onClick={() => {
                 setIsLocal(true);
                 resetThirdPartyAPIEndpointResult();
@@ -233,9 +234,9 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
           </div>
         </div>
       </div>
-      <div className="bg-white border-2 rounded-xl shadow-lg p-7">
-        <div className="flex mb-2 flex-grow">
-          <div className="bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 md:max-w-xs">
+      <div className="bg-white rounded-xl shadow-lg p-7">
+        <div className="flex mb-2 flex-grow justify-center md:justify-start">
+          <div className="bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 md:max-w-xs md:items">
             <div className="flex mx-0 items-center w-64">
               <Search className="stroke-2 h-4 w-4 text-cloud-900" />
               <input
@@ -250,7 +251,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </div>
           </div>
         </div>
-        <StyledTableAddressBook className="table-responsive mt-14">
+        <StyledTableAddressBook className="table-responsive mt-6 md:mt-14">
           {isLocal ? (
             <AddressBookLocal
               addressBookLocalStatus={addressBookLocalStatus}

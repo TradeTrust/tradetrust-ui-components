@@ -148,19 +148,31 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <>
-      <tr className={`${className} ${orderNumber % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
+      <tr
+        className={`${className} flex flex-col rounded-xl shadow-lg w-80 mx-auto mt-6 ${
+          isEditable ? "h-160" : "h-auto"
+        } md:table-row md:w-auto md:h-auto md:rounded-none md:shadow-none md:mt-0 ${
+          orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"
+        }`}
+        // className={`${className} flex flex-col rounded-xl shadow-lg w-80 mx-auto mt-6 leading-3 cursor-pointer transition duration-300 ease-out-cubic ${
+      >
         <th>
           {!isEditable && (
-            <>
+            <div className="hidden md:table-cell">
+              {/* <div className="leading-3 cursor-pointer transition duration-300 ease-out-cubic"> */}
               <i className="fas fa-sort-up" onClick={onMoveEntryUp} />
               <i className="fas fa-sort-down" onClick={onMoveEntryDown} />
-            </>
+            </div>
           )}
         </th>
-        <td>{orderNumber}</td>
-        <td>
+        <td className="text-cloud-900 text-xl font-bold px-3 pt-12 md:hidden">Order</td>
+        {/* <div className="table-cell text-cloud-900 align-middle whitespace-nowrap px-3 md:p-3">{orderNumber}</div> */}
+        <td className="w-20">{orderNumber}</td>
+        <td className={`text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden ${isEditable ? "mt-7" : ""}`}>Name</td>
+        <td className="w-52">
           {isEditable ? (
             <Input
+              className="w-72 md:w-full"
               placeholder="Name"
               value={endpointName}
               onChange={onEndpointNameChanged}
@@ -170,9 +182,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <>{name}</>
           )}
         </td>
-        <td>
+        <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">Endpoint</td>
+        <td className="w-80">
           {isEditable ? (
             <Input
+              className="w-72 md:w-full"
               placeholder="Endpoint"
               value={endpointApi}
               onChange={onEndpointApiChanged}
@@ -182,9 +196,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <>{api}</>
           )}
         </td>
+        <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Header</td>
         <td>
           {isEditable ? (
             <Input
+              className="w-72 md:w-full"
               placeholder="API Header"
               value={endpointApiHeader}
               onChange={onEndpointApiHeaderChanged}
@@ -194,9 +210,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <>{apiHeader}</>
           )}
         </td>
-        <td colSpan={isEditable ? 2 : 0}>
+        <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Key</td>
+        <td colSpan={isEditable ? 2 : 0} className={`pb-8`}>
           {isEditable ? (
             <Input
+              className="w-72 md:w-full"
               placeholder="API Key"
               value={endpointApiKey}
               onChange={onEndpointApiKeyChanged}
@@ -213,10 +231,15 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         ) : (
           <>
             {!isEditable && (
-              <td className={"edit-delete"}>
-                <div className="flex">
-                  <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
+              <td className={"edit-delete w-28"}>
+                <div className="flex w-full ml-56 -mt-96 md:m-auto">
+                  <Trash2
+                    className="text-cerulean-200 cursor-pointer"
+                    onClick={removeEndpoint}
+                    data-testid="trash2-icon"
+                  />
                   <Edit
+                    className="text-cerulean-200 ml-3.5 cursor-pointer"
                     onClick={() => {
                       setEditable(true);
                     }}
@@ -227,52 +250,13 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             )}
           </>
         )}
-        {/* {isLoading ? (
-          <td className={isEditable ? "is-editable" : ""}>
-            <LoaderSpinner className="inline-block mx-2" />
-          </td>
-        ) : (
-          <td className={isEditable ? "hidden" : "is-editable"}>
-            <div className="flex">
-              <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
-              <Edit
-                onClick={() => {
-                  setEditable(true);
-                }}
-                data-testid="edit-icon"
-              />
-            </div>
-          </td>
-        )} */}
-
-        {/* {isLoading ? (
-          <td className={isEditable ? "is-editable" : ""}>
-            <LoaderSpinner className="inline-block mx-2" />
-          </td>
-        ) : (
-          <td className={isEditable ? "is-editable" : ""}>
-            <div className="flex">
-              {isEditable ? (
-                <Save onClick={onSave} data-testid="save-icon" />
-              ) : (
-                <Edit
-                  onClick={() => {
-                    setEditable(true);
-                  }}
-                  data-testid="edit-icon"
-                />
-              )}
-              <Trash2 onClick={removeEndpoint} data-testid="trash2-icon" />
-            </div>
-          </td>
-        )} */}
       </tr>
       {isEditable && (
-        <tr className={`${className} ${orderNumber % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
-          <th />
+        <tr className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
+          <th className="hidden md:table-cell" />
           {/* <td className={isEditable ? "is-editable" : ""} colSpan={6}> */}
           <td className="edit-delete" colSpan={isLoading ? 7 : 6}>
-            <div className="flex flex-row text-white justify-center">
+            <div className="flex flex-row text-white justify-center -mt-14 md:m-0">
               <div
                 className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
                 onClick={removeEndpoint}
@@ -282,12 +266,13 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
               <div
                 className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
                 onClick={onSave}
+                data-testid="save-icon"
               >
                 Save
               </div>
             </div>
           </td>
-          <th />
+          <th className="hidden md:table-cell" />
         </tr>
       )}
     </>

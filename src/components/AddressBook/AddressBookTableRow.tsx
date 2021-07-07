@@ -21,7 +21,7 @@ const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps>
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
     <a href={addressHref} target="_blank" rel="noreferrer noopener">
-      <ExternalLink className="ml-auto mr-4" />
+      <ExternalLink className="md:ml-auto md:mr-4" />
     </a>
   );
 };
@@ -36,22 +36,10 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   source,
 }) => {
   return (
-    // <table
-    //   // className={`table-row h-12 text-cloud-900 text-sm ${id % 2 === 0 ? "bg-cerulean-50" : "bg-white"}`}
-    //   onClick={onAddressSelect}
-    //   data-testid="table-row"
-    // >
-    //   {/* <td className="table-cell w-56 ml-7">{name}</td>
-    //   <td className="table-cell w-56">{address}</td>
-    //   <td className="table-cell w-56">{!isLocal && source}&nbsp;</td>
-    //   <td className="table-cell w-56">{network && <AddressBookEtherscanLink address={address} network={network} />}</td> */}
-    //   <td>{name}</td>
-    //   <td>{address}</td>
-    //   <td>{!isLocal && source}&nbsp;</td>
-    //   <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
-    // </table>
+    // ---------------------
     <tr
-      className={`${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
+      className={`flex flex-col text-left md:table-row ${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
+      // className={`${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >
@@ -60,6 +48,13 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       <td>{!isLocal && source}&nbsp;</td>
       <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
     </tr>
+    // ----------------------
+    // <div className={`flex flex-col md:table-row ${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
+    //   <div className="table-cell">{name}</div>
+    //   <div className="table-cell">{address}</div>
+    //   <div className="table-cell">{!isLocal && source}&nbsp;</div>
+    //   <div className="table-cell">{network && <AddressBookEtherscanLink address={address} network={network} />}</div>
+    // </div>
   );
 };
 
@@ -73,7 +68,7 @@ export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmpt
   // textClassName = "",
 }) => {
   return (
-    <td colSpan={100}>
+    <>
       <div className="bg-cerulean-50 h-12" data-testid="table-row">
         {/* <th>&mdash;</th> */}
         <p className="flex text-cloud-900 h-full justify-center items-center">{message} </p>
@@ -83,6 +78,6 @@ export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmpt
       <td>&nbsp;</td>
       <td>&nbsp;</td> */}
       </div>
-    </td>
+    </>
   );
 };

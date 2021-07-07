@@ -17,14 +17,14 @@ export const StyledTable = styled.div`
   }
 
   td {
-    ${tw`text-cloud-900 align-middle whitespace-nowrap p-3`}
+    ${tw`text-cloud-900 align-middle whitespace-nowrap px-3 md:p-3`}
   }
 
   .table-thead {
     th,
     td {
       border: none;
-    }
+    },
   }
 
   .table-thead {
