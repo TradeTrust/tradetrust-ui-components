@@ -20,22 +20,6 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
 
   return (
     <>
-      {/* <div className="hidden md:table-header-group md:w-full">
-        <div className="table-row bg-white font-bold text-cloud-900 text-xl text-left mt-0">
-          <div className="table-cell w-56 px-2">Name</div>
-          <div className="table-cell w-56 px-2">Address</div>
-          <div className="table-cell w-56 px-2">&nbsp;</div>
-          <div className="table-cell w-56 px-2">&nbsp;</div>
-        </div>
-      </div> */}
-      {/* <div className="hidden md:table-header-group">
-        <div className="table-row bg-white font-bold text-cloud-900 text-xl text-left mt-0">
-          <div className="table-cell px-2">Name</div>
-          <div className="table-cell px-2">Address</div>
-          <div className="table-cell px-2">&nbsp;</div>
-          <div className="table-cell px-2">&nbsp;</div>
-        </div>
-      </div> */}
       <table className="table">
         <thead className="table-thead">
           <tr className="hidden md:table-row">
@@ -45,28 +29,8 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
             <th>&nbsp;</th>
           </tr>
         </thead>
-        {/* <div className="hidden md:table-header-group">
-          <div className="table-row bg-white font-bold text-cloud-900 text-xl text-left mt-0">
-            <div className="table-cell px-2">Name</div>
-            <div className="table-cell px-2">Address</div>
-            <div className="table-cell px-2">&nbsp;</div>
-            <div className="table-cell px-2">&nbsp;</div>
-          </div>
-        </div>
-        {addressBookLocalStatus === AddressBookState.NONE && (
-          <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
-        )}
-        {addressBookLocalStatus === AddressBookState.EMPTY && (
-          <AddressBookTableRowEmpty message="No address found. Try searching again?" />
-        )} */}
         <tbody className="table-tbody">
-          <tr></tr>
-          {/* {addressBookLocalStatus === AddressBookState.NONE && (
-          <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
-        )}
-        {addressBookLocalStatus === AddressBookState.EMPTY && (
-          <AddressBookTableRowEmpty message="No address found. Try searching again?" />
-        )} */}
+          <tr />
           {addressBookLocalStatus === AddressBookState.SUCCESS &&
             localPageResults.map((key, index) => {
               const identifier = addressBook[key];

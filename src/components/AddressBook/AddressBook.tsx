@@ -46,8 +46,6 @@ const StyledTableAddressBook = styled(StyledTable)`
   }
 
   .table-tbody {
-    // height: 360px;
-
     tr {
       ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
 
@@ -57,12 +55,6 @@ const StyledTableAddressBook = styled(StyledTable)`
         }
       }
     }
-
-    // td {
-    //   &:last-of-type {
-    //     text-align: right;
-    //   }
-    // }
   }
 `;
 
@@ -186,7 +178,6 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
           <Dropdown
             dropdownButtonText={isLocal ? "Local" : name}
             className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3 w-60"
-            // classNameShared="w-full max-w-sm"
           >
             <DropdownItem
               className="w-60"
@@ -225,7 +216,6 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
                   <Download />
                 </div>
                 <h5 className="col-auto">Download Template</h5>
-                {/* <div className="text-cerulean col-auto">Download template</div> */}
               </div>
             </LinkButton>
           </div>
@@ -247,7 +237,6 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
                 onChange={onSearchTermChanged}
                 disabled={!isLocal && !hasEntityLookupPath}
               />
-              {/* <Search className="text-cloud-900" /> */}
             </div>
           </div>
         </div>

@@ -36,10 +36,8 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   source,
 }) => {
   return (
-    // ---------------------
     <tr
       className={`flex flex-col text-left md:table-row ${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
-      // className={`${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >
@@ -48,13 +46,6 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       <td>{!isLocal && source}&nbsp;</td>
       <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
     </tr>
-    // ----------------------
-    // <div className={`flex flex-col md:table-row ${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}>
-    //   <div className="table-cell">{name}</div>
-    //   <div className="table-cell">{address}</div>
-    //   <div className="table-cell">{!isLocal && source}&nbsp;</div>
-    //   <div className="table-cell">{network && <AddressBookEtherscanLink address={address} network={network} />}</div>
-    // </div>
   );
 };
 
@@ -70,13 +61,7 @@ export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmpt
   return (
     <>
       <div className="bg-cerulean-50 h-12" data-testid="table-row">
-        {/* <th>&mdash;</th> */}
         <p className="flex text-cloud-900 h-full justify-center items-center">{message} </p>
-        {/* <td>
-        <span className={`whitespace-pre-wrap mb-0 ${textClassName}`}>{message}</span>
-      </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td> */}
       </div>
     </>
   );
