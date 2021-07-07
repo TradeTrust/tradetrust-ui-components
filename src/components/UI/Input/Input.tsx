@@ -6,6 +6,10 @@ const InputStyled = styled.input`
   &::placeholder {
     ${tw`text-cloud-300 text-base`}
   }
+
+  &:focus {
+    ${tw`border-cloud-900 outline-none`}
+  }
 `;
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -18,7 +22,7 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
     <div className="min-h-18">
       <InputStyled
         className={`border rounded-md px-2 py-1 mb-0 ${className ? className : ""} ${
-          hasError || errorMessage ? "border-rose" : "border-cloud-100"
+          hasError || errorMessage ? "border-rose" : "border-cloud-200"
         }`}
         {...props}
       />

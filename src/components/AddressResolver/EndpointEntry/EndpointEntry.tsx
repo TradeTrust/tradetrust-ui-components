@@ -154,19 +154,16 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         } md:table-row md:w-auto md:h-auto md:rounded-none md:shadow-none md:mt-0 ${
           orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"
         }`}
-        // className={`${className} flex flex-col rounded-xl shadow-lg w-80 mx-auto mt-6 leading-3 cursor-pointer transition duration-300 ease-out-cubic ${
       >
         <th>
           {!isEditable && (
             <div className="hidden md:table-cell">
-              {/* <div className="leading-3 cursor-pointer transition duration-300 ease-out-cubic"> */}
               <i className="fas fa-sort-up" onClick={onMoveEntryUp} />
               <i className="fas fa-sort-down" onClick={onMoveEntryDown} />
             </div>
           )}
         </th>
         <td className="text-cloud-900 text-xl font-bold px-3 pt-12 md:hidden">Order</td>
-        {/* <div className="table-cell text-cloud-900 align-middle whitespace-nowrap px-3 md:p-3">{orderNumber}</div> */}
         <td className="w-20">{orderNumber}</td>
         <td className={`text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden ${isEditable ? "mt-7" : ""}`}>Name</td>
         <td className="w-52">
@@ -254,7 +251,6 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       {isEditable && (
         <tr className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
           <th className="hidden md:table-cell" />
-          {/* <td className={isEditable ? "is-editable" : ""} colSpan={6}> */}
           <td className="edit-delete" colSpan={isLoading ? 7 : 6}>
             <div className="flex flex-row text-white justify-center -mt-14 md:m-0">
               <div
