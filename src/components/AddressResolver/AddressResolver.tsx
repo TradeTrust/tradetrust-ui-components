@@ -7,7 +7,7 @@ export const AddressResolver: FunctionComponent = () => {
 
   return (
     <>
-      <div className="flex items-end">
+      <div className="flex flex-col md:flex-row md:items-end">
         <div className="flex-1 flex-col">
           <h3 className="font-ubuntu text-2.5 text-cloud-900">Resolver: Address</h3>
           <p className="mb-5 text-cloud-900">Add third party’s endpoint to resolve addresses.</p>
@@ -70,7 +70,7 @@ export const AddressResolver: FunctionComponent = () => {
           </Button>
         </div>
       </div>
-      <div className="bg-white border-2 rounded-xl shadow-lg mt-6 p-7">
+      <div className="md:bg-white md:rounded-xl md:shadow-lg md:mt-6 md:p-7">
         <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
       </div>
     </>

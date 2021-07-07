@@ -15,11 +15,21 @@ module.exports = {
         '1.625': '1.625rem',
         '2.5': '2.5rem',
       },
+      height: {
+        '120': '30rem',
+        '160': '40rem',
+      },
+      minHeight: {
+        '18': '4.5rem',
+      },
       minWidth: {
         xs: "18rem",
       },
       maxWidth: {
         '1.5': '1.5rem',
+      },
+      margin: {
+        '-88': '-22rem'
       },
       opacity: {
         0: "0",

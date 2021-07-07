@@ -53,76 +53,76 @@ const StyledTableAddressResolver = styled(StyledTable)`
     }
   }
 
-  td {
-    &.edit-delete {
-      &:last-of-type {
-        svg {
-          polyline,
-          path,
-          line {
-            ${tw`text-cerulean-200`}
-          }
+  // td {
+  //   &.edit-delete {
+  //     &:last-of-type {
+  //       svg {
+  //         polyline,
+  //         path,
+  //         line {
+  //           ${tw`text-cerulean-200`}
+  //         }
 
-          &:hover {
-            polyline,
-            path,
-            line {
-              ${tw`text-cerulean-200`}
-            }
-          }
-        }
-      }
-    }
+  //         &:hover {
+  //           polyline,
+  //           path,
+  //           line {
+  //             ${tw`text-cerulean-200`}
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
 
-    &:nth-of-type(1) {
-      width: 80px;
-    }
+  //   &:nth-of-type(1) {
+  //     width: 80px;
+  //   }
 
-    &:nth-of-type(2) {
-      width: 200px;
-    }
+  //   &:nth-of-type(2) {
+  //     width: 200px;
+  //   }
 
-    &:nth-of-type(3) {
-      width: 360px;
-    }
+  //   &:nth-of-type(3) {
+  //     width: 360px;
+  //   }
 
-    &:nth-of-type(4) {
-      width: 200px;
-    }
+  //   &:nth-of-type(4) {
+  //     width: 200px;
+  //   }
 
-    &:nth-of-type(5) {
-      width: 200px;
-    }
+  //   &:nth-of-type(5) {
+  //     width: 200px;
+  //   }
 
-    &:last-of-type {
-      text-align: right;
-      width: 100px;
+  //   &:last-of-type {
+  //     text-align: right;
+  //     width: 100px;
 
-      svg {
-        cursor: pointer;
-        margin-left: 15px;
+  //     svg {
+  //       cursor: pointer;
+  //       margin-left: 15px;
 
-        polyline,
-        path,
-        line {
-          transition: color 0.3s ease-out;
-          ${tw`text-gray-500`}
-        }
+  //       polyline,
+  //       path,
+  //       line {
+  //         transition: color 0.3s ease-out;
+  //         ${tw`text-gray-500`}
+  //       }
 
-        &:first-of-type {
-          margin-left: 0;
-        }
+  //       &:first-of-type {
+  //         margin-left: 0;
+  //       }
 
-        &:hover {
-          polyline,
-          path,
-          line {
-            ${tw`text-gray-900`}
-          }
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         polyline,
+  //         path,
+  //         line {
+  //           ${tw`text-gray-900`}
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 `;
 
 export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
@@ -205,9 +205,20 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
     <div className={`${className} flex py-6`}>
       <div className="flex w-full">
         <StyledTableAddressResolver className="table-responsive">
+          {/* <div className="hidden md:table-header-group md:w-full">
+            <div className="table-row bg-white font-bold text-cloud-900 text-xl text-left mt-0">
+              <div className="table-cell w-8 px-3" />
+              <div className="table-cell w-20 px-3">Order</div>
+              <div className="table-cell w-52 px-3">Name</div>
+              <div className="table-cell w-80 px-3">Endpoint</div>
+              <div className="table-cell w-52 px-3">API Header</div>
+              <div className="table-cell w-52 px-3">API Key</div>
+              <div className="table-cell w-28 px-3">&nbsp;</div>
+            </div>
+          </div> */}
           <table className="table">
             <thead className="table-thead">
-              <tr>
+              <tr className="hidden md:table-row">
                 <th />
                 <th>Order</th>
                 <th>Name</th>
@@ -217,6 +228,17 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
                 <th>&nbsp;</th>
               </tr>
             </thead>
+            {/* <div className="hidden md:table-header-group">
+              <div className="table-row bg-white font-bold text-cloud-900 text-xl text-left mt-0">
+                <div className="table-cell px-2" />
+                <div className="table-cell px-2">Order</div>
+                <div className="table-cell px-2">Name</div>
+                <div className="table-cell px-2">Endpoint</div>
+                <div className="table-cell px-2">API Header</div>
+                <div className="table-cell px-2">API Key</div>
+                <div className="table-cell px-2">&nbsp;</div>
+              </div>
+            </div> */}
             {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
               <td colSpan={100}>
                 <div className="bg-cerulean-50 h-12" data-testid="table-row">
@@ -225,15 +247,6 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
                   </p>
                 </div>
               </td>
-              // <tr>
-              //   <td>Order </td>
-              //   <td>&mdash;</td>
-              //   <td>&mdash;</td>
-              //   <td>No third party&apos;s endpoint found.</td>
-              //   <td>&nbsp;</td>
-              //   <td>&nbsp;</td>
-              //   <td>&nbsp;</td>
-              // </tr>
             )}
             <tbody className="table-tbody">
               {thirdPartyAPIEndpoints.map((item, index) => {
