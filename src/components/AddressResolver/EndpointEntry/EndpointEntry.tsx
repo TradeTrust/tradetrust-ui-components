@@ -221,37 +221,25 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <>{apiKey}</>
           )}
         </td>
-        {isLoading ? (
-          <td className={isEditable ? "" : ""}>
-            <LoaderSpinner className="inline-block mx-2" />
+        {!isEditable && (
+          <td className={"edit-delete w-28"}>
+            <div className="flex w-full ml-56 -mt-96 md:m-auto">
+              <Trash2 className="text-cerulean-200 cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
+              <Edit
+                className="text-cerulean-200 ml-3.5 cursor-pointer"
+                onClick={() => {
+                  setEditable(true);
+                }}
+                data-testid="edit-icon"
+              />
+            </div>
           </td>
-        ) : (
-          <>
-            {!isEditable && (
-              <td className={"edit-delete w-28"}>
-                <div className="flex w-full ml-56 -mt-96 md:m-auto">
-                  <Trash2
-                    className="text-cerulean-200 cursor-pointer"
-                    onClick={removeEndpoint}
-                    data-testid="trash2-icon"
-                  />
-                  <Edit
-                    className="text-cerulean-200 ml-3.5 cursor-pointer"
-                    onClick={() => {
-                      setEditable(true);
-                    }}
-                    data-testid="edit-icon"
-                  />
-                </div>
-              </td>
-            )}
-          </>
         )}
       </tr>
       {isEditable && (
         <tr className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
-          <th className="hidden md:table-cell" />
-          <td className="edit-delete" colSpan={isLoading ? 7 : 6}>
+          <th />
+          <td colSpan={10}>
             <div className="flex flex-row text-white justify-center -mt-14 md:m-0">
               <div
                 className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
@@ -268,7 +256,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
               </div>
             </div>
           </td>
-          <th className="hidden md:table-cell" />
+          <th />
         </tr>
       )}
     </>
