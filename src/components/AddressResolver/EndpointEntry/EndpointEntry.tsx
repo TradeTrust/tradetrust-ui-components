@@ -236,9 +236,32 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           </td>
         )}
       </tr>
+      {/* {isEditable && (
+        <tr className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
+          <th className="hidden md:table-cell" />
+          <td className="edit-delete" colSpan={isLoading ? 7 : 6}>
+            <div className="flex flex-row text-white justify-center -mt-14 md:m-0">
+              <div
+                className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
+                onClick={removeEndpoint}
+              >
+                Delete
+              </div>
+              <div
+                className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
+                onClick={onSave}
+                data-testid="save-icon"
+              >
+                Save
+              </div>
+            </div>
+          </td>
+          <th className="hidden md:table-cell" />
+        </tr>
+      )} */}
       {isEditable && (
         <tr className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
-          <th />
+          <th className="hidden md:table-cell" />
           <td colSpan={10}>
             <div className="flex flex-row text-white justify-center -mt-14 md:m-0">
               <div
@@ -258,16 +281,9 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
                   Save
                 </div>
               )}
-              {/* <div
-                className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
-                onClick={onSave}
-                data-testid="save-icon"
-              >
-                Save
-              </div> */}
             </div>
           </td>
-          <th />
+          <th className="hidden md:table-cell" />
         </tr>
       )}
     </>
