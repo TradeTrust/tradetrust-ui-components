@@ -17,7 +17,7 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
     }
   };
   return (
-    <div className="ml-2 md-2">
+    <div className="h-9 ml-2">
       <input
         id="csv-file-input"
         type="file"
