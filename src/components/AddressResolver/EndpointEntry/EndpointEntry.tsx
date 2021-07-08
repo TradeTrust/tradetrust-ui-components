@@ -247,13 +247,24 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
               >
                 Delete
               </div>
-              <div
+              {isLoading ? (
+                <LoaderSpinner className="ml-10" />
+              ) : (
+                <div
+                  className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
+                  onClick={onSave}
+                  data-testid="save-icon"
+                >
+                  Save
+                </div>
+              )}
+              {/* <div
                 className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
                 onClick={onSave}
                 data-testid="save-icon"
               >
                 Save
-              </div>
+              </div> */}
             </div>
           </td>
           <th />
