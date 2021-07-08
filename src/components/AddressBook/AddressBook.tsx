@@ -204,8 +204,8 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             })}
           </Dropdown>
         </div>
-        <div className="flex mx-0">
-          <div className="w-auto mb-2">
+        <div className="hidden md:flex md:mx-0">
+          <div className="w-auto h-9">
             <LinkButton
               className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
               href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
@@ -215,7 +215,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
                 <div className="col-auto mr-2">
                   <Download />
                 </div>
-                <h5 className="col-auto">Download Template</h5>
+                <h5 className="col-auto text-base">Download Template</h5>
               </div>
             </LinkButton>
           </div>

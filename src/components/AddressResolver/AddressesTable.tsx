@@ -148,7 +148,10 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
             </thead>
             {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
               <td colSpan={100}>
-                <div className="bg-cerulean-50 h-12" data-testid="table-row">
+                <div
+                  className="bg-white rounded-xl shadow-lg h-12 md:bg-cerulean-50 md:rounded-none md:shadow-none"
+                  data-testid="table-row"
+                >
                   <p className="flex text-cloud-900 h-full justify-center items-center">
                     No third party&apos;s endpoint found.{" "}
                   </p>

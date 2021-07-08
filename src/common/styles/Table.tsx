@@ -31,7 +31,7 @@ export const StyledTable = styled.div`
     ${tw`text-white`}
   }
 
-  .table-tbody {
-    ${tw`bg-white`}
-  }
+  // .table-tbody {
+  //   ${tw`bg-white`}
+  // }
 `;

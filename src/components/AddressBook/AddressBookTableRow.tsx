@@ -51,13 +51,9 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
 
 interface AddressBookTableRowEmptyProps {
   message: string;
-  // textClassName?: string;
 }
 
-export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({
-  message,
-  // textClassName = "",
-}) => {
+export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({ message }) => {
   return (
     <>
       <div className="bg-cerulean-50 h-12" data-testid="table-row">

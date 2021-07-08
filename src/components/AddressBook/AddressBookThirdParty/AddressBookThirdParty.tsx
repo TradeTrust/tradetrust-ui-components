@@ -49,10 +49,7 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
         </tbody>
       </table>
       {addressBookThirdPartyStatus === AddressBookState.ERROR && (
-        <AddressBookTableRowEmpty
-          message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnel to set it up."
-          // textClassName="text-rose-400"
-        />
+        <AddressBookTableRowEmpty message="This address book’s endpoint does not have the entityLookup feature, do contact the respective personnel to set it up." />
       )}
       {addressBookThirdPartyStatus === AddressBookState.NONE && (
         <AddressBookTableRowEmpty message="Try searching with keywords for results." />

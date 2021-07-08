@@ -109,7 +109,7 @@ export const TileInfoLink = (): ReactElement => {
     <TileInfo
       title="Address Book"
       description="Add and set up third party’s endpoint to resolve your addresses’ identity"
-      Test={TileInfoIcon}
+      TileIcon={TileInfoIcon}
     />
   );
 };
