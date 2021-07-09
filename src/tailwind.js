@@ -29,7 +29,8 @@ module.exports = {
         '1.5': '1.5rem',
       },
       margin: {
-        '-88': '-22rem'
+        '-86': '-21.5rem',
+        '-88': '-22rem',
       },
       opacity: {
         0: "0",

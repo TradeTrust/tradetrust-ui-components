@@ -147,7 +147,7 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
               </tr>
             </thead>
             {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
-              <td colSpan={100}>
+              <td className="p-0" colSpan={100}>
                 <div
                   className="bg-white rounded-xl shadow-lg h-12 md:bg-cerulean-50 md:rounded-none md:shadow-none"
                   data-testid="table-row"
