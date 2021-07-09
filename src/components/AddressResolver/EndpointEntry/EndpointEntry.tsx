@@ -163,13 +163,13 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             </div>
           )}
         </th>
-        <td className="text-cloud-900 text-xl font-bold px-3 pt-12 md:hidden">Order</td>
-        <td className="w-20">{orderNumber}</td>
+        <td className="text-cloud-900 text-xl font-bold px-3 pt-8 md:hidden">Order</td>
+        <td className={`w-auto md:w-20 ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>{orderNumber}</td>
         <td className={`text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden ${isEditable ? "mt-7" : ""}`}>Name</td>
-        <td className="w-52">
+        <td className="w-auto md:w-52">
           {isEditable ? (
             <Input
-              className="w-72 md:w-full"
+              className="w-full"
               placeholder="Name"
               value={endpointName}
               onChange={onEndpointNameChanged}
@@ -180,10 +180,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </td>
         <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">Endpoint</td>
-        <td className="w-80">
+        <td className="w-auto md:w-80">
           {isEditable ? (
             <Input
-              className="w-72 md:w-full"
+              className="w-full"
               placeholder="Endpoint"
               value={endpointApi}
               onChange={onEndpointApiChanged}
@@ -194,10 +194,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </td>
         <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Header</td>
-        <td>
+        <td className="w-auto md:w-52">
           {isEditable ? (
             <Input
-              className="w-72 md:w-full"
+              className="w-full"
               placeholder="API Header"
               value={endpointApiHeader}
               onChange={onEndpointApiHeaderChanged}
@@ -208,10 +208,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </td>
         <td className="text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Key</td>
-        <td colSpan={isEditable ? 2 : 0} className={`pb-8`}>
+        <td className="w-auto md:w-52" colSpan={isEditable ? 2 : 0}>
           {isEditable ? (
             <Input
-              className="w-72 md:w-full"
+              className="w-full"
               placeholder="API Key"
               value={endpointApiKey}
               onChange={onEndpointApiKeyChanged}
@@ -222,8 +222,8 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </td>
         {!isEditable && (
-          <td className={"edit-delete w-28"}>
-            <div className="flex w-full ml-56 -mt-96 md:m-auto">
+          <td className={"w-28"}>
+            <div className="flex w-full ml-56 -mt-86 md:m-auto">
               <Trash2 className="text-cerulean-200 cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
               <Edit
                 className="text-cerulean-200 ml-3.5 cursor-pointer"

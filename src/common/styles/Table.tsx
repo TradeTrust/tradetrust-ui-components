@@ -9,7 +9,7 @@ export const StyledTable = styled.div`
   }
 
   tr {
-    ${tw`whitespace-nowrap`}
+    ${tw`p-2 whitespace-nowrap`}
   }
 
   th {

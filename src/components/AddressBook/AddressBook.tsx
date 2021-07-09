@@ -173,7 +173,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <h3 className="font-ubuntu text-2.5 text-cloud-900">Address Book</h3>
         <p className="mb-5 text-cloud-900">Please select an address book to view. </p>
       </div>
-      <div className="flex items-start flex-col md:flex-row">
+      <div className="flex flex-col items-start mb-2 md:flex-row">
         <div className="flex flex-grow">
           <Dropdown
             dropdownButtonText={isLocal ? "Local" : name}
@@ -204,8 +204,8 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             })}
           </Dropdown>
         </div>
-        <div className="hidden md:flex md:mx-0">
-          <div className="w-auto h-9">
+        <div className="flex md:mx-0">
+          <div className="w-auto">
             <LinkButton
               className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
               href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
@@ -240,7 +240,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </div>
           </div>
         </div>
-        <StyledTableAddressBook className="table-responsive mt-6 md:mt-14">
+        <StyledTableAddressBook className="table-responsive mt-6 md:mt-9">
           {isLocal ? (
             <AddressBookLocal
               addressBookLocalStatus={addressBookLocalStatus}
