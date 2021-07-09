@@ -4,7 +4,11 @@ import tw from "twin.macro";
 
 const InputStyled = styled.input`
   &::placeholder {
-    ${tw`text-gray-500 text-base`}
+    ${tw`text-cloud-300 text-base`}
+  }
+
+  &:focus {
+    ${tw`border-cloud-900 outline-none`}
   }
 `;
 
@@ -15,14 +19,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input: FunctionComponent<InputProps> = ({ className, hasError, errorMessage, ...props }) => {
   return (
-    <>
+    <div className="min-h-18">
       <InputStyled
-        className={`w-full border px-2 py-1 mb-0 ${className ? className : ""} ${
-          hasError || errorMessage ? "border-rose-400" : "border-gray-300"
+        className={`border rounded-md px-2 py-1 mb-0 ${className ? className : ""} ${
+          hasError || errorMessage ? "border-rose" : "border-cloud-200"
         }`}
         {...props}
       />
-      {errorMessage && <p className="text-rose-400 my-2">{errorMessage}</p>}
-    </>
+      {errorMessage && <p className="text-rose my-2">{errorMessage}</p>}
+    </div>
   );
 };

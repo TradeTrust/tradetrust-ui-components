@@ -1,3 +1,4 @@
+// import styled from "@emotion/styled";
 import styled from "@emotion/styled";
 import {
   AddressBookThirdPartyResultsProps,
@@ -9,8 +10,10 @@ import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
+// import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { StyledTable } from "../../common/styles/Table";
+// import { StyledTable } from "../../common/styles/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
@@ -43,21 +46,13 @@ const StyledTableAddressBook = styled(StyledTable)`
   }
 
   .table-tbody {
-    height: 360px;
-
     tr {
       ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
 
       a {
         svg {
-          max-width: 16px;
+          ${tw`max-w-1.5 text-cerulean-200`}
         }
-      }
-    }
-
-    td {
-      &:last-of-type {
-        text-align: right;
       }
     }
   }
@@ -67,7 +62,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
   network,
   onAddressSelect,
   paginationOffset = 0,
-  paginationLimit = 20,
+  paginationLimit = 10,
   ...props
 }) => {
   const { thirdPartyAPIEndpoints } = useThirdPartyAPIEndpoints();
@@ -174,89 +169,95 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
 
   return (
     <div {...props}>
-      <div className="mb-5">
-        <Dropdown
-          dropdownButtonText={isLocal ? "Local" : name}
-          className="border-gray-300 border rounded-none mb-2 p-3 bg-white"
-          classNameShared="w-full max-w-sm"
-        >
-          <DropdownItem
-            onClick={() => {
-              setIsLocal(true);
-              resetThirdPartyAPIEndpointResult();
-            }}
+      <div className="flex-1 flex-col">
+        <h3 className="font-ubuntu text-2.5 text-cloud-900">Address Book</h3>
+        <p className="mb-5 text-cloud-900">Please select an address book to view. </p>
+      </div>
+      <div className="flex flex-col items-start mb-2 md:flex-row">
+        <div className="flex flex-grow">
+          <Dropdown
+            dropdownButtonText={isLocal ? "Local" : name}
+            className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3 w-60"
           >
-            Local
-          </DropdownItem>
-          {thirdPartyAPIEndpoints.map((item, index) => {
-            return (
-              <DropdownItem
-                key={index}
-                onClick={() => {
-                  setIsLocal(false);
-                  setRemoteEndpointIndex(index);
-                  resetThirdPartyAPIEndpointResult();
-                }}
-              >
-                {item.name}
-              </DropdownItem>
-            );
-          })}
-        </Dropdown>
-        <div className="flex items-start flex-col md:flex-row">
-          <div className="flex mb-2 flex-grow">
-            <div className="max-w-full md:max-w-xs border border-solid border-gray-300 px-3 py-2 bg-white">
-              <div className="flex mx-0 items-center w-64">
-                <input
-                  className="border-none outline-none w-full placeholder-gray-300"
-                  type="text"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={onSearchTermChanged}
-                  disabled={!isLocal && !hasEntityLookupPath}
-                />
-                <Search className="text-gray-500" />
-              </div>
-            </div>
-          </div>
-          <div className="flex mx-0">
-            <div className="w-auto mb-2">
-              <LinkButton
-                className="bg-white text-cerulean-500 hover:bg-gray-50"
-                href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
-                download="template.csv"
-              >
-                <div className="flex items-center mx-0">
-                  <div className="col-auto mr-2">
-                    <Download />
-                  </div>
-                  <div className="col-auto">Download template</div>
+            <DropdownItem
+              className="w-60"
+              onClick={() => {
+                setIsLocal(true);
+                resetThirdPartyAPIEndpointResult();
+              }}
+            >
+              Local
+            </DropdownItem>
+            {thirdPartyAPIEndpoints.map((item, index) => {
+              return (
+                <DropdownItem
+                  key={index}
+                  onClick={() => {
+                    setIsLocal(false);
+                    setRemoteEndpointIndex(index);
+                    resetThirdPartyAPIEndpointResult();
+                  }}
+                >
+                  {item.name}
+                </DropdownItem>
+              );
+            })}
+          </Dropdown>
+        </div>
+        <div className="flex md:mx-0">
+          <div className="w-auto">
+            <LinkButton
+              className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
+              href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
+              download="template.csv"
+            >
+              <div className="flex items-center mx-0">
+                <div className="col-auto mr-2">
+                  <Download />
                 </div>
-              </LinkButton>
-            </div>
-            <div className="w-auto">
-              <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
-            </div>
+                <h5 className="col-auto text-base">Download Template</h5>
+              </div>
+            </LinkButton>
+          </div>
+          <div className="w-auto">
+            <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
           </div>
         </div>
       </div>
-      <StyledTableAddressBook className="table-responsive">
-        {isLocal ? (
-          <AddressBookLocal
-            addressBookLocalStatus={addressBookLocalStatus}
-            onAddressSelect={onAddressSelect}
-            localPageResults={localPageResults}
-            network={network}
-          />
-        ) : (
-          <AddressBookThirdParty
-            addressBookThirdPartyStatus={addressBookThirdPartyStatus}
-            onAddressSelect={onAddressSelect}
-            thirdPartyPageResults={thirdPartyPageResults}
-            network={network}
-          />
-        )}
-      </StyledTableAddressBook>
+      <div className="bg-white rounded-xl shadow-lg p-7">
+        <div className="flex mb-2 flex-grow justify-center md:justify-start">
+          <div className="bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 md:max-w-xs md:items">
+            <div className="flex mx-0 items-center w-64">
+              <Search className="stroke-2 h-4 w-4 text-cloud-900" />
+              <input
+                className="w-full ml-2 placeholder-cloud-300 "
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={onSearchTermChanged}
+                disabled={!isLocal && !hasEntityLookupPath}
+              />
+            </div>
+          </div>
+        </div>
+        <StyledTableAddressBook className="table-responsive mt-6 md:mt-9">
+          {isLocal ? (
+            <AddressBookLocal
+              addressBookLocalStatus={addressBookLocalStatus}
+              onAddressSelect={onAddressSelect}
+              localPageResults={localPageResults}
+              network={network}
+            />
+          ) : (
+            <AddressBookThirdParty
+              addressBookThirdPartyStatus={addressBookThirdPartyStatus}
+              onAddressSelect={onAddressSelect}
+              thirdPartyPageResults={thirdPartyPageResults}
+              network={network}
+            />
+          )}
+        </StyledTableAddressBook>
+      </div>
       <div className="mt-4">
         <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>

@@ -52,77 +52,6 @@ const StyledTableAddressResolver = styled(StyledTable)`
       }
     }
   }
-
-  td {
-    &.is-editable {
-      &:last-of-type {
-        svg {
-          polyline,
-          path,
-          line {
-            ${tw`text-turquoise`}
-          }
-
-          &:hover {
-            polyline,
-            path,
-            line {
-              ${tw`text-turquoise-300`}
-            }
-          }
-        }
-      }
-    }
-
-    &:nth-of-type(1) {
-      width: 80px;
-    }
-
-    &:nth-of-type(2) {
-      width: 200px;
-    }
-
-    &:nth-of-type(3) {
-      width: 360px;
-    }
-
-    &:nth-of-type(4) {
-      width: 200px;
-    }
-
-    &:nth-of-type(5) {
-      width: 200px;
-    }
-
-    &:last-of-type {
-      text-align: right;
-      width: 100px;
-
-      svg {
-        cursor: pointer;
-        margin-left: 15px;
-
-        polyline,
-        path,
-        line {
-          transition: color 0.3s ease-out;
-          ${tw`text-gray-500`}
-        }
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        &:hover {
-          polyline,
-          path,
-          line {
-            ${tw`text-gray-900`}
-          }
-        }
-      }
-    }
-  }
 `;
 
 export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
@@ -207,28 +136,29 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
         <StyledTableAddressResolver className="table-responsive">
           <table className="table">
             <thead className="table-thead">
-              <tr>
-                <th />
-                <td>Order</td>
-                <td>Name</td>
-                <td>Endpoint</td>
-                <td>API Header</td>
-                <td>API Key</td>
-                <td>&nbsp;</td>
+              <tr className="hidden md:table-row">
+                <th>&nbsp;</th>
+                <th>Order</th>
+                <th>Name</th>
+                <th>Endpoint</th>
+                <th>API Header</th>
+                <th>API Key</th>
+                <th>&nbsp;</th>
               </tr>
             </thead>
+            {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
+              <td className="p-0" colSpan={100}>
+                <div
+                  className="bg-white rounded-xl shadow-lg h-12 md:bg-cerulean-50 md:rounded-none md:shadow-none"
+                  data-testid="table-row"
+                >
+                  <p className="flex text-cloud-900 h-full justify-center items-center">
+                    No third party&apos;s endpoint found.{" "}
+                  </p>
+                </div>
+              </td>
+            )}
             <tbody className="table-tbody">
-              {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
-                <tr>
-                  <th />
-                  <td>&mdash;</td>
-                  <td>&mdash;</td>
-                  <td>No third party&apos;s endpoint found.</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              )}
               {thirdPartyAPIEndpoints.map((item, index) => {
                 const orderNumber = index + 1;
 

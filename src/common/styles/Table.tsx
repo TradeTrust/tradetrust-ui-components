@@ -2,42 +2,36 @@ import styled from "@emotion/styled";
 import tw from "twin.macro";
 
 export const StyledTable = styled.div`
-  ${tw`w-full border border-solid border-gray-300 overflow-x-auto`}
+  ${tw`w-full overflow-x-auto`}
 
   .table {
     ${tw`w-full mb-0`}
   }
 
   tr {
-    ${tw`whitespace-nowrap border-solid border-t border-gray-300`}
+    ${tw`p-2 whitespace-nowrap`}
   }
 
   th {
-    ${tw`mt-0 align-middle px-2`}
+    ${tw`bg-white text-cloud-900 text-xl text-left mt-0 px-2`}
   }
 
   td {
-    ${tw`align-middle whitespace-nowrap border-t-0 p-3`}
+    ${tw`text-cloud-900 align-middle whitespace-nowrap px-3 md:p-3`}
   }
 
   .table-thead {
     th,
     td {
       border: none;
-    }
+    },
   }
 
   .table-thead {
-    ${tw`text-white bg-denim`}
+    ${tw`text-white`}
   }
 
-  .table-tbody {
-    ${tw`bg-white`}
-
-    tr {
-      &:nth-of-type(even) {
-        ${tw`bg-gray-50`}
-      }
-    }
-  }
+  // .table-tbody {
+  //   ${tw`bg-white`}
+  // }
 `;

@@ -25,7 +25,7 @@ export const PaginationBox: FunctionComponent<PaginationBoxProps> = ({
 
   return (
     <button
-      className={`p-0 inline-block h-8 w-8 flex items-center justify-center focus:outline-none rounded-md ${active} ${disabled} ${
+      className={`p-0 inline-block h-8 w-8 flex items-center justify-center mr-0.5 focus:outline-none rounded-md ${active} ${disabled} ${
         className ? className : ""
       }`}
       disabled={disable}
