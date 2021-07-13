@@ -6,6 +6,7 @@ export * from "./components/NetworkBar";
 export * from "./components/NavigationBar";
 export * from "./components/UI/Button";
 export * from "./components/UI/Dropdown";
+export * from "./components/UI/Icon";
 export * from "./components/UI/Input";
 export * from "./components/UI/Loader";
 export * from "./components/UI/Nav";
