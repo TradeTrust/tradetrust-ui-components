@@ -1,4 +1,3 @@
-// import styled from "@emotion/styled";
 import styled from "@emotion/styled";
 import {
   AddressBookThirdPartyResultsProps,
@@ -10,10 +9,8 @@ import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
 import tw from "twin.macro";
-// import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { StyledTable } from "../../common/styles/Table";
-// import { StyledTable } from "../../common/styles/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
@@ -170,7 +167,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
   return (
     <div {...props}>
       <div className="flex-1 flex-col">
-        <h3 className="font-ubuntu text-2.5 text-cloud-900">Address Book</h3>
+        <h3 className="font-ubuntu text-4xl text-cloud-900">Address Book</h3>
         <p className="mb-5 text-cloud-900">Please select an address book to view. </p>
       </div>
       <div className="flex flex-col items-start mb-2 md:flex-row">
@@ -226,7 +223,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
       </div>
       <div className="bg-white rounded-xl shadow-lg p-7">
         <div className="flex mb-2 flex-grow justify-center md:justify-start">
-          <div className="bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 md:max-w-xs md:items">
+          <div className="bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2">
             <div className="flex mx-0 items-center w-64">
               <Search className="stroke-2 h-4 w-4 text-cloud-900" />
               <input

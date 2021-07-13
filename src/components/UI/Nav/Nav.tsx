@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SVGProps } from "react";
+import React, { FunctionComponent } from "react";
 import { ChevronLeft } from "react-feather";
 
 export const BackArrow: FunctionComponent = () => (

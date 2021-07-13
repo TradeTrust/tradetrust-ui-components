@@ -30,8 +30,4 @@ export const StyledTable = styled.div`
   .table-thead {
     ${tw`text-white`}
   }
-
-  // .table-tbody {
-  //   ${tw`bg-white`}
-  // }
 `;

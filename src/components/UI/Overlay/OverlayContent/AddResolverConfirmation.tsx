@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
+import { IconSuccess } from "../../Icon";
 
 export const AddResolverConfirmation: FunctionComponent = () => {
   const { setOverlayVisible, showOverlay } = useOverlayContext();
@@ -7,7 +8,8 @@ export const AddResolverConfirmation: FunctionComponent = () => {
   return (
     <div className="relative bg-white rounded-xl text-center w-80 h-64">
       <div className="flex flex-col">
-        <svg
+        <IconSuccess />
+        {/* <svg
           className="mx-auto mt-10"
           width="56"
           height="56"
@@ -29,7 +31,7 @@ export const AddResolverConfirmation: FunctionComponent = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
+        </svg> */}
         <h4 className="text-cloud-900 text-xl mt-5">Success</h4>
         <p className="mt-3 text-cloud-900">Address successfully added</p>
         <div
