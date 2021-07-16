@@ -45,35 +45,6 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
             );
           })}
       </div>
-      {/* <div className="table w-full">
-        <div className="table-header-group">
-          <div className="hidden text-xl font-bold text-cloud-900 md:table-row">
-            <div className="table-cell">Name</div>
-            <div className="table-cell">Address</div>
-            <div className="table-cell">&nbsp;</div>
-            <div className="table-cell">&nbsp;</div>
-          </div>
-        </div>
-        {addressBookLocalStatus === AddressBookState.SUCCESS &&
-          localPageResults.map((key, index) => {
-            const identifier = addressBook[key];
-
-            return (
-              <AddressBookTableRow
-                key={key}
-                id={index}
-                isLocal={true}
-                onAddressSelect={() => {
-                  if (!onAddressSelect) return;
-                  onAddressSelect(key);
-                }}
-                address={key}
-                name={identifier}
-                network={network}
-              />
-            );
-          })}
-      </div> */}
       {addressBookLocalStatus === AddressBookState.NONE && (
         <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
       )}
@@ -81,45 +52,5 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
         <AddressBookTableRowEmpty message="No address found. Try searching again?" />
       )}
     </>
-    // <>
-    //   <table className="table">
-    //     <thead className="table-thead">
-    //       <tr className="hidden md:table-row">
-    //         <th>Name</th>
-    //         <th>Address</th>
-    //         <th>&nbsp;</th>
-    //         <th>&nbsp;</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody className="table-tbody">
-    //       <tr />
-    //       {addressBookLocalStatus === AddressBookState.SUCCESS &&
-    //         localPageResults.map((key, index) => {
-    //           const identifier = addressBook[key];
-
-    //           return (
-    //             <AddressBookTableRow
-    //               key={key}
-    //               id={index}
-    //               isLocal={true}
-    //               onAddressSelect={() => {
-    //                 if (!onAddressSelect) return;
-    //                 onAddressSelect(key);
-    //               }}
-    //               address={key}
-    //               name={identifier}
-    //               network={network}
-    //             />
-    //           );
-    //         })}
-    //     </tbody>
-    //   </table>
-    //   {addressBookLocalStatus === AddressBookState.NONE && (
-    //     <AddressBookTableRowEmpty message="No address found. Try importing a csv template file?" />
-    //   )}
-    //   {addressBookLocalStatus === AddressBookState.EMPTY && (
-    //     <AddressBookTableRowEmpty message="No address found. Try searching again?" />
-    //   )}
-    // </>
   );
 };

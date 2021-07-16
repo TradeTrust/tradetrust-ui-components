@@ -52,24 +52,6 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
         </div>
       )}
     </div>
-    // <div
-    //   className={`flex flex-col text-cloud-900 text-sm p-7 md:table-row ${
-    //     (id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"
-    //   }`}
-    //   onClick={onAddressSelect}
-    //   data-testid="table-row"
-    // >
-    //   <div className="table-cell">{name}</div>
-    //   <div className="table-cell">{address}</div>
-    //   <div className="table-cell">{!isLocal && source}&nbsp;</div>
-    //   <div className="table-cell">
-    //     {network && (
-    //       <div className="text-cerulean-200 md:text-right">
-    //         <AddressBookEtherscanLink address={address} network={network} />
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
   );
 };
 

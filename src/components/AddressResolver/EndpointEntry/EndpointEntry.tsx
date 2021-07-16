@@ -47,6 +47,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
   const [endpointName, setEndpointName] = useState(name);
   const [endpointApiHeader, setEndpointApiHeader] = useState(apiHeader);
   const [endpointApiKey, setEndpointApiKey] = useState(apiKey);
+  const [hoverState, setHoverState] = useState(false);
   const { showOverlay } = useOverlayContext();
 
   const onEndpointApiChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -153,8 +154,19 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       } ${
         isEditable ? "h-160" : "h-auto"
       } md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4`}
+      onMouseOver={() => setHoverState(true)}
+      onMouseOut={() => setHoverState(false)}
     >
       <div className="flex flex-col md:flex-row">
+        <div className={`hidden md:inline-block ${!isEditable ? "w-3.5 mr-3" : "ml-5"}`}>
+          {!isEditable && (
+            <div className={`text-xl text-cloud-300 ${hoverState ? "flex flex-col" : "hidden"}`}>
+              <i className="fas fa-sort-up hover:text-cloud-900" onClick={onMoveEntryUp} />
+              <i className="fas fa-sort-down -mt-4 hover:text-cloud-900" onClick={onMoveEntryDown} />
+            </div>
+          )}
+        </div>
+
         <div className="flex flex-col px-3 pt-12 md:flex-row md:w-1/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Order</div>
           <div className={`inline-block w-auto ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>
@@ -268,126 +280,5 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         </div>
       )}
     </div>
-    // <>
-    //   <div
-    //     className={`${className} flex flex-col bg-white rounded-xl shadow-lg w-80 mx-auto mt-6 ${
-    //       isEditable ? "h-160" : "h-auto"
-    //     } md:table-row md:bg-none md:w-auto md:h-auto md:rounded-none md:shadow-none md:mt-0 ${
-    //       orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"
-    //     }`}
-    //   >
-    //     <th>
-    //       {!isEditable && (
-    //         <div className="hidden md:table-cell">
-    //           <i className="fas fa-sort-up" onClick={onMoveEntryUp} />
-    //           <i className="fas fa-sort-down" onClick={onMoveEntryDown} />
-    //         </div>
-    //       )}
-    //     </th>
-    //     <div className="table-cell text-cloud-900 text-xl font-bold px-3 pt-8 md:hidden">Order</div>
-    //     <div className={`table-cell w-auto md:w-20 ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>
-    //       {orderNumber}
-    //     </div>
-    //     <div className={`table-cell text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden ${isEditable ? "mt-7" : ""}`}>
-    //       Name
-    //     </div>
-    //     <div className="table-cell w-auto md:w-52">
-    //       {isEditable ? (
-    //         <Input
-    //           className="w-full"
-    //           placeholder="Name"
-    //           value={endpointName}
-    //           onChange={onEndpointNameChanged}
-    //           errorMessage={inputErrorMessageName}
-    //         />
-    //       ) : (
-    //         <>{name}</>
-    //       )}
-    //     </div>
-    //     <div className="table-cell text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">Endpoint</div>
-    //     <div className="table-cell w-auto md:w-80">
-    //       {isEditable ? (
-    //         <Input
-    //           className="w-full"
-    //           placeholder="Endpoint"
-    //           value={endpointApi}
-    //           onChange={onEndpointApiChanged}
-    //           errorMessage={inputErrorMessageEndpoint}
-    //         />
-    //       ) : (
-    //         <>{api}</>
-    //       )}
-    //     </div>
-    //     <div className="table-cell text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Header</div>
-    //     <div className="table-cell w-auto md:w-52">
-    //       {isEditable ? (
-    //         <Input
-    //           className="w-full"
-    //           placeholder="API Header"
-    //           value={endpointApiHeader}
-    //           onChange={onEndpointApiHeaderChanged}
-    //           errorMessage={inputErrorMessageApiHeader}
-    //         />
-    //       ) : (
-    //         <>{apiHeader}</>
-    //       )}
-    //     </div>
-    //     <div className="table-cell text-cloud-900 text-xl font-bold px-3 pt-3 md:hidden">API Key</div>
-    //     <td className="w-auto md:w-52" colSpan={isEditable ? 2 : 0}>
-    //       {isEditable ? (
-    //         <Input
-    //           className="w-full"
-    //           placeholder="API Key"
-    //           value={endpointApiKey}
-    //           onChange={onEndpointApiKeyChanged}
-    //           errorMessage={inputErrorMessageApiKey}
-    //         />
-    //       ) : (
-    //         <>{apiKey}</>
-    //       )}
-    //     </td>
-    //     {!isEditable && (
-    //       <div className={"table-cell w-28"}>
-    //         <div className="flex w-full ml-56 -mt-86 md:m-auto">
-    //           <Trash2 className="text-cerulean-200 cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
-    //           <Edit
-    //             className="text-cerulean-200 ml-3.5 cursor-pointer"
-    //             onClick={() => {
-    //               setEditable(true);
-    //             }}
-    //             data-testid="edit-icon"
-    //           />
-    //         </div>
-    //       </div>
-    //     )}
-    //   </div>
-    //   {isEditable && (
-    //     <div className={`${className} ${orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"}`}>
-    //       <th className="hidden md:table-cell" />
-    //       <td colSpan={10}>
-    //         <div className="flex flex-row text-white text-base justify-center -mt-14 md:m-0">
-    //           <div
-    //             className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
-    //             onClick={removeEndpoint}
-    //           >
-    //             <h5>Delete</h5>
-    //           </div>
-    //           {isLoading ? (
-    //             <LoaderSpinner className="ml-10" />
-    //           ) : (
-    //             <div
-    //               className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
-    //               onClick={onSave}
-    //               data-testid="save-icon"
-    //             >
-    //               <h5>Save</h5>
-    //             </div>
-    //           )}
-    //         </div>
-    //       </td>
-    //       <th className="hidden md:table-cell" />
-    //     </div>
-    //   )}
-    // </>
   );
 };
