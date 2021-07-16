@@ -1,12 +1,8 @@
-import styled from "@emotion/styled";
 import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
-import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import { fontSize } from "../../common/styles/shared";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { EndpointEntry } from "./EndpointEntry";
-import { StyledTable } from "../../common/styles/Table";
 
 export interface AddressesTableProps {
   className?: string;

@@ -18,13 +18,6 @@ module.exports = {
       minHeight: {
         '18': '4.5rem',
       },
-      maxWidth: {
-        '1.5': '1.5rem',
-      },
-      margin: {
-        '-86': '-21.5rem',
-        '-88': '-22rem',
-      },
       opacity: {
         0: "0",
         10: ".1",
