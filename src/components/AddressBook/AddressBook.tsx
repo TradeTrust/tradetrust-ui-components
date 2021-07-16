@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import {
   AddressBookThirdPartyResultsProps,
   entityLookup,
@@ -8,9 +7,7 @@ import {
 import { debounce, isEmpty } from "lodash";
 import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { Download, Search } from "react-feather";
-import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import { StyledTable } from "../../common/styles/Table";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
 import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
@@ -36,24 +33,6 @@ export interface AddressBookProps {
   paginationLimit?: number;
   className?: string;
 }
-
-const StyledTableAddressBook = styled(StyledTable)`
-  th {
-    ${tw`text-left w-56`}
-  }
-
-  .table-tbody {
-    tr {
-      ${tw`cursor-pointer transition-colors duration-200 ease-out hover:bg-gray-200`}
-
-      a {
-        svg {
-          ${tw`max-w-1.5 text-cerulean-200`}
-        }
-      }
-    }
-  }
-`;
 
 export const AddressBook: FunctionComponent<AddressBookProps> = ({
   network,
@@ -237,7 +216,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </div>
           </div>
         </div>
-        <StyledTableAddressBook className="table-responsive mt-6 md:mt-9">
+        <div className="mt-6 md:mt-9">
           {isLocal ? (
             <AddressBookLocal
               addressBookLocalStatus={addressBookLocalStatus}
@@ -253,7 +232,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
               network={network}
             />
           )}
-        </StyledTableAddressBook>
+        </div>
       </div>
       <div className="mt-4">
         <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />

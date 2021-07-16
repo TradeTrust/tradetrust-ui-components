@@ -36,22 +36,40 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   source,
 }) => {
   return (
-    <tr
-      className={`flex flex-col md:table-row ${(id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"}`}
+    <div
+      className={`flex flex-col text-cloud-900 text-sm p-4 md:flex-row ${
+        (id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"
+      }`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >
-      <td>{name}</td>
-      <td>{address}</td>
-      <td>{!isLocal && source}&nbsp;</td>
-      <td>
-        {network && (
-          <div className="md:text-right">
-            <AddressBookEtherscanLink address={address} network={network} />
-          </div>
-        )}
-      </td>
-    </tr>
+      <h6 className="w-full md:w-3/12">{name}</h6>
+      <h6 className="w-full md:w-5/12">{address}</h6>
+      <h6 className="w-full md:w-3/12">{!isLocal && source}</h6>
+      {network && (
+        <div className="w-full text-cerulean-200 md:w-1/12 md:text-right">
+          <AddressBookEtherscanLink address={address} network={network} />
+        </div>
+      )}
+    </div>
+    // <div
+    //   className={`flex flex-col text-cloud-900 text-sm p-7 md:table-row ${
+    //     (id + 1) % 2 !== 0 ? "bg-cerulean-50" : "bg-white"
+    //   }`}
+    //   onClick={onAddressSelect}
+    //   data-testid="table-row"
+    // >
+    //   <div className="table-cell">{name}</div>
+    //   <div className="table-cell">{address}</div>
+    //   <div className="table-cell">{!isLocal && source}&nbsp;</div>
+    //   <div className="table-cell">
+    //     {network && (
+    //       <div className="text-cerulean-200 md:text-right">
+    //         <AddressBookEtherscanLink address={address} network={network} />
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
   );
 };
 
