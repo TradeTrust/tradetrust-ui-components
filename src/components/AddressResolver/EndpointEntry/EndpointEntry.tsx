@@ -149,10 +149,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <div
-      className={`flex flex-col rounded-xl shadow-lg w-80 mt-6 ${
+      className={`flex flex-col rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 ${
         orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"
       } ${
-        isEditable ? "h-160" : "h-auto"
+        isEditable ? "h-130" : "h-auto"
       } md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4`}
       onMouseOver={() => setHoverState(true)}
       onMouseOut={() => setHoverState(false)}
@@ -167,7 +167,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col px-3 pt-12 md:flex-row md:w-1/12 md:px-0 md:pt-0">
+        <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Order</div>
           <div className={`inline-block w-auto ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>
             {orderNumber}
@@ -178,74 +178,66 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           <div className={`inline-block text-cloud-900 text-xl font-bold md:hidden ${isEditable ? "mt-7" : ""}`}>
             Name
           </div>
-          <div className="w-full">
-            {isEditable ? (
-              <Input
-                className="w-full md:w-8/12"
-                placeholder="Name"
-                value={endpointName}
-                onChange={onEndpointNameChanged}
-                errorMessage={inputErrorMessageName}
-              />
-            ) : (
-              <>{name}</>
-            )}
-          </div>
+          {isEditable ? (
+            <Input
+              className="w-full md:w-8/12"
+              placeholder="Name"
+              value={endpointName}
+              onChange={onEndpointNameChanged}
+              errorMessage={inputErrorMessageName}
+            />
+          ) : (
+            <>{name}</>
+          )}
         </div>
 
         <div className="flex flex-col px-3 pt-3 md:flex-row md:w-4/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Endpoint</div>
-          <div className="w-full">
-            {isEditable ? (
-              <Input
-                className="w-full md:w-10/12"
-                placeholder="Endpoint"
-                value={endpointApi}
-                onChange={onEndpointApiChanged}
-                errorMessage={inputErrorMessageEndpoint}
-              />
-            ) : (
-              <>{api}</>
-            )}
-          </div>
+          {isEditable ? (
+            <Input
+              className="w-full md:w-10/12"
+              placeholder="Endpoint"
+              value={endpointApi}
+              onChange={onEndpointApiChanged}
+              errorMessage={inputErrorMessageEndpoint}
+            />
+          ) : (
+            <>{api}</>
+          )}
         </div>
 
         <div className="flex flex-col px-3 pt-3 md:flex-row md:w-2/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">API Header</div>
-          <div className="w-full">
-            {isEditable ? (
-              <Input
-                className="w-full md:w-10/12"
-                placeholder="API Header"
-                value={endpointApiHeader}
-                onChange={onEndpointApiHeaderChanged}
-                errorMessage={inputErrorMessageApiHeader}
-              />
-            ) : (
-              <>{apiHeader}</>
-            )}
-          </div>
+          {isEditable ? (
+            <Input
+              className="w-full md:w-10/12"
+              placeholder="API Header"
+              value={endpointApiHeader}
+              onChange={onEndpointApiHeaderChanged}
+              errorMessage={inputErrorMessageApiHeader}
+            />
+          ) : (
+            <>{apiHeader}</>
+          )}
         </div>
 
         <div className="flex flex-col p-3 md:flex-row md:w-2/12 md:p-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">API Key</div>
-          <div className="w-full">
-            {isEditable ? (
-              <Input
-                className="w-full md:w-10/12"
-                placeholder="API Key"
-                value={endpointApiKey}
-                onChange={onEndpointApiKeyChanged}
-                errorMessage={inputErrorMessageApiKey}
-              />
-            ) : (
-              <>{apiKey}</>
-            )}
-          </div>
+          {isEditable ? (
+            <Input
+              className="w-full md:w-10/12"
+              placeholder="API Key"
+              value={endpointApiKey}
+              onChange={onEndpointApiKeyChanged}
+              errorMessage={inputErrorMessageApiKey}
+            />
+          ) : (
+            <>{apiKey}</>
+          )}
         </div>
 
         {!isEditable && (
-          <div className="flex absolute ml-60 mt-4 md:static md:w-1/12 md:m-0">
+          <div className="flex absolute ml-60 -mt-7 md:static md:w-1/12 md:m-0">
             <Trash2 className="text-cerulean-200 cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
             <Edit
               className="text-cerulean-200 ml-3 cursor-pointer"
