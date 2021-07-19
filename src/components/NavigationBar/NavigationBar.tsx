@@ -50,16 +50,17 @@ export const NavigationBarStyled = styled.nav`
   }
 `;
 
+export const stylesButtonCreateDocument = `inline-block bg-white text-cerulean border-cerulean-100 hover:bg-gray-50`;
+export const stylesButtonVerifyDocument = `inline-block bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300`;
+
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   return (
     <NavigationBarStyled>
       <div className={`container py-2`}>
-        <div className="relative flex items-center justify-center">
-          <div className="lg:hidden absolute left-0">
+        <div className="relative flex items-center justify-between">
+          <div className="lg:hidden">
             <button
-              className={`navbar-toggler relative w-6 h-6 outline-none focus:outline-none ${
-                props.toggleNavBar ? "" : "collapsed"
-              }`}
+              className={`navbar-toggler flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
               onClick={() => {
                 props.setToggleNavBar(!props.toggleNavBar);
               }}
@@ -68,7 +69,12 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
               <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
             </button>
           </div>
-          {props.logo}
+          <div
+            className="absolute lg:relative flex items-center w-full text-center left-0 right-0 mx-auto lg:mx-0"
+            style={{ maxWidth: "120px" }}
+          >
+            {props.logo}
+          </div>
           <div className="hidden lg:block md:ml-12">
             <div className="flex items-center">
               {props.menuLeft.map((item, index) => {
@@ -80,7 +86,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
               })}
             </div>
           </div>
-          <div className="hidden md:block lg:ml-auto absolute right-0 lg:relative">
+          <div className="hidden md:block lg:ml-auto">
             {props.menuRight && (
               <div className="flex items-center">
                 {props.menuRight.map((item, index) => {
@@ -104,13 +110,13 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
           {props.menuMobile.map((item, index) => {
             if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
               return (
-                <div key={index} className="py-4 md:hidden">
+                <div key={index} className="my-4 md:hidden">
                   <NavigationBarItem item={item} />
                 </div>
               );
             }
             return (
-              <div key={index} className="py-4">
+              <div key={index} className="my-4">
                 <NavigationBarItem item={item} />
               </div>
             );

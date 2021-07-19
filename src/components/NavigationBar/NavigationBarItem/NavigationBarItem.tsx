@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FunctionComponent } from "react";
 import * as NavType from "./../type";
 import { LinkButton } from "./../../UI/Button";
@@ -25,7 +25,13 @@ const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ i
         item.className ? item.className : ""
       }`}
     >
-      {item.customLink ? item.customLink : <a href={item.path}>{item.label}</a>}
+      {item.customLink ? (
+        item.customLink
+      ) : (
+        <a href={item.path} className="inline-block py-2">
+          {item.label}
+        </a>
+      )}
     </div>
   );
 };
@@ -53,14 +59,14 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
 
   return (
     <div
-      className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out ${
+      className={`flex items-center text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out ${
         item.className ? item.className : ""
       }`}
     >
       {item.customLink ? (
         item.customLink
       ) : (
-        <a href={item.path} className={`p-2`} data-testid={item.id}>
+        <a href={item.path} className={`inline-block p-2`} data-testid={item.id}>
           <ButtonIcon className="stroke-current" />
         </a>
       )}
@@ -71,19 +77,27 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
 const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.addEventListener(
+        "click",
+        () => {
+          setIsOpen(false);
+        },
+        { once: true }
+      );
+    }
+  }, [isOpen]);
+
   return (
     <div className="relative">
-      <button
-        type="button"
-        className="flex items-center text-cloud-500 hover:text-cloud-900 focus:outline-none outline-none transition-color duration-200 ease-out "
-        aria-expanded={isOpen}
-        aria-haspopup="true"
+      <div
+        className="text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out cursor-pointer flex items-center focus:outline-none outline-none"
         onClick={() => {
-          setIsOpen(!isOpen);
+          setIsOpen(true);
         }}
-        id={item.id + "-button"}
       >
-        <span className="font-medium">{item.label}</span>
+        <span className="py-2 font-medium">{item.label}</span>
         <svg
           className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -99,55 +113,31 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
             clipRule="evenodd"
           />
         </svg>
-      </button>
+      </div>
       {isOpen && (
-        <>
-          <button
-            tabIndex={-1}
-            onClick={() => {
-              setIsOpen(false);
-            }}
-            className="md:fixed z-20 inset-0 w-full h-full cursor-default focus:outline-none hidden lg:block"
-          />
-          <div
-            className={`mt-2 w-full bg-white focus:outline-none rounded-md z-30 lg:origin-top-right lg:absolute lg:right-0 lg:mt-2 lg:shadow-dropdown lg:ring-1 lg:ring-black lg:ring-opacity-5`}
-          >
-            <div className="dropdown py-1">
-              {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
-                return (
-                  <div
-                    key={index}
-                    className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
-                  >
-                    {dropdownItem.customLink ? (
-                      <div className="relative">
-                        <div
-                          className="absolute w-full h-full"
-                          onClick={(event) => {
-                            event.currentTarget.parentElement?.getElementsByTagName("a")[0].click();
-                            setIsOpen(false);
-                          }}
-                        />
-                        {dropdownItem.customLink}
-                      </div>
-                    ) : (
-                      <a
-                        key={index}
-                        className="px-4 py-2"
-                        href={dropdownItem.path}
-                        onClick={() => {
-                          setIsOpen(false);
-                        }}
-                      >
-                        {dropdownItem.label}
-                      </a>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+        <div className={`w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full `}>
+          <div className={`bg-white rounded-md lg:shadow-dropdown`}>
+            {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
+              return (
+                <div
+                  key={index}
+                  className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  {dropdownItem.customLink ? (
+                    <div className="relative">{dropdownItem.customLink}</div>
+                  ) : (
+                    <a key={index} className="block p-4" href={dropdownItem.path}>
+                      {dropdownItem.label}
+                    </a>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        </>
+        </div>
       )}
     </div>
   );
