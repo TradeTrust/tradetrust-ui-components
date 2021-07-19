@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { NavigationBar } from "./NavigationBar";
 import { MockLogo, MockLeftNavItems, MockRightNavItems, MockMobileNavItems } from "./NavigationBar.mock";
@@ -62,5 +62,41 @@ describe("Navigation Bar", () => {
     expect(screen.getAllByText("Create Doc")).toHaveLength(2);
     expect(screen.getAllByText("Verify Doc")).toHaveLength(2);
     expect(screen.getAllByTestId("settings")).toHaveLength(2);
+  });
+
+  it("should collapse dropdown menu when click on other links", () => {
+    render(
+      <NavigationBar
+        logo={<MockLogo />}
+        menuLeft={MockLeftNavItems}
+        menuRight={MockRightNavItems}
+        menuMobile={[]}
+        setToggleNavBar={() => {}}
+        toggleNavBar={false}
+      />
+    );
+
+    fireEvent.click(screen.getByText("Resources"));
+    expect(screen.getByText("Learn")).toBeInTheDocument();
+    fireEvent.click(screen.getByText("Contact"));
+    expect(screen.queryByText("Learn")).not.toBeInTheDocument();
+  });
+
+  it("should collapse dropdown menu when click anywhere else", () => {
+    render(
+      <NavigationBar
+        logo={<MockLogo />}
+        menuLeft={MockLeftNavItems}
+        menuRight={MockRightNavItems}
+        menuMobile={[]}
+        setToggleNavBar={() => {}}
+        toggleNavBar={false}
+      />
+    );
+
+    fireEvent.click(screen.getByText("Resources"));
+    expect(screen.getByText("Learn")).toBeInTheDocument();
+    fireEvent.click(document.body);
+    expect(screen.queryByText("Learn")).not.toBeInTheDocument();
   });
 });
