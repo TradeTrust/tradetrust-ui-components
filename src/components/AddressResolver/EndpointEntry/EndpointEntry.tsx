@@ -9,7 +9,6 @@ import { useOverlayContext } from "../../../common/context/OverlayContext";
 import { AddResolverConfirmation } from "../../UI/Overlay/OverlayContent";
 
 interface EndpointEntryProps {
-  className?: string;
   orderNumber: number;
   api: string;
   name: string;
@@ -24,7 +23,6 @@ interface EndpointEntryProps {
 }
 
 export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
-  className,
   orderNumber,
   removeEndpoint,
   api,
