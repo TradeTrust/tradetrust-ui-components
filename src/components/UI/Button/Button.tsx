@@ -72,7 +72,7 @@ export const LabelButton: FunctionComponent<LabelHTMLAttributes<HTMLLabelElement
   ...props
 }) => {
   return (
-    <label className={`block${sharedStylesButton} ${className}`} {...props}>
+    <label className={`block ${sharedStylesButton} ${className}`} {...props}>
       {children}
     </label>
   );
