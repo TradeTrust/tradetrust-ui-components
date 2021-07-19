@@ -145,18 +145,18 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
 
   return (
     <div {...props}>
-      <div className="flex-1 flex-col">
+      {/* <div className="flex-1 flex-col">
         <h3 className="font-ubuntu text-4xl text-cloud-900">Address Book</h3>
         <p className="mb-5 text-cloud-900">Please select an address book to view. </p>
-      </div>
+      </div> */}
       <div className="flex flex-col items-start mb-2 md:flex-row">
         <div className="flex flex-grow">
           <Dropdown
             dropdownButtonText={isLocal ? "Local" : name}
-            className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3 w-60"
+            className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3"
+            classNameShared="w-60"
           >
             <DropdownItem
-              className="w-60"
               onClick={() => {
                 setIsLocal(true);
                 resetThirdPartyAPIEndpointResult();

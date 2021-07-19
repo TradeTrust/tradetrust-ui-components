@@ -147,8 +147,8 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <div
-      className={`flex flex-col rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 ${
-        orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : "bg-white"
+      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 ${
+        orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : ""
       } ${
         isEditable ? "h-130" : "h-auto"
       } md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4`}
@@ -249,7 +249,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </div>
 
       {isEditable && (
-        <div className="flex flex-row text-white text-base justify-center md:m-0">
+        <div className="flex flex-row text-white text-base justify-center items-center md:m-0">
           <div
             className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
             onClick={removeEndpoint}
