@@ -12,7 +12,7 @@ const ButtonWithSvg = styled.button`
   }
 `;
 
-const ButtonClasses = `transition-colors duration-200 ease-out cursor-pointer font-bold p-2 rounded shadow-md border border-transparent`;
+const sharedStylesButton = `transition-colors duration-200 ease-out cursor-pointer font-bold p-2 rounded shadow-md border border-transparent`;
 
 export const Button: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement>> = ({
   className,
@@ -22,7 +22,7 @@ export const Button: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElement>> 
 }) => {
   return (
     <button
-      className={`${ButtonClasses} ${className} ${
+      className={`${sharedStylesButton} ${className} ${
         disabled ? "cursor-not-allowed bg-gray-200 text-white hover:bg-gray-200" : ""
       }`}
       type="submit"
@@ -42,7 +42,7 @@ export const ButtonIcon: FunctionComponent<ButtonHTMLAttributes<HTMLButtonElemen
 }) => {
   return (
     <ButtonWithSvg
-      className={`${ButtonClasses} ${className} ${
+      className={`${sharedStylesButton} ${className} ${
         disabled && "cursor-not-allowed bg-gray-50 text-gray-300 hover:bg-gray-200"
       }`}
       type="submit"
@@ -60,7 +60,7 @@ export const LinkButton: FunctionComponent<AnchorHTMLAttributes<HTMLAnchorElemen
   ...props
 }) => {
   return (
-    <a className={`block ${ButtonClasses} ${className}`} rel="noopener noreferrer" {...props}>
+    <a className={`block ${sharedStylesButton} ${className}`} rel="noopener noreferrer" {...props}>
       {children}
     </a>
   );
@@ -72,7 +72,7 @@ export const LabelButton: FunctionComponent<LabelHTMLAttributes<HTMLLabelElement
   ...props
 }) => {
   return (
-    <label className={`block ${ButtonClasses} ${className}`} {...props}>
+    <label className={`block${sharedStylesButton} ${className}`} {...props}>
       {children}
     </label>
   );

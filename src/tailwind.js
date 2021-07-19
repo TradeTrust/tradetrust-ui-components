@@ -6,7 +6,6 @@ module.exports = {
       center: true,
       padding: theme("spacing.4"),
     }),
-    // when in doubt, always put in `extend`
     extend: {
       minWidth: {
         xs: "18rem",
@@ -35,7 +34,9 @@ module.exports = {
         height: "max-height",
       },
       colors: {
-        // START - redesign
+        inherit: {
+          DEFAULT: "inherit",
+        },
         cerulean: {
           DEFAULT: "#3B8CC5",
           50: "#F7F8FC",
@@ -69,10 +70,6 @@ module.exports = {
           500: "#6E787F",
           900: "#454B50",
         },
-        // END - redesign
-        inherit: {
-          DEFAULT: "inherit",
-        },
         denim: {
           DEFAULT: "#324353",
           400: "#006080",
@@ -89,7 +86,6 @@ module.exports = {
     },
   },
   variants: {
-    // https://v1.tailwindcss.com/docs/configuring-variants#ordering-variants
     backgroundColor: ["responsive", "hover", "focus", "active"],
     textColor: ["responsive", "hover", "focus", "active"],
     borderRadius: ["responsive", "hover", "focus", "active"],
