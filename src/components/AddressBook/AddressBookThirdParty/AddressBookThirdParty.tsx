@@ -29,7 +29,6 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
             return (
               <AddressBookTableRow
                 key={index}
-                id={index}
                 isLocal={false}
                 onAddressSelect={() => {
                   if (!onAddressSelect) return;

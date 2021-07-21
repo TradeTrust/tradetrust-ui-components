@@ -26,13 +26,12 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
           <h4 className="w-5/12">Address</h4>
         </div>
         {addressBookLocalStatus === AddressBookState.SUCCESS &&
-          localPageResults.map((key, index) => {
+          localPageResults.map((key) => {
             const identifier = addressBook[key];
 
             return (
               <AddressBookTableRow
                 key={key}
-                id={index}
                 isLocal={true}
                 onAddressSelect={() => {
                   if (!onAddressSelect) return;

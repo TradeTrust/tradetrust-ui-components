@@ -9,10 +9,6 @@ export const AddressResolver: FunctionComponent = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row md:items-end">
-        {/* <div className="flex-1 flex-col">
-          <h3 className="font-ubuntu text-4xl text-cloud-900">Resolver: Address</h3>
-          <p className="mb-5 text-cloud-900">Add third party’s endpoint to resolve addresses.</p>
-        </div> */}
         <div className="flex">
           <Button
             className="bg-white text-cerulean rounded-xl shadow-lg hover:bg-gray-50"

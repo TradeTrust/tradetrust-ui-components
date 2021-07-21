@@ -147,20 +147,19 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <div
-      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 ${
-        orderNumber % 2 !== 0 ? "md:bg-cerulean-50" : ""
-      } ${
+      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 md:even:bg-cerulean-50 ${
         isEditable ? "h-130" : "h-auto"
       } md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4`}
       onMouseOver={() => setHoverState(true)}
       onMouseOut={() => setHoverState(false)}
     >
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row md:h-6">
         <div className={`hidden md:inline-block ${!isEditable ? "w-3.5 mr-3" : "ml-5"}`}>
           {!isEditable && (
-            <div className={`text-xl text-cloud-300 ${hoverState ? "flex flex-col" : "hidden"}`}>
+            <div className={`text-2xl text-cloud-300 ${hoverState ? "flex flex-col" : "hidden"}`}>
+              {/* <div className={`text-2xl text-cloud-300 flex flex-col`}> */}
               <i className="fas fa-sort-up hover:text-cloud-900" onClick={onMoveEntryUp} />
-              <i className="fas fa-sort-down -mt-4 hover:text-cloud-900" onClick={onMoveEntryDown} />
+              <i className="fas fa-sort-down -mt-5 hover:text-cloud-900" onClick={onMoveEntryDown} />
             </div>
           )}
         </div>
