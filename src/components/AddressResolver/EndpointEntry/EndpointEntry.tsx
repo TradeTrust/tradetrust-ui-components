@@ -153,15 +153,14 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       onMouseOver={() => setHoverState(true)}
       onMouseOut={() => setHoverState(false)}
     >
-      <div className="flex flex-col md:flex-row md:h-6">
-        <div className={`hidden md:inline-block ${!isEditable ? "w-3.5 mr-3" : "ml-5"}`}>
-          {!isEditable && (
-            <div className={`text-2xl text-cloud-300 ${hoverState ? "flex flex-col" : "hidden"}`}>
-              {/* <div className={`text-2xl text-cloud-300 flex flex-col`}> */}
-              <i className="fas fa-sort-up hover:text-cloud-900" onClick={onMoveEntryUp} />
-              <i className="fas fa-sort-down -mt-5 hover:text-cloud-900" onClick={onMoveEntryDown} />
-            </div>
-          )}
+      <div className="flex flex-col md:flex-row">
+        <div
+          className={`flex flex-col text-2xl text-cloud-300 mr-3 ${
+            hoverState && !isEditable ? "opacity-1" : "opacity-0"
+          }`}
+        >
+          <i className="fas fa-sort-up hover:text-cloud-900" onClick={onMoveEntryUp} />
+          <i className="fas fa-sort-down -mt-5 hover:text-cloud-900" onClick={onMoveEntryDown} />
         </div>
 
         <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
