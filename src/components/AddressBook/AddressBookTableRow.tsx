@@ -19,7 +19,7 @@ interface AddressBookEtherscanLinkProps {
 const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
-    <a className="inline-block" href={addressHref} target="_blank" rel="noreferrer noopener">
+    <a className="inline-block text-cerulean-200" href={addressHref} target="_blank" rel="noreferrer noopener">
       <ExternalLink />
     </a>
   );
@@ -43,7 +43,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       <h6 className="w-full md:w-5/12">{address}</h6>
       <h6 className="w-full md:w-3/12">{!isLocal && source}</h6>
       {network && (
-        <div className="w-full text-cerulean-200 md:w-1/12 md:text-right">
+        <div className="w-full md:w-1/12 md:text-right">
           <AddressBookEtherscanLink address={address} network={network} />
         </div>
       )}

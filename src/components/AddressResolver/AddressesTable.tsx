@@ -5,16 +5,11 @@ import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { EndpointEntry } from "./EndpointEntry";
 
 export interface AddressesTableProps {
-  className?: string;
   isNewEndpoint: boolean;
   setNewEndpoint: (isNewEndpoint: boolean) => void;
 }
 
-export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
-  className,
-  isNewEndpoint,
-  setNewEndpoint,
-}) => {
+export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEndpoint, setNewEndpoint }) => {
   const { thirdPartyAPIEndpoints, addThirdPartyAPIEndpoint, removeThirdPartyAPIEndpoint, setThirdPartyAPIEndpoints } =
     useThirdPartyAPIEndpoints();
   const { showOverlay, setOverlayVisible } = useOverlayContext();
@@ -87,7 +82,7 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
   };
 
   return (
-    <div className={`${className} flex py-6`}>
+    <div className="flex md:py-6">
       <div className="flex flex-col w-full">
         <div className="w-full">
           <div className="hidden text-xl font-bold text-cloud-900 ml-5 p-4 md:flex">

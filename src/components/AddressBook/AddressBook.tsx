@@ -176,7 +176,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             })}
           </Dropdown>
         </div>
-        <div className="flex md:mx-0">
+        <div className="flex mt-4 md:mx-0 md:mt-0">
           <div className="w-auto">
             <LinkButton
               className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
@@ -196,7 +196,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-xl shadow-lg p-7">
+      <div className="bg-white rounded-xl shadow-lg p-7 mt-6 md:mt-0">
         <div className="flex mb-2 flex-grow justify-center md:justify-start">
           <div
             className={`bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 ${

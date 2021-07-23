@@ -233,10 +233,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         </div>
 
         {!isEditable && (
-          <div className="flex absolute ml-60 -mt-7 md:static md:w-1/12 md:m-0">
-            <Trash2 className="text-cerulean-200 cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
+          <div className="flex absolute text-cerulean-200 ml-60 -mt-7 md:static md:w-1/12 md:m-0">
+            <Trash2 className="cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
             <Edit
-              className="text-cerulean-200 ml-3 cursor-pointer"
+              className="ml-3 cursor-pointer"
               onClick={() => {
                 setEditable(true);
               }}
