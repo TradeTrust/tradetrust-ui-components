@@ -15,7 +15,7 @@ export interface TileInfoProps {
 }
 
 export const TileInfo: FunctionComponent<TileInfoProps> = ({ title, description, tileIcon }) => (
-  <div className="flex p-3 w-96 h-28 font-normal rounded-xl max-w-lg bg-white shadow-xl inline-block transition-colors duration-200 hover:bg-gray-50">
+  <div className="flex p-3 w-96 h-28 border font-normal rounded-xl max-w-lg bg-white shadow-xl inline-block transition-colors duration-200 hover:bg-gray-50">
     <div className="flex flex-col w-10/12">
       <h3 className="font-ubuntu font-normal text-2xl text-cerulean-200">{title}</h3>
       <p className="text-cloud-900 mt-1">{description}</p>
