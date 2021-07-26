@@ -150,13 +150,15 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         isEditable ? "h-130" : "h-auto"
       }`}
     >
-      <div className={`flex flex-col md:flex-row ${isEditable ? "md:ml-5" : ""}`}>
-        {!isEditable && (
-          <div className="flex flex-col text-2xl leading-3 mr-3 text-cloud-300 visible md:invisible md:group-hover:visible">
-            <i className="fas fa-sort-up leading-3 hover:text-cloud-900" onClick={onMoveEntryUp} />
-            <i className="fas fa-sort-down leading-3 hover:text-cloud-900" onClick={onMoveEntryDown} />
-          </div>
-        )}
+      <div className="flex flex-col md:flex-row">
+        <div
+          className={`flex flex-col text-2xl leading-3 mr-3.5 text-cloud-300 visible ${
+            !isEditable ? "md:invisible md:group-hover:visible" : "md:invisible"
+          }`}
+        >
+          <i className="fas fa-sort-up leading-3 hover:text-cloud-900" onClick={onMoveEntryUp} />
+          <i className="fas fa-sort-down leading-3 hover:text-cloud-900" onClick={onMoveEntryDown} />
+        </div>
 
         <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Order</div>
