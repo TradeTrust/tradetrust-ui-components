@@ -94,9 +94,15 @@ module.exports = {
     },
   },
   variants: {
-    backgroundColor: ["responsive", "hover", "focus", "active", "even", "odd"],
-    textColor: ["responsive", "hover", "focus", "active"],
-    borderRadius: ["responsive", "hover", "focus", "active"],
+    backgroundColor: ["responsive", "hover", "focus"],
+    textColor: ["responsive", "hover", "focus"],
+    borderRadius: ["responsive", "hover", "focus"],
+    extend: {
+      backgroundColor: ["active", "even", "odd"],
+      textColor: ["active"],
+      borderRadius: ["active"],
+      visibility: ["group-hover"],
+    }
   },
   plugins: [
     plugin(function ({ addBase, config }) {

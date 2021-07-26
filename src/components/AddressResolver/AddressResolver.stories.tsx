@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import { OverlayContextProvider } from "../../common/context/OverlayContext";
 import { AddressResolver } from "./AddressResolver";
 
 export default {
@@ -28,11 +27,7 @@ export const DefaultAddressResolver = (): ReactElement => {
     ])
   );
 
-  return (
-    <OverlayContextProvider>
-      <AddressResolver />
-    </OverlayContextProvider>
-  );
+  return <AddressResolver />;
 };
 
 export const AddressResolverNoThirdPartyEndPoint = (): ReactElement => {
