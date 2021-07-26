@@ -146,21 +146,21 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <div
-      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 md:even:bg-cerulean-50 md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:px-4 md:pt-4 md:pb-1 group ${
+      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 md:even:bg-cerulean-50 md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4 group ${
         isEditable ? "h-130" : "h-auto"
       }`}
     >
-      <div className="flex flex-col md:flex-row">
+      <div className={`flex flex-col md:flex-row ${isEditable ? "md:ml-5" : ""}`}>
         {!isEditable && (
-          <div className="relative text-2xl mr-3 text-cloud-300 invisible group-hover:visible">
-            <i className="absolute fas fa-sort-up hover:text-cloud-900" onClick={onMoveEntryUp} />
-            <i className="fas fa-sort-down mt-3 hover:text-cloud-900" onClick={onMoveEntryDown} />
+          <div className="flex flex-col text-2xl leading-3 mr-3 text-cloud-300 visible md:invisible md:group-hover:visible">
+            <i className="fas fa-sort-up leading-3 hover:text-cloud-900" onClick={onMoveEntryUp} />
+            <i className="fas fa-sort-down leading-3 hover:text-cloud-900" onClick={onMoveEntryDown} />
           </div>
         )}
 
         <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
           <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Order</div>
-          <div className={`inline-block w-auto ${isEditable ? "md:flex md:items-start md:mt-1 md:ml-5" : ""}`}>
+          <div className={`inline-block w-auto ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>
             {orderNumber}
           </div>
         </div>
@@ -242,7 +242,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </div>
 
       {isEditable && (
-        <div className="flex flex-row text-white text-base justify-center items-center md:m-0 md:mb-2">
+        <div className="flex flex-row text-white text-base justify-center items-center md:m-0">
           <div
             className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
             onClick={removeEndpoint}
