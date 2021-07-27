@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
+import { Button } from "../../Button";
 import { OverlayContentProps } from "./index";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
@@ -14,27 +15,24 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
   const { setOverlayVisible, showOverlay } = useOverlayContext();
 
   return (
-    <div className="relative bg-white rounded-xl w-96 h-72 p-8">
+    <div className="relative bg-white rounded-xl text-center w-96 p-8">
       <div className="flex flex-col">
         <h3 className="font-ubuntu text-2xl font-normal text-cloud-900">Delete Address Resolver</h3>
-        <p className="text-cloud-900 mt-5">Are you sure you want to delete this address resolver?</p>
-        <p className="text-cloud-900 mt-5">{name}</p>
-        <div className="flex flex-row mt-5">
-          <div
-            className="flex bg-white border rounded-lg shadow-xl w-16 h-9 items-center justify-center text-cerulean cursor-pointer"
+        <p className="text-cloud-900 mt-7">Are you sure you want to delete this address resolver?</p>
+        <p className="text-cloud-900 mt-7">{name}</p>
+        <div className="flex flex-row mt-7 justify-center">
+          <Button
+            className="bg-white border-cloud-100 rounded-xl shadow-xl px-3 py-2 text-cerulean"
             onClick={() => {
               setOverlayVisible(false);
               showOverlay(undefined);
             }}
           >
             Cancel
-          </div>
-          <div
-            className="flex bg-rose rounded-lg w-16 h-9 ml-8 items-center justify-center text-white cursor-pointer"
-            onClick={deleteAddress}
-          >
+          </Button>
+          <Button className="bg-rose rounded-xl px-3 py-2 ml-8 text-white" onClick={deleteAddress}>
             Delete
-          </div>
+          </Button>
         </div>
       </div>
     </div>

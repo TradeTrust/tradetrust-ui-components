@@ -94,9 +94,6 @@ module.exports = {
     },
   },
   variants: {
-    backgroundColor: ["responsive", "hover", "focus"],
-    textColor: ["responsive", "hover", "focus"],
-    borderRadius: ["responsive", "hover", "focus"],
     extend: {
       backgroundColor: ["active", "even", "odd"],
       textColor: ["active"],

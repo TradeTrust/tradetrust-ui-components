@@ -35,7 +35,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
 }) => {
   return (
     <div
-      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 md:flex-row md:even:bg-cerulean-50`}
+      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 md:flex-row even:bg-cerulean-50`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >
@@ -57,10 +57,8 @@ interface AddressBookTableRowEmptyProps {
 
 export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({ message }) => {
   return (
-    <>
-      <div className="bg-cerulean-50 h-12" data-testid="table-row">
-        <p className="flex text-cloud-900 h-full justify-center items-center">{message} </p>
-      </div>
-    </>
+    <div className="bg-cerulean-50 py-3 text-center" data-testid="table-row">
+      <p>{message} </p>
+    </div>
   );
 };

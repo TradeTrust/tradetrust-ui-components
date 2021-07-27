@@ -7,6 +7,7 @@ import { Input } from "../../UI/Input";
 import { LoaderSpinner } from "../../UI/Loader";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
 import { AddResolverConfirmation } from "../../UI/Overlay/OverlayContent";
+import { Button } from "../../UI/Button";
 
 interface EndpointEntryProps {
   orderNumber: number;
@@ -152,12 +153,13 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
     >
       <div className="flex flex-col md:flex-row">
         <div
-          className={`flex flex-col text-2xl leading-3 mr-3.5 text-cloud-300 visible ${
-            !isEditable ? "md:invisible md:group-hover:visible" : "md:invisible"
+          className={`flex-1 flex-col text-2xl leading-3 -mt-7 ml-52 text-cloud-300 visible md:m-0 md:mr-3.5 ${
+            !isEditable ? "md:invisible md:group-hover:visible" : "invisible"
           }`}
         >
-          <i className="fas fa-sort-up leading-3 hover:text-cloud-900" onClick={onMoveEntryUp} />
-          <i className="fas fa-sort-down leading-3 hover:text-cloud-900" onClick={onMoveEntryDown} />
+          <i className="fas fa-sort-up leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryUp} />
+          <br />
+          <i className="fas fa-sort-down leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryDown} />
         </div>
 
         <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
@@ -245,22 +247,22 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
       {isEditable && (
         <div className="flex flex-row text-white text-base justify-center items-center md:m-0">
-          <div
-            className="flex bg-rose rounded-xl py-2 px-2.5 w-20 h-9 justify-center items-center cursor-pointer"
+          <Button
+            className="flex bg-rose w-20 h-9 rounded-xl shadow-none justify-center items-center"
             onClick={removeEndpoint}
           >
             <h5>Delete</h5>
-          </div>
+          </Button>
           {isLoading ? (
             <LoaderSpinner className="ml-10" />
           ) : (
-            <div
-              className="flex bg-cerulean rounded-xl py-2 px-2.5 w-20 h-9 ml-10 justify-center items-center cursor-pointer"
+            <Button
+              className="flex bg-cerulean w-20 h-9 rounded-xl shadow-none justify-center items-center ml-10"
               onClick={onSave}
               data-testid="save-icon"
             >
               <h5>Save</h5>
-            </div>
+            </Button>
           )}
         </div>
       )}
