@@ -84,7 +84,7 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
   return (
     <div className="flex flex-col w-full">
       <div className="w-full">
-        <div className="hidden text-xl font-bold text-cloud-900 ml-7 p-4 md:flex">
+        <div className="hidden text-xl font-bold text-cloud-900 ml-7 p-4 lg:flex">
           <h4 className="w-1/12">Order</h4>
           <h4 className="w-2/12">Name</h4>
           <h4 className="w-4/12">Endpoint</h4>
@@ -135,7 +135,7 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
       </div>
       {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
         <div
-          className="bg-white rounded-xl shadow-lg h-12 mt-6 md:bg-cerulean-50 md:rounded-none md:shadow-none"
+          className="bg-white rounded-xl shadow-lg h-12 mt-6 lg:bg-cerulean-50 lg:rounded-none lg:shadow-none"
           data-testid="table-row"
         >
           <p className="flex text-cloud-900 h-full justify-center items-center">

@@ -35,15 +35,15 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
 }) => {
   return (
     <div
-      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 md:flex-row even:bg-cerulean-50`}
+      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 lg:flex-row even:bg-cerulean-50`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >
-      <h6 className="w-full md:w-3/12">{name}</h6>
-      <h6 className="w-full md:w-5/12">{address}</h6>
-      <h6 className="w-full md:w-3/12">{!isLocal && source}</h6>
+      <h6 className="w-full lg:w-3/12">{name}</h6>
+      <h6 className="w-full lg:w-5/12">{address}</h6>
+      <h6 className="w-full lg:w-3/12">{!isLocal && source}</h6>
       {network && (
-        <div className="w-full md:w-1/12 md:text-right">
+        <div className="w-full lg:w-1/12 lg:text-right">
           <AddressBookEtherscanLink address={address} network={network} />
         </div>
       )}

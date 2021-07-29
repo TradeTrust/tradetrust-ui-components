@@ -147,14 +147,14 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
   return (
     <div
-      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 md:even:bg-cerulean-50 md:bg-none md:w-full md:h-auto md:rounded-none md:shadow-none md:mt-0 md:p-4 group ${
+      className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 lg:even:bg-cerulean-50 lg:bg-none lg:w-full lg:h-auto lg:rounded-none lg:shadow-none lg:mt-0 lg:p-4 group ${
         isEditable ? "h-130" : "h-auto"
       }`}
     >
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col lg:flex-row">
         <div
-          className={`flex-1 flex-col text-2xl leading-3 -mt-7 ml-52 text-cloud-300 visible md:m-0 md:mr-3.5 ${
-            !isEditable ? "md:invisible md:group-hover:visible" : "invisible"
+          className={`flex-col text-2xl leading-3 -mt-7 ml-52 text-cloud-300 lg:m-0 lg:mr-3.5 ${
+            !isEditable ? "flex-1 visible lg:invisible lg:group-hover:visible" : "flex invisible"
           }`}
         >
           <i className="fas fa-sort-up leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryUp} />
@@ -162,20 +162,20 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           <i className="fas fa-sort-down leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryDown} />
         </div>
 
-        <div className="flex flex-col px-3 md:flex-row md:w-1/12 md:px-0 md:pt-0">
-          <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Order</div>
-          <div className={`inline-block w-auto ${isEditable ? "md:flex md:items-start md:mt-1" : ""}`}>
+        <div className="flex flex-col px-3 lg:flex-row lg:w-1/12 lg:px-0 lg:pt-0">
+          <div className="inline-block text-cloud-900 text-xl font-bold lg:hidden">Order</div>
+          <div className={`inline-block w-auto ${isEditable ? "lg:flex lg:items-start lg:mt-1" : ""}`}>
             {orderNumber}
           </div>
         </div>
 
-        <div className="flex flex-col px-3 pt-3 md:flex-row md:w-2/12 md:px-0 md:pt-0">
-          <div className={`inline-block text-cloud-900 text-xl font-bold md:hidden ${isEditable ? "mt-7" : ""}`}>
+        <div className="flex flex-col px-3 pt-3 lg:flex-row lg:w-2/12 lg:px-0 lg:pt-0">
+          <div className={`inline-block text-cloud-900 text-xl font-bold lg:hidden ${isEditable ? "mt-7" : ""}`}>
             Name
           </div>
           {isEditable ? (
             <Input
-              className="w-full md:w-8/12"
+              className="w-full lg:w-8/12"
               placeholder="Name"
               value={endpointName}
               onChange={onEndpointNameChanged}
@@ -186,11 +186,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col px-3 pt-3 md:flex-row md:w-4/12 md:px-0 md:pt-0">
-          <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">Endpoint</div>
+        <div className="flex flex-col px-3 pt-3 lg:flex-row lg:w-4/12 lg:px-0 lg:pt-0">
+          <div className="inline-block text-cloud-900 text-xl font-bold lg:hidden">Endpoint</div>
           {isEditable ? (
             <Input
-              className="w-full md:w-10/12"
+              className="w-full lg:w-10/12"
               placeholder="Endpoint"
               value={endpointApi}
               onChange={onEndpointApiChanged}
@@ -201,11 +201,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col px-3 pt-3 md:flex-row md:w-2/12 md:px-0 md:pt-0">
-          <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">API Header</div>
+        <div className="flex flex-col px-3 pt-3 lg:flex-row lg:w-2/12 lg:px-0 lg:pt-0">
+          <div className="inline-block text-cloud-900 text-xl font-bold lg:hidden">API Header</div>
           {isEditable ? (
             <Input
-              className="w-full md:w-10/12"
+              className="w-full lg:w-10/12"
               placeholder="API Header"
               value={endpointApiHeader}
               onChange={onEndpointApiHeaderChanged}
@@ -216,11 +216,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col p-3 md:flex-row md:w-2/12 md:p-0">
-          <div className="inline-block text-cloud-900 text-xl font-bold md:hidden">API Key</div>
+        <div className="flex flex-col p-3 lg:flex-row lg:w-2/12 lg:p-0">
+          <div className="inline-block text-cloud-900 text-xl font-bold lg:hidden">API Key</div>
           {isEditable ? (
             <Input
-              className="w-full md:w-10/12"
+              className="w-full lg:w-10/12"
               placeholder="API Key"
               value={endpointApiKey}
               onChange={onEndpointApiKeyChanged}
@@ -232,7 +232,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         </div>
 
         {!isEditable && (
-          <div className="flex absolute text-cerulean-200 ml-60 -mt-7 md:static md:w-1/12 md:m-0">
+          <div className="flex absolute text-cerulean-200 ml-60 -mt-7 lg:static lg:w-1/12 lg:m-0">
             <Trash2 className="cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
             <Edit
               className="ml-3 cursor-pointer"
@@ -246,7 +246,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       </div>
 
       {isEditable && (
-        <div className="flex flex-row text-white text-base justify-center items-center md:m-0">
+        <div className="flex flex-row text-white text-base justify-center items-center lg:m-0">
           <Button
             className="flex bg-rose w-20 h-9 rounded-xl shadow-none justify-center items-center"
             onClick={removeEndpoint}

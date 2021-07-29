@@ -145,7 +145,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
 
   return (
     <div {...props}>
-      <div className="flex flex-col items-start mb-2 md:flex-row">
+      <div className="flex flex-col items-start mb-2 lg:flex-row">
         <div className="flex flex-grow">
           <Dropdown
             dropdownButtonText={isLocal ? "Local" : name}
@@ -176,7 +176,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             })}
           </Dropdown>
         </div>
-        <div className="flex mt-4 md:mx-0 md:mt-0">
+        <div className="flex mt-4 lg:mx-0 lg:mt-0">
           <div className="w-auto">
             <LinkButton
               className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
@@ -196,8 +196,8 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-xl shadow-lg p-7 mt-6 md:mt-0">
-        <div className="flex mb-2 flex-grow justify-center md:justify-start">
+      <div className="bg-white rounded-xl shadow-lg p-7 mt-6 lg:mt-0">
+        <div className="flex mb-2 flex-grow justify-center lg:justify-start">
           <div
             className={`bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 ${
               !isLocal && !hasEntityLookupPath ? "cursor-not-allowed bg-cloud-100" : ""
@@ -216,7 +216,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </div>
           </div>
         </div>
-        <div className="mt-6 md:mt-9">
+        <div className="mt-6 lg:mt-9">
           {isLocal ? (
             <AddressBookLocal
               addressBookLocalStatus={addressBookLocalStatus}

@@ -8,7 +8,7 @@ export const AddressResolver: FunctionComponent = () => {
 
   return (
     <>
-      <div className="flex md:justify-end">
+      <div className="flex lg:justify-end">
         <Button
           className="bg-white text-cerulean rounded-xl shadow-lg hover:bg-gray-50"
           onClick={() => {
@@ -24,7 +24,7 @@ export const AddressResolver: FunctionComponent = () => {
           </div>
         </Button>
       </div>
-      <div className="md:bg-white md:rounded-xl md:shadow-lg md:mt-6 md:px-7 md:py-12">
+      <div className="lg:bg-white lg:rounded-xl lg:shadow-lg lg:mt-6 lg:px-7 lg:py-12">
         <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
       </div>
     </>
