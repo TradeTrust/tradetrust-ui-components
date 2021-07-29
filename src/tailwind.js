@@ -7,8 +7,16 @@ module.exports = {
       padding: theme("spacing.4"),
     }),
     extend: {
-      minWidth: {
-        xs: "18rem",
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+        ubuntu: ["Ubuntu", "sans-serif"],
+      },
+      height: {
+        '120': '30rem',
+        '160': '40rem',
+      },
+      minHeight: {
+        '18': '4.5rem',
       },
       opacity: {
         0: "0",
@@ -86,9 +94,12 @@ module.exports = {
     },
   },
   variants: {
-    backgroundColor: ["responsive", "hover", "focus", "active"],
-    textColor: ["responsive", "hover", "focus", "active"],
-    borderRadius: ["responsive", "hover", "focus", "active"],
+    extend: {
+      backgroundColor: ["active", "even", "odd"],
+      textColor: ["active"],
+      borderRadius: ["active"],
+      visibility: ["group-hover"],
+    }
   },
   plugins: [
     plugin(function ({ addBase, config }) {

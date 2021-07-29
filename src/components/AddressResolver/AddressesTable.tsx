@@ -1,135 +1,15 @@
-import styled from "@emotion/styled";
 import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
-import tw from "twin.macro";
 import { useOverlayContext } from "../../common/context/OverlayContext";
-import { fontSize } from "../../common/styles/shared";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
 import { EndpointEntry } from "./EndpointEntry";
-import { StyledTable } from "../../common/styles/Table";
 
 export interface AddressesTableProps {
-  className?: string;
   isNewEndpoint: boolean;
   setNewEndpoint: (isNewEndpoint: boolean) => void;
 }
 
-const StyledTableAddressResolver = styled(StyledTable)`
-  th {
-    ${tw`w-8`}
-
-    .fas {
-      ${tw`block text-gray-500 cursor-pointer transition duration-300 ease-out-cubic`}
-      line-height: 0.5;
-      ${fontSize(20)};
-
-      &:hover {
-        ${tw`text-gray-800`}
-      }
-
-      &.fa-sort-up,
-      &.fa-sort-down {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      &.fa-sort-up {
-        ${tw`pt-2`}
-      }
-
-      &.fa-sort-down {
-        ${tw`pb-2`}
-      }
-    }
-  }
-
-  tr {
-    &:hover {
-      .fa-sort-up,
-      .fa-sort-down {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-  }
-
-  td {
-    &.is-editable {
-      &:last-of-type {
-        svg {
-          polyline,
-          path,
-          line {
-            ${tw`text-turquoise`}
-          }
-
-          &:hover {
-            polyline,
-            path,
-            line {
-              ${tw`text-turquoise-300`}
-            }
-          }
-        }
-      }
-    }
-
-    &:nth-of-type(1) {
-      width: 80px;
-    }
-
-    &:nth-of-type(2) {
-      width: 200px;
-    }
-
-    &:nth-of-type(3) {
-      width: 360px;
-    }
-
-    &:nth-of-type(4) {
-      width: 200px;
-    }
-
-    &:nth-of-type(5) {
-      width: 200px;
-    }
-
-    &:last-of-type {
-      text-align: right;
-      width: 100px;
-
-      svg {
-        cursor: pointer;
-        margin-left: 15px;
-
-        polyline,
-        path,
-        line {
-          transition: color 0.3s ease-out;
-          ${tw`text-gray-500`}
-        }
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        &:hover {
-          polyline,
-          path,
-          line {
-            ${tw`text-gray-900`}
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
-  className,
-  isNewEndpoint,
-  setNewEndpoint,
-}) => {
+export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEndpoint, setNewEndpoint }) => {
   const { thirdPartyAPIEndpoints, addThirdPartyAPIEndpoint, removeThirdPartyAPIEndpoint, setThirdPartyAPIEndpoints } =
     useThirdPartyAPIEndpoints();
   const { showOverlay, setOverlayVisible } = useOverlayContext();
@@ -202,78 +82,67 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
   };
 
   return (
-    <div className={`${className} flex py-6`}>
-      <div className="flex w-full">
-        <StyledTableAddressResolver className="table-responsive">
-          <table className="table">
-            <thead className="table-thead">
-              <tr>
-                <th />
-                <td>Order</td>
-                <td>Name</td>
-                <td>Endpoint</td>
-                <td>API Header</td>
-                <td>API Key</td>
-                <td>&nbsp;</td>
-              </tr>
-            </thead>
-            <tbody className="table-tbody">
-              {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
-                <tr>
-                  <th />
-                  <td>&mdash;</td>
-                  <td>&mdash;</td>
-                  <td>No third party&apos;s endpoint found.</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-              )}
-              {thirdPartyAPIEndpoints.map((item, index) => {
-                const orderNumber = index + 1;
+    <div className="flex flex-col w-full">
+      <div className="w-full">
+        <div className="hidden text-xl font-bold text-cloud-900 ml-7 p-4 lg:flex">
+          <h4 className="w-1/12">Order</h4>
+          <h4 className="w-2/12">Name</h4>
+          <h4 className="w-4/12">Endpoint</h4>
+          <h4 className="w-2/12">API Header</h4>
+          <h4 className="w-2/12">API Key</h4>
+        </div>
+        {thirdPartyAPIEndpoints.map((item, index) => {
+          const orderNumber = index + 1;
 
-                return (
-                  <EndpointEntry
-                    key={item.endpoint}
-                    orderNumber={orderNumber}
-                    isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
-                    removeEndpoint={() => {
-                      onRemoveEndpoint(item.name, index);
-                    }}
-                    onMoveEntryUp={() => {
-                      moveEntryUp(index);
-                    }}
-                    onMoveEntryDown={() => {
-                      moveEntryDown(index);
-                    }}
-                    onUpdateEndpoint={onUpdateEndpoint(index)}
-                    api={thirdPartyAPIEndpoints[index].endpoint}
-                    name={thirdPartyAPIEndpoints[index].name}
-                    apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
-                    apiKey={thirdPartyAPIEndpoints[index].apiKey}
-                    canEdit={false}
-                  />
-                );
-              })}
-              {isNewEndpoint && (
-                <EndpointEntry
-                  orderNumber={thirdPartyAPIEndpoints.length + 1}
-                  isEndpointUrlExists={isEndpointUrlExists}
-                  removeEndpoint={() => {
-                    setNewEndpoint(false);
-                  }}
-                  onUpdateEndpoint={addNewEndpoint}
-                  api=""
-                  name=""
-                  apiHeader=""
-                  apiKey=""
-                  canEdit={true}
-                />
-              )}
-            </tbody>
-          </table>
-        </StyledTableAddressResolver>
+          return (
+            <EndpointEntry
+              key={item.endpoint}
+              orderNumber={orderNumber}
+              isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
+              removeEndpoint={() => {
+                onRemoveEndpoint(item.name, index);
+              }}
+              onMoveEntryUp={() => {
+                moveEntryUp(index);
+              }}
+              onMoveEntryDown={() => {
+                moveEntryDown(index);
+              }}
+              onUpdateEndpoint={onUpdateEndpoint(index)}
+              api={thirdPartyAPIEndpoints[index].endpoint}
+              name={thirdPartyAPIEndpoints[index].name}
+              apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
+              apiKey={thirdPartyAPIEndpoints[index].apiKey}
+              canEdit={false}
+            />
+          );
+        })}
+        {isNewEndpoint && (
+          <EndpointEntry
+            orderNumber={thirdPartyAPIEndpoints.length + 1}
+            isEndpointUrlExists={isEndpointUrlExists}
+            removeEndpoint={() => {
+              setNewEndpoint(false);
+            }}
+            onUpdateEndpoint={addNewEndpoint}
+            api=""
+            name=""
+            apiHeader=""
+            apiKey=""
+            canEdit={true}
+          />
+        )}
       </div>
+      {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
+        <div
+          className="bg-white rounded-xl shadow-lg h-12 mt-6 lg:bg-cerulean-50 lg:rounded-none lg:shadow-none"
+          data-testid="table-row"
+        >
+          <p className="flex text-cloud-900 h-full justify-center items-center">
+            No third party&apos;s endpoint found.{" "}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

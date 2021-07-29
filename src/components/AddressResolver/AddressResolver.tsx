@@ -1,36 +1,32 @@
 import React, { FunctionComponent, useState } from "react";
-import { Plus } from "react-feather";
 import { Button } from "../UI/Button";
 import { AddressesTable } from "./AddressesTable";
+import { IconAddFile } from "../UI/Icon";
 
 export const AddressResolver: FunctionComponent = () => {
   const [isNewEndpoint, setNewEndpoint] = useState(false);
 
   return (
     <>
-      <div className="flex items-end">
-        <div className="flex-1 flex-col">
-          <h3>Settings: Address Resolver</h3>
-          <p className="mb-0 text-gray-500">Add third party’s endpoint to resolve addresses. </p>
-        </div>
-        <div className="flex">
-          <Button
-            className="bg-tangerine text-white hover:bg-tangerine-600"
-            onClick={() => {
-              setNewEndpoint(true);
-            }}
-            disabled={isNewEndpoint}
-          >
-            <div className="flex items-center mx-0">
-              <div className="col-auto mr-2">
-                <Plus />
-              </div>
-              <div className="col-auto">Add</div>
+      <div className="flex lg:justify-end">
+        <Button
+          className="bg-white text-cerulean rounded-xl shadow-lg hover:bg-gray-50"
+          onClick={() => {
+            setNewEndpoint(true);
+          }}
+          disabled={isNewEndpoint}
+        >
+          <div className="flex items-center mx-0">
+            <div className="col-auto mr-2">
+              <IconAddFile />
             </div>
-          </Button>
-        </div>
+            <div className="col-auto">Add</div>
+          </div>
+        </Button>
       </div>
-      <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
+      <div className="lg:bg-white lg:rounded-xl lg:shadow-lg lg:mt-6 lg:px-7 lg:py-12">
+        <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
+      </div>
     </>
   );
 };

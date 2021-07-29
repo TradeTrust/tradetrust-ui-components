@@ -31,12 +31,6 @@ const enterInfo = (): void => {
   fireEvent.change(screen.getByPlaceholderText("API Key"), { target: { value: "KEY" } });
 };
 
-const Wrapper: FunctionComponent = ({ children }) => (
-  <table>
-    <tbody>{children}</tbody>
-  </table>
-);
-
 describe("endpointEntry", () => {
   beforeEach(() => {
     mockGetFeatures.mockReset();
@@ -52,8 +46,7 @@ describe("endpointEntry", () => {
       },
     });
     render(
-      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />,
-      { wrapper: Wrapper }
+      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
     );
     enterInfo();
     fireEvent.click(screen.getByTestId("save-icon"));
@@ -73,8 +66,7 @@ describe("endpointEntry", () => {
   it("should validate endpoint and display error when validation fails", async () => {
     mockGetFeatures.mockRejectedValueOnce(new Error("Api has gone home"));
     render(
-      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />,
-      { wrapper: Wrapper }
+      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
     );
     enterInfo();
     fireEvent.click(screen.getByTestId("save-icon"));

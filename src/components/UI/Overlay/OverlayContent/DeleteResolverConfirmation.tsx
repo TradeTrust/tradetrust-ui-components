@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { Button } from "../../Button";
-import { OverlayContent, OverlayContentProps } from "./index";
+import { OverlayContentProps } from "./index";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
   name: string;
@@ -11,19 +11,18 @@ interface DeleteResolverConfirmationProps extends OverlayContentProps {
 export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirmationProps> = ({
   name,
   deleteAddress,
-  ...props
 }) => {
   const { setOverlayVisible, showOverlay } = useOverlayContext();
 
   return (
-    <OverlayContent className="max-w-md" {...props}>
-      <div className="flex-1">
-        <p>Are you sure you want to delete {name}?</p>
-      </div>
-      <div className="flex mx-0">
-        <div className="col-auto ml-auto mr-2">
+    <div className="relative bg-white rounded-xl text-center w-96 p-8">
+      <div className="flex flex-col">
+        <h3 className="font-ubuntu text-2xl font-normal text-cloud-900">Delete Address Resolver</h3>
+        <p className="text-cloud-900 mt-7">Are you sure you want to delete this address resolver?</p>
+        <p className="text-cloud-900 mt-7">{name}</p>
+        <div className="flex flex-row mt-7 justify-center">
           <Button
-            className="bg-white text-gray-500 hover:bg-gray-50"
+            className="bg-white border-cloud-100 rounded-xl shadow-xl px-3 py-2 text-cerulean"
             onClick={() => {
               setOverlayVisible(false);
               showOverlay(undefined);
@@ -31,13 +30,11 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
           >
             Cancel
           </Button>
-        </div>
-        <div className="col-auto">
-          <Button className="bg-rose-400 text-white hover:bg-red-400" onClick={deleteAddress}>
+          <Button className="bg-rose rounded-xl px-3 py-2 ml-8 text-white" onClick={deleteAddress}>
             Delete
           </Button>
         </div>
       </div>
-    </OverlayContent>
+    </div>
   );
 };

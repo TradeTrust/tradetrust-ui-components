@@ -19,8 +19,8 @@ interface AddressBookEtherscanLinkProps {
 const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
-    <a href={addressHref} target="_blank" rel="noreferrer noopener" className="text-cerulean-500">
-      <ExternalLink className="ml-auto mr-4" />
+    <a className="inline-block text-cerulean-200" href={addressHref} target="_blank" rel="noreferrer noopener">
+      <ExternalLink />
     </a>
   );
 };
@@ -34,32 +34,31 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
   source,
 }) => {
   return (
-    <tr onClick={onAddressSelect} data-testid="table-row">
-      <th>{name}</th>
-      <td>{address}</td>
-      <td>{!isLocal && source}&nbsp;</td>
-      <td>{network && <AddressBookEtherscanLink address={address} network={network} />}</td>
-    </tr>
+    <div
+      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 lg:flex-row even:bg-cerulean-50`}
+      onClick={onAddressSelect}
+      data-testid="table-row"
+    >
+      <h6 className="w-full lg:w-3/12">{name}</h6>
+      <h6 className="w-full lg:w-5/12">{address}</h6>
+      <h6 className="w-full lg:w-3/12">{!isLocal && source}</h6>
+      {network && (
+        <div className="w-full lg:w-1/12 lg:text-right">
+          <AddressBookEtherscanLink address={address} network={network} />
+        </div>
+      )}
+    </div>
   );
 };
 
 interface AddressBookTableRowEmptyProps {
   message: string;
-  textClassName?: string;
 }
 
-export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({
-  message,
-  textClassName = "",
-}) => {
+export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({ message }) => {
   return (
-    <tr data-testid="table-row">
-      <th>&mdash;</th>
-      <td>
-        <span className={`whitespace-pre-wrap mb-0 ${textClassName}`}>{message}</span>
-      </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+    <div className="bg-cerulean-50 py-3 text-center" data-testid="table-row">
+      <p>{message} </p>
+    </div>
   );
 };
