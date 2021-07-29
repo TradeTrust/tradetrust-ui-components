@@ -148,26 +148,55 @@ export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> 
   );
 };
 
-export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className="mx-auto mt-10"
-      width="56"
-      height="56"
-      viewBox="0 0 56 56"
+      className={`${className}`}
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M51.3337 25.8533V28C51.3308 33.0317 49.7015 37.9276 46.6888 41.9576C43.676 45.9876 39.4413 48.9358 34.6161 50.3625C29.791 51.7891 24.6339 51.6178 19.9141 49.874C15.1942 48.1303 11.1645 44.9076 8.4259 40.6865C5.68728 36.4654 4.38651 31.4722 4.71757 26.4514C5.04864 21.4307 6.99381 16.6514 10.263 12.8265C13.5321 9.00159 17.9502 6.3359 22.8581 5.22702C27.766 4.11813 32.9009 4.62546 37.497 6.67334"
+        d="M25.6666 12.9268V14.0001C25.6651 16.516 24.8505 18.9639 23.3441 20.9789C21.8378 22.9939 19.7204 24.468 17.3078 25.1813C14.8953 25.8947 12.3167 25.809 9.9568 24.9371C7.59688 24.0653 5.58201 22.4539 4.21271 20.3434C2.8434 18.2328 2.19301 15.7362 2.35854 13.2258C2.52407 10.7155 3.49666 8.32584 5.13124 6.41338C6.76583 4.50092 8.97483 3.16807 11.4288 2.61363C13.8828 2.05919 16.4502 2.31285 18.7483 3.33679"
         stroke="#3AAF86"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M51.3333 9.33301L28 32.6897L21 25.6897"
+        d="M25.6667 4.66675L14 16.3451L10.5 12.8451"
         stroke="#3AAF86"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = (className) => {
+  return (
+    <svg
+      className={`${className}`}
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M25.9302 11.6216L26.0721 12.6855C26.4034 15.1794 25.9196 17.7136 24.6929 19.9101C23.4662 22.1066 21.5623 23.8477 19.2652 24.8738C16.9681 25.8999 14.4009 26.1559 11.9464 25.6037C9.49196 25.0516 7.28172 23.7208 5.64537 21.8098C4.00901 19.8989 3.03421 17.5102 2.86636 15C2.6985 12.4897 3.34657 9.9925 4.71393 7.8807C6.08128 5.76889 8.09465 4.15566 10.4538 3.28161C12.8129 2.40756 15.3913 2.31951 17.8046 3.0306"
+        stroke="#E62617"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M19.6 9.80005L11.2 18.2" stroke="#E62617" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M11.2 9.80009L19.6 18.2001"
+        stroke="#E62617"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"

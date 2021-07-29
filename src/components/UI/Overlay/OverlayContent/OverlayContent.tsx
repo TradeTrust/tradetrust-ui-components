@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { CheckCircle, X, XCircle } from "react-feather";
+import { X } from "react-feather";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
+import { IconSuccess, IconError } from "../../Icon";
 
 export interface OverlayContentProps {
   className?: string;
@@ -29,7 +30,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
     <>
       {isOverlayVisible && (
         <div
-          className={`relative flex flex-col p-5 bg-white shadow-lg overflow-auto h-auto ${className}`}
+          className={`relative flex flex-col p-5 bg-white rounded-xl shadow-lg overflow-auto h-auto ${className}`}
           {...props}
           style={{
             width: "calc(100vw - (15px * 2))",
@@ -38,20 +39,18 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
           <div className="mb-2">
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
-                <div className="col-auto mr-3">
-                  {isSuccess ? <CheckCircle className="text-turquoise" /> : <XCircle className="text-rose-400" />}
-                </div>
+                <div className="col-auto mr-3">{isSuccess ? <IconSuccess /> : <IconError />}</div>
               )}
-              <h4 data-testid="overlay-title" className="text-gray-500 mb-0 flex-grow leading-8">
+              <h3 data-testid="overlay-title" className="text-cloud-900 mb-0 flex-grow leading-8">
                 {title}
-              </h4>
+              </h3>
               <div className="cursor-pointer" onClick={handleCloseOverlay} data-testid="overlay-close">
                 <X />
               </div>
             </div>
           </div>
           <div className="flex-1">
-            <div className="flex flex-col h-full text-gray-900">{children}</div>
+            <div className="flex flex-col h-full text-cloud-900">{children}</div>
           </div>
         </div>
       )}
