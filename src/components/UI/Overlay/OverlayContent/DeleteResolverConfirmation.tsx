@@ -30,7 +30,11 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
           >
             Cancel
           </Button>
-          <Button className="bg-rose rounded-xl px-3 py-2 ml-8 text-white" onClick={deleteAddress}>
+          <Button
+            className="bg-rose rounded-xl px-3 py-2 ml-8 text-white"
+            onClick={deleteAddress}
+            data-testid="delete-confirm-button"
+          >
             Delete
           </Button>
         </div>

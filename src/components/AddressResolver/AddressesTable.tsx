@@ -82,8 +82,8 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="w-full">
+    <div className="flex flex-col w-full" data-testid="table">
+      <div className="w-full" data-testid="table-non-empty">
         <div className="hidden text-xl font-bold text-cloud-900 ml-7 p-4 lg:flex">
           <h4 className="w-1/12">Order</h4>
           <h4 className="w-2/12">Name</h4>

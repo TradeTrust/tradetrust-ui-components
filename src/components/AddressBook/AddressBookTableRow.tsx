@@ -39,11 +39,17 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
       onClick={onAddressSelect}
       data-testid="table-row"
     >
-      <h6 className="w-full lg:w-3/12">{name}</h6>
-      <h6 className="w-full lg:w-5/12">{address}</h6>
-      <h6 className="w-full lg:w-3/12">{!isLocal && source}</h6>
+      <h6 className="w-full lg:w-3/12" data-testid="table-row-name">
+        {name}
+      </h6>
+      <h6 className="w-full lg:w-5/12" data-testid="table-row-address">
+        {address}
+      </h6>
+      <h6 className="w-full lg:w-3/12" data-testid="table-row-source">
+        {!isLocal && source}
+      </h6>
       {network && (
-        <div className="w-full lg:w-1/12 lg:text-right">
+        <div className="w-full lg:w-1/12 lg:text-right" data-testid="table-row-link">
           <AddressBookEtherscanLink address={address} network={network} />
         </div>
       )}
