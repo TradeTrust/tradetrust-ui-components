@@ -5,7 +5,7 @@ import { checkUndefinedClassName } from "../../../utils";
 export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className={`${checkUndefinedClassName(className!)}`}
+      className={`${checkUndefinedClassName(className)}`}
       width="52"
       height="59"
       viewBox="0 0 52 59"
@@ -103,7 +103,7 @@ export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({
 export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className={`${checkUndefinedClassName(className!)}`}
+      className={`${checkUndefinedClassName(className)}`}
       width="53"
       height="56"
       viewBox="0 0 53 56"
@@ -165,13 +165,13 @@ export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> 
 };
 
 export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
-  return <CheckCircle className={`${checkUndefinedClassName(className!)}`} />;
+  return <CheckCircle className={`${checkUndefinedClassName(className)}`} />;
 };
 
 export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className={`${checkUndefinedClassName(className!)}`}
+      className={`${checkUndefinedClassName(className)}`}
       width="28"
       height="28"
       viewBox="0 0 28 28"
@@ -200,7 +200,7 @@ export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ class
 export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className={`${checkUndefinedClassName(className!)}`}
+      className={`${checkUndefinedClassName(className)}`}
       width="19"
       height="21"
       viewBox="0 0 19 21"

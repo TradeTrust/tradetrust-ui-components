@@ -6,6 +6,6 @@ export const makeEtherscanAddressURL = (address: string, network: string): strin
   return `${getEtherscanBaseUrl(network)}address/${address}`;
 };
 
-export const checkUndefinedClassName = (className: string): string => {
+export const checkUndefinedClassName = (className: string | undefined): string => {
   return className ? className : "";
 };
