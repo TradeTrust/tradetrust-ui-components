@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { CheckCircle, X } from "react-feather";
+import { X } from "react-feather";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
-import { IconError } from "../../Icon";
+import { IconError, IconSuccess } from "../../Icon";
 
 export interface OverlayContentProps {
   className?: string;
@@ -40,7 +40,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             <div className="flex mx-0 items-center">
               {isSuccess !== undefined && (
                 <div className="col-auto mr-3">
-                  {isSuccess ? <CheckCircle className="text-emerald font-bold" /> : <IconError />}
+                  {isSuccess ? <IconSuccess className="text-emerald" /> : <IconError />}
                 </div>
               )}
               <h3 data-testid="overlay-title" className="text-cloud-900 mb-0 flex-grow leading-8">

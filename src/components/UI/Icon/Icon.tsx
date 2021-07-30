@@ -1,8 +1,17 @@
 import React, { SVGProps } from "react";
+import { CheckCircle } from "react-feather";
+import { checkUndefinedClassName } from "../../../utils";
 
-export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="52" height="59" viewBox="0 0 52 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${checkUndefinedClassName(className)}`}
+      width="52"
+      height="59"
+      viewBox="0 0 52 59"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M44.8801 17.0791H48.9701C50.0301 17.0791 50.9001 17.9491 50.9001 19.0091V22.6091C50.9001 23.6691 50.0301 24.5391 48.9701 24.5391H44.8801"
         fill="#D1D5D9"
@@ -91,9 +100,16 @@ export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ()
   );
 };
 
-export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="53" height="56" viewBox="0 0 53 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${checkUndefinedClassName(className)}`}
+      width="53"
+      height="56"
+      viewBox="0 0 53 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M41.5994 43.4275C48.9646 36.0623 48.2554 23.4118 40.0154 15.1718C31.7755 6.93184 19.125 6.22271 11.7597 13.5879C4.39452 20.9531 5.10365 33.6037 13.3436 41.8436C21.5836 50.0836 34.2341 50.7928 41.5994 43.4275Z"
         stroke="#D1D5D9"
@@ -149,37 +165,13 @@ export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> 
 };
 
 export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
-  return (
-    <svg
-      className={`${className}`}
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M25.6666 12.9268V14.0001C25.6651 16.516 24.8505 18.9639 23.3441 20.9789C21.8378 22.9939 19.7204 24.468 17.3078 25.1813C14.8953 25.8947 12.3167 25.809 9.9568 24.9371C7.59688 24.0653 5.58201 22.4539 4.21271 20.3434C2.8434 18.2328 2.19301 15.7362 2.35854 13.2258C2.52407 10.7155 3.49666 8.32584 5.13124 6.41338C6.76583 4.50092 8.97483 3.16807 11.4288 2.61363C13.8828 2.05919 16.4502 2.31285 18.7483 3.33679"
-        stroke="#3AAF86"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M25.6667 4.66675L14 16.3451L10.5 12.8451"
-        stroke="#3AAF86"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+  return <CheckCircle className={`${checkUndefinedClassName(className)}`} />;
 };
 
-export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = (className) => {
+export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className={`${className}`}
+      className={`${checkUndefinedClassName(className)}`}
       width="28"
       height="28"
       viewBox="0 0 28 28"
@@ -205,9 +197,16 @@ export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = (classNa
   );
 };
 
-export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${checkUndefinedClassName(className)}`}
+      width="19"
+      height="21"
+      viewBox="0 0 19 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M10.5712 19.2247C13.032 19.2247 14.2417 19.2247 16.7025 19.2247C16.7951 19.2211 17.255 19.2065 17.6188 18.8056C17.8522 18.5468 17.9998 18.1896 17.9998 17.7923V5.97038L13.7201 1H6.09075C5.3769 1 4.79346 1.64151 4.79346 2.42882C4.79346 5.01673 4.79346 4.62506 4.79346 7.21297"
         stroke="#3B8CC5"
