@@ -1,8 +1,16 @@
 import React, { SVGProps } from "react";
+import { CheckCircle } from "react-feather";
 
-export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="52" height="59" viewBox="0 0 52 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${className ? className : ""}`}
+      width="52"
+      height="59"
+      viewBox="0 0 52 59"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M44.8801 17.0791H48.9701C50.0301 17.0791 50.9001 17.9491 50.9001 19.0091V22.6091C50.9001 23.6691 50.0301 24.5391 48.9701 24.5391H44.8801"
         fill="#D1D5D9"
@@ -91,9 +99,16 @@ export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ()
   );
 };
 
-export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="53" height="56" viewBox="0 0 53 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${className ? className : ""}`}
+      width="53"
+      height="56"
+      viewBox="0 0 53 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M41.5994 43.4275C48.9646 36.0623 48.2554 23.4118 40.0154 15.1718C31.7755 6.93184 19.125 6.22271 11.7597 13.5879C4.39452 20.9531 5.10365 33.6037 13.3436 41.8436C21.5836 50.0836 34.2341 50.7928 41.5994 43.4275Z"
         stroke="#D1D5D9"
@@ -148,26 +163,31 @@ export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> 
   );
 };
 
-export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+  return <CheckCircle className={`${className ? className : ""}`} />;
+};
+
+export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
     <svg
-      className="mx-auto mt-10"
-      width="56"
-      height="56"
-      viewBox="0 0 56 56"
+      className={`${className ? className : ""}`}
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M51.3337 25.8533V28C51.3308 33.0317 49.7015 37.9276 46.6888 41.9576C43.676 45.9876 39.4413 48.9358 34.6161 50.3625C29.791 51.7891 24.6339 51.6178 19.9141 49.874C15.1942 48.1303 11.1645 44.9076 8.4259 40.6865C5.68728 36.4654 4.38651 31.4722 4.71757 26.4514C5.04864 21.4307 6.99381 16.6514 10.263 12.8265C13.5321 9.00159 17.9502 6.3359 22.8581 5.22702C27.766 4.11813 32.9009 4.62546 37.497 6.67334"
-        stroke="#3AAF86"
+        d="M25.9302 11.6216L26.0721 12.6855C26.4034 15.1794 25.9196 17.7136 24.6929 19.9101C23.4662 22.1066 21.5623 23.8477 19.2652 24.8738C16.9681 25.8999 14.4009 26.1559 11.9464 25.6037C9.49196 25.0516 7.28172 23.7208 5.64537 21.8098C4.00901 19.8989 3.03421 17.5102 2.86636 15C2.6985 12.4897 3.34657 9.9925 4.71393 7.8807C6.08128 5.76889 8.09465 4.15566 10.4538 3.28161C12.8129 2.40756 15.3913 2.31951 17.8046 3.0306"
+        stroke="#E62617"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+      <path d="M19.6 9.80005L11.2 18.2" stroke="#E62617" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       <path
-        d="M51.3333 9.33301L28 32.6897L21 25.6897"
-        stroke="#3AAF86"
+        d="M11.2 9.80009L19.6 18.2001"
+        stroke="#E62617"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -176,9 +196,15 @@ export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = () => 
   );
 };
 
-export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = () => {
+export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
   return (
-    <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={`${className ? className : ""}`}
+      height="21"
+      viewBox="0 0 19 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M10.5712 19.2247C13.032 19.2247 14.2417 19.2247 16.7025 19.2247C16.7951 19.2211 17.255 19.2065 17.6188 18.8056C17.8522 18.5468 17.9998 18.1896 17.9998 17.7923V5.97038L13.7201 1H6.09075C5.3769 1 4.79346 1.64151 4.79346 2.42882C4.79346 5.01673 4.79346 4.62506 4.79346 7.21297"
         stroke="#3B8CC5"

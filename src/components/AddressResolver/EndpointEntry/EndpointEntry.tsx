@@ -153,13 +153,15 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
     >
       <div className="flex flex-col lg:flex-row">
         <div
-          className={`flex-col text-2xl leading-3 -mt-7 ml-52 text-cloud-300 lg:m-0 lg:mr-3.5 ${
-            !isEditable ? "flex-1 visible lg:invisible lg:group-hover:visible" : "flex invisible"
+          className={`flex text-lg leading-3 -mt-5 mb-7 ml-3 text-cerulean-200 lg:flex-col lg:m-0 lg:mr-3.5 ${
+            !isEditable ? "visible lg:invisible lg:group-hover:visible" : "invisible"
           }`}
         >
-          <i className="fas fa-sort-up leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryUp} />
-          <br />
-          <i className="fas fa-sort-down leading-3 cursor-pointer hover:text-cloud-900" onClick={onMoveEntryDown} />
+          <i className="fas fa-chevron-up leading-3 cursor-pointer hover:text-cerulean" onClick={onMoveEntryUp} />
+          <i
+            className="fas fa-chevron-down ml-4 leading-3 cursor-pointer lg:m-0 lg:mt-2 hover:text-cerulean"
+            onClick={onMoveEntryDown}
+          />
         </div>
 
         <div className="flex flex-col px-3 lg:flex-row lg:w-1/12 lg:px-0 lg:pt-0">

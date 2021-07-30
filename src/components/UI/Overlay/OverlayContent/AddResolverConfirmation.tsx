@@ -9,7 +9,9 @@ export const AddResolverConfirmation: FunctionComponent = () => {
   return (
     <div className="relative bg-white rounded-xl text-center w-80 h-64">
       <div className="flex flex-col">
-        <IconSuccess />
+        <div className="self-center mt-10">
+          <IconSuccess className="text-emerald h-14 w-14" />
+        </div>
         <h3 className="text-cloud-900 text-xl mt-5">Success</h3>
         <p className="mt-3 text-cloud-900">Address successfully added</p>
         <Button

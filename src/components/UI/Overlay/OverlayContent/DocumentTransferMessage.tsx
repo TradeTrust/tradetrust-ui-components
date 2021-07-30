@@ -27,8 +27,8 @@ const ButtonClose: FunctionComponent = () => {
   };
 
   return (
-    <Button className="bg-tangerine text-white hover:bg-tangerine-600" onClick={handleCloseOverlay}>
-      Close
+    <Button className="bg-cerulean rounded-xl text-white px-3 py-2 hover:bg-cerulean-300" onClick={handleCloseOverlay}>
+      Dismiss
     </Button>
   );
 };
@@ -36,7 +36,7 @@ const ButtonClose: FunctionComponent = () => {
 const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
     <LinkButton
-      className="bg-tangerine text-white hover:bg-tangerine-600"
+      className="bg-cerulean rounded-xl text-white hover:bg-cerulean-300"
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
       target="_blank"
     >
@@ -54,7 +54,7 @@ const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
   };
   return (
     <Button
-      className="bg-tangerine text-white hover:bg-tangerine-600"
+      className="bg-cerulean rounded-xl text-white hover:bg-cerulean-300"
       onClick={onClick}
       data-testid={"confirmActionBtn"}
     >
@@ -98,7 +98,7 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
     <OverlayContent className="max-w-md" {...props}>
       <div className="flex-1 mb-4">{children}</div>
       <div className="flex mx-0">
-        <div className="col-auto ml-auto">{documentTransferButton()}</div>
+        <div className="flex w-full col-auto justify-center">{documentTransferButton()}</div>
       </div>
     </OverlayContent>
   );
@@ -114,20 +114,20 @@ interface MessageProps {
 export const MessageNoMetamask: FunctionComponent = () => {
   return (
     <>
-      <p>Oops! It seems like you have not installed the Metamask extension.</p>
-      <p>You would need to install it before proceeding.</p>
+      <p className="mt-3">Oops! It seems like you have not installed the Metamask extension.</p>
+      <p className="mt-3">You would need to install it before proceeding.</p>
     </>
   );
 };
 
 export const MessageNoManageAccess: FunctionComponent = () => {
-  return <p>Oops! It seems like you do not have access to manage assets.</p>;
+  return <p className="mt-3">Oops! It seems like you do not have access to manage assets.</p>;
 };
 
 export const MessageNoUserAuthorization: FunctionComponent = () => {
   return (
     <>
-      <p>Oops! It seems like you did not authorize to use Metamask extension.</p>
+      <p className="mt-3">Oops! It seems like you did not authorize to use Metamask extension.</p>
     </>
   );
 };
@@ -135,23 +135,23 @@ export const MessageNoUserAuthorization: FunctionComponent = () => {
 export const MessageTransactionError: FunctionComponent<MessageProps> = ({ error }) => {
   return (
     <>
-      <p>Oops! It seems like there&apos;s a failed transaction.</p>
-      <p>{error}</p>
-      <p>Please try again.</p>
+      <p className="mt-3">Oops! It seems like there&apos;s a failed transaction.</p>
+      <p className="mt-3">{error}</p>
+      <p className="mt-3">Please try again.</p>
     </>
   );
 };
 
 export const MessageSurrenderSuccess: FunctionComponent = () => {
-  return <p>This Bill of Lading has been surrendered, pending acceptance of issuer.</p>;
+  return <p className="mt-3">This Bill of Lading has been surrendered, pending acceptance of issuer.</p>;
 };
 
 export const AcceptSurrender: FunctionComponent = () => {
-  return <p>Surrender for this Bill of Lading has been accepted.</p>;
+  return <p className="mt-3">Surrender for this Bill of Lading has been accepted.</p>;
 };
 
 export const RejectSurrender: FunctionComponent = () => {
-  return <p>Surrender for this Bill of Lading has been rejected.</p>;
+  return <p className="mt-3">Surrender for this Bill of Lading has been rejected.</p>;
 };
 
 export const MessageRejectSurrenderConfirmation: FunctionComponent<MessageProps> = ({
@@ -160,9 +160,9 @@ export const MessageRejectSurrenderConfirmation: FunctionComponent<MessageProps>
 }) => {
   return (
     <>
-      <h6>Restore document to Owner:</h6>
+      <h6 className="mt-3">Restore document to Owner:</h6>
       {beneficiaryAddress && <MessageAddressResolver address={beneficiaryAddress} />}
-      <h6>and to Holder:</h6>
+      <h6 className="mt-3">and to Holder:</h6>
       {holderAddress && <MessageAddressResolver address={holderAddress} />}
     </>
   );
@@ -171,7 +171,7 @@ export const MessageRejectSurrenderConfirmation: FunctionComponent<MessageProps>
 export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({ address }) => {
   return (
     <>
-      <h6>Current Owner</h6>
+      <h6 className="mt-3">Current Owner</h6>
       {address && <MessageAddressResolver address={address} />}
     </>
   );
@@ -180,14 +180,14 @@ export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({ add
 export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({ address }) => {
   return (
     <>
-      <h6>Current Holder</h6>
+      <h6 className="mt-3">Current Holder</h6>
       {address && <MessageAddressResolver address={address} />}
     </>
   );
 };
 
 export const MessageNominateBeneficiaryHolderSuccess: FunctionComponent = () => {
-  return <p>Document has been nominated successfully. Please notify holder to execute transfer.</p>;
+  return <p className="mt-3">Document has been nominated successfully. Please notify holder to execute transfer.</p>;
 };
 
 export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
@@ -196,10 +196,10 @@ export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
 }) => {
   return (
     <>
-      <h6>Current Owner</h6>
+      <h6 className="mt-3">Current Owner</h6>
       {beneficiaryAddress && <MessageAddressResolver address={beneficiaryAddress} />}
       <div />
-      <h6>Current Holder</h6>
+      <h6 className="mt-3">Current Holder</h6>
       {holderAddress && <MessageAddressResolver address={holderAddress} />}
     </>
   );
