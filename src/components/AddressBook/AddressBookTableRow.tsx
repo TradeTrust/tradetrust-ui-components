@@ -57,7 +57,7 @@ interface AddressBookTableRowEmptyProps {
 
 export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({ message }) => {
   return (
-    <div className="bg-cerulean-50 py-3 text-center" data-testid="table-row">
+    <div className="bg-cerulean-50 py-3 text-center">
       <p>{message} </p>
     </div>
   );
