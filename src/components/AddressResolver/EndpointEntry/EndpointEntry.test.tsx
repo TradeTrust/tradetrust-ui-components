@@ -49,7 +49,7 @@ describe("endpointEntry", () => {
       <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
     );
     enterInfo();
-    fireEvent.click(screen.getByTestId("save-button"));
+    fireEvent.click(screen.getByText("Save"));
     await waitFor(() => expect(mockGetFeatures).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(mockOnUpdateEndpoint).toHaveBeenCalledTimes(1));
     expect(mockGetFeatures).toHaveBeenCalledWith("https://example.com", "x-api-key", "KEY");
@@ -69,7 +69,7 @@ describe("endpointEntry", () => {
       <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
     );
     enterInfo();
-    fireEvent.click(screen.getByTestId("save-button"));
+    fireEvent.click(screen.getByText("Save"));
     await waitFor(() => expect(mockGetFeatures).toHaveBeenCalledTimes(1));
     expect(mockGetFeatures).toHaveBeenCalledWith("https://example.com", "x-api-key", "KEY");
     const errorMessages = await screen.findAllByText("Api has gone home");
