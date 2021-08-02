@@ -20,7 +20,6 @@ export const AddResolverConfirmation: FunctionComponent = () => {
             setOverlayVisible(false);
             showOverlay(undefined);
           }}
-          data-testid="got-it-button"
         >
           Okay, got it
         </Button>

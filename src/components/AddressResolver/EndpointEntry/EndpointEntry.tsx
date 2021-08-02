@@ -150,7 +150,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 lg:even:bg-cerulean-50 lg:bg-none lg:w-full lg:h-auto lg:rounded-none lg:shadow-none lg:mt-0 lg:p-4 group ${
         isEditable ? "h-130" : "h-auto"
       }`}
-      data-testid="table-row"
+      data-testid="endpoint-entry-row"
     >
       <div className="flex flex-col lg:flex-row">
         <div
@@ -161,12 +161,12 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           <i
             className="fas fa-chevron-up leading-3 cursor-pointer hover:text-cerulean"
             onClick={onMoveEntryUp}
-            data-testid="table-row-move-up"
+            data-testid="endpoint-entry-move-up"
           />
           <i
             className="fas fa-chevron-down ml-4 leading-3 cursor-pointer lg:m-0 lg:mt-2 hover:text-cerulean"
             onClick={onMoveEntryDown}
-            data-testid="table-row-move-down"
+            data-testid="endpoint-entry-move-down"
           />
         </div>
 
@@ -174,7 +174,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           <div className="inline-block text-cloud-900 text-xl font-bold lg:hidden">Order</div>
           <div
             className={`inline-block w-auto ${isEditable ? "lg:flex lg:items-start lg:mt-1" : ""}`}
-            data-testid="table-row-id"
+            data-testid="endpoint-entry-id"
           >
             {orderNumber}
           </div>
@@ -261,7 +261,6 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
           <Button
             className="flex bg-rose w-20 h-9 rounded-xl shadow-none justify-center items-center"
             onClick={removeEndpoint}
-            data-testid="delete-button"
           >
             <h5>Delete</h5>
           </Button>
@@ -271,7 +270,6 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <Button
               className="flex bg-cerulean w-20 h-9 rounded-xl shadow-none justify-center items-center ml-10"
               onClick={onSave}
-              data-testid="save-button"
             >
               <h5>Save</h5>
             </Button>
