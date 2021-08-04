@@ -38,6 +38,8 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build
+      - name: Cypress run
+        run: npm run e2e
       - name: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

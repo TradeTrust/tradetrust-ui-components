@@ -9,7 +9,6 @@
     "plugin:react/recommended",
     "plugin:jest/all",
     "plugin:prettier/recommended",
-    "plugin:mdx/recommended",
     "prettier"
   ],
   "plugins": ["react-hooks"],
@@ -43,6 +42,7 @@
     "@typescript-eslint/no-empty-function": "off",
     "jest/no-hooks": "off"
   },
+  "ignorePatterns": ["**/*.spec.ts"],
   "overrides": [
     {
       "files": ["*.md"],
@@ -54,10 +54,6 @@
           }
         ]
       }
-    },
-    {
-      "files": ["*.mdx"],
-      "extends": ["plugin:mdx/overrides"]
     }
   ]
 }

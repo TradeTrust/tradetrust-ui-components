@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "@testing-library/cypress", "cypress-real-events"]
+  },
+  "include": ["**/*.ts"]
+}
+// https://docs.cypress.io/guides/tooling/typescript-support#Configure-tsconfig-json
