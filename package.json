@@ -21,7 +21,7 @@
     "build:css": "postcss src/tailwind.css -o build/styles.css",
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
-    "e2e": "start-server-and-test storybook:integration http://localhost:9009 integration:ci",
+    "e2e": "start-server-and-test storybook:ci http://localhost:9009 integration:ci",
     "integration": "cypress open",
     "integration:ci": "cypress run",
     "lint": "eslint . --ext .ts,.tsx,.mdx --max-warnings 0",
@@ -34,7 +34,7 @@
     "storybook": "sleep 2 && start-storybook -p 9009",
     "storybook:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css",
     "storybook:build": "npm run storybook:css && sleep 2 && build-storybook -o docs",
-    "storybook:integration": "start-storybook -s build -p 9009 --ci",
+    "storybook:ci": "npm run storybook:css && sleep 2 && start-storybook -p 9009 --ci",
     "test": "jest --ci",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
