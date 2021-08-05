@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+import { ColorPalette, ColorItem } from "@storybook/addon-docs";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "./../tailwind.js";
 const fullConfig = resolveConfig(tailwindConfig);

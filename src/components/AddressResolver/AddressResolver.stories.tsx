@@ -11,14 +11,14 @@ export const DefaultAddressResolver = (): ReactElement => {
     "ADDRESS_THIRD_PARTY_ENDPOINTS",
     JSON.stringify([
       {
-        name: "demo 123",
+        name: "Demo 1",
         endpoint: "https://demo-resolver.tradetrust.io",
         apiHeader: "x-api-key",
         apiKey: "DEMO",
         path: { addressResolution: "/identifier", entityLookup: "/search" },
       },
       {
-        name: "demo 123",
+        name: "Demo 2",
         endpoint: "https://demo-resolver2.tradetrust.io",
         apiHeader: "x-api-key",
         apiKey: "DEMO",
