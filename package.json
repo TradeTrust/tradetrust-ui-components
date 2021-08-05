@@ -22,7 +22,7 @@
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
     "integration": "testcafe chrome integration/tests/**/*.spec.ts",
-    "integration:ci": "start-server-and-test storybook:integration http://localhost:9009 integration:headless",
+    "integration:ci": "start-server-and-test storybook:ci http://localhost:9009 integration:headless",
     "integration:single": "testcafe chrome -L",
     "integration:headless": "testcafe -c 3 chrome:headless integration/tests/**/*.spec.ts",
     "lint": "eslint . --ext .ts,.tsx,.mdx --max-warnings 0",
@@ -34,8 +34,8 @@
     "start:css": "postcss src/tailwind.css -o .storybook/styles.css --watch",
     "storybook": "sleep 2 && start-storybook -p 9009",
     "storybook:build": "npm run storybook:css && sleep 2 && build-storybook -o docs",
+    "storybook:ci": "npm run storybook:css && sleep 2 && start-storybook -p 9009 --ci",
     "storybook:css": "NODE_ENV=production postcss src/tailwind.css -o .storybook/styles.css",
-    "storybook:integration": "start-storybook -s build -p 9009 --ci",
     "test": "jest --ci",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch"
