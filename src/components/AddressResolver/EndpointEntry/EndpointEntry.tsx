@@ -102,12 +102,12 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       return false;
     }
 
-    if (isEmpty(apiHeaderTrimmed) && !isEmpty(apiKeyTrimmed)) {
+    if (isEmpty(apiHeaderTrimmed)) {
       setInputErrorMessageApiHeader("API Header must not be blank.");
       return false;
     }
 
-    if (!isEmpty(apiHeaderTrimmed) && isEmpty(apiKeyTrimmed)) {
+    if (isEmpty(apiKeyTrimmed)) {
       setInputErrorMessageApiKey("API Key must not be blank.");
       return false;
     }
@@ -150,7 +150,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       className={`flex flex-col bg-white rounded-xl shadow-lg w-80 mt-6 pt-12 pb-8 lg:even:bg-cerulean-50 lg:bg-none lg:w-full lg:h-auto lg:rounded-none lg:shadow-none lg:mt-0 lg:p-4 group ${
         isEditable ? "h-130" : "h-auto"
       }`}
-      data-testid="endpoint-entry-row"
+      data-testid={`endpoint-entry-row-${orderNumber}`}
     >
       <div className="flex flex-col lg:flex-row">
         <div
