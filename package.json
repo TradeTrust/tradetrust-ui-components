@@ -16,7 +16,7 @@
     "src"
   ],
   "scripts": {
-    "build": "NODE_ENV=production CI=false npm-run-all build:*",
+    "build": "NODE_ENV=production CI=false run-s build:*",
     "build:tw-config": "cpy 'src/tailwind.js' build",
     "build:css": "postcss src/tailwind.css -o build/styles.css",
     "build:js": "webpack --mode production",
@@ -28,9 +28,9 @@
     "lint": "eslint . --ext .ts,.tsx,.mdx --max-warnings 0",
     "lint:type": "npx --no-install tsc --noEmit --sourceMap false",
     "lint:fix": "npm run lint -- --fix",
-    "prep": "npm-run-all -s lint:fix lint:type test build",
+    "prep": "run-s lint:fix lint:type test build integration:ci",
     "semantic-release": "semantic-release",
-    "start": "npm-run-all -p start:css storybook",
+    "start": "run-p start:css storybook",
     "start:css": "postcss src/tailwind.css -o .storybook/styles.css --watch",
     "storybook": "sleep 2 && start-storybook -p 9009",
     "storybook:build": "npm run storybook:css && sleep 2 && build-storybook -o docs",

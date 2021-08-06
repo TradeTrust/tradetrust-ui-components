@@ -15,7 +15,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input: FunctionComponent<InputProps> = ({ className, hasError, errorMessage, ...props }) => {
   return (
-    <div className="h-16 w-full">
+    <div>
       <InputStyled
         className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-900 focus:outline-none ${
           className ? className : ""
