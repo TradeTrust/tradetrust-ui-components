@@ -82,57 +82,67 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="w-full">
-        <div className="hidden text-xl font-bold text-cloud-900 ml-7 p-4 lg:flex">
-          <h4 className="w-1/12">Order</h4>
-          <h4 className="w-2/12">Name</h4>
-          <h4 className="w-4/12">Endpoint</h4>
-          <h4 className="w-2/12">API Header</h4>
-          <h4 className="w-2/12">API Key</h4>
+    <>
+      <div className="p-4 hidden lg:flex">
+        <div className="px-2 w-8" />
+        <div className="px-2 w-1/12">
+          <h4 className="text-xl font-bold text-cloud-900">Order</h4>
         </div>
-        {thirdPartyAPIEndpoints.map((item, index) => {
-          const orderNumber = index + 1;
-
-          return (
-            <EndpointEntry
-              key={item.endpoint}
-              orderNumber={orderNumber}
-              isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
-              removeEndpoint={() => {
-                onRemoveEndpoint(item.name, index);
-              }}
-              onMoveEntryUp={() => {
-                moveEntryUp(index);
-              }}
-              onMoveEntryDown={() => {
-                moveEntryDown(index);
-              }}
-              onUpdateEndpoint={onUpdateEndpoint(index)}
-              api={thirdPartyAPIEndpoints[index].endpoint}
-              name={thirdPartyAPIEndpoints[index].name}
-              apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
-              apiKey={thirdPartyAPIEndpoints[index].apiKey}
-              canEdit={false}
-            />
-          );
-        })}
-        {isNewEndpoint && (
-          <EndpointEntry
-            orderNumber={thirdPartyAPIEndpoints.length + 1}
-            isEndpointUrlExists={isEndpointUrlExists}
-            removeEndpoint={() => {
-              setNewEndpoint(false);
-            }}
-            onUpdateEndpoint={addNewEndpoint}
-            api=""
-            name=""
-            apiHeader=""
-            apiKey=""
-            canEdit={true}
-          />
-        )}
+        <div className="px-2 w-2/12">
+          <h4 className="text-xl font-bold text-cloud-900">Name</h4>
+        </div>
+        <div className="px-2 w-3/12">
+          <h4 className="text-xl font-bold text-cloud-900">Endpoint</h4>
+        </div>
+        <div className="px-2 w-2/12">
+          <h4 className="text-xl font-bold text-cloud-900">API Header</h4>
+        </div>
+        <div className="px-2 w-2/12">
+          <h4 className="text-xl font-bold text-cloud-900">API Key</h4>
+        </div>
+        <div className="px-2 w-auto ml-auto" />
       </div>
+      {thirdPartyAPIEndpoints.map((item, index) => {
+        const orderNumber = index + 1;
+
+        return (
+          <EndpointEntry
+            key={item.endpoint}
+            orderNumber={orderNumber}
+            isEndpointUrlExists={isCurrentEndpointUrlExists(item.endpoint)}
+            removeEndpoint={() => {
+              onRemoveEndpoint(item.name, index);
+            }}
+            onMoveEntryUp={() => {
+              moveEntryUp(index);
+            }}
+            onMoveEntryDown={() => {
+              moveEntryDown(index);
+            }}
+            onUpdateEndpoint={onUpdateEndpoint(index)}
+            api={thirdPartyAPIEndpoints[index].endpoint}
+            name={thirdPartyAPIEndpoints[index].name}
+            apiHeader={thirdPartyAPIEndpoints[index].apiHeader}
+            apiKey={thirdPartyAPIEndpoints[index].apiKey}
+            canEdit={false}
+          />
+        );
+      })}
+      {isNewEndpoint && (
+        <EndpointEntry
+          orderNumber={thirdPartyAPIEndpoints.length + 1}
+          isEndpointUrlExists={isEndpointUrlExists}
+          removeEndpoint={() => {
+            setNewEndpoint(false);
+          }}
+          onUpdateEndpoint={addNewEndpoint}
+          api=""
+          name=""
+          apiHeader=""
+          apiKey=""
+          canEdit={true}
+        />
+      )}
       {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
         <div className="bg-white rounded-xl shadow-lg h-12 mt-6 lg:bg-cerulean-50 lg:rounded-none lg:shadow-none">
           <p className="flex text-cloud-900 h-full justify-center items-center">
@@ -140,6 +150,6 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
           </p>
         </div>
       )}
-    </div>
+    </>
   );
 };

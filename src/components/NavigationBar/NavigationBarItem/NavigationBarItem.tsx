@@ -87,6 +87,12 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
         { once: true }
       );
     }
+
+    return () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
   }, [isOpen]);
 
   return (
