@@ -4,7 +4,7 @@ import tw from "twin.macro";
 
 const InputStyled = styled.input`
   &::placeholder {
-    ${tw`text-cloud-300 text-base`}
+    ${tw`text-cloud-200 text-base`}
   }
 `;
 

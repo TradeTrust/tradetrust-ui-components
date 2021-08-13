@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FunctionComponent } from "react";
 import * as NavType from "./../type";
-import { LinkButton } from "./../../UI/Button";
+import { LinkButton, Size } from "./../../UI/Button";
 
 export const NavigationBarItem: FunctionComponent<{
   item: NavType.NavigationItem;
@@ -19,38 +19,25 @@ export const NavigationBarItem: FunctionComponent<{
 };
 
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
-  return (
-    <div
-      className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium ${
-        item.className ? item.className : ""
-      }`}
-    >
-      {item.customLink ? (
-        item.customLink
-      ) : (
-        <a href={item.path} className="inline-block py-2">
-          {item.label}
-        </a>
-      )}
-    </div>
-  );
+  return <>{item.customLink ? item.customLink : <a href={item.path}>{item.label}</a>}</>;
 };
 
 const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = ({ item }) => {
   return (
-    <div
-      className={`font-bold transition-color duration-200 ease-out rounded-xl border ${
-        item.className ? item.className : ""
-      }`}
-    >
+    <>
       {item.customLink ? (
         item.customLink
       ) : (
-        <LinkButton href={item.path} className={`p-2 rounded-xl shadow-none`} data-testid={item.id}>
+        <LinkButton
+          href={item.path}
+          className="text-white bg-cerulean hover:text-white hover:bg-cerulean-500"
+          data-testid={item.id}
+          size={Size.SM}
+        >
           {item.label}
         </LinkButton>
       )}
-    </div>
+    </>
   );
 };
 
@@ -58,19 +45,15 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
   const ButtonIcon = item.icon;
 
   return (
-    <div
-      className={`flex items-center text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out ${
-        item.className ? item.className : ""
-      }`}
-    >
+    <>
       {item.customLink ? (
         item.customLink
       ) : (
-        <a href={item.path} className={`inline-block p-2`} data-testid={item.id}>
+        <a href={item.path} data-testid={item.id}>
           <ButtonIcon className="stroke-current" />
         </a>
       )}
-    </div>
+    </>
   );
 };
 
@@ -98,12 +81,12 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
   return (
     <div className="relative">
       <div
-        className="text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out cursor-pointer flex items-center focus:outline-none outline-none"
+        className="cursor-pointer flex items-center focus:outline-none outline-none"
         onClick={() => {
           setIsOpen(true);
         }}
       >
-        <span className="py-2 font-medium">{item.label}</span>
+        <span className="py-2 hover:text-cerulean transition-colors duration-200 ease-out">{item.label}</span>
         <svg
           className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -121,13 +104,14 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
         </svg>
       </div>
       {isOpen && (
-        <div className={`w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full `}>
+        <div
+          className={`w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-bold`}
+        >
           <div className={`bg-white rounded-md lg:shadow-dropdown`}>
             {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
               return (
                 <div
                   key={index}
-                  className={`text-cloud-500 hover:text-cloud-900 transition-color duration-200 ease-out font-medium block`}
                   onClick={() => {
                     setIsOpen(false);
                   }}
@@ -135,7 +119,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                   {dropdownItem.customLink ? (
                     <div className="relative">{dropdownItem.customLink}</div>
                   ) : (
-                    <a key={index} className="block p-4" href={dropdownItem.path}>
+                    <a key={index} className="block px-4 py-3" href={dropdownItem.path}>
                       {dropdownItem.label}
                     </a>
                   )}

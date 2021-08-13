@@ -13,17 +13,6 @@ export interface NavigationBarProps {
 }
 
 export const NavigationBarStyled = styled.nav`
-  // try to avoid scoped styles here as much as possible
-  a {
-    font-size: 16px;
-  }
-
-  .dropdown {
-    a {
-      font-size: 14px;
-    }
-  }
-
   .navbar-toggler {
     .top-bar,
     .bottom-bar {
@@ -50,77 +39,76 @@ export const NavigationBarStyled = styled.nav`
   }
 `;
 
-export const stylesButtonCreateDocument = `inline-block bg-white text-cerulean border-cerulean-100 hover:bg-gray-50`;
-export const stylesButtonVerifyDocument = `inline-block bg-cerulean text-white border-cerulean hover:bg-cerulean-300 hover:border-cerulean-300`;
-
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   return (
     <NavigationBarStyled>
-      <div className={`container py-2`}>
-        <div className="relative flex items-center justify-between">
-          <div className="lg:hidden">
-            <button
-              className={`navbar-toggler flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
-              onClick={() => {
-                props.setToggleNavBar(!props.toggleNavBar);
-              }}
-            >
-              <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block top-bar" />
-              <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
-            </button>
-          </div>
-          <div
-            className="absolute lg:relative flex items-center w-full text-center left-0 right-0 mx-auto lg:mx-0"
-            style={{ maxWidth: "120px" }}
-          >
-            {props.logo}
-          </div>
-          <div className="hidden lg:block md:ml-12">
-            <div className="flex items-center">
-              {props.menuLeft.map((item, index) => {
-                return (
-                  <div key={index} className="lg:ml-6">
-                    <NavigationBarItem item={item} />
-                  </div>
-                );
-              })}
+      <div className="text-cloud-500 font-medium">
+        <div className={`container py-2`}>
+          <div className="relative flex items-center justify-between">
+            <div className="lg:hidden">
+              <button
+                className={`navbar-toggler flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
+                onClick={() => {
+                  props.setToggleNavBar(!props.toggleNavBar);
+                }}
+              >
+                <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block top-bar" />
+                <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
+              </button>
             </div>
-          </div>
-          <div className="hidden md:block lg:ml-auto">
-            {props.menuRight && (
+            <div
+              className="absolute lg:relative flex items-center w-full text-center left-0 right-0 mx-auto lg:mx-0"
+              style={{ maxWidth: "120px" }}
+            >
+              {props.logo}
+            </div>
+            <div className="hidden lg:block">
               <div className="flex items-center">
-                {props.menuRight.map((item, index) => {
+                {props.menuLeft.map((item, index) => {
                   return (
-                    <div key={index} className="md:ml-2 lg:ml-4">
+                    <div key={index} className="lg:ml-6">
                       <NavigationBarItem item={item} />
                     </div>
                   );
                 })}
               </div>
-            )}
+            </div>
+            <div className="hidden md:block lg:ml-auto">
+              {props.menuRight && (
+                <div className="flex items-center">
+                  {props.menuRight.map((item, index) => {
+                    return (
+                      <div key={index} className="md:ml-2 lg:ml-4">
+                        <NavigationBarItem item={item} />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      <div className={`lg:hidden`}>
-        <div
-          className={`container rounded-md bg-white overflow-auto transition-height ease-in-out duration-700 ${
-            props.toggleNavBar ? "max-h-screen" : "max-h-0"
-          }`}
-        >
-          {props.menuMobile.map((item, index) => {
-            if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
+        <div className={`lg:hidden`}>
+          <div
+            className={`container rounded-md bg-white overflow-auto transition-height ease-in-out duration-700 ${
+              props.toggleNavBar ? "max-h-screen" : "max-h-0"
+            }`}
+          >
+            {props.menuMobile.map((item, index) => {
+              if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
+                return (
+                  <div key={index} className="my-4 md:hidden">
+                    <NavigationBarItem item={item} />
+                  </div>
+                );
+              }
               return (
-                <div key={index} className="my-4 md:hidden">
+                <div key={index} className="my-4">
                   <NavigationBarItem item={item} />
                 </div>
               );
-            }
-            return (
-              <div key={index} className="my-4">
-                <NavigationBarItem item={item} />
-              </div>
-            );
-          })}
+            })}
+          </div>
         </div>
       </div>
     </NavigationBarStyled>
