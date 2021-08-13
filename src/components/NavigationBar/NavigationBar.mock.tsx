@@ -1,17 +1,12 @@
 import React from "react";
 import { Settings } from "react-feather";
 import { NavigationItem, NAVIGATION_ITEM_TYPE } from "./type";
-import { stylesButtonCreateDocument, stylesButtonVerifyDocument } from "./NavigationBar";
+import { Button, Size } from "./../UI/Button";
 
 export const MockLogo = (): React.ReactElement => {
   return (
     <a href="https://www.tradetrust.io/" className="inline-block mx-auto">
-      <img
-        data-testid="nav-logo-home"
-        className="img-fluid h-10"
-        src="https://www.tradetrust.io/static/images/tradetrust_logo.svg"
-        alt="TradeTrust"
-      />
+      <h4 className="text-gray-800">TradeTrust</h4>
     </a>
   );
 };
@@ -74,14 +69,26 @@ export const MockRightNavItems: NavigationItem[] = [
     id: "create-documents",
     label: "Create Doc",
     path: "https://creator.tradetrust.io/",
-    className: stylesButtonCreateDocument,
+    customLink: (
+      <a href="#">
+        <Button className="bg-white text-cerulean hover:bg-gray-50 border border-cloud-200" size={Size.SM}>
+          Create Doc
+        </Button>
+      </a>
+    ),
   },
   {
     schema: NAVIGATION_ITEM_TYPE.NavigationLabelButton,
     id: "verify",
     label: "Verify Doc",
     path: "/verify",
-    className: stylesButtonVerifyDocument,
+    customLink: (
+      <a href="#">
+        <Button className="bg-cerulean text-white hover:bg-cerulean-500" size={Size.SM}>
+          Verify Doc
+        </Button>
+      </a>
+    ),
   },
 ];
 

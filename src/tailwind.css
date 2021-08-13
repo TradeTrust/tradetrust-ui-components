@@ -19,6 +19,17 @@
   input[disabled] {
     @apply cursor-not-allowed;
   }
+
+  a {
+    @apply transition-colors;
+    @apply duration-200;
+    @apply ease-out;
+    @apply text-cloud-500;
+  }
+
+  a:hover {
+    @apply text-cerulean;
+  }
 }
 
 @tailwind components;
