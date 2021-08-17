@@ -10,7 +10,7 @@ export const AddressResolver: FunctionComponent = () => {
     <>
       <div className="flex lg:justify-end">
         <Button
-          className="bg-white text-cerulean rounded-xl shadow-lg hover:bg-gray-50"
+          className="bg-white text-cerulean hover:bg-gray-50"
           onClick={() => {
             setNewEndpoint(true);
           }}

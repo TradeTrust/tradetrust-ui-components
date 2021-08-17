@@ -19,32 +19,32 @@ interface GetSharedStylesButton {
 const getSharedStylesButton = (shared: GetSharedStylesButton): string => {
   const { padding } = shared;
 
-  return `transition-colors duration-200 ease-out cursor-pointer font-bold rounded-lg border border-transparent ${padding}`;
+  return `transition-colors duration-200 ease-out cursor-pointer font-bold border ${padding}`;
 };
 
-export enum Size {
-  SM = "py-1 px-2",
-  MD = "p-2",
-  L = "p-3",
+export enum ButtonSize {
+  SM = "py-1 px-2 rounded-xl",
+  MD = "p-2 rounded-xl",
+  LG = "py-3 px-4 rounded-xl",
 }
 
 export interface ButtonTradeTrust extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: Size;
+  size?: ButtonSize;
 }
 
 interface AnchorTradeTrust extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  size?: Size;
+  size?: ButtonSize;
 }
 
 interface LabelTradeTrust extends LabelHTMLAttributes<HTMLLabelElement> {
-  size?: Size;
+  size?: ButtonSize;
 }
 
 export const Button: FunctionComponent<ButtonTradeTrust> = ({
   className,
   children,
   disabled,
-  size = Size.MD,
+  size = ButtonSize.MD,
   ...props
 }) => {
   const shared = getSharedStylesButton({ padding: size });
@@ -67,7 +67,7 @@ export const ButtonIcon: FunctionComponent<ButtonTradeTrust> = ({
   className,
   children,
   disabled,
-  size = Size.MD,
+  size = ButtonSize.MD,
   ...props
 }) => {
   const shared = getSharedStylesButton({ padding: size });
@@ -86,7 +86,12 @@ export const ButtonIcon: FunctionComponent<ButtonTradeTrust> = ({
   );
 };
 
-export const LinkButton: FunctionComponent<AnchorTradeTrust> = ({ className, children, size = Size.MD, ...props }) => {
+export const LinkButton: FunctionComponent<AnchorTradeTrust> = ({
+  className,
+  children,
+  size = ButtonSize.MD,
+  ...props
+}) => {
   const shared = getSharedStylesButton({ padding: size });
 
   return (
@@ -96,7 +101,12 @@ export const LinkButton: FunctionComponent<AnchorTradeTrust> = ({ className, chi
   );
 };
 
-export const LabelButton: FunctionComponent<LabelTradeTrust> = ({ className, children, size = Size.MD, ...props }) => {
+export const LabelButton: FunctionComponent<LabelTradeTrust> = ({
+  className,
+  children,
+  size = ButtonSize.MD,
+  ...props
+}) => {
   const shared = getSharedStylesButton({ padding: size });
 
   return (

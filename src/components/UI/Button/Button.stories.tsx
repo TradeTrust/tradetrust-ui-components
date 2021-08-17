@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, ButtonIcon } from "./Button";
+import { Button, ButtonIcon, ButtonSize } from "./Button";
 import { Edit3, X, Printer, Book } from "react-feather";
 
 export default {
@@ -9,6 +9,18 @@ export default {
   parameters: {
     componentSubtitle: "Button, ButtonIcon.",
   },
+};
+
+export const LG = (): React.ReactNode => {
+  return <Button size={ButtonSize.LG}>Large</Button>;
+};
+
+export const MD = (): React.ReactNode => {
+  return <Button size={ButtonSize.MD}>Medium</Button>;
+};
+
+export const SM = (): React.ReactNode => {
+  return <Button size={ButtonSize.SM}>Small</Button>;
 };
 
 export const SolidDefault = (): React.ReactNode => {
