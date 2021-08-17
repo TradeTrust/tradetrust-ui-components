@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FunctionComponent } from "react";
 import * as NavType from "./../type";
-import { LinkButton, Size } from "./../../UI/Button";
+import { LinkButton, ButtonSize } from "./../../UI/Button";
 
 export const NavigationBarItem: FunctionComponent<{
   item: NavType.NavigationItem;
@@ -32,7 +32,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
           href={item.path}
           className="text-white bg-cerulean hover:text-white hover:bg-cerulean-500"
           data-testid={item.id}
-          size={Size.SM}
+          size={ButtonSize.SM}
         >
           {item.label}
         </LinkButton>

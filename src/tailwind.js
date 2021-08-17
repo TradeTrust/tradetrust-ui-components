@@ -6,17 +6,21 @@ module.exports = {
       center: true,
       padding: theme("spacing.4"),
     }),
+    borderColor: (theme) => ({
+      ...theme("colors"),
+      DEFAULT: theme("colors.cloud.100", "currentColor"),
+    }),
     extend: {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       height: {
-        '120': '30rem',
-        '160': '40rem',
+        120: "30rem",
+        160: "40rem",
       },
       minHeight: {
-        '18': '4.5rem',
+        18: "4.5rem",
       },
       opacity: {
         0: "0",
@@ -99,7 +103,7 @@ module.exports = {
       textColor: ["active"],
       borderRadius: ["active"],
       visibility: ["group-hover"],
-    }
+    },
   },
   plugins: [
     plugin(function ({ addBase, config }) {

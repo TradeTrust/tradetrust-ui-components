@@ -1,7 +1,7 @@
 import React from "react";
 import { Settings } from "react-feather";
 import { NavigationItem, NAVIGATION_ITEM_TYPE } from "./type";
-import { Button, Size } from "./../UI/Button";
+import { Button, ButtonSize } from "./../UI/Button";
 
 export const MockLogo = (): React.ReactElement => {
   return (
@@ -71,7 +71,7 @@ export const MockRightNavItems: NavigationItem[] = [
     path: "https://creator.tradetrust.io/",
     customLink: (
       <a href="#">
-        <Button className="bg-white text-cerulean hover:bg-gray-50 border border-cloud-200" size={Size.SM}>
+        <Button className="bg-white text-cerulean hover:bg-gray-50 border border-cloud-200" size={ButtonSize.SM}>
           Create Doc
         </Button>
       </a>
@@ -84,7 +84,7 @@ export const MockRightNavItems: NavigationItem[] = [
     path: "/verify",
     customLink: (
       <a href="#">
-        <Button className="bg-cerulean text-white hover:bg-cerulean-500" size={Size.SM}>
+        <Button className="bg-cerulean text-white hover:bg-cerulean-500" size={ButtonSize.SM}>
           Verify Doc
         </Button>
       </a>
