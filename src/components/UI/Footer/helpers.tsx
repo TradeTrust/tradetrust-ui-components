@@ -7,7 +7,7 @@ export const defaultRender = ({ label, to }: FooterColumnItemProps): React.React
 
 export const Bottom = ({ copyright }: { copyright: string }): React.ReactElement => {
   return (
-    <div className={"flex justify-center items-center pt-5 pb-7"}>
+    <div className={"flex justify-center items-center pt-6"}>
       <p className={"text-cloud-500 text-sm"}>{copyright}</p>
     </div>
   );
