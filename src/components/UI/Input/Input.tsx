@@ -1,12 +1,4 @@
-import styled from "@emotion/styled";
 import React, { FunctionComponent, InputHTMLAttributes } from "react";
-import tw from "twin.macro";
-
-const InputStyled = styled.input`
-  &::placeholder {
-    ${tw`text-cloud-200 text-base`}
-  }
-`;
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
@@ -16,8 +8,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input: FunctionComponent<InputProps> = ({ className, hasError, errorMessage, ...props }) => {
   return (
     <div>
-      <InputStyled
-        className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-900 focus:outline-none ${
+      <input
+        className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-900 focus:outline-none placeholder-cloud-200 ${
           className ? className : ""
         } ${hasError || errorMessage ? "border-rose" : "border-cloud-200"}`}
         {...props}
