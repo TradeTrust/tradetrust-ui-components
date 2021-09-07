@@ -64,10 +64,12 @@ module.exports = {
         lemon: {
           DEFAULT: "#FDC53F",
           700: "#E3A002",
+          100: "#fff7e2",
         },
         rose: {
           DEFAULT: "#E62617",
           400: "#ff5268",
+          100: "#ffeeed",
         },
         emerald: {
           DEFAULT: "#3AAF86",
