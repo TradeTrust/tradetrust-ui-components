@@ -4,6 +4,7 @@ import { ChevronDown } from "react-feather";
 export interface DropdownProps {
   dropdownButtonText: string;
   children: React.ReactNode;
+  classNameRoot?: string;
   className?: string;
   alignRight?: boolean;
   classNameShared?: string;
@@ -12,6 +13,7 @@ export interface DropdownProps {
 export const Dropdown: FunctionComponent<DropdownProps> = ({
   dropdownButtonText,
   children,
+  classNameRoot,
   className,
   alignRight,
   classNameShared,
@@ -23,7 +25,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   const addonStylesItem = alignRight ? "right-0" : "";
 
   return (
-    <div className="relative">
+    <div className={`relative ${classNameRoot}`}>
       <button
         {...props}
         onClick={(event) => {
