@@ -26,7 +26,10 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
     <div className="relative">
       <button
         {...props}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={(event) => {
+          event.preventDefault();
+          setIsOpen(!isOpen);
+        }}
         className={`relative z-10 cursor-pointer focus:outline-none flex items-center justify-between ${className} ${addonStylesShared} ${addonStylesButton}`}
       >
         <span className="truncate">{dropdownButtonText}</span>
