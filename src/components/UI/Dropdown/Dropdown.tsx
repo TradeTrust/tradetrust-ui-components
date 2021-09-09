@@ -25,7 +25,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   const addonStylesItem = alignRight ? "right-0" : "";
 
   return (
-    <div className={`relative ${classNameRoot}`}>
+    <div className={`relative${classNameRoot ? ` ${classNameRoot}` : ""}`}>
       <button
         {...props}
         onClick={(event) => {
