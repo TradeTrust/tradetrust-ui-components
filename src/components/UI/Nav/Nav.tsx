@@ -15,11 +15,16 @@ export interface TileInfoProps {
 }
 
 export const TileInfo: FunctionComponent<TileInfoProps> = ({ title, description, tileIcon }) => (
-  <div className="flex p-3 w-96 h-28 border font-normal rounded-xl max-w-lg bg-white shadow-xl inline-block transition-colors duration-200 hover:bg-gray-50">
-    <div className="flex flex-col w-10/12">
-      <h3 className="font-ubuntu font-normal text-2xl text-cerulean-200">{title}</h3>
-      <p className="text-cloud-900 mt-1">{description}</p>
+  <div
+    className="max-w-sm w-100 p-4 border font-normal rounded-xl bg-white shadow-xl transition-colors duration-200 hover:bg-gray-50"
+    style={{ minHeight: "120px" }}
+  >
+    <div className="flex flex-nowrap items-center">
+      <div className="w-3/4 md:w-5/6 mr-4">
+        <h3 className="font-ubuntu font-normal text-2xl text-cerulean-200">{title}</h3>
+        <p className="text-cloud-900 mt-1">{description}</p>
+      </div>
+      <div className="w-1/4 md:w-1/6 m-auto">{tileIcon}</div>
     </div>
-    <div className="w-2/12 m-auto">{tileIcon}</div>
   </div>
 );

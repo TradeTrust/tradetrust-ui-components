@@ -40,7 +40,6 @@ export const ButtonDefault = (): ReactElement => {
     <Dropdown
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
-      alignRight
       className="rounded px-3 py-2 font-bold text-white bg-tangerine hover:bg-tangerine-600"
     >
       <DropdownItem
