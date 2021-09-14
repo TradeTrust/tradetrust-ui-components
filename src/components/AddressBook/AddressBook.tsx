@@ -203,7 +203,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
               !isLocal && !hasEntityLookupPath ? "cursor-not-allowed bg-cloud-100" : ""
             }`}
           >
-            <div className="flex mx-0 items-center w-64">
+            <div className="flex mx-0 items-center">
               <Search className="stroke-2 h-4 w-4 text-cloud-900" />
               <input
                 className="w-full ml-2 placeholder-cloud-300 "

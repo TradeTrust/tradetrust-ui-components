@@ -36,23 +36,21 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             width: "calc(100vw - (15px * 2))",
           }}
         >
-          <div className="mb-2">
-            <div className="flex mx-0 items-center">
+          <div className="text-cloud-900">
+            <div className="flex flex-nowrap items-center mb-2">
               {isSuccess !== undefined && (
-                <div className="col-auto mr-3">
+                <div className="w-auto mr-3">
                   {isSuccess ? <IconSuccess className="text-emerald" /> : <IconError />}
                 </div>
               )}
-              <h3 data-testid="overlay-title" className="text-cloud-900 mb-0 flex-grow leading-8">
+              <h3 className="mb-0 leading-8" data-testid="overlay-title">
                 {title}
               </h3>
-              <div className="cursor-pointer" onClick={handleCloseOverlay} data-testid="overlay-close">
+              <div className="w-auto ml-auto cursor-pointer" onClick={handleCloseOverlay} data-testid="overlay-close">
                 <X />
               </div>
             </div>
-          </div>
-          <div className="flex-1">
-            <div className="flex flex-col h-full text-cloud-900">{children}</div>
+            {children}
           </div>
         </div>
       )}

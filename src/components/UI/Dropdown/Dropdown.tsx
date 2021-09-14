@@ -6,7 +6,7 @@ export interface DropdownProps {
   children: React.ReactNode;
   classNameRoot?: string;
   className?: string;
-  alignRight?: boolean;
+  classNameMenu?: string;
   classNameShared?: string;
 }
 
@@ -15,14 +15,12 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   children,
   classNameRoot,
   className,
-  alignRight,
+  classNameMenu,
   classNameShared,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const addonStylesShared = classNameShared ? classNameShared : "";
-  const addonStylesButton = alignRight ? "ml-auto" : "";
-  const addonStylesItem = alignRight ? "right-0" : "";
+  const addonStylesShared = classNameShared ? ` ${classNameShared}` : "";
 
   return (
     <div className={`relative${classNameRoot ? ` ${classNameRoot}` : ""}`}>
@@ -32,7 +30,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           event.preventDefault();
           setIsOpen(!isOpen);
         }}
-        className={`relative z-10 cursor-pointer focus:outline-none flex items-center justify-between ${className} ${addonStylesShared} ${addonStylesButton}`}
+        className={`relative z-10 cursor-pointer focus:outline-none flex items-center justify-between${addonStylesShared}${
+          className ? ` ${className}` : ""
+        }`}
       >
         <span className="truncate">{dropdownButtonText}</span>
         <span>
@@ -48,7 +48,9 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           />
           <div
             onClick={() => setIsOpen(false)}
-            className={`absolute z-30 rounded bg-white border border-gray-300 py-2 shadow-lg ${addonStylesShared} ${addonStylesItem}`}
+            className={`absolute z-30 rounded bg-white border border-gray-300 py-2 shadow-lg${addonStylesShared}${
+              classNameMenu ? ` ${classNameMenu}` : ""
+            }`}
           >
             {children}
           </div>
