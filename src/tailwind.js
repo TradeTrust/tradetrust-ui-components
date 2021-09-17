@@ -105,6 +105,7 @@ module.exports = {
       textColor: ["active"],
       borderRadius: ["active"],
       visibility: ["group-hover"],
+      margin: ["last"],
     },
   },
   plugins: [
