@@ -16,3 +16,4 @@ export * from "./components/UI/ProgressBar";
 export * from "./components/UI/Overlay";
 export * from "./components/UI/Overlay/OverlayContent";
 export * from "./components/UI/Footer";
+export * from "./components/Page404";

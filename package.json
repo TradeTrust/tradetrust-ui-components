@@ -55,7 +55,7 @@
     "debug": "^4.3.1",
     "react-feather": "^2.0.9",
     "start-server-and-test": "^1.13.1",
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^2.2.17",
     "validator": "^13.6.0"
   },
   "devDependencies": {
