@@ -9,7 +9,7 @@ export const Page404: FunctionComponent = () => {
       style={{ backgroundImage: `url(${wavesBackground})` }}
     >
       <div className="container">
-        <h2 className="bold text-cloud-900">404</h2>
+        <h2 className="bold text-cloud-900">Error 404</h2>
         <div
           className="w-full relative bg-contain sm:bg-auto bg-no-repeat"
           style={{
@@ -20,10 +20,10 @@ export const Page404: FunctionComponent = () => {
         >
           <div className="absolute w-max h-min inset-y-1/2 inset-x-1/2 -mt-8 -ml-20 text-cloud-900">
             <h1 className="text-xl sm:text-4xl">Oops!</h1>
-            <h3 className="font-ubuntu font-normal w-60 sm:w-96 leading-tight text-lg sm:text-3xl">
+            <h3 className="font-ubuntu font-normal w-60 sm:w-80 leading-tight text-lg sm:text-2xl">
               The page you are trying to reach doesn&apos;t seem to exist.
             </h3>
-            <h3 className="font-ubuntu font-normal w-60 sm:w-96 my-4 text-lg sm:text-3xl">
+            <h3 className="font-ubuntu font-normal w-60 sm:w-80 my-4 text-lg sm:text-2xl">
               Go to
               <a className="text-cerulean-200" href="/">
                 {" "}
@@ -31,7 +31,6 @@ export const Page404: FunctionComponent = () => {
               </a>
               ?
             </h3>
-            <div className="font-roboto text-sm sm:text-base">error 404</div>
           </div>
         </div>
       </div>
