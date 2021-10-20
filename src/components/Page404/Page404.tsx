@@ -11,7 +11,7 @@ export const Page404: FunctionComponent = ({ children }) => {
       <div className="container">
         <h2 className="bold text-cloud-900">Error 404</h2>
         <div
-          className="relative max-w-132 h-132 max-h-132 m-auto bg-contain bg-no-repeat bg-center"
+          className="relative max-w-132 h-132 m-auto bg-contain bg-no-repeat bg-center"
           style={{
             backgroundImage: `url(${page404})`,
           }}

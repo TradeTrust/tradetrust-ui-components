@@ -26,9 +26,6 @@ module.exports = {
       minHeight: {
         18: "4.5rem",
       },
-      maxHeight: {
-        132: "33rem",
-      },
       opacity: {
         0: "0",
         10: ".1",
