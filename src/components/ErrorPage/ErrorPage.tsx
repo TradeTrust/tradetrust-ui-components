@@ -5,7 +5,7 @@ export interface ErrorPageProps {
   pageTitle: string;
   header: string;
   description: string;
-  image: any;
+  image: string;
 }
 
 export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ pageTitle, header, description, image, children }) => {
