@@ -28,6 +28,11 @@ export const MockLeftNavItems: NavigationItem[] = [
         label: "FAQ",
         path: "/faq",
       },
+      {
+        id: "guidelines",
+        label: "Guidelines (Non-Ethereum)",
+        path: "/guidelines",
+      },
     ],
   },
   {
