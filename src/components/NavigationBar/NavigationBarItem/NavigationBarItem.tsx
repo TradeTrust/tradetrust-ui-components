@@ -105,7 +105,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
       </div>
       {isOpen && (
         <div
-          className={`w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-bold`}
+          className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-bold`}
         >
           <div className={`bg-white rounded-md lg:shadow-dropdown`}>
             {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
