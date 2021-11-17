@@ -6,6 +6,7 @@ module.exports = {
     filename: "index.js",
     libraryTarget: "umd",
     library: "tradetrustComponentUI",
+    globalObject: "this",
   },
   externals: {
     react: "react",
