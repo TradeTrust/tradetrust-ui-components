@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 import { NavigationBarItem } from "./NavigationBarItem";
 import { NavigationItem } from "./type";
@@ -12,48 +11,35 @@ export interface NavigationBarProps {
   toggleNavBar: boolean;
 }
 
-export const NavigationBarStyled = styled.nav`
-  .navbar-toggler {
-    .top-bar,
-    .bottom-bar {
-      height: 2px;
-    }
-
-    .top-bar {
-      transform: translateY(0) rotate(45deg);
-    }
-
-    .bottom-bar {
-      transform: translateY(0) rotate(-45deg);
-    }
-
-    &.collapsed {
-      .top-bar {
-        transform: translateY(-4px) rotate(0);
-      }
-
-      .bottom-bar {
-        transform: translateY(4px) rotate(0);
-      }
-    }
-  }
-`;
-
 export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
+  const collapsed = !props.toggleNavBar;
+
   return (
-    <NavigationBarStyled>
+    <nav>
       <div className="text-cloud-500 font-medium">
         <div className={`container py-2`}>
           <div className="relative flex items-center justify-between">
             <div className="lg:hidden">
               <button
-                className={`navbar-toggler flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
+                className={`flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
                 onClick={() => {
                   props.setToggleNavBar(!props.toggleNavBar);
                 }}
               >
-                <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block top-bar" />
-                <span className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar" />
+                <span
+                  style={{
+                    height: 2,
+                    transform: collapsed ? "translateY(-4px) rotate(0)" : "translateY(0) rotate(45deg)",
+                  }}
+                  className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block top-bar"
+                />
+                <span
+                  style={{
+                    height: 2,
+                    transform: collapsed ? "translateY(4px) rotate(0)" : "translateY(0) rotate(-45deg)",
+                  }}
+                  className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar"
+                />
               </button>
             </div>
             <div
@@ -111,6 +97,6 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
           </div>
         </div>
       </div>
-    </NavigationBarStyled>
+    </nav>
   );
 };

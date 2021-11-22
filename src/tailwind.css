@@ -30,6 +30,12 @@
   a:hover {
     @apply text-cerulean;
   }
+
+  button.button-icon svg {
+    max-width: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @tailwind components;
