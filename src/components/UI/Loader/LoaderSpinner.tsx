@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import React, { FunctionComponent } from "react";
 
 export interface LoaderProps {
@@ -19,7 +18,7 @@ const Loader: FunctionComponent<LoaderProps> = ({
 }) => {
   return (
     <div
-      className={`animate-spin ${className}`}
+      className={`animate-spin p-0 rounded-full border-solid border-4 ${className}`}
       {...props}
       style={{
         width: width,
@@ -35,9 +34,4 @@ const Loader: FunctionComponent<LoaderProps> = ({
   );
 };
 
-export const LoaderSpinner = styled(Loader)`
-  padding: 0;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 4px;
-`;
+export const LoaderSpinner = Loader;

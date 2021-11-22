@@ -16,8 +16,8 @@
     "src"
   ],
   "scripts": {
-    "build": "NODE_ENV=production CI=false run-s build:*",
-    "build:tw-config": "cpy 'src/tailwind.js' build",
+    "build": "cross-env NODE_ENV=production CI=false run-s build:*",
+    "build:tw-config": "cpy \"src/tailwind.js\" build",
     "build:css": "postcss src/tailwind.css -o build/styles.css",
     "build:js": "webpack --mode production",
     "build:type": "tsc --module es6 --declaration --emitDeclarationOnly --outDir build/esm",
@@ -49,8 +49,6 @@
     "IE >= 11"
   ],
   "dependencies": {
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
     "@govtechsg/address-identity-resolver": "^1.4.1",
     "debug": "^4.3.1",
     "react-feather": "^2.0.9",
@@ -63,7 +61,6 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
-    "@emotion/babel-preset-css-prop": "^11.2.0",
     "@storybook/addon-essentials": "^6.3.2",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.3.2",
@@ -80,6 +77,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-macros": "^3.1.0",
     "cpy-cli": "^3.1.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^24.3.6",
