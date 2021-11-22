@@ -18,13 +18,9 @@ const Loader: FunctionComponent<LoaderProps> = ({
 }) => {
   return (
     <div
-      className={`animate-spin ${className}`}
+      className={`animate-spin p-0 rounded-full border-solid border-4 ${className}`}
       {...props}
       style={{
-        padding: 0,
-        borderRadius: "50%",
-        borderStyle: "solid",
-        borderWidth: 4,
         width: width,
         height: width,
         borderTopColor: primary,
