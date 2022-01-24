@@ -77,7 +77,7 @@ export const CustomButtonDefault = (): ReactElement => {
   return (
     <Dropdown
       className="border-gray-300 border-solid border rounded-none p-3 hover:bg-gray-50"
-      dropdownButtonComponent={<span>Click Me</span>}
+      dropdownButtonText={<span>Click Me</span>}
     >
       <DropdownItem onClick={() => console.log("Dropdown item 1 clicked")}>Dropdown Item 1</DropdownItem>
       <DropdownItem onClick={() => console.log("Dropdown item 2 clicked")}>Dropdown Item 2</DropdownItem>

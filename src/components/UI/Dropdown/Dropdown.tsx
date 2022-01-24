@@ -1,9 +1,8 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, ReactNode, useState } from "react";
 import { ChevronDown } from "react-feather";
 
 export interface DropdownProps {
-  dropdownButtonText?: string;
-  dropdownButtonComponent?: React.ReactNode;
+  dropdownButtonText: string | ReactNode;
   children: React.ReactNode;
   classNameRoot?: string;
   className?: string;
@@ -13,7 +12,6 @@ export interface DropdownProps {
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
   dropdownButtonText,
-  dropdownButtonComponent,
   children,
   classNameRoot,
   className,
@@ -36,16 +34,12 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           className ? ` ${className}` : ""
         }`}
       >
-        {dropdownButtonComponent ? (
-          dropdownButtonComponent
-        ) : (
-          <>
-            <span className="truncate">{dropdownButtonText}</span>
-            <span>
-              <ChevronDown />
-            </span>
-          </>
-        )}
+        <>
+          <span className="truncate">{dropdownButtonText}</span>
+          <span>
+            <ChevronDown />
+          </span>
+        </>
       </button>
       {isOpen && (
         <>
