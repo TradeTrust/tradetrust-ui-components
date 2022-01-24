@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, useState } from "react";
 import { ChevronDown } from "react-feather";
 
 export interface DropdownProps {
-  dropdownButtonText?: string | ReactNode;
+  dropdownButtonText: string | ReactNode;
   children: React.ReactNode;
   classNameRoot?: string;
   className?: string;
