@@ -5,9 +5,7 @@ const commonUiConfig = require("./src/tailwind.js"); // workaround for react to 
 const _ = require("lodash");
 
 localConfig = {
-  purge: {
-    content: ["./src/**/*.ts", "./src/**/*.tsx"],
-  },
+  content: [`./src/**/*.{js,jsx,ts,tsx}`],
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
