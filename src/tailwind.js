@@ -107,15 +107,6 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ["active", "even", "odd"],
-      textColor: ["active"],
-      borderRadius: ["active"],
-      visibility: ["group-hover"],
-      margin: ["last"],
-    },
-  },
   plugins: [
     plugin(function ({ addBase, config }) {
       addBase({
