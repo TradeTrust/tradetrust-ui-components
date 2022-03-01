@@ -18,11 +18,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
   children,
   ...props
 }) => {
-  const { isOverlayVisible, setOverlayVisible, showOverlay } = useOverlayContext();
-  const handleCloseOverlay = (): void => {
-    setOverlayVisible(false);
-    showOverlay(undefined);
-  };
+  const { isOverlayVisible, closeOverlay } = useOverlayContext();
 
   useLockBodyScroll();
 
@@ -46,7 +42,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
               <h3 className="mb-0 leading-8" data-testid="overlay-title">
                 {title}
               </h3>
-              <div className="w-auto ml-auto cursor-pointer" onClick={handleCloseOverlay} data-testid="overlay-close">
+              <div className="w-auto ml-auto cursor-pointer" onClick={closeOverlay} data-testid="overlay-close">
                 <X />
               </div>
             </div>
