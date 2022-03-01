@@ -4,7 +4,7 @@ import { useKeyPress } from "./../../common/hooks/useKeyPress";
 interface OverlayContextProps {
   overlayContent: React.ReactNode;
   showOverlay: (overlayContent: React.ReactNode) => void;
-  closeOverlay: (overlayContent: React.ReactNode) => void;
+  closeOverlay: () => void;
   isOverlayVisible: boolean;
   setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
