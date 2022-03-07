@@ -12,7 +12,7 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
   name,
   deleteAddress,
 }) => {
-  const { setOverlayVisible, showOverlay } = useOverlayContext();
+  const { closeOverlay } = useOverlayContext();
 
   return (
     <div className="relative bg-white rounded-xl text-center w-96 p-8">
@@ -23,10 +23,7 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
         <div className="flex flex-row mt-7 justify-center">
           <Button
             className="bg-white border-cloud-100 rounded-xl shadow-xl px-3 py-2 text-cerulean"
-            onClick={() => {
-              setOverlayVisible(false);
-              showOverlay(undefined);
-            }}
+            onClick={closeOverlay}
           >
             Cancel
           </Button>

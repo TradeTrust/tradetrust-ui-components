@@ -4,6 +4,7 @@ import { useKeyPress } from "./../../common/hooks/useKeyPress";
 interface OverlayContextProps {
   overlayContent: React.ReactNode;
   showOverlay: (overlayContent: React.ReactNode) => void;
+  closeOverlay: () => void;
   isOverlayVisible: boolean;
   setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
@@ -11,6 +12,7 @@ interface OverlayContextProps {
 export const OverlayContext = createContext<OverlayContextProps>({
   overlayContent: undefined,
   showOverlay: () => {},
+  closeOverlay: () => {},
   isOverlayVisible: false,
   setOverlayVisible: () => {},
 });
@@ -20,6 +22,11 @@ export const OverlayContextProvider: FunctionComponent = ({ children }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(false);
 
   const escapePress = useKeyPress("Escape");
+
+  const handleCloseOverlay = (): void => {
+    setOverlayVisible(false);
+    setOverlayContent(undefined);
+  };
 
   useEffect(() => {
     if (escapePress) {
@@ -40,6 +47,7 @@ export const OverlayContextProvider: FunctionComponent = ({ children }) => {
       value={{
         overlayContent,
         showOverlay: setOverlayContent,
+        closeOverlay: handleCloseOverlay,
         isOverlayVisible,
         setOverlayVisible,
       }}

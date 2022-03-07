@@ -20,14 +20,10 @@ export enum MessageTitle {
 }
 
 const ButtonClose: FunctionComponent = () => {
-  const { setOverlayVisible, showOverlay } = useOverlayContext();
-  const handleCloseOverlay = (): void => {
-    setOverlayVisible(false);
-    showOverlay(undefined);
-  };
+  const { closeOverlay } = useOverlayContext();
 
   return (
-    <Button className="bg-cerulean rounded-xl text-white px-3 py-2 hover:bg-cerulean-300" onClick={handleCloseOverlay}>
+    <Button className="bg-cerulean rounded-xl text-white px-3 py-2 hover:bg-cerulean-300" onClick={closeOverlay}>
       Dismiss
     </Button>
   );
@@ -46,11 +42,10 @@ const ButtonMetamaskInstall: FunctionComponent = () => {
 };
 
 const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
-  const { setOverlayVisible, showOverlay } = useOverlayContext();
+  const { closeOverlay } = useOverlayContext();
   const onClick = (): void => {
     handleOnClick();
-    setOverlayVisible(false);
-    showOverlay(undefined);
+    closeOverlay();
   };
   return (
     <Button
