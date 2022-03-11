@@ -33,9 +33,9 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
           }}
         >
           <div className="text-cloud-900">
-            <div className="flex flex-nowrap items-center mb-2">
+            <div className="flex flex-nowrap content-center items-start mb-2">
               {isSuccess !== undefined && (
-                <div className="w-auto mr-3">
+                <div className="w-auto mr-3 mt-0.5">
                   {isSuccess ? <IconSuccess className="text-emerald" /> : <IconError />}
                 </div>
               )}
