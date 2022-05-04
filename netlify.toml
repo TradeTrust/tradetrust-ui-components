@@ -1,4 +1,10 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Origin = '''
+    http://localhost:3000,
+    http://localhost:3010,
+    http://localhost:6006,
+    https://www.tradetrust.io,
+    https://creator.tradetrust.io,
+    https://generic-templates.tradetrust.io'''
