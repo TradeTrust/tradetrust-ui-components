@@ -40,22 +40,22 @@ export const ButtonDefault = (): ReactElement => {
     <Dropdown
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
-      className="rounded px-3 py-2 font-bold text-white bg-tangerine-500 hover:bg-tangerine-600"
+      className="rounded px-3 py-2 font-bold text-white bg-tangerine-500 hover:bg-tangerine-800"
     >
       <DropdownItem
-        className="active:bg-tangerine-600 active:text-white"
+        className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("local clicked!!")}
       >
         Transfer holdership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-tangerine-600 active:text-white"
+        className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Endorse change of ownership
       </DropdownItem>
       <DropdownItem
-        className="active:bg-tangerine-600 active:text-white"
+        className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
         Surrender document
