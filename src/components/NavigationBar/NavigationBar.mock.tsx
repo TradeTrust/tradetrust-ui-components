@@ -89,7 +89,7 @@ export const MockRightNavItems: NavigationItem[] = [
     path: "/verify",
     customLink: (
       <a href="#">
-        <Button className="bg-cerulean-500 text-white hover:bg-cerulean-500" size={ButtonSize.SM}>
+        <Button className="bg-cerulean-500 text-white hover:bg-cerulean-800" size={ButtonSize.SM}>
           Verify Doc
         </Button>
       </a>

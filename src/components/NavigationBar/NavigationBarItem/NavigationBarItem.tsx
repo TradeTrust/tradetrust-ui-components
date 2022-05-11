@@ -30,7 +30,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
       ) : (
         <LinkButton
           href={item.path}
-          className="text-white bg-cerulean-500 hover:text-white hover:bg-cerulean-500"
+          className="text-white bg-cerulean-500 hover:text-white hover:bg-cerulean-800"
           data-testid={item.id}
           size={ButtonSize.SM}
         >
