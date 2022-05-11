@@ -57,52 +57,39 @@ module.exports = {
         height: "max-height",
       },
       colors: {
-        inherit: {
-          DEFAULT: "inherit",
-        },
         cerulean: {
-          DEFAULT: "#3B8CC5",
           50: "#F7F8FC",
-          200: "#4BC3E9",
-          300: "#1fabd8",
-          500: "#0099cc",
+          300: "#4DA6E8",
+          500: "#2D5FAA",
+          800: "#265190",
         },
         tangerine: {
-          DEFAULT: "#F57A29",
           300: "#fbd38d",
-          600: "#ed8936",
+          500: "#FF8200",
+          800: "#DB611D",
         },
         lemon: {
-          DEFAULT: "#FDC53F",
-          700: "#E3A002",
           100: "#fff7e2",
+          500: "#FDC53F",
+          700: "#E3A002",
         },
-        rose: {
-          DEFAULT: "#E62617",
-          400: "#ff5268",
+        scarlet: {
           100: "#ffeeed",
+          400: "#ff5268",
+          500: "#E62617",
         },
-        emerald: {
-          DEFAULT: "#3AAF86",
-          400: "#68d391",
-          500: "#00c04a",
+        forest: {
+          200: "#68d391",
+          500: "#3AAF86",
           700: "#008a35",
         },
         cloud: {
           100: "#E7EAEC",
           200: "#D1D5D9",
           300: "#B4BCC2",
+          400: "#89969F",
           500: "#6E787F",
-          900: "#454B50",
-        },
-        denim: {
-          DEFAULT: "#324353",
-          400: "#006080",
-          900: "#001F29",
-        },
-        turquoise: {
-          DEFAULT: "#00cbbc",
-          300: "#26edde",
+          800: "#454B50",
         },
       },
       boxShadow: {
