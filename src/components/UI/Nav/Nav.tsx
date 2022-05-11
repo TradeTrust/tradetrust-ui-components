@@ -21,7 +21,7 @@ export const TileInfo: FunctionComponent<TileInfoProps> = ({ title, description,
   >
     <div className="flex flex-nowrap items-center">
       <div className="w-3/4 md:w-5/6 mr-4">
-        <h3 className="font-ubuntu font-normal text-2xl text-cerulean-200">{title}</h3>
+        <h3 className="font-ubuntu font-normal text-2xl text-cerulean-300">{title}</h3>
         <p className="text-cloud-900 mt-1">{description}</p>
       </div>
       <div className="w-1/4 md:w-1/6 m-auto">{tileIcon}</div>

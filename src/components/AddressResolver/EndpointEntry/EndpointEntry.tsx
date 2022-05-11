@@ -153,14 +153,14 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       <div className="flex flex-wrap relative">
         <div className="w-full lg:w-8 px-2">
           <div className="my-2 lg:my-0 lg:invisible lg:group-hover:visible">
-            <div className="text-lg leading-3 text-cerulean-200">
+            <div className="text-lg leading-3 text-cerulean-300">
               <i
-                className={`w-auto lg:w-full fas fa-chevron-up leading-3 hover:text-cerulean mr-2 lg:mb-2 lg:mr-0 cursor-pointer`}
+                className={`w-auto lg:w-full fas fa-chevron-up leading-3 hover:text-cerulean-500 mr-2 lg:mb-2 lg:mr-0 cursor-pointer`}
                 onClick={onMoveEntryUp}
                 data-testid="endpoint-entry-move-up"
               />
               <i
-                className={`w-auto lg:w-full fas fa-chevron-down leading-3 hover:text-cerulean cursor-pointer`}
+                className={`w-auto lg:w-full fas fa-chevron-down leading-3 hover:text-cerulean-500 cursor-pointer`}
                 onClick={onMoveEntryDown}
                 data-testid="endpoint-entry-move-down"
               />
@@ -248,7 +248,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         <div className="w-auto ml-auto px-2 absolute top-0 right-0 lg:relative">
           {!isEditable && (
             <div className="my-2 lg:my-0">
-              <div className="text-cerulean-200">
+              <div className="text-cerulean-300">
                 <div className="flex flex-wrap justify-end">
                   <Trash2 className="cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
                   <Edit
@@ -273,7 +273,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             {isLoading ? (
               <LoaderSpinner />
             ) : (
-              <Button className=" bg-cerulean text-white text-base rounded-xl shadow-none" onClick={onSave}>
+              <Button className=" bg-cerulean-500 text-white text-base rounded-xl shadow-none" onClick={onSave}>
                 <h5>Save</h5>
               </Button>
             )}
