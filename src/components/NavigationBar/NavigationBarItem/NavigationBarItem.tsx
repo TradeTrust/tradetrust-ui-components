@@ -30,7 +30,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
       ) : (
         <LinkButton
           href={item.path}
-          className="text-white bg-cerulean hover:text-white hover:bg-cerulean-500"
+          className="text-white bg-cerulean-500 hover:text-white hover:bg-cerulean-500"
           data-testid={item.id}
           size={ButtonSize.SM}
         >
@@ -86,7 +86,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
           setIsOpen(true);
         }}
       >
-        <span className="py-2 hover:text-cerulean transition-colors duration-200 ease-out">{item.label}</span>
+        <span className="py-2 hover:text-cerulean-500 transition-colors duration-200 ease-out">{item.label}</span>
         <svg
           className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
             isOpen ? "rotate-180" : "rotate-0"

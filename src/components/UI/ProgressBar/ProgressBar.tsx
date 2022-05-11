@@ -25,7 +25,7 @@ export const ProgressBar: FunctionComponent<ProgressBarProps> = ({ step, totalSt
               <div
                 data-testid={`progress-bar-step-${progressIndex}`}
                 style={{ marginTop: `${height / 2}px` }}
-                className="w-6 h-6 bg-cerulean items-center flex justify-center rounded-full text-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="w-6 h-6 bg-cerulean-500 items-center flex justify-center rounded-full text-white absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
               >
                 {progressIndex}
               </div>
