@@ -12,7 +12,10 @@ module.exports = {
     }),
     extend: {
       fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
+        "gilroy-light": ["Gilroy-Light", "sans-serif"],
+        "gilroy-medium": ["Gilroy-Medium", "sans-serif"],
+        "gilroy-bold": ["Gilroy-Bold", "sans-serif"],
+        "gilroy-extrabold": ["Gilroy-ExtraBold", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       height: {

@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
+
 module.exports = {
   entry: "./src/index.tsx",
   devtool: process.env.NODE_ENV === "production" ? false : "eval-cheap-source-map", // https://webpack.js.org/configuration/devtool/#devtool
@@ -39,7 +43,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(woff(2)?|png|jpg|gif)$/i,
         use: [
           {
             loader: "url-loader",
@@ -48,4 +52,14 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/tailwind.js"),
+          to: "[name][ext]",
+        },
+      ],
+    }),
+  ],
 };

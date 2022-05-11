@@ -64,3 +64,32 @@ Color palette [here](https://ui.tradetrust.io/?path=/docs/styleguide--colors).
   Thereafter, do a deep merge with your local tailwind config if there is any.
 - Do include `"./node_modules/@govtechsg/tradetrust-ui-components/src/**/*.tsx",` in tailwind config's purge content option, so that the classes will be retained after purged.
 - Otherwise, can use the stylesheet in `/build/styles.css` directly. Be careful of any conflicting css class names that your application may have.
+
+### Fonts management
+
+We will not be providing the usage of Gilroy font. Please use alternatives.
+
+However, for TradeTrust related applications, install by defining the following in `tailwind.css`.
+
+```
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url('https://ui.tradetrust.io/static/fonts/GilroyLight/font.woff2') format('woff2'),
+    url('https://ui.tradetrust.io/static/fonts/GilroyLight/font.woff') format('woff');
+}
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url('https://ui.tradetrust.io/static/fonts/GilroyMedium/font.woff2') format('woff2'),
+    url('https://ui.tradetrust.io/static/fonts/GilroyMedium/font.woff') format('woff');
+}
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url('https://ui.tradetrust.io/static/fonts/GilroyBold/font.woff2') format('woff2'),
+    url('https://ui.tradetrust.io/static/fonts/GilroyBold/font.woff') format('woff');
+}
+@font-face {
+  font-family: "Gilroy-ExtraBold";
+  src: url('https://ui.tradetrust.io/static/fonts/GilroyExtraBold/font.woff2') format('woff2'),
+    url('https://ui.tradetrust.io/static/fonts/GilroyExtraBold/font.woff') format('woff');
+}
+```
