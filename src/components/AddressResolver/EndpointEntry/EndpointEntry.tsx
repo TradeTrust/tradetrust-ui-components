@@ -267,7 +267,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
       {isEditable && (
         <div className="p-2 mt-2">
           <div className="flex flex-wrap items-center justify-center">
-            <Button className="bg-rose text-white text-base rounded-xl shadow-none mr-2" onClick={removeEndpoint}>
+            <Button
+              className="bg-scarlet-500 text-white text-base rounded-xl shadow-none mr-2"
+              onClick={removeEndpoint}
+            >
               <h5>Delete</h5>
             </Button>
             {isLoading ? (

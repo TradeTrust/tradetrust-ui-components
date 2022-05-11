@@ -11,10 +11,10 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
       <input
         className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-900 focus:outline-none placeholder-cloud-200 ${
           className ? className : ""
-        } ${hasError || errorMessage ? "border-rose" : "border-cloud-200"}`}
+        } ${hasError || errorMessage ? "border-scarlet-500" : "border-cloud-200"}`}
         {...props}
       />
-      {errorMessage && <p className="text-rose my-2">{errorMessage}</p>}
+      {errorMessage && <p className="text-scarlet-500 my-2">{errorMessage}</p>}
     </div>
   );
 };
