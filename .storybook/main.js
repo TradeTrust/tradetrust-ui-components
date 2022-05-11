@@ -1,3 +1,5 @@
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
 const custom = require("../webpack.config.js");
 
 module.exports = {
@@ -20,6 +22,17 @@ module.exports = {
           ...config.resolve.alias,
         },
       },
+      plugins: [
+        ...config.plugins,
+        new CopyPlugin({
+          patterns: [
+            {
+              from: path.resolve(__dirname, "../src/static/fonts"),
+              to: "../docs/static/fonts",
+            },
+          ],
+        }),
+      ],
     };
   },
 };
