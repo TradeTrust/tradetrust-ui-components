@@ -9,7 +9,7 @@ export const Input: FunctionComponent<InputProps> = ({ className, hasError, erro
   return (
     <div>
       <input
-        className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-900 focus:outline-none placeholder-cloud-200 ${
+        className={`border rounded-md px-2 py-1 mb-0 focus:border-cloud-800 focus:outline-none placeholder-cloud-200 ${
           className ? className : ""
         } ${hasError || errorMessage ? "border-scarlet-500" : "border-cloud-200"}`}
         {...props}

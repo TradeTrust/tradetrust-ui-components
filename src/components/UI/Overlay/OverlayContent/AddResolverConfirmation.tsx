@@ -12,8 +12,8 @@ export const AddResolverConfirmation: FunctionComponent = () => {
         <div className="self-center mt-10">
           <IconSuccess className="text-forest-500 h-14 w-14" />
         </div>
-        <h3 className="text-cloud-900 text-xl mt-5">Success</h3>
-        <p className="mt-3 text-cloud-900">Address successfully added</p>
+        <h3 className="text-cloud-800 text-xl mt-5">Success</h3>
+        <p className="mt-3 text-cloud-800">Address successfully added</p>
         <Button
           className="bg-cerulean-500 rounded-xl px-3 py-2 mx-auto mt-3 text-white font-normal"
           onClick={closeOverlay}

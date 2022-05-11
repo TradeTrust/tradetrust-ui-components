@@ -35,7 +35,7 @@ export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = 
 }) => {
   return (
     <div
-      className={`flex flex-col bg-white text-cloud-900 text-sm p-4 lg:flex-row even:bg-cerulean-50 break-words`}
+      className={`flex flex-col bg-white text-cloud-800 text-sm p-4 lg:flex-row even:bg-cerulean-50 break-words`}
       onClick={onAddressSelect}
       data-testid="table-row"
     >

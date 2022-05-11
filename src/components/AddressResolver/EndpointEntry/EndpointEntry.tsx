@@ -170,7 +170,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
         <div className="w-full lg:w-1/12 px-2">
           <div className="my-2 lg:my-0">
-            <h4 className="text-cloud-900 text-xl font-bold lg:hidden">Order</h4>
+            <h4 className="text-cloud-800 text-xl font-bold lg:hidden">Order</h4>
             <div className="" data-testid="endpoint-entry-id">
               {orderNumber}
             </div>
@@ -179,7 +179,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
         <div className="w-full lg:w-2/12 px-2">
           <div className="my-2 lg:my-0">
-            <h4 className="text-cloud-900 text-xl font-bold lg:hidden">Name</h4>
+            <h4 className="text-cloud-800 text-xl font-bold lg:hidden">Name</h4>
             {isEditable ? (
               <Input
                 className="w-full"
@@ -196,7 +196,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
         <div className="w-full lg:w-3/12 px-2">
           <div className="my-2 lg:my-0">
-            <h4 className="text-cloud-900 text-xl font-bold lg:hidden">Endpoint</h4>
+            <h4 className="text-cloud-800 text-xl font-bold lg:hidden">Endpoint</h4>
             {isEditable ? (
               <Input
                 className="w-full"
@@ -213,7 +213,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
         <div className="w-full lg:w-2/12 px-2">
           <div className="my-2 lg:my-0">
-            <h4 className="text-cloud-900 text-xl font-bold lg:hidden">API Header</h4>
+            <h4 className="text-cloud-800 text-xl font-bold lg:hidden">API Header</h4>
             {isEditable ? (
               <Input
                 className="w-full"
@@ -230,7 +230,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
         <div className="w-full lg:w-2/12 px-2">
           <div className="my-2 lg:my-0">
-            <h4 className="text-cloud-900 text-xl font-bold lg:hidden">API Key</h4>
+            <h4 className="text-cloud-800 text-xl font-bold lg:hidden">API Key</h4>
             {isEditable ? (
               <Input
                 className="w-full"
