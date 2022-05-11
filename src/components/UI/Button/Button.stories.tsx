@@ -52,7 +52,7 @@ export const SolidWhiteGrey = (): React.ReactNode => {
 };
 
 export const SolidGreenWhite = (): React.ReactNode => {
-  return <Button className="bg-emerald-500 text-white hover:bg-emerald-700">SolidGreenWhite</Button>;
+  return <Button className="bg-forest-500 text-white hover:bg-forest-700">SolidGreenWhite</Button>;
 };
 
 export const BorderedBlue = (): React.ReactNode => {

@@ -18,7 +18,7 @@ export const ResolverAddress = (): ReactElement => {
 };
 
 export const Success = (): ReactElement => {
-  return <Icons.IconSuccess className="text-emerald" />;
+  return <Icons.IconSuccess className="text-forest-500" />;
 };
 export const Error = (): ReactElement => {
   return <Icons.IconError />;
