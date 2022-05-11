@@ -32,11 +32,11 @@ export const SolidDisabled = (): React.ReactNode => {
 };
 
 export const SolidOrangeWhite = (): React.ReactNode => {
-  return <Button className="bg-tangerine text-white hover:bg-tangerine-600">SolidOrangeWhite</Button>;
+  return <Button className="bg-tangerine-500 text-white hover:bg-tangerine-600">SolidOrangeWhite</Button>;
 };
 
 export const SolidWhiteOrange = (): React.ReactNode => {
-  return <Button className="bg-white text-tangerine hover:bg-gray-50">SolidWhiteOrange</Button>;
+  return <Button className="bg-white text-tangerine-500 hover:bg-gray-50">SolidWhiteOrange</Button>;
 };
 
 export const SolidWhiteBlue = (): React.ReactNode => {
@@ -85,7 +85,7 @@ export const IconWhiteBlue = (): React.ReactNode => {
 
 export const IconOrangeWhite = (): React.ReactNode => {
   return (
-    <ButtonIcon className="bg-tangerine hover:bg-tangerine-600">
+    <ButtonIcon className="bg-tangerine-500 hover:bg-tangerine-600">
       <Book className="text-white" />
     </ButtonIcon>
   );

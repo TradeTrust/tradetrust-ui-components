@@ -40,7 +40,7 @@ export const ButtonDefault = (): ReactElement => {
     <Dropdown
       data-testid="manageAssetDropdown"
       dropdownButtonText="Manage Assets"
-      className="rounded px-3 py-2 font-bold text-white bg-tangerine hover:bg-tangerine-600"
+      className="rounded px-3 py-2 font-bold text-white bg-tangerine-500 hover:bg-tangerine-600"
     >
       <DropdownItem
         className="active:bg-tangerine-600 active:text-white"
