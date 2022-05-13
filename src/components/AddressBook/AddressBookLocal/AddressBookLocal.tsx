@@ -21,7 +21,7 @@ export const AddressBookLocal: FunctionComponent<AddressBookLocalProps> = ({
   return (
     <>
       <div className="w-full">
-        <div className="hidden text-xl font-bold text-cloud-900 p-4 lg:flex">
+        <div className="hidden text-xl font-bold text-cloud-800 p-4 lg:flex">
           <h4 className="w-3/12">Name</h4>
           <h4 className="w-5/12">Address</h4>
         </div>

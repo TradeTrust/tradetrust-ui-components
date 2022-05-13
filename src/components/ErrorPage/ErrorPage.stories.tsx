@@ -21,7 +21,7 @@ export const Default: FunctionComponent = () => {
     >
       <h3 className="font-normal my-2 sm:my-4 text-lg sm:text-2xl">
         Go to
-        <a className="text-cerulean-200" href="/">
+        <a className="text-cerulean-300" href="/">
           {" "}
           Homepage
         </a>
@@ -41,7 +41,7 @@ export const Page404: FunctionComponent = () => {
     >
       <h3 className="font-normal my-2 sm:my-4 text-lg sm:text-2xl">
         Go to
-        <a className="text-cerulean-200" href="/">
+        <a className="text-cerulean-300" href="/">
           {" "}
           Homepage
         </a>

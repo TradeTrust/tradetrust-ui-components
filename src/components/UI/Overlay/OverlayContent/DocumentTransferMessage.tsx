@@ -23,7 +23,7 @@ const ButtonClose: FunctionComponent = () => {
   const { closeOverlay } = useOverlayContext();
 
   return (
-    <Button className="bg-cerulean rounded-xl text-white px-3 py-2 hover:bg-cerulean-300" onClick={closeOverlay}>
+    <Button className="bg-cerulean-500 rounded-xl text-white px-3 py-2 hover:bg-cerulean-800" onClick={closeOverlay}>
       Dismiss
     </Button>
   );
@@ -32,7 +32,7 @@ const ButtonClose: FunctionComponent = () => {
 const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
     <LinkButton
-      className="bg-cerulean rounded-xl text-white hover:bg-cerulean-300"
+      className="bg-cerulean-500 rounded-xl text-white hover:bg-cerulean-800"
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
       target="_blank"
     >
@@ -49,7 +49,7 @@ const ButtonConfirmAction = (handleOnClick: () => void): ReactNode => {
   };
   return (
     <Button
-      className="bg-cerulean rounded-xl text-white hover:bg-cerulean-300"
+      className="bg-cerulean-500 rounded-xl text-white hover:bg-cerulean-800"
       onClick={onClick}
       data-testid={"confirmActionBtn"}
     >

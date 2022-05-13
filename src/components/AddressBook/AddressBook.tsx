@@ -149,7 +149,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <div className="flex flex-grow">
           <Dropdown
             dropdownButtonText={isLocal ? "Local" : name}
-            className="bg-white text-base text-cloud-900 border-cloud-100 border rounded-md mb-2 p-3"
+            className="bg-white text-base text-cloud-800 border-cloud-100 border rounded-md mb-2 p-3"
             classNameShared="w-60"
           >
             <DropdownItem
@@ -179,7 +179,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <div className="flex mt-4 lg:mx-0 lg:mt-0">
           <div className="w-auto">
             <LinkButton
-              className="bg-white rounded-xl text-cerulean hover:bg-gray-50"
+              className="bg-white rounded-xl text-cerulean-500 hover:bg-gray-50"
               href="data:text/csv;base64,QWRkcmVzcyxJZGVudGlmaWVyCjB4YTYxQjA1NmRBMDA4NGE1ZjM5MUVDMTM3NTgzMDczMDk2ODgwQzJlMyxEQlMKMHgyOEY3YUIzMkM1MjFEMTNGMkU2OTgwZDA3MkNhN0NBNDkzMDIwMTQ1LFN0YW5kYXJkIENoYXJ0ZXJlZA"
               download="template.csv"
             >
@@ -204,7 +204,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             }`}
           >
             <div className="flex mx-0 items-center">
-              <Search className="stroke-2 h-4 w-4 text-cloud-900" />
+              <Search className="stroke-2 h-4 w-4 text-cloud-800" />
               <input
                 className="w-full ml-2 placeholder-cloud-300 "
                 type="text"

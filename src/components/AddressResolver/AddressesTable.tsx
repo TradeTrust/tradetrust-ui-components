@@ -86,19 +86,19 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
       <div className="p-4 hidden lg:flex">
         <div className="px-2 w-8" />
         <div className="px-2 w-1/12">
-          <h4 className="text-xl font-bold text-cloud-900">Order</h4>
+          <h4 className="text-xl font-bold text-cloud-800">Order</h4>
         </div>
         <div className="px-2 w-2/12">
-          <h4 className="text-xl font-bold text-cloud-900">Name</h4>
+          <h4 className="text-xl font-bold text-cloud-800">Name</h4>
         </div>
         <div className="px-2 w-3/12">
-          <h4 className="text-xl font-bold text-cloud-900">Endpoint</h4>
+          <h4 className="text-xl font-bold text-cloud-800">Endpoint</h4>
         </div>
         <div className="px-2 w-2/12">
-          <h4 className="text-xl font-bold text-cloud-900">API Header</h4>
+          <h4 className="text-xl font-bold text-cloud-800">API Header</h4>
         </div>
         <div className="px-2 w-2/12">
-          <h4 className="text-xl font-bold text-cloud-900">API Key</h4>
+          <h4 className="text-xl font-bold text-cloud-800">API Key</h4>
         </div>
         <div className="px-2 w-auto ml-auto" />
       </div>
@@ -145,7 +145,7 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
       )}
       {thirdPartyAPIEndpoints.length === 0 && !isNewEndpoint && (
         <div className="bg-white rounded-xl shadow-lg h-12 mt-6 lg:bg-cerulean-50 lg:rounded-none lg:shadow-none">
-          <p className="flex text-cloud-900 h-full justify-center items-center">
+          <p className="flex text-cloud-800 h-full justify-center items-center">
             No third party&apos;s endpoint found.{" "}
           </p>
         </div>

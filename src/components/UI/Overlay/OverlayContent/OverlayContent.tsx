@@ -32,11 +32,11 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             width: "calc(100vw - (15px * 2))",
           }}
         >
-          <div className="text-cloud-900">
+          <div className="text-cloud-800">
             <div className="flex flex-nowrap content-center items-start mb-2">
               {isSuccess !== undefined && (
                 <div className="w-auto mr-3 mt-0.5">
-                  {isSuccess ? <IconSuccess className="text-emerald" /> : <IconError />}
+                  {isSuccess ? <IconSuccess className="text-forest-500" /> : <IconError />}
                 </div>
               )}
               <h3 className="mb-0 leading-8" data-testid="overlay-title">
