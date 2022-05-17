@@ -19,7 +19,8 @@ export interface FooterColumnProps {
 
 export interface FooterProps {
   className?: string;
-  title: string;
+  title?: string;
+  logoUrl?: string;
   copyright: string;
   data?: FooterColumnProps[];
 }

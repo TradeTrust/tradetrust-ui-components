@@ -1,14 +1,20 @@
 import React from "react";
 import { FooterColumnData, FooterColumnProps, FooterProps } from "./types";
 import { defaultRender, Bottom, Category } from "./helpers";
+import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 
 const sharedColumnPadding = `px-0 lg:px-6 xl:px-8`;
 
-const Left = (props: Pick<FooterProps, "title">): React.ReactElement => {
-  const { title } = props;
+const Left = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement => {
+  const { title, logoUrl } = props;
+
   return (
     <div className={`w-full lg:w-auto mb-12 lg:mb-0 ${sharedColumnPadding}`}>
-      <p className={"text-xl lg:text-3xl text-center lg:text-left font-headings font-bold"}>{title}</p>
+      {title ? (
+        <p className={"text-xl lg:text-3xl text-center lg:text-left font-headings font-bold"}>{title}</p>
+      ) : (
+        <img src={logoUrl || defaultTradeTrustLogo} />
+      )}
     </div>
   );
 };
@@ -32,12 +38,12 @@ const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
 };
 
 export const Footer = (props: FooterProps): React.ReactElement => {
-  const { className = "", title, copyright, data } = props;
+  const { className = "", title = "", logoUrl = "", copyright, data } = props;
   return (
     <footer className={`bg-white no-print ${className}`}>
       <div className="container">
         <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
-          <Left title={title} />
+          <Left title={title} logoUrl={logoUrl} />
           {data ? (
             data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
           ) : (
