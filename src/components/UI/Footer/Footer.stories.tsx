@@ -1,6 +1,7 @@
 import React from "react";
 import { Footer } from "./";
 import { FooterColumnItemProps } from "./types";
+import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 
 export default {
   title: "UI/Footer",
@@ -51,6 +52,11 @@ const data = [
     items: [{ label: "E-1", to: "somewhere", render }],
   },
 ];
-export const Default: React.FunctionComponent = () => {
+
+export const Title: React.FunctionComponent = () => {
   return <Footer title={"Title"} copyright={"Copyright \u00A9 2020"} data={data} />;
+};
+
+export const Logo: React.FunctionComponent = () => {
+  return <Footer logoUrl={defaultTradeTrustLogo} copyright={"Copyright \u00A9 2020"} data={data} />;
 };
