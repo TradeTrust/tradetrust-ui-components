@@ -15,7 +15,7 @@ export const AddResolverConfirmation: FunctionComponent = () => {
         <h3 className="text-cloud-800 text-xl mt-5">Success</h3>
         <p className="mt-3 text-cloud-800">Address successfully added</p>
         <Button
-          className="bg-cerulean-500 rounded-xl px-3 py-2 mx-auto mt-3 text-white font-normal"
+          className="bg-cerulean-500 hover:bg-cerulean-800 rounded-xl px-3 py-2 mx-auto mt-3 text-white font-normal"
           onClick={closeOverlay}
         >
           Okay, got it

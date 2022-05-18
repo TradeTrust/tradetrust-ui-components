@@ -248,7 +248,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         <div className="w-auto ml-auto px-2 absolute top-0 right-0 lg:relative">
           {!isEditable && (
             <div className="my-2 lg:my-0">
-              <div className="text-cerulean-300">
+              <div className="text-cerulean-500 hover:text-cerulean-800">
                 <div className="flex flex-wrap justify-end">
                   <Trash2 className="cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
                   <Edit
@@ -268,7 +268,7 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         <div className="p-2 mt-2">
           <div className="flex flex-wrap items-center justify-center">
             <Button
-              className="bg-scarlet-500 text-white text-base rounded-xl shadow-none mr-2"
+              className="bg-scarlet-500 hover:bg-red-600 text-white text-base rounded-xl shadow-none mr-2"
               onClick={removeEndpoint}
             >
               <h5>Delete</h5>
@@ -276,7 +276,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             {isLoading ? (
               <LoaderSpinner />
             ) : (
-              <Button className=" bg-cerulean-500 text-white text-base rounded-xl shadow-none" onClick={onSave}>
+              <Button
+                className=" bg-cerulean-500 hover:bg-cerulean-800 text-white text-base rounded-xl shadow-none"
+                onClick={onSave}
+              >
                 <h5>Save</h5>
               </Button>
             )}
