@@ -22,12 +22,15 @@ export const DeleteResolverConfirmation: FunctionComponent<DeleteResolverConfirm
         <p className="text-cloud-800 mt-7">{name}</p>
         <div className="flex flex-row mt-7 justify-center">
           <Button
-            className="bg-white border-cloud-100 rounded-xl shadow-xl px-3 py-2 text-cerulean"
+            className="bg-white hover:bg-slate-50 border-cloud-100 rounded-xl px-3 py-2 text-cerulean"
             onClick={closeOverlay}
           >
             Cancel
           </Button>
-          <Button className="bg-scarlet-500 rounded-xl px-3 py-2 ml-8 text-white" onClick={deleteAddress}>
+          <Button
+            className="bg-scarlet-500 hover:bg-red-600 rounded-xl px-3 py-2 ml-8 text-white"
+            onClick={deleteAddress}
+          >
             Delete
           </Button>
         </div>

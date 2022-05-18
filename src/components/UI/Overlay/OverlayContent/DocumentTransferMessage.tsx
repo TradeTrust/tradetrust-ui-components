@@ -32,7 +32,7 @@ const ButtonClose: FunctionComponent = () => {
 const ButtonMetamaskInstall: FunctionComponent = () => {
   return (
     <LinkButton
-      className="bg-cerulean-500 rounded-xl text-white hover:bg-cerulean-800"
+      className="bg-cerulean-500 rounded-xl text-white hover:text-white hover:bg-cerulean-800"
       href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
       target="_blank"
     >

@@ -18,7 +18,7 @@ export const ProgressBar: FunctionComponent<ProgressBarProps> = ({ step, totalSt
         return (
           <div
             style={{ width: `${100 / totalSteps}%`, height: `${height}px` }}
-            className={`${isSameOrBeforeActiveStep ? `bg-cerulean` : `bg-cloud-300`} mr-1 last:mr-0 relative`}
+            className={`${isSameOrBeforeActiveStep ? `bg-cerulean-500` : `bg-cloud-300`} mr-1 last:mr-0 relative`}
             key={`bar-${index}`}
           >
             {isActiveStep && (
