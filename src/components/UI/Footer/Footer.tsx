@@ -30,7 +30,7 @@ const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
 const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
   const { category, items } = props;
   return (
-    <div className={`w-1/2 lg:w-auto mb-8 lg:mb-0 ${sharedColumnPadding}`}>
+    <div className={`w-1/2 lg:w-auto mb-8 lg:mb-0 text-cloud-500 ${sharedColumnPadding}`}>
       <Category category={category} />
       {items.map(mapper)}
     </div>

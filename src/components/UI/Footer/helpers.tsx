@@ -2,7 +2,11 @@ import React from "react";
 import { FooterColumnItemProps } from "./types";
 
 export const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => {
-  return <a href={to}>{label}</a>;
+  return (
+    <a className="text-cloud-500" href={to}>
+      {label}
+    </a>
+  );
 };
 
 export const Bottom = ({ copyright }: { copyright: string }): React.ReactElement => {
