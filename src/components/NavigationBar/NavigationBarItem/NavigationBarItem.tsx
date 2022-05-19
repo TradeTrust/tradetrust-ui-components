@@ -19,7 +19,17 @@ export const NavigationBarItem: FunctionComponent<{
 };
 
 const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
-  return <>{item.customLink ? item.customLink : <a href={item.path}>{item.label}</a>}</>;
+  return (
+    <>
+      {item.customLink ? (
+        item.customLink
+      ) : (
+        <a className="text-cloud-500" href={item.path}>
+          {item.label}
+        </a>
+      )}
+    </>
+  );
 };
 
 const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = ({ item }) => {
@@ -30,7 +40,7 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
       ) : (
         <LinkButton
           href={item.path}
-          className="text-white bg-cerulean-500 hover:text-white hover:bg-cerulean-800"
+          className="text-white bg-cloud-800 hover:text-white hover:bg-cerulean-500"
           data-testid={item.id}
           size={ButtonSize.SM}
         >
@@ -49,7 +59,7 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
       {item.customLink ? (
         item.customLink
       ) : (
-        <a href={item.path} data-testid={item.id}>
+        <a className="text-cloud-500" href={item.path} data-testid={item.id}>
           <ButtonIcon className="stroke-current" />
         </a>
       )}
@@ -81,12 +91,12 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
   return (
     <div className="relative">
       <div
-        className="cursor-pointer flex items-center focus:outline-none outline-none"
+        className="cursor-pointer text-cloud-500 hover:text-cerulean-800 flex items-center focus:outline-none outline-none"
         onClick={() => {
           setIsOpen(true);
         }}
       >
-        <span className="py-2 hover:text-cerulean-500 transition-colors duration-200 ease-out">{item.label}</span>
+        <span className="py-2 transition-colors duration-200 ease-out">{item.label}</span>
         <svg
           className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -119,7 +129,7 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
                   {dropdownItem.customLink ? (
                     <div className="relative">{dropdownItem.customLink}</div>
                   ) : (
-                    <a key={index} className="block px-4 py-3" href={dropdownItem.path}>
+                    <a key={index} className="block px-4 py-3 text-cloud-500" href={dropdownItem.path}>
                       {dropdownItem.label}
                     </a>
                   )}

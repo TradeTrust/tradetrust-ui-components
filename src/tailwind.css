@@ -49,11 +49,11 @@
     @apply transition-colors;
     @apply duration-200;
     @apply ease-out;
-    @apply text-cloud-500;
+    @apply text-cerulean-300;
   }
 
   a:hover {
-    @apply text-cerulean-800;
+    @apply text-cerulean-500;
   }
 
   .button-icon svg {

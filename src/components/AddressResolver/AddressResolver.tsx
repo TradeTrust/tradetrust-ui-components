@@ -16,7 +16,7 @@ export const AddressResolver: FunctionComponent = () => {
           }}
           disabled={isNewEndpoint}
         >
-          <div className="flex items-center mx-0">
+          <div className="flex items-center mx-0 text-cerulean-500 hover:text-cerulean-800">
             <div className="col-auto mr-2">
               <IconAddFile />
             </div>

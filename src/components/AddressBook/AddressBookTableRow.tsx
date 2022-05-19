@@ -20,7 +20,7 @@ const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps>
   const addressHref = makeEtherscanAddressURL(address, network);
   return (
     <a
-      className="inline-block text-cerulean-500 hover:text-cerulean-800"
+      className="inline-block text-cerulean-300 hover:text-cerulean-800"
       href={addressHref}
       target="_blank"
       rel="noreferrer noopener"
