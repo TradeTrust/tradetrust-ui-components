@@ -17,7 +17,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   return (
     <nav>
       <div className="text-cloud-500 font-medium">
-        <div className={`container py-2`}>
+        <div className="container py-2 my-4">
           <div className="relative flex items-center justify-between">
             <div className="lg:hidden">
               <button
@@ -42,10 +42,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 />
               </button>
             </div>
-            <div
-              className="absolute lg:relative flex items-center w-full text-center left-0 right-0 mx-auto lg:mx-0"
-              style={{ maxWidth: "120px" }}
-            >
+            <div className="absolute lg:relative flex items-center w-auto text-center left-0 right-0 mx-auto lg:mx-0 max-w-[168px]">
               {props.logo}
             </div>
             <div className="hidden lg:block">

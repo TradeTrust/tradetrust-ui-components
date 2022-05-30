@@ -5,15 +5,15 @@ import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 
 const sharedColumnPadding = `px-0 lg:px-6 xl:px-8`;
 
-const Left = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement => {
+const Logo = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement => {
   const { title, logoUrl } = props;
 
   return (
-    <div className={`w-full lg:w-auto mb-12 lg:mb-0 ${sharedColumnPadding}`}>
+    <div className="w-full lg:w-auto mb-12 lg:mb-0">
       {title ? (
-        <p className={"text-xl lg:text-3xl text-center lg:text-left font-headings font-bold"}>{title}</p>
+        <p className={"text-xl lg:text-3xl text-center lg:text-left font-headings font-bold max-w-[142px]"}>{title}</p>
       ) : (
-        <img src={logoUrl || defaultTradeTrustLogo} />
+        <img className="max-w-[142px]" src={logoUrl || defaultTradeTrustLogo} />
       )}
     </div>
   );
@@ -43,7 +43,7 @@ export const Footer = (props: FooterProps): React.ReactElement => {
     <footer className={`bg-white no-print ${className}`}>
       <div className="container">
         <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
-          <Left title={title} logoUrl={logoUrl} />
+          <Logo title={title} logoUrl={logoUrl} />
           {data ? (
             data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
           ) : (

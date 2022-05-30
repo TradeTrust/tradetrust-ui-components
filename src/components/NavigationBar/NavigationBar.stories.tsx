@@ -13,13 +13,15 @@ export default {
 export const Default: FunctionComponent = () => {
   const [toggleNavBar, setToggleNavBar] = useState(false);
   return (
-    <NavigationBar
-      logo={<MockLogo />}
-      menuLeft={MockLeftNavItems}
-      menuRight={MockRightNavItems}
-      menuMobile={MockMobileNavItems}
-      setToggleNavBar={setToggleNavBar}
-      toggleNavBar={toggleNavBar}
-    />
+    <div className="border border-solid border-cloud-300">
+      <NavigationBar
+        logo={<MockLogo />}
+        menuLeft={MockLeftNavItems}
+        menuRight={MockRightNavItems}
+        menuMobile={MockMobileNavItems}
+        setToggleNavBar={setToggleNavBar}
+        toggleNavBar={toggleNavBar}
+      />
+    </div>
   );
 };
