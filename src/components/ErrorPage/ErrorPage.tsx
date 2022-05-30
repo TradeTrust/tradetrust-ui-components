@@ -11,22 +11,21 @@ export interface ErrorPageProps {
 export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ pageTitle, header, description, image, children }) => {
   return (
     <div
-      className="w-full h-full bg-cerulean-50 bg-no-repeat bg-cover pb-40"
+      className="bg-cerulean-50 bg-no-repeat bg-center bg-cover"
       style={{ backgroundImage: `url(${wavesBackground})` }}
     >
       <div className="container">
-        <h2 className="bold text-cloud-800">{pageTitle}</h2>
-        <div className="relative max-w-172 h-120 sm:h-132 mx-auto mt-12">
-          <div
-            className="h-56 sm:h-full bg-contain sm:bg-auto bg-center sm:bg-left bg-no-repeat"
-            style={{
-              backgroundImage: `url(${image})`,
-            }}
-          />
-          <div className="sm:absolute text-cloud-800 mx-auto mt-12 sm:mt-0 sm:right-0 sm:top-1/2 font-ubuntu w-72 sm:w-104">
-            <h1 className="text-xl sm:text-4xl mb-4">{header}</h1>
-            <h3 className="font-normal leading-tight text-lg sm:text-2xl">{description}</h3>
-            {children}
+        <div className="py-8">
+          <h2 className="bold text-cloud-800 mb-8">{pageTitle}</h2>
+          <div className="max-w-2xl mx-auto flex flex-wrap items-center">
+            <div className="mx-auto w-1/2 px-4 mb-8 sm:mb-0">
+              <img src={image} alt="" />
+            </div>
+            <div className="w-full sm:w-1/2 px-4">
+              <h1 className="text-xl sm:text-4xl mb-4">{header}</h1>
+              <h3 className="font-normal leading-tight text-lg sm:text-2xl">{description}</h3>
+              {children}
+            </div>
           </div>
         </div>
       </div>
