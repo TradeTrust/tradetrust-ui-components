@@ -2,11 +2,12 @@ import React from "react";
 import { Settings } from "react-feather";
 import { NavigationItem, NAVIGATION_ITEM_TYPE } from "./type";
 import { Button, ButtonSize } from "./../UI/Button";
+import logo from "../../static/images/tradetrust_logo.svg";
 
 export const MockLogo = (): React.ReactElement => {
   return (
     <a href="https://www.tradetrust.io/" className="inline-block mx-auto">
-      <h4 className="text-gray-800">TradeTrust</h4>
+      <img src={logo} />
     </a>
   );
 };

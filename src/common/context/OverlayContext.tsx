@@ -17,7 +17,7 @@ export const OverlayContext = createContext<OverlayContextProps>({
   setOverlayVisible: () => {},
 });
 
-export const OverlayContextProvider: FunctionComponent = ({ children }) => {
+export const OverlayContextProvider: FunctionComponent = ({ children }: { children?: React.ReactNode }) => {
   const [overlayContent, setOverlayContent] = useState<OverlayContextProps["overlayContent"]>();
   const [isOverlayVisible, setOverlayVisible] = useState(false);
 
