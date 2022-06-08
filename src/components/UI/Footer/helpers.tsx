@@ -18,5 +18,5 @@ export const Bottom = ({ copyright }: { copyright: string }): React.ReactElement
 };
 
 export const Category = ({ category }: { category: string }): React.ReactElement => {
-  return <div className={"pb-4 font-bold text-cloud-500"}>{category}</div>;
+  return <div className={"pb-4 font-gilroy-bold text-cloud-500"}>{category}</div>;
 };

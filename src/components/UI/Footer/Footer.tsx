@@ -11,7 +11,7 @@ const Logo = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement
   return (
     <div className="w-full lg:w-auto mb-12 lg:mb-0">
       {title ? (
-        <p className={"text-xl lg:text-3xl text-center lg:text-left font-headings font-bold max-w-[142px]"}>{title}</p>
+        <p className={"text-xl lg:text-3xl text-center lg:text-left font-gilroy-bold max-w-[142px]"}>{title}</p>
       ) : (
         <img className="max-w-[142px]" src={logoUrl || defaultTradeTrustLogo} />
       )}

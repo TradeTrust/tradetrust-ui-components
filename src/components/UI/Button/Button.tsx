@@ -7,7 +7,7 @@ interface GetSharedStylesButton {
 const getSharedStylesButton = (shared: GetSharedStylesButton): string => {
   const { padding } = shared;
 
-  return `transition-colors duration-200 ease-out cursor-pointer font-bold border ${padding}`;
+  return `transition-colors duration-200 ease-out cursor-pointer font-gilroy-bold border ${padding}`;
 };
 
 export enum ButtonSize {
