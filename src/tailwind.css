@@ -29,18 +29,46 @@
 
 @layer base {
   h1 {
-    font-size: 40px;
-  }
-  h2 {
-    font-size: 32px;
-  }
-  h3 {
-    font-size: 28px;
-  }
-  h4 {
-    font-size: 24px;
+    font-size: 52px;
+    @apply font-ubuntu;
+    @apply font-bold;
   }
 
+  h2 {
+    font-size: 40px;
+    @apply font-ubuntu;
+    @apply font-bold;
+  }
+
+  h3 {
+    font-size: 26px;
+    @apply font-ubuntu;
+    @apply font-normal;
+    @apply leading-tight;
+  }
+
+  h4 {
+    font-size: 20px;
+    @apply font-gilroy-bold;
+  }
+
+  h5 {
+    font-size: 16px;
+    @apply font-gilroy-bold;
+  }
+
+  h6 {
+    font-size: 14px;
+    @apply font-gilroy-medium;
+    @apply font-normal;
+  }
+
+  p {
+    font-size: 16px;
+    @apply font-gilroy-medium;
+    @apply font-normal;
+  }
+  
   input[disabled] {
     @apply cursor-not-allowed;
   }
