@@ -15,10 +15,10 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
   const collapsed = !props.toggleNavBar;
 
   return (
-    <nav className="bg-white py-4">
+    <nav className="bg-white">
       <div className="text-cloud-500 font-medium">
         <div className="container py-2">
-          <div className="relative flex items-center justify-between">
+          <div className="relative flex items-baseline justify-between">
             <div className="lg:hidden">
               <button
                 className={`flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
