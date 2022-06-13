@@ -19,7 +19,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
       <div className="text-cloud-500 font-medium">
         <div className="container py-2">
           <div className="relative flex items-baseline justify-between">
-            <div className="lg:hidden">
+            <div className="self-center lg:hidden">
               <button
                 className={`flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
                 onClick={() => {
@@ -42,7 +42,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 />
               </button>
             </div>
-            <div className="absolute lg:relative flex items-center w-auto text-center left-0 right-0 mx-auto lg:mx-0 max-w-[168px]">
+            <div className="absolute lg:relative flex items-center w-[104px] md:w-[140px] lg:w-auto text-center left-0 right-0 mx-auto lg:mx-0 max-w-[168px]">
               {props.logo}
             </div>
             <div className="hidden lg:block">
@@ -56,7 +56,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 })}
               </div>
             </div>
-            <div className="hidden md:block lg:ml-auto">
+            <div className="hidden md:block lg:ml-auto self-center">
               {props.menuRight && (
                 <div className="flex items-center">
                   {props.menuRight.map((item, index) => {
@@ -71,7 +71,7 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
             </div>
           </div>
         </div>
-        <div className={`lg:hidden`}>
+        <div className="lg:hidden">
           <div
             className={`container rounded-md bg-white overflow-auto transition-height ease-in-out duration-700 ${
               props.toggleNavBar ? "max-h-screen" : "max-h-0"
