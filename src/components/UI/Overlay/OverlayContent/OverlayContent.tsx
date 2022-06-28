@@ -9,13 +9,24 @@ export interface OverlayContentProps {
   title: string;
   isSuccess?: boolean;
   children?: React.ReactNode;
+  crossStyle?: string;
 }
+
+/**
+ * OverlayContent is a component to display overlay contents.
+ * @param className className for the overlay content container
+ * @param title displays the title for the overlay contents
+ * @param isSuccess a boolean, if true will display a green tick on the left of the title, if false will display a red cross on the left of the title, if undefined will not display anything
+ * @param children children component for this component
+ * @param crossStyle className for the 'X' button to close the overlay
+ */
 
 export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
   className,
   title,
   isSuccess,
   children,
+  crossStyle,
   ...props
 }) => {
   const { isOverlayVisible, closeOverlay } = useOverlayContext();
@@ -43,7 +54,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
                 {title}
               </h3>
               <div className="w-auto ml-auto cursor-pointer" onClick={closeOverlay} data-testid="overlay-close">
-                <X />
+                <X className={crossStyle ? crossStyle : ""} />
               </div>
             </div>
             {children}
