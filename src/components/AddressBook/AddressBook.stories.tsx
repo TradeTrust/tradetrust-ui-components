@@ -12,7 +12,7 @@ export const DefaultAddressBook = (): ReactElement => {
 
   return (
     <AddressBook
-      network="ropsten"
+      network="goerli"
       onAddressSelect={(address: string) => {
         console.log(address);
       }}
@@ -59,7 +59,7 @@ export const PopulatedLocalAddressBook = (): ReactElement => {
       onAddressSelect={(address: string) => {
         console.log(address);
       }}
-      network="ropsten"
+      network="goerli"
     />
   );
 };
@@ -98,7 +98,7 @@ export const PopulatedThirdpartyAddressBook = (): ReactElement => {
       onAddressSelect={(address: string) => {
         console.log(address);
       }}
-      network="ropsten"
+      network="goerli"
     />
   );
 };
@@ -137,7 +137,7 @@ export const ThirdpartyAddressBookNoEntityLookup = (): ReactElement => {
       onAddressSelect={(address: string) => {
         console.log(address);
       }}
-      network="ropsten"
+      network="goerli"
     />
   );
 };
