@@ -59,7 +59,7 @@ export const PopulatedThirdpartyAddressBook = (): ReactElement => {
       <OverlayDemo buttonText="Populated third party address book">
         <OverlayAddressBook
           onAddressSelected={(address) => window.alert(`${address} was selected!`)}
-          network="ropsten"
+          network="goerli"
           title="Address Book"
         />
       </OverlayDemo>

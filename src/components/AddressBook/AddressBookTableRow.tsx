@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { ExternalLink } from "react-feather";
-import { makeEtherscanAddressURL } from "../../utils";
+import { makeAddressURL } from "../../utils";
 
 interface AddressBookTableRowProps {
   onAddressSelect: () => void;
@@ -17,7 +17,7 @@ interface AddressBookEtherscanLinkProps {
 }
 
 const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
-  const addressHref = makeEtherscanAddressURL(address, network);
+  const addressHref = makeAddressURL(address, network);
   return (
     <a
       className="inline-block text-cerulean-300 hover:text-cerulean-800"
