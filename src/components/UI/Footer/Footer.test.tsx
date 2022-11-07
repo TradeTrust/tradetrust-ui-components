@@ -8,8 +8,12 @@ const renderSomethingElse = ({ to }: FooterColumnItemProps) => <div>{to}</div>;
 const renderSpecial = ({ someOther }: FooterColumnItemProps) => <div>{someOther}</div>;
 const defaultProps = {
   title: "title",
-  copyright: "copyright",
+  legalData: {
+    copyright: "copyright",
+    items: [{ label: "Terms of use", to: "https://google.com", render: renderLabel }],
+  },
 };
+
 describe("footer component", () => {
   it("should render the title and copyright if data is null", () => {
     const { getByText } = render(<Footer {...defaultProps} />);
@@ -65,13 +69,6 @@ describe("footer component", () => {
           { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
           { label: "A-2", to: "https://google.com" },
           { label: "A-3", to: "somewhere", render: renderLabel },
-        ],
-      },
-      {
-        category: "Bottom",
-        items: [
-          { label: "label", to: "Bottom-1", render: renderSomethingElse },
-          { label: "B-2", to: "somewhere", render: renderLabel },
         ],
       },
     ];

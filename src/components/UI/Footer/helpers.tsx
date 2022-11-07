@@ -1,5 +1,5 @@
 import React from "react";
-import { FooterColumnData, FooterColumnItemProps, FooterColumnProps } from "./types";
+import { FooterColumnData, FooterColumnItemProps, legalDataProps } from "./types";
 
 const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => {
   return (
@@ -18,12 +18,12 @@ export const mapper = (item: FooterColumnData, index: number): React.ReactElemen
   );
 };
 
-export const Bottom = ({ copyright, data }: { copyright: string; data: FooterColumnProps[] }): React.ReactElement => {
+export const Bottom = ({ legalData }: { legalData: legalDataProps }): React.ReactElement => {
+  const { copyright, items } = legalData;
+
   return (
     <div className={"flex justify-center items-center pt-6"}>
-      {data.map((bottomData) => {
-        return bottomData.items && bottomData.items.map(mapper);
-      })}
+      {items.map(mapper)}
       <p className={"text-cloud-500 text-sm px-4 pb-3"}>{copyright}</p>
     </div>
   );

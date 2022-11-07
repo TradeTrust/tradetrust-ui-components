@@ -56,19 +56,19 @@ const data = [
     category: "Category E",
     items: [{ label: "E-1", to: "somewhere", render }],
   },
-  {
-    category: "Bottom",
-    items: [
-      { label: "Privacy Policy", to: "https://google.com", render: bottomRender },
-      { label: "Terms of use", to: "https://google.com", render: bottomRender },
-    ],
-  },
 ];
+const legalData = {
+  copyright: "Copyright \u00A9 2020",
+  items: [
+    { label: "Privacy Policy", to: "https://google.com", render: bottomRender },
+    { label: "Terms of use", to: "https://yahoo.com", render: bottomRender },
+  ],
+};
 
 export const Title: React.FunctionComponent = () => {
-  return <Footer title={"Title"} copyright={"Copyright \u00A9 2020"} data={data} />;
+  return <Footer title={"Title"} legalData={legalData} data={data} />;
 };
 
 export const Logo: React.FunctionComponent = () => {
-  return <Footer logoUrl={defaultTradeTrustLogo} copyright={"Copyright \u00A9 2020"} data={data} />;
+  return <Footer logoUrl={defaultTradeTrustLogo} legalData={legalData} data={data} />;
 };

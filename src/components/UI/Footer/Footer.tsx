@@ -30,23 +30,21 @@ const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
 };
 
 export const Footer = (props: FooterProps): React.ReactElement => {
-  const { className = "", title = "", logoUrl = "", copyright, data } = props;
-  const topData = data ? data.filter((data) => data.category.includes("Category")) : [];
-  const bottomData = data ? data.filter((data) => data.category.includes("Bottom")) : [];
+  const { className = "", title = "", logoUrl = "", data, legalData } = props;
 
   return (
     <footer className={`bg-white no-print ${className}`}>
       <div className="container">
         <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
           <Logo title={title} logoUrl={logoUrl} />
-          {topData ? (
-            topData.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
+          {data ? (
+            data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
           ) : (
             <div className="flex-auto" />
           )}
         </div>
         <hr />
-        <Bottom copyright={copyright} data={bottomData} />
+        {legalData && <Bottom legalData={legalData} />}
       </div>
     </footer>
   );
