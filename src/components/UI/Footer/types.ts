@@ -17,10 +17,14 @@ export interface FooterColumnProps {
   items: FooterColumnData[];
 }
 
+export interface legalDataProps {
+  copyright: string;
+  items: FooterColumnData[];
+}
 export interface FooterProps {
   className?: string;
   title?: string;
   logoUrl?: string;
-  copyright: string;
   data?: FooterColumnProps[];
+  legalData?: legalDataProps;
 }

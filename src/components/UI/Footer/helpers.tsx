@@ -1,7 +1,7 @@
 import React from "react";
-import { FooterColumnItemProps } from "./types";
+import { FooterColumnData, FooterColumnItemProps, legalDataProps } from "./types";
 
-export const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => {
+const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => {
   return (
     <a className="text-cloud-500" href={to}>
       {label}
@@ -9,10 +9,22 @@ export const defaultRender = ({ label, to }: FooterColumnItemProps): React.React
   );
 };
 
-export const Bottom = ({ copyright }: { copyright: string }): React.ReactElement => {
+export const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
+  const { render = defaultRender } = item;
+  return (
+    <div key={`row-${index}`} className={"pb-3"}>
+      {render({ ...item })}
+    </div>
+  );
+};
+
+export const Bottom = ({ legalData }: { legalData: legalDataProps }): React.ReactElement => {
+  const { copyright, items } = legalData;
+
   return (
     <div className={"flex justify-center items-center pt-6"}>
-      <p className={"text-cloud-500 text-sm"}>{copyright}</p>
+      {items.map(mapper)}
+      <p className={"text-cloud-500 text-sm px-4 pb-3"}>{copyright}</p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
+import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 import { Footer } from "./";
 import { FooterColumnItemProps } from "./types";
-import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 
 export default {
   title: "UI/Footer",
@@ -14,6 +14,11 @@ export default {
 const render = ({ label }: FooterColumnItemProps): React.ReactElement => <div>{label}</div>;
 const renderSomethingElse = ({ to }: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
 const renderSpecial = ({ someOther }: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
+const bottomRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => (
+  <a href={to} className="text-cloud-500 text-sm px-4 border-r">
+    {label}
+  </a>
+);
 const data = [
   {
     category: "Category A",
@@ -52,11 +57,18 @@ const data = [
     items: [{ label: "E-1", to: "somewhere", render }],
   },
 ];
+const legalData = {
+  copyright: "Copyright \u00A9 2020",
+  items: [
+    { label: "Privacy Policy", to: "https://google.com", render: bottomRender },
+    { label: "Terms of use", to: "https://yahoo.com", render: bottomRender },
+  ],
+};
 
 export const Title: React.FunctionComponent = () => {
-  return <Footer title={"Title"} copyright={"Copyright \u00A9 2020"} data={data} />;
+  return <Footer title={"Title"} legalData={legalData} data={data} />;
 };
 
 export const Logo: React.FunctionComponent = () => {
-  return <Footer logoUrl={defaultTradeTrustLogo} copyright={"Copyright \u00A9 2020"} data={data} />;
+  return <Footer logoUrl={defaultTradeTrustLogo} legalData={legalData} data={data} />;
 };
