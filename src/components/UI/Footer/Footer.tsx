@@ -1,7 +1,7 @@
 import React from "react";
-import { FooterColumnData, FooterColumnProps, FooterProps } from "./types";
-import { defaultRender, Bottom, Category } from "./helpers";
 import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
+import { Bottom, Category, mapper } from "./helpers";
+import { FooterColumnProps, FooterProps } from "./types";
 
 const sharedColumnPadding = `px-0 lg:px-6 xl:px-8`;
 
@@ -19,14 +19,6 @@ const Logo = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement
   );
 };
 
-const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
-  const { render = defaultRender } = item;
-  return (
-    <div key={`row-${index}`} className={"pb-3"}>
-      {render({ ...item })}
-    </div>
-  );
-};
 const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
   const { category, items } = props;
   return (
@@ -39,19 +31,22 @@ const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
 
 export const Footer = (props: FooterProps): React.ReactElement => {
   const { className = "", title = "", logoUrl = "", copyright, data } = props;
+  const topData = data ? data.filter((data) => data.category.includes("Category")) : [];
+  const bottomData = data ? data.filter((data) => data.category.includes("Bottom")) : [];
+
   return (
     <footer className={`bg-white no-print ${className}`}>
       <div className="container">
         <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
           <Logo title={title} logoUrl={logoUrl} />
-          {data ? (
-            data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
+          {topData ? (
+            topData.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
           ) : (
             <div className="flex-auto" />
           )}
         </div>
         <hr />
-        <Bottom copyright={copyright} />
+        <Bottom copyright={copyright} data={bottomData} />
       </div>
     </footer>
   );

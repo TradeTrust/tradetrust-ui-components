@@ -56,4 +56,28 @@ describe("footer component", () => {
     expect(getByText("B-1")).toBeInTheDocument();
     expect(getByText("B-2")).toBeInTheDocument();
   });
+
+  it("should render footer bottom data if bottom data is passed in", () => {
+    const data = [
+      {
+        category: "Category A",
+        items: [
+          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          { label: "A-2", to: "https://google.com" },
+          { label: "A-3", to: "somewhere", render: renderLabel },
+        ],
+      },
+      {
+        category: "Bottom",
+        items: [
+          { label: "label", to: "Bottom-1", render: renderSomethingElse },
+          { label: "B-2", to: "somewhere", render: renderLabel },
+        ],
+      },
+    ];
+    const { getByText } = render(<Footer {...defaultProps} data={data} />);
+    expect(getByText("Category A")).toBeInTheDocument();
+    expect(getByText("A-2")).toBeInTheDocument();
+    expect(getByText("Bottom-1")).toBeInTheDocument();
+  });
 });

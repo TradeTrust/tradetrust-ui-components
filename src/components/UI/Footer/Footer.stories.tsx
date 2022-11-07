@@ -1,7 +1,7 @@
 import React from "react";
+import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 import { Footer } from "./";
 import { FooterColumnItemProps } from "./types";
-import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 
 export default {
   title: "UI/Footer",
@@ -14,6 +14,11 @@ export default {
 const render = ({ label }: FooterColumnItemProps): React.ReactElement => <div>{label}</div>;
 const renderSomethingElse = ({ to }: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
 const renderSpecial = ({ someOther }: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
+const bottomRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => (
+  <a href={to} className="text-cloud-500 text-sm px-4 border-r">
+    {label}
+  </a>
+);
 const data = [
   {
     category: "Category A",
@@ -50,6 +55,13 @@ const data = [
   {
     category: "Category E",
     items: [{ label: "E-1", to: "somewhere", render }],
+  },
+  {
+    category: "Bottom",
+    items: [
+      { label: "Privacy Policy", to: "https://google.com", render: bottomRender },
+      { label: "Terms of use", to: "https://google.com", render: bottomRender },
+    ],
   },
 ];
 
