@@ -72,9 +72,11 @@ describe("footer component", () => {
         ],
       },
     ];
+
     const { getByText } = render(<Footer {...defaultProps} data={data} />);
     expect(getByText("Category A")).toBeInTheDocument();
     expect(getByText("A-2")).toBeInTheDocument();
-    expect(getByText("Bottom-1")).toBeInTheDocument();
+    expect(getByText("Terms of use")).toBeInTheDocument();
+    expect(getByText("copyright")).toBeInTheDocument();
   });
 });
