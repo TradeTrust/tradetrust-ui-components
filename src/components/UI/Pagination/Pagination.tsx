@@ -54,7 +54,12 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
   return (
     <div className="flex overflow-x-auto">
       <div className="flex ml-auto items-center justify-center">
-        <PaginationBox onClick={goPreviousPage} disable={currentPage === 1} data-testid="page-prev">
+        <PaginationBox
+          onClick={goPreviousPage}
+          disable={currentPage === 1}
+          data-testid="page-prev"
+          aria-label="Previous Page"
+        >
           <ChevronLeft size={14} />
         </PaginationBox>
         <PaginationBox
@@ -110,7 +115,12 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
             {totalNoOfPages}
           </PaginationBox>
         )}
-        <PaginationBox onClick={goNextPage} disable={currentPage >= totalNoOfPages} data-testid="page-next">
+        <PaginationBox
+          onClick={goNextPage}
+          disable={currentPage >= totalNoOfPages}
+          data-testid="page-next"
+          aria-label="Next Page"
+        >
           <ChevronRight size={14} />
         </PaginationBox>
       </div>
