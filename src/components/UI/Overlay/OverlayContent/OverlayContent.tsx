@@ -10,6 +10,7 @@ export interface OverlayContentProps {
   isSuccess?: boolean;
   children?: React.ReactNode;
   crossStyle?: string;
+  maxHeight?: number;
 }
 
 /**
@@ -19,19 +20,25 @@ export interface OverlayContentProps {
  * @param isSuccess a boolean, if true will display a green tick on the left of the title, if false will display a red cross on the left of the title, if undefined will not display anything
  * @param children children component for this component
  * @param crossStyle className for the 'X' button to close the overlay
+ * @param maxHeight maxHeight for overlay content
  */
-
 export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
   className,
   title,
   isSuccess,
   children,
   crossStyle,
+  maxHeight,
   ...props
 }) => {
   const { isOverlayVisible, closeOverlay } = useOverlayContext();
 
   useLockBodyScroll();
+
+  const style = {
+    width: "calc(100vw - (15px * 2))",
+    ...(maxHeight && { maxHeight: `${maxHeight}px` }),
+  };
 
   return (
     <>
@@ -39,9 +46,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
         <div
           className={`relative flex flex-col p-5 bg-white rounded-xl shadow-lg overflow-auto h-auto ${className}`}
           {...props}
-          style={{
-            width: "calc(100vw - (15px * 2))",
-          }}
+          style={style}
         >
           <div className="text-cloud-800">
             <div className="flex flex-nowrap content-center items-start mb-2">

@@ -13,7 +13,9 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
       if (!csvFile) throw new Error("No file selected");
       handleLocalAddressBookCsv(csvFile);
     } catch (e) {
-      alert(e.message || e);
+      if (e instanceof Error) {
+        alert(e.message || e);
+      }
     }
   };
   return (
