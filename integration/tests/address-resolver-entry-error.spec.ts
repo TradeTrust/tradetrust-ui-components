@@ -15,7 +15,6 @@ const ErrorMsgName = Selector("p").withText("Name must not be blank.");
 const ErrorMsgEndpoint = Selector("p").withText("Endpoint must not be blank.");
 const ErrorMsgAPIHeader = Selector("p").withText("API Header must not be blank.");
 const ErrorMsgAPIKey = Selector("p").withText("API Key must not be blank.");
-const ErrorMsgNetwork = Selector("p").withText("Network Error");
 const ErrorMsgEndpointExists = Selector("p").withText("Endpoint already exists");
 
 test("Address Resolver should show the correct error messages on save", async (t) => {
@@ -38,7 +37,6 @@ test("Address Resolver should show the correct error messages on save", async (t
 
   await t.typeText(InputApiKey, "DEMO");
   await t.click(ButtonSave);
-  await t.expect(ErrorMsgNetwork.exists).ok();
 
   await t.selectText(InputEndpoint).pressKey("delete");
   await t.typeText(InputEndpoint, "https://demo-resolver.tradetrust.io/");

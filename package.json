@@ -23,7 +23,7 @@
     "integration": "testcafe chrome integration/tests/**/*.spec.ts",
     "integration:ci": "start-server-and-test storybook:ci http://localhost:9009 integration:headless",
     "integration:single": "testcafe chrome -L",
-    "integration:headless": "testcafe -c 3 chrome:headless integration/tests/**/*.spec.ts",
+    "integration:headless": "testcafe -c 3 chrome:headless integration/tests/**/*.spec.ts -s takeOnFails=true",
     "lint": "eslint . --ext .ts,.tsx,.mdx --max-warnings 0",
     "lint:type": "npx --no-install tsc --noEmit --sourceMap false",
     "lint:fix": "npm run lint -- --fix",
