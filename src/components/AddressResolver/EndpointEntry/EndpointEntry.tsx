@@ -140,7 +140,9 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
 
       showOverlay(<AddResolverConfirmation />);
     } catch (e) {
-      onSetAllError(e.message);
+      if (e instanceof Error) {
+        onSetAllError(e.message);
+      }
     }
     setIsLoading(false);
   };
