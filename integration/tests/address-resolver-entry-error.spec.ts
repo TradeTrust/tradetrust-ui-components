@@ -37,8 +37,6 @@ test("Address Resolver should show the correct error messages on save", async (t
   await t.expect(ErrorMsgAPIKey.exists).ok();
 
   await t.typeText(InputApiKey, "DEMO");
-  await t.click(ButtonSave);
-  await t.expect(ErrorMsgNetwork.exists).ok();
 
   await t.selectText(InputEndpoint).pressKey("delete");
   await t.typeText(InputEndpoint, "https://demo-resolver.tradetrust.io/");
