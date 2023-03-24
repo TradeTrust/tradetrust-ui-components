@@ -90,7 +90,7 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
   };
 
   return (
-    <OverlayContent className="max-w-md" {...props}>
+    <OverlayContent className="max-w-md bg-white" {...props}>
       <div className="flex-1 mb-4">{children}</div>
       <div className="flex mx-0">
         <div className="flex w-full col-auto justify-center">{documentTransferButton()}</div>
