@@ -7,7 +7,7 @@ interface YoutubeProps extends OverlayContentProps {
 
 export const Youtube: FunctionComponent<YoutubeProps> = ({ youtubeId, ...props }) => {
   return (
-    <OverlayContent className="max-w-6xl" {...props}>
+    <OverlayContent className="max-w-6xl bg-white" {...props}>
       <div className="aspect-16-9">
         <iframe
           className="absolute top-0 left-0 w-full h-full p-0 m-0 border-0"

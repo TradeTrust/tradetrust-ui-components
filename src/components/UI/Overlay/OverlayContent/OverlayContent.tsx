@@ -44,7 +44,7 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
     <>
       {isOverlayVisible && (
         <div
-          className={`relative flex flex-col p-5 bg-white rounded-xl shadow-lg overflow-auto h-auto ${className}`}
+          className={`relative flex flex-col p-5 rounded-xl shadow-lg overflow-auto h-auto ${className}`}
           {...props}
           style={style}
         >
