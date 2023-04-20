@@ -10,12 +10,14 @@ export interface PaginationProps {
 
 interface GetPaginatedPosts {
   postsPerPage: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   posts: any;
   currentPage: number;
 }
 
 interface GetPaginatedPagesTotal {
   postsPerPage: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   posts: any[];
 }
 
@@ -23,9 +25,11 @@ export const getPaginatedPagesTotal = ({ posts, postsPerPage }: GetPaginatedPage
   return Math.ceil(posts.length / postsPerPage);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getPaginatedPosts = ({ posts, postsPerPage, currentPage }: GetPaginatedPosts): any[] => {
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const paginatedPosts = posts.filter((post: any, index: number) => {
     return index >= indexOfFirstEvent && index < indexOfLastEvent ? post : null;
   });

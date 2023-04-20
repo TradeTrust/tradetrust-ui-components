@@ -9,12 +9,15 @@ interface OverlayContextProps {
   setOverlayVisible: (isOverlayVisible: boolean) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 export const OverlayContext = createContext<OverlayContextProps>({
   overlayContent: undefined,
-  showOverlay: () => {},
-  closeOverlay: () => {},
+  showOverlay: noop,
+  closeOverlay: noop,
   isOverlayVisible: false,
-  setOverlayVisible: () => {},
+  setOverlayVisible: noop,
 });
 
 export const OverlayContextProvider: FunctionComponent = ({ children }) => {

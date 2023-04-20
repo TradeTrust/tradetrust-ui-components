@@ -4,6 +4,7 @@ export interface FooterColumnData extends FooterColumnItem {
 }
 
 export interface FooterColumnItemProps extends FooterColumnItem {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
