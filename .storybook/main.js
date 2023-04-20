@@ -4,7 +4,7 @@ const custom = require("../webpack.config.js");
 
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
-  addons: ["@storybook/addon-essentials", "@storybook/addon-postcss"],
+  addons: ["@storybook/addon-essentials"],
   core: {
     builder: "webpack5",
   },
