@@ -1,4 +1,7 @@
-const plugin = require("tailwindcss/plugin"); //eslint-disable-line @typescript-eslint/no-var-requires
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   theme: {

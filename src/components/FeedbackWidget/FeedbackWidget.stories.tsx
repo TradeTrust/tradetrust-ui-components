@@ -51,8 +51,10 @@ export const Default: FunctionComponent = () => {
       <FeedbackWidget>
         <FeedbackWidgetText
           positiveFeedbackUrl="https://example.com/yes"
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           positiveFeedbackHandle={() => {}}
           negativeFeedbackUrl="https://example.com/no"
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           negativeFeedbackHandle={() => {}}
         />
       </FeedbackWidget>

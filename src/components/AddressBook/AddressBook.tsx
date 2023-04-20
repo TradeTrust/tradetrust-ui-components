@@ -105,7 +105,6 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const queryEndpointWithDebounce = useCallback(
     debounce(async (search, pageOffset = offset) => {
       queryEndpoint(search, pageOffset);
@@ -117,7 +116,7 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
     if (isLocal) return;
     const pageOffset = (currentPage - 1) * paginationLimit;
     queryEndpoint(searchTerm, pageOffset);
-  }, [currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   useEffect(() => {
     if (isEmpty(addressBook)) {
