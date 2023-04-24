@@ -260,7 +260,7 @@ export const OverlayAddressBook: FunctionComponent<OverlayAddressBookProps> = ({
   };
 
   return (
-    <OverlayContent data-testid="overlay-addressbook" className="max-w-6xl" {...props} maxHeight={600}>
+    <OverlayContent data-testid="overlay-addressbook" className="bg-white max-w-6xl" {...props} maxHeight={600}>
       <AddressBook network={network} onAddressSelect={onAddressSelect} />
     </OverlayContent>
   );
