@@ -5,15 +5,27 @@ import { FooterColumnProps, FooterProps } from "./types";
 
 const sharedColumnPadding = `px-0 lg:px-6 xl:px-8`;
 
-const Logo = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement => {
+const Logo = (
+  props: Pick<FooterProps, "title" | "logoUrl">
+): React.ReactElement => {
   const { title, logoUrl } = props;
 
   return (
     <div className="w-full lg:w-auto mb-12 lg:mb-0">
       {title ? (
-        <p className={"text-xl lg:text-3xl text-center lg:text-left font-gilroy-bold max-w-[142px]"}>{title}</p>
+        <p
+          className={
+            "text-xl lg:text-3xl text-center lg:text-left font-gilroy-bold max-w-[142px]"
+          }
+        >
+          {title}
+        </p>
       ) : (
-        <img className="max-w-[142px]" src={logoUrl || defaultTradeTrustLogo} alt="TradeTrust Logo" />
+        <img
+          className="max-w-[142px]"
+          src={logoUrl || defaultTradeTrustLogo}
+          alt="TradeTrust Logo"
+        />
       )}
     </div>
   );
@@ -22,7 +34,9 @@ const Logo = (props: Pick<FooterProps, "title" | "logoUrl">): React.ReactElement
 const FooterColumn = (props: FooterColumnProps): React.ReactElement => {
   const { category, items } = props;
   return (
-    <div className={`w-1/2 lg:w-auto mb-8 lg:mb-0 text-cloud-500 ${sharedColumnPadding}`}>
+    <div
+      className={`w-1/2 lg:w-auto mb-8 lg:mb-0 text-cloud-500 ${sharedColumnPadding}`}
+    >
       <Category category={category} />
       {items.map(mapper)}
     </div>
@@ -38,7 +52,9 @@ export const Footer = (props: FooterProps): React.ReactElement => {
         <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
           <Logo title={title} logoUrl={logoUrl} />
           {data ? (
-            data.map((columnData, index) => <FooterColumn key={`col-${index}`} {...columnData} />)
+            data.map((columnData, index) => (
+              <FooterColumn key={`col-${index}`} {...columnData} />
+            ))
           ) : (
             <div className="flex-auto" />
           )}

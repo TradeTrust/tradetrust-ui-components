@@ -5,7 +5,10 @@ interface YoutubeProps extends OverlayContentProps {
   youtubeId: string;
 }
 
-export const Youtube: FunctionComponent<YoutubeProps> = ({ youtubeId, ...props }) => {
+export const Youtube: FunctionComponent<YoutubeProps> = ({
+  youtubeId,
+  ...props
+}) => {
   return (
     <OverlayContent className="max-w-6xl bg-white" {...props}>
       <div className="aspect-16-9">

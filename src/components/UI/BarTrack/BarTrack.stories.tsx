@@ -10,5 +10,9 @@ export default {
 };
 
 export const BarTrackStart: FunctionComponent = () => <BarTrack progress={0} />;
-export const BarTrackProgress: FunctionComponent = () => <BarTrack progress={0.33} />;
-export const BarTrackComplete: FunctionComponent = () => <BarTrack progress={1} />;
+export const BarTrackProgress: FunctionComponent = () => (
+  <BarTrack progress={0.33} />
+);
+export const BarTrackComplete: FunctionComponent = () => (
+  <BarTrack progress={1} />
+);

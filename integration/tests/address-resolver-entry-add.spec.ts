@@ -21,7 +21,9 @@ test("Address Resolver should edit, save input values correctly", async (t) => {
 
   await t.expect(InputEndpoint.value).eql("");
   await t.typeText(InputEndpoint, "https://demo-resolver.tradetrust.io/");
-  await t.expect(InputEndpoint.value).contains("https://demo-resolver.tradetrust.io/");
+  await t
+    .expect(InputEndpoint.value)
+    .contains("https://demo-resolver.tradetrust.io/");
 
   await t.expect(InputApiHeader.value).eql("");
   await t.typeText(InputApiHeader, "x-api-key");

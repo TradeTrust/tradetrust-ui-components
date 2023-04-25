@@ -1,4 +1,10 @@
-import React, { createContext, FunctionComponent, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useKeyPress } from "./../../common/hooks/useKeyPress";
 
 interface OverlayContextProps {
@@ -21,7 +27,8 @@ export const OverlayContext = createContext<OverlayContextProps>({
 });
 
 export const OverlayContextProvider: FunctionComponent = ({ children }) => {
-  const [overlayContent, setOverlayContent] = useState<OverlayContextProps["overlayContent"]>();
+  const [overlayContent, setOverlayContent] =
+    useState<OverlayContextProps["overlayContent"]>();
   const [isOverlayVisible, setOverlayVisible] = useState(false);
 
   const escapePress = useKeyPress("Escape");
@@ -60,4 +67,5 @@ export const OverlayContextProvider: FunctionComponent = ({ children }) => {
   );
 };
 
-export const useOverlayContext = (): OverlayContextProps => useContext<OverlayContextProps>(OverlayContext);
+export const useOverlayContext = (): OverlayContextProps =>
+  useContext<OverlayContextProps>(OverlayContext);

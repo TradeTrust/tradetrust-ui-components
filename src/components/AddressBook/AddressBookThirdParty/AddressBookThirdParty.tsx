@@ -1,7 +1,10 @@
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
 import { AddressBookState } from "./../AddressBook";
-import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
+import {
+  AddressBookTableRow,
+  AddressBookTableRowEmpty,
+} from "../AddressBookTableRow";
 
 interface AddressBookThirdPartyProps {
   addressBookThirdPartyStatus: string;
@@ -10,7 +13,9 @@ interface AddressBookThirdPartyProps {
   network?: string;
 }
 
-export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps> = ({
+export const AddressBookThirdParty: FunctionComponent<
+  AddressBookThirdPartyProps
+> = ({
   addressBookThirdPartyStatus,
   onAddressSelect,
   thirdPartyPageResults,
@@ -51,7 +56,9 @@ export const AddressBookThirdParty: FunctionComponent<AddressBookThirdPartyProps
       {addressBookThirdPartyStatus === AddressBookState.EMPTY && (
         <AddressBookTableRowEmpty message="No address found. Try searching with another keyword for results." />
       )}
-      {addressBookThirdPartyStatus === AddressBookState.PENDING && <AddressBookTableRowEmpty message="Searching..." />}
+      {addressBookThirdPartyStatus === AddressBookState.PENDING && (
+        <AddressBookTableRowEmpty message="Searching..." />
+      )}
     </>
   );
 };

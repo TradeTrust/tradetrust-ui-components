@@ -5,12 +5,20 @@ import {
   useThirdPartyAPIEndpoints,
 } from "@govtechsg/address-identity-resolver";
 import { debounce, isEmpty } from "lodash";
-import React, { FunctionComponent, useCallback, useEffect, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { Download, Search } from "react-feather";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { LinkButton } from "../UI/Button";
 import { Dropdown, DropdownItem } from "../UI/Dropdown";
-import { OverlayContent, OverlayContentProps } from "../UI/Overlay/OverlayContent";
+import {
+  OverlayContent,
+  OverlayContentProps,
+} from "../UI/Overlay/OverlayContent";
 import { Pagination } from "../UI/Pagination";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookThirdParty } from "./AddressBookThirdParty";
@@ -48,8 +56,11 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
 
   const [isLocal, setIsLocal] = useState(true);
   const [remoteEndpointIndex, setRemoteEndpointIndex] = useState(0);
-  const [thirdPartyPageResults, setThirdPartyPageResults] = useState<AddressBookThirdPartyResultsProps[]>([]);
-  const { name, endpoint, apiHeader, apiKey, path } = thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
+  const [thirdPartyPageResults, setThirdPartyPageResults] = useState<
+    AddressBookThirdPartyResultsProps[]
+  >([]);
+  const { name, endpoint, apiHeader, apiKey, path } =
+    thirdPartyAPIEndpoints[remoteEndpointIndex] ?? {};
   const [thirdPartyTotalPages, setThirdPartyTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const hasEntityLookupPath = !!path?.entityLookup;
@@ -62,17 +73,28 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
     );
   });
 
-  const localTotalPages = Math.ceil(filteredLocalAddresses.length / paginationLimit);
+  const localTotalPages = Math.ceil(
+    filteredLocalAddresses.length / paginationLimit
+  );
   const totalNoOfPages = isLocal ? localTotalPages : thirdPartyTotalPages;
   const offset = (currentPage - 1) * paginationLimit || paginationOffset;
-  const localPageResults = filteredLocalAddresses.slice(offset, offset + paginationLimit);
-
-  const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] = useState(
-    hasEntityLookupPath ? AddressBookState.NONE : AddressBookState.ERROR
+  const localPageResults = filteredLocalAddresses.slice(
+    offset,
+    offset + paginationLimit
   );
-  const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(AddressBookState.NONE);
 
-  const queryEndpoint = async (search: string, pageOffset: number): Promise<void> => {
+  const [addressBookThirdPartyStatus, setAddressBookThirdPartyStatus] =
+    useState(
+      hasEntityLookupPath ? AddressBookState.NONE : AddressBookState.ERROR
+    );
+  const [addressBookLocalStatus, setAddressBookLocalStatus] = useState(
+    AddressBookState.NONE
+  );
+
+  const queryEndpoint = async (
+    search: string,
+    pageOffset: number
+  ): Promise<void> => {
     if (!path.entityLookup) {
       throw "This endpoint does not have the entityLookup feature.";
     }
@@ -90,7 +112,8 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         path: path.entityLookup,
       });
       setThirdPartyPageResults(results.identities);
-      const numberOfResults = results.total > 0 ? results.total : paginationLimit;
+      const numberOfResults =
+        results.total > 0 ? results.total : paginationLimit;
       setThirdPartyTotalPages(Math.ceil(numberOfResults / paginationLimit));
       if (isEmpty(results.identities)) {
         setAddressBookThirdPartyStatus(AddressBookState.EMPTY);
@@ -128,7 +151,9 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
     }
   }, [addressBook, localPageResults]);
 
-  const onSearchTermChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onSearchTermChanged = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     const inputText = event.target.value;
     setSearchTerm(inputText);
     setCurrentPage(1);
@@ -191,7 +216,9 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
             </LinkButton>
           </div>
           <div className="w-auto">
-            <CsvUploadButton handleLocalAddressBookCsv={handleLocalAddressBookCsv} />
+            <CsvUploadButton
+              handleLocalAddressBookCsv={handleLocalAddressBookCsv}
+            />
           </div>
         </div>
       </div>
@@ -199,7 +226,9 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         <div className="flex mb-2 flex-grow justify-center lg:justify-start">
           <div
             className={`bg-white max-w-full border border-cloud-100 rounded-md px-3 py-2 ${
-              !isLocal && !hasEntityLookupPath ? "cursor-not-allowed bg-cloud-100" : ""
+              !isLocal && !hasEntityLookupPath
+                ? "cursor-not-allowed bg-cloud-100"
+                : ""
             }`}
           >
             <div className="flex mx-0 items-center">
@@ -234,7 +263,11 @@ export const AddressBook: FunctionComponent<AddressBookProps> = ({
         </div>
       </div>
       <div className="mt-4">
-        <Pagination totalNoOfPages={totalNoOfPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagination
+          totalNoOfPages={totalNoOfPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );
@@ -260,7 +293,12 @@ export const OverlayAddressBook: FunctionComponent<OverlayAddressBookProps> = ({
   };
 
   return (
-    <OverlayContent data-testid="overlay-addressbook" className="bg-white max-w-6xl" {...props} maxHeight={600}>
+    <OverlayContent
+      data-testid="overlay-addressbook"
+      className="bg-white max-w-6xl"
+      {...props}
+      maxHeight={600}
+    >
       <AddressBook network={network} onAddressSelect={onAddressSelect} />
     </OverlayContent>
   );

@@ -1,4 +1,9 @@
-import { fireEvent, queryByAttribute, render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  queryByAttribute,
+  render,
+  screen,
+} from "@testing-library/react";
 import React from "react";
 import { NavigationBarItem } from "./NavigationBarItem";
 import * as NavType from "./../type";
@@ -11,11 +16,7 @@ describe("NavigationLink", () => {
       id: "verify",
       label: "Default NavigationLink",
       path: "/verify",
-      customLink: (
-        <a href={"/verify"}>
-          CustomLink NavigationLink
-        </a>
-      ),
+      customLink: <a href={"/verify"}>CustomLink NavigationLink</a>,
     };
 
     render(<NavigationBarItem item={NavigationLink} />);
@@ -42,15 +43,13 @@ describe("NavigationLabelButton", () => {
       id: "verify",
       label: "Default NavigationLabelButton",
       path: "/verify",
-      customLink: (
-        <a href={"/verify"}>
-          CustomLink NavigationLabelButton
-        </a>
-      ),
+      customLink: <a href={"/verify"}>CustomLink NavigationLabelButton</a>,
     };
 
     render(<NavigationBarItem item={NavigationLabelButton} />);
-    expect(screen.getAllByText("CustomLink NavigationLabelButton")).toHaveLength(1);
+    expect(
+      screen.getAllByText("CustomLink NavigationLabelButton")
+    ).toHaveLength(1);
   });
 
   it("should render default style with no customLink", () => {
@@ -62,7 +61,9 @@ describe("NavigationLabelButton", () => {
     };
 
     render(<NavigationBarItem item={NavigationLabelButton} />);
-    expect(screen.getAllByText("Default NavigationLabelButton")).toHaveLength(1);
+    expect(screen.getAllByText("Default NavigationLabelButton")).toHaveLength(
+      1
+    );
   });
 });
 
@@ -74,15 +75,13 @@ describe("NavigationIconButton", () => {
       label: "Settings",
       path: "/settings",
       icon: Settings,
-      customLink: (
-        <a href={"/verify"}>
-          CustomLink NavigationIconButton
-        </a>
-      ),
+      customLink: <a href={"/verify"}>CustomLink NavigationIconButton</a>,
     };
 
     render(<NavigationBarItem item={NavigationIconButton} />);
-    expect(screen.getAllByText("CustomLink NavigationIconButton")).toHaveLength(1);
+    expect(screen.getAllByText("CustomLink NavigationIconButton")).toHaveLength(
+      1
+    );
   });
 
   it("should render default style with no customLink", () => {
@@ -111,21 +110,13 @@ describe("NavigationDropDownList", () => {
           id: "news",
           label: "Default News",
           path: "/news",
-          customLink: (
-            <a href={"/news"}>
-              CustomLink News
-            </a>
-          ),
+          customLink: <a href={"/news"}>CustomLink News</a>,
         },
         {
           id: "event",
           label: "Default Event",
           path: "/event",
-          customLink: (
-            <a href={"/event"}>
-              CustomLink Event
-            </a>
-          ),
+          customLink: <a href={"/event"}>CustomLink Event</a>,
         },
       ],
     };

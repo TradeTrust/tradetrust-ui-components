@@ -1,7 +1,10 @@
 import { useAddressBook } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
 import { AddressBookState } from "./../AddressBook";
-import { AddressBookTableRow, AddressBookTableRowEmpty } from "../AddressBookTableRow";
+import {
+  AddressBookTableRow,
+  AddressBookTableRowEmpty,
+} from "../AddressBookTableRow";
 
 interface AddressBookLocalProps {
   addressBookLocalStatus: string;

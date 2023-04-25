@@ -1,7 +1,9 @@
 import React, { SVGProps } from "react";
 import { CheckCircle } from "react-feather";
 
-export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({
+  className,
+}) => {
   return (
     <svg
       className={`${className ? className : ""}`}
@@ -82,7 +84,12 @@ export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({
         strokeWidth="2.0498"
         strokeMiterlimit="10"
       />
-      <path d="M12.6401 1.01953V57.0495" stroke="#454B50" strokeWidth="2.0498" strokeMiterlimit="10" />
+      <path
+        d="M12.6401 1.01953V57.0495"
+        stroke="#454B50"
+        strokeWidth="2.0498"
+        strokeMiterlimit="10"
+      />
       <path
         d="M5.47003 21.8591H3.42003C2.10003 21.8591 1.03003 20.7791 1.03003 19.4691C1.03003 18.1491 2.11003 17.0791 3.42003 17.0791H5.47003"
         stroke="#454B50"
@@ -99,7 +106,9 @@ export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({
   );
 };
 
-export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+export const IconResolverAddress: React.FunctionComponent<
+  SVGProps<SVGElement>
+> = ({ className }) => {
   return (
     <svg
       className={`${className ? className : ""}`}
@@ -163,11 +172,15 @@ export const IconResolverAddress: React.FunctionComponent<SVGProps<SVGElement>> 
   );
 };
 
-export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({
+  className,
+}) => {
   return <CheckCircle className={`${className ? className : ""}`} />;
 };
 
-export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({
+  className,
+}) => {
   return (
     <svg
       className={`${className ? className : ""}`}
@@ -184,14 +197,26 @@ export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({ class
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path d="M19.6 9.80005L11.2 18.2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M11.2 9.80009L19.6 18.2001" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M19.6 9.80005L11.2 18.2"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11.2 9.80009L19.6 18.2001"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </g>
     </svg>
   );
 };
 
-export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = ({ className }) => {
+export const IconAddFile: React.FunctionComponent<SVGProps<SVGElement>> = ({
+  className,
+}) => {
   return (
     <svg
       className={`${className ? className : ""}`}

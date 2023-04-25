@@ -17,7 +17,10 @@ export const Alert: FunctionComponent<AlertProps> = ({ message, type }) => {
   }
 
   return (
-    <div data-testid="alert" className={`w-full items-center flex px-4 py-3 ${bgColor}`}>
+    <div
+      data-testid="alert"
+      className={`w-full items-center flex px-4 py-3 ${bgColor}`}
+    >
       <img className="h-14 w-14 mr-8" src={icon} />
       <p>{message}</p>
     </div>

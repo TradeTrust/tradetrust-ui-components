@@ -23,7 +23,10 @@ const ButtonClose: FunctionComponent = () => {
   const { closeOverlay } = useOverlayContext();
 
   return (
-    <Button className="bg-cerulean-500 rounded-xl text-white px-3 py-2 hover:bg-cerulean-800" onClick={closeOverlay}>
+    <Button
+      className="bg-cerulean-500 rounded-xl text-white px-3 py-2 hover:bg-cerulean-800"
+      onClick={closeOverlay}
+    >
       Dismiss
     </Button>
   );
@@ -65,7 +68,9 @@ interface DocumentTransferMessageProps extends OverlayContentProps {
   onConfirmationAction?: () => void;
 }
 
-export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageProps> = ({
+export const DocumentTransferMessage: FunctionComponent<
+  DocumentTransferMessageProps
+> = ({
   isButtonMetamaskInstall,
   isConfirmationMessage,
   onConfirmationAction,
@@ -82,7 +87,9 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
           <div className="col-auto ml-2">
             <ButtonClose />
           </div>
-          <div className="col-auto ml-2">{ButtonConfirmAction(onConfirmationAction)}</div>
+          <div className="col-auto ml-2">
+            {ButtonConfirmAction(onConfirmationAction)}
+          </div>
         </div>
       );
     }
@@ -93,7 +100,9 @@ export const DocumentTransferMessage: FunctionComponent<DocumentTransferMessageP
     <OverlayContent className="max-w-md bg-white" {...props}>
       <div className="flex-1 mb-4">{children}</div>
       <div className="flex mx-0">
-        <div className="flex w-full col-auto justify-center">{documentTransferButton()}</div>
+        <div className="flex w-full col-auto justify-center">
+          {documentTransferButton()}
+        </div>
       </div>
     </OverlayContent>
   );
@@ -109,28 +118,40 @@ interface MessageProps {
 export const MessageNoMetamask: FunctionComponent = () => {
   return (
     <>
-      <p className="mt-3">Oops! It seems like you have not installed the Metamask extension.</p>
+      <p className="mt-3">
+        Oops! It seems like you have not installed the Metamask extension.
+      </p>
       <p className="mt-3">You would need to install it before proceeding.</p>
     </>
   );
 };
 
 export const MessageNoManageAccess: FunctionComponent = () => {
-  return <p className="mt-3">Oops! It seems like you do not have access to manage assets.</p>;
+  return (
+    <p className="mt-3">
+      Oops! It seems like you do not have access to manage assets.
+    </p>
+  );
 };
 
 export const MessageNoUserAuthorization: FunctionComponent = () => {
   return (
     <>
-      <p className="mt-3">Oops! It seems like you did not authorize to use Metamask extension.</p>
+      <p className="mt-3">
+        Oops! It seems like you did not authorize to use Metamask extension.
+      </p>
     </>
   );
 };
 
-export const MessageTransactionError: FunctionComponent<MessageProps> = ({ error }) => {
+export const MessageTransactionError: FunctionComponent<MessageProps> = ({
+  error,
+}) => {
   return (
     <>
-      <p className="mt-3">Oops! It seems like there&apos;s a failed transaction.</p>
+      <p className="mt-3">
+        Oops! It seems like there&apos;s a failed transaction.
+      </p>
       <p className="mt-3">{error}</p>
       <p className="mt-3">Please try again.</p>
     </>
@@ -138,32 +159,43 @@ export const MessageTransactionError: FunctionComponent<MessageProps> = ({ error
 };
 
 export const MessageSurrenderSuccess: FunctionComponent = () => {
-  return <p className="mt-3">This Bill of Lading has been surrendered, pending acceptance of issuer.</p>;
+  return (
+    <p className="mt-3">
+      This Bill of Lading has been surrendered, pending acceptance of issuer.
+    </p>
+  );
 };
 
 export const AcceptSurrender: FunctionComponent = () => {
-  return <p className="mt-3">Surrender for this Bill of Lading has been accepted.</p>;
+  return (
+    <p className="mt-3">Surrender for this Bill of Lading has been accepted.</p>
+  );
 };
 
 export const RejectSurrender: FunctionComponent = () => {
-  return <p className="mt-3">Surrender for this Bill of Lading has been rejected.</p>;
+  return (
+    <p className="mt-3">Surrender for this Bill of Lading has been rejected.</p>
+  );
 };
 
-export const MessageRejectSurrenderConfirmation: FunctionComponent<MessageProps> = ({
-  beneficiaryAddress,
-  holderAddress,
-}) => {
+export const MessageRejectSurrenderConfirmation: FunctionComponent<
+  MessageProps
+> = ({ beneficiaryAddress, holderAddress }) => {
   return (
     <>
       <h6 className="mt-3">Restore document to Owner:</h6>
-      {beneficiaryAddress && <MessageAddressResolver address={beneficiaryAddress} />}
+      {beneficiaryAddress && (
+        <MessageAddressResolver address={beneficiaryAddress} />
+      )}
       <h6 className="mt-3">and to Holder:</h6>
       {holderAddress && <MessageAddressResolver address={holderAddress} />}
     </>
   );
 };
 
-export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({ address }) => {
+export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({
+  address,
+}) => {
   return (
     <>
       <h6 className="mt-3">Current Owner</h6>
@@ -172,7 +204,9 @@ export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({ add
   );
 };
 
-export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({ address }) => {
+export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({
+  address,
+}) => {
   return (
     <>
       <h6 className="mt-3">Current Holder</h6>
@@ -181,9 +215,15 @@ export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({ address 
   );
 };
 
-export const MessageNominateBeneficiaryHolderSuccess: FunctionComponent = () => {
-  return <p className="mt-3">Document has been nominated successfully. Please notify holder to execute transfer.</p>;
-};
+export const MessageNominateBeneficiaryHolderSuccess: FunctionComponent =
+  () => {
+    return (
+      <p className="mt-3">
+        Document has been nominated successfully. Please notify holder to
+        execute transfer.
+      </p>
+    );
+  };
 
 export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
   beneficiaryAddress,
@@ -192,7 +232,9 @@ export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
   return (
     <>
       <h6 className="mt-3">Current Owner</h6>
-      {beneficiaryAddress && <MessageAddressResolver address={beneficiaryAddress} />}
+      {beneficiaryAddress && (
+        <MessageAddressResolver address={beneficiaryAddress} />
+      )}
       <div />
       <h6 className="mt-3">Current Holder</h6>
       {holderAddress && <MessageAddressResolver address={holderAddress} />}
@@ -224,9 +266,15 @@ export const showDocumentTransferMessage = (
     >
       {title === MessageTitle.NO_METAMASK && <MessageNoMetamask />}
       {title === MessageTitle.NO_MANAGE_ACCESS && <MessageNoManageAccess />}
-      {title === MessageTitle.NO_USER_AUTHORIZATION && <MessageNoUserAuthorization />}
-      {title === MessageTitle.TRANSACTION_ERROR && <MessageTransactionError error={option.error} />}
-      {title === MessageTitle.SURRENDER_DOCUMENT_SUCCESS && <MessageSurrenderSuccess />}
+      {title === MessageTitle.NO_USER_AUTHORIZATION && (
+        <MessageNoUserAuthorization />
+      )}
+      {title === MessageTitle.TRANSACTION_ERROR && (
+        <MessageTransactionError error={option.error} />
+      )}
+      {title === MessageTitle.SURRENDER_DOCUMENT_SUCCESS && (
+        <MessageSurrenderSuccess />
+      )}
       {title === MessageTitle.ACCEPT_SURRENDER_DOCUMENT && <AcceptSurrender />}
       {title === MessageTitle.REJECT_SURRENDER_DOCUMENT && <RejectSurrender />}
       {title === MessageTitle.CONFIRM_REJECT_SURRENDER_DOCUMENT && (
@@ -238,8 +286,12 @@ export const showDocumentTransferMessage = (
       {title === MessageTitle.CHANGE_BENEFICIARY_SUCCESS && (
         <MessageBeneficiarySuccess address={option.beneficiaryAddress} />
       )}
-      {title === MessageTitle.NOMINATE_BENEFICIARY_HOLDER_SUCCESS && <MessageNominateBeneficiaryHolderSuccess />}
-      {title === MessageTitle.TRANSFER_HOLDER_SUCCESS && <MessageHolderSuccess address={option.holderAddress} />}
+      {title === MessageTitle.NOMINATE_BENEFICIARY_HOLDER_SUCCESS && (
+        <MessageNominateBeneficiaryHolderSuccess />
+      )}
+      {title === MessageTitle.TRANSFER_HOLDER_SUCCESS && (
+        <MessageHolderSuccess address={option.holderAddress} />
+      )}
       {title === MessageTitle.ENDORSE_TRANSFER_SUCCESS && (
         <MessageEndorseTransferSuccess
           beneficiaryAddress={option.beneficiaryAddress}

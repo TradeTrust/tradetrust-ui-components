@@ -34,7 +34,9 @@ describe("addressBookLocal", () => {
         network="local"
       />
     );
-    expect(screen.getByText("No address found. Try importing a csv template file?")).not.toBeNull();
+    expect(
+      screen.getByText("No address found. Try importing a csv template file?")
+    ).not.toBeNull();
   });
 
   it("should show correct result when address is searched", () => {
@@ -60,7 +62,9 @@ describe("addressBookLocal", () => {
         network="local"
       />
     );
-    expect(screen.getByText("0x28f7ab32c521d13f2e6980d072ca7ca493020145")).not.toBeNull();
+    expect(
+      screen.getByText("0x28f7ab32c521d13f2e6980d072ca7ca493020145")
+    ).not.toBeNull();
   });
 
   it("should show more than 1 result", () => {
@@ -86,6 +90,8 @@ describe("addressBookLocal", () => {
         network="local"
       />
     );
-    expect(screen.getByText("No address found. Try searching again?")).not.toBeNull();
+    expect(
+      screen.getByText("No address found. Try searching again?")
+    ).not.toBeNull();
   });
 });

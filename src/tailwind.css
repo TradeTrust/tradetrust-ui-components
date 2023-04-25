@@ -3,26 +3,26 @@
 
 @font-face {
   font-family: "Gilroy-Light";
-  src: url('../src/static/fonts/GilroyLight/font.woff2') format('woff2'),
-    url('../src/static/fonts/GilroyLight/font.woff') format('woff');
+  src: url("../src/static/fonts/GilroyLight/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyLight/font.woff") format("woff");
 }
 
 @font-face {
   font-family: "Gilroy-Medium";
-  src: url('../src/static/fonts/GilroyMedium/font.woff2') format('woff2'),
-    url('../src/static/fonts/GilroyMedium/font.woff') format('woff');
+  src: url("../src/static/fonts/GilroyMedium/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyMedium/font.woff") format("woff");
 }
 
 @font-face {
   font-family: "Gilroy-Bold";
-  src: url('../src/static/fonts/GilroyBold/font.woff2') format('woff2'),
-    url('../src/static/fonts/GilroyBold/font.woff') format('woff');
+  src: url("../src/static/fonts/GilroyBold/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyBold/font.woff") format("woff");
 }
 
 @font-face {
   font-family: "Gilroy-ExtraBold";
-  src: url('../src/static/fonts/GilroyExtraBold/font.woff2') format('woff2'),
-    url('../src/static/fonts/GilroyExtraBold/font.woff') format('woff');
+  src: url("../src/static/fonts/GilroyExtraBold/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyExtraBold/font.woff") format("woff");
 }
 
 @tailwind base;
@@ -68,7 +68,7 @@
     @apply font-gilroy-medium;
     @apply font-normal;
   }
-  
+
   input[disabled] {
     @apply cursor-not-allowed;
   }

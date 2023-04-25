@@ -18,5 +18,12 @@ export const ErrorNoMessage = (): ReactElement => {
 };
 
 export const ErrorWithMessage = (): ReactElement => {
-  return <Input type="text" placeholder="Placeholder" hasError={true} errorMessage="Some error occurred." />;
+  return (
+    <Input
+      type="text"
+      placeholder="Placeholder"
+      hasError={true}
+      errorMessage="Some error occurred."
+    />
+  );
 };
