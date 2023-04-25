@@ -32,6 +32,24 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  targets: "defaults",
+                },
+              ],
+              "@babel/preset-typescript",
+              "@babel/preset-react",
+            ],
+            plugins: [
+              "@babel/plugin-proposal-nullish-coalescing-operator",
+              "@babel/plugin-proposal-optional-chaining",
+              "@babel/plugin-proposal-class-properties",
+              "macros",
+            ],
+          },
         },
       },
       // https://github.com/storybookjs/storybook/issues/10179#issuecomment-602390300

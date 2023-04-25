@@ -7,6 +7,7 @@ module.exports = {
   addons: ["@storybook/addon-essentials"],
   core: {
     builder: "webpack5",
+    disableTelemetry: true,
   },
   webpackFinal: (config) => {
     return {
