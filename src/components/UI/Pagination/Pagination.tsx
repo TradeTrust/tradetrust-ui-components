@@ -33,7 +33,8 @@ export const getPaginatedPosts = ({
   posts,
   postsPerPage,
   currentPage,
-}: GetPaginatedPosts): any[] => {
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+GetPaginatedPosts): any[] => {
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
