@@ -18,7 +18,9 @@ export const NavigationBarItem: FunctionComponent<{
   }
 };
 
-const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ item }) => {
+const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({
+  item,
+}) => {
   return (
     <>
       {item.customLink ? (
@@ -32,7 +34,9 @@ const NavigationLink: FunctionComponent<{ item: NavType.NavigationLink }> = ({ i
   );
 };
 
-const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = ({ item }) => {
+const LabelButton: FunctionComponent<{
+  item: NavType.NavigationLabelButton;
+}> = ({ item }) => {
   return (
     <>
       {item.customLink ? (
@@ -51,7 +55,9 @@ const LabelButton: FunctionComponent<{ item: NavType.NavigationLabelButton }> = 
   );
 };
 
-const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({ item }) => {
+const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
+  item,
+}) => {
   const ButtonIcon = item.icon;
 
   return (
@@ -67,7 +73,9 @@ const IconButton: FunctionComponent<{ item: NavType.NavigationIconButton }> = ({
   );
 };
 
-const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> = ({ item }) => {
+const DropDownList: FunctionComponent<{
+  item: NavType.NavigationDropDownList;
+}> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -96,7 +104,9 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
           setIsOpen(true);
         }}
       >
-        <span className="py-2 transition-colors duration-200 ease-out">{item.label}</span>
+        <span className="py-2 transition-colors duration-200 ease-out">
+          {item.label}
+        </span>
         <svg
           className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
             isOpen ? "rotate-180" : "rotate-0"
@@ -118,24 +128,33 @@ const DropDownList: FunctionComponent<{ item: NavType.NavigationDropDownList }> 
           className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-gilroy-bold`}
         >
           <div className={`bg-white rounded-md lg:shadow-dropdown`}>
-            {item.dropdownItems?.map((dropdownItem: NavType.NavigationDropDownItems, index: number) => {
-              return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                >
-                  {dropdownItem.customLink ? (
-                    <div className="relative">{dropdownItem.customLink}</div>
-                  ) : (
-                    <a key={index} className="block px-4 py-3 text-cloud-500" href={dropdownItem.path}>
-                      {dropdownItem.label}
-                    </a>
-                  )}
-                </div>
-              );
-            })}
+            {item.dropdownItems?.map(
+              (
+                dropdownItem: NavType.NavigationDropDownItems,
+                index: number
+              ) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  >
+                    {dropdownItem.customLink ? (
+                      <div className="relative">{dropdownItem.customLink}</div>
+                    ) : (
+                      <a
+                        key={index}
+                        className="block px-4 py-3 text-cloud-500"
+                        href={dropdownItem.path}
+                      >
+                        {dropdownItem.label}
+                      </a>
+                    )}
+                  </div>
+                );
+              }
+            )}
           </div>
         </div>
       )}

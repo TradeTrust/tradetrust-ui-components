@@ -10,7 +10,9 @@ interface FeedbackWidgetTextProps {
   negativeFeedbackHandle?: () => void;
 }
 
-export const FeedbackWidgetText: React.FunctionComponent<FeedbackWidgetTextProps> = ({
+export const FeedbackWidgetText: React.FunctionComponent<
+  FeedbackWidgetTextProps
+> = ({
   positiveFeedbackUrl,
   positiveFeedbackHandle,
   negativeFeedbackUrl,
@@ -22,7 +24,10 @@ export const FeedbackWidgetText: React.FunctionComponent<FeedbackWidgetTextProps
     case feedback === "yes":
       return (
         <>
-          <p>Thank you for your feedback. Do leave us a feedback on Github to help us do even better.</p>
+          <p>
+            Thank you for your feedback. Do leave us a feedback on Github to
+            help us do even better.
+          </p>
           <div className="mt-4">
             <LinkButton
               className="bg-white text-cerulean-500 hover:bg-gray-50 mx-2 inline-block"
@@ -38,7 +43,10 @@ export const FeedbackWidgetText: React.FunctionComponent<FeedbackWidgetTextProps
     case feedback === "no":
       return (
         <>
-          <p>We are sorry to hear that. Do leave us a feedback on Github to help us do better.</p>
+          <p>
+            We are sorry to hear that. Do leave us a feedback on Github to help
+            us do better.
+          </p>
           <div className="mt-4">
             <LinkButton
               className="bg-white text-cerulean-500 hover:bg-gray-50 mx-2 inline-block"

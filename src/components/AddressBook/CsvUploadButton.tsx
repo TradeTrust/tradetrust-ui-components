@@ -6,8 +6,12 @@ interface CsvUploadButtonProps {
   handleLocalAddressBookCsv: (csvFile: File) => Promise<void>;
 }
 
-export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handleLocalAddressBookCsv }) => {
-  const handleUploadedFile = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({
+  handleLocalAddressBookCsv,
+}) => {
+  const handleUploadedFile = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     try {
       const csvFile = event.target.files && event.target.files[0];
       if (!csvFile) throw new Error("No file selected");
@@ -28,7 +32,10 @@ export const CsvUploadButton: FunctionComponent<CsvUploadButtonProps> = ({ handl
         style={{ display: "none" }}
         accept=".csv"
       />
-      <LabelButton className="bg-white text-cerulean-500 rounded-xl hover:bg-gray-50" htmlFor="csv-file-input">
+      <LabelButton
+        className="bg-white text-cerulean-500 rounded-xl hover:bg-gray-50"
+        htmlFor="csv-file-input"
+      >
         <div className="flex items-center mx-0">
           <div className="col-auto mr-2">
             <FilePlus />

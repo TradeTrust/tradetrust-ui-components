@@ -8,7 +8,10 @@ export interface OverlayDemoProps {
   children: React.ReactNode;
 }
 
-export const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children }) => {
+export const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({
+  buttonText,
+  children,
+}) => {
   const { showOverlay } = useOverlayContext();
 
   return (

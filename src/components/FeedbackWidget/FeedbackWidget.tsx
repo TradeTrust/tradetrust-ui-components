@@ -1,15 +1,25 @@
-import React, { FunctionComponent, useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 
 type ScrollDirection = "up" | "down";
 
 export const FeedbackWidget: FunctionComponent = ({ children }) => {
-  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>("down");
+  const [scrollDirection, setScrollDirection] =
+    useState<ScrollDirection>("down");
   const isScrollDown = scrollDirection === "down";
   const refScrollTopLast = useRef(0);
 
   const onScroll = useCallback(() => {
-    const scrollTopCurr = document.body.scrollTop || document.documentElement.scrollTop;
-    setScrollDirection(scrollTopCurr > refScrollTopLast.current ? "down" : "up");
+    const scrollTopCurr =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    setScrollDirection(
+      scrollTopCurr > refScrollTopLast.current ? "down" : "up"
+    );
     refScrollTopLast.current = scrollTopCurr <= 0 ? 0 : scrollTopCurr;
   }, []);
 

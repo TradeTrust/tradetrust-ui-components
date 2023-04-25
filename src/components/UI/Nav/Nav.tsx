@@ -14,7 +14,11 @@ export interface TileInfoProps {
   tileIcon: React.ReactElement;
 }
 
-export const TileInfo: FunctionComponent<TileInfoProps> = ({ title, description, tileIcon }) => (
+export const TileInfo: FunctionComponent<TileInfoProps> = ({
+  title,
+  description,
+  tileIcon,
+}) => (
   <div
     className="max-w-sm w-100 p-4 border font-normal rounded-xl bg-white shadow-xl transition-colors duration-200 hover:bg-gray-50"
     style={{ minHeight: "120px" }}

@@ -19,7 +19,8 @@ type Color = { [key: string]: string };
 export const Colors = (): React.ReactNode => {
   // https://v1.tailwindcss.com/docs/customizing-colors#default-color-palette
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { transparent, current, black, white, inherit, ...colors } = fullConfig.theme.colors; // omit tailwind defaults of transparent and current, they are not really useful in this palatte showcase
+  const { transparent, current, black, white, inherit, ...colors } =
+    fullConfig.theme.colors; // omit tailwind defaults of transparent and current, they are not really useful in this palatte showcase
 
   const allUsedColors = {
     white: { DEFAULT: white },
@@ -35,7 +36,14 @@ export const Colors = (): React.ReactNode => {
   return (
     <ColorPalette>
       {Object.entries(allUsedColors).map(([key, value], index) => {
-        return <ColorItem key={index} title={`theme.colors.${key}`} subtitle={key} colors={value as Color} />;
+        return (
+          <ColorItem
+            key={index}
+            title={`theme.colors.${key}`}
+            subtitle={key}
+            colors={value as Color}
+          />
+        );
       })}
     </ColorPalette>
   );

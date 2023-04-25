@@ -66,9 +66,16 @@ export const ButtonDefault = (): ReactElement => {
 
 export const NavBarDefault = (): ReactElement => {
   return (
-    <Dropdown dropdownButtonText="Info" className="font-gilroy-bold text-cloud-300 hover:none">
-      <DropdownItem onClick={() => console.log("local clicked!!")}>Local</DropdownItem>
-      <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>Thirdparty endpoint</DropdownItem>
+    <Dropdown
+      dropdownButtonText="Info"
+      className="font-gilroy-bold text-cloud-300 hover:none"
+    >
+      <DropdownItem onClick={() => console.log("local clicked!!")}>
+        Local
+      </DropdownItem>
+      <DropdownItem onClick={() => console.log("thirdparty clicked!!")}>
+        Thirdparty endpoint
+      </DropdownItem>
     </Dropdown>
   );
 };
@@ -79,9 +86,15 @@ export const CustomButtonDefault = (): ReactElement => {
       className="border-gray-300 border-solid border rounded-none p-3 hover:bg-gray-50"
       dropdownButtonText={<span>Click Me</span>}
     >
-      <DropdownItem onClick={() => console.log("Dropdown item 1 clicked")}>Dropdown Item 1</DropdownItem>
-      <DropdownItem onClick={() => console.log("Dropdown item 2 clicked")}>Dropdown Item 2</DropdownItem>
-      <DropdownItem onClick={() => console.log("Dropdown item 3 clicked")}>Dropdown Item 3</DropdownItem>
+      <DropdownItem onClick={() => console.log("Dropdown item 1 clicked")}>
+        Dropdown Item 1
+      </DropdownItem>
+      <DropdownItem onClick={() => console.log("Dropdown item 2 clicked")}>
+        Dropdown Item 2
+      </DropdownItem>
+      <DropdownItem onClick={() => console.log("Dropdown item 3 clicked")}>
+        Dropdown Item 3
+      </DropdownItem>
     </Dropdown>
   );
 };

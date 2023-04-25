@@ -16,7 +16,9 @@ interface AddressBookEtherscanLinkProps {
   network: string;
 }
 
-const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps> = ({ address, network }) => {
+const AddressBookEtherscanLink: FunctionComponent<
+  AddressBookEtherscanLinkProps
+> = ({ address, network }) => {
   const addressHref = makeAddressURL(address, network);
   return (
     <a
@@ -30,14 +32,9 @@ const AddressBookEtherscanLink: FunctionComponent<AddressBookEtherscanLinkProps>
   );
 };
 
-export const AddressBookTableRow: FunctionComponent<AddressBookTableRowProps> = ({
-  onAddressSelect,
-  isLocal,
-  address,
-  name,
-  network,
-  source,
-}) => {
+export const AddressBookTableRow: FunctionComponent<
+  AddressBookTableRowProps
+> = ({ onAddressSelect, isLocal, address, name, network, source }) => {
   return (
     <div
       className={`flex flex-col bg-white text-cloud-800 text-sm p-4 lg:flex-row even:bg-cerulean-50 break-words`}
@@ -60,7 +57,9 @@ interface AddressBookTableRowEmptyProps {
   message: string;
 }
 
-export const AddressBookTableRowEmpty: FunctionComponent<AddressBookTableRowEmptyProps> = ({ message }) => {
+export const AddressBookTableRowEmpty: FunctionComponent<
+  AddressBookTableRowEmptyProps
+> = ({ message }) => {
   return (
     <div className="bg-cerulean-50 py-3 text-center">
       <p>{message} </p>

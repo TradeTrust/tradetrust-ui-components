@@ -1,7 +1,14 @@
 import React from "react";
-import { FooterColumnData, FooterColumnItemProps, legalDataProps } from "./types";
+import {
+  FooterColumnData,
+  FooterColumnItemProps,
+  legalDataProps,
+} from "./types";
 
-const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => {
+const defaultRender = ({
+  label,
+  to,
+}: FooterColumnItemProps): React.ReactElement => {
   return (
     <a className="text-cloud-500" href={to}>
       {label}
@@ -9,7 +16,10 @@ const defaultRender = ({ label, to }: FooterColumnItemProps): React.ReactElement
   );
 };
 
-export const mapper = (item: FooterColumnData, index: number): React.ReactElement => {
+export const mapper = (
+  item: FooterColumnData,
+  index: number
+): React.ReactElement => {
   const { render = defaultRender } = item;
   return (
     <div key={`row-${index}`} className={"pb-3"}>
@@ -18,7 +28,11 @@ export const mapper = (item: FooterColumnData, index: number): React.ReactElemen
   );
 };
 
-export const Bottom = ({ legalData }: { legalData: legalDataProps }): React.ReactElement => {
+export const Bottom = ({
+  legalData,
+}: {
+  legalData: legalDataProps;
+}): React.ReactElement => {
   const { copyright, items } = legalData;
 
   return (
@@ -29,6 +43,12 @@ export const Bottom = ({ legalData }: { legalData: legalDataProps }): React.Reac
   );
 };
 
-export const Category = ({ category }: { category: string }): React.ReactElement => {
-  return <div className={"pb-4 font-gilroy-bold text-cloud-500"}>{category}</div>;
+export const Category = ({
+  category,
+}: {
+  category: string;
+}): React.ReactElement => {
+  return (
+    <div className={"pb-4 font-gilroy-bold text-cloud-500"}>{category}</div>
+  );
 };

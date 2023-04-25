@@ -3,12 +3,22 @@ import { Selector } from "testcafe";
 fixture`Address Resolver - Ordering`
   .page`http://localhost:9009/iframe.html?id=addressresolver-addressresolver--default-address-resolver&args=&viewMode=story`;
 
-const EndpointEntryRow1 = Selector("[data-testid='endpoint-entry-row-1']", { visibilityCheck: true });
-const EndpointEntryRow2 = Selector("[data-testid='endpoint-entry-row-2']", { visibilityCheck: true });
+const EndpointEntryRow1 = Selector("[data-testid='endpoint-entry-row-1']", {
+  visibilityCheck: true,
+});
+const EndpointEntryRow2 = Selector("[data-testid='endpoint-entry-row-2']", {
+  visibilityCheck: true,
+});
 
-const IconMoveUp1 = EndpointEntryRow1.find("[data-testid='endpoint-entry-move-up']");
-const IconMoveDown1 = EndpointEntryRow1.find("[data-testid='endpoint-entry-move-down']");
-const IconMoveUp2 = EndpointEntryRow2.find("[data-testid='endpoint-entry-move-up']");
+const IconMoveUp1 = EndpointEntryRow1.find(
+  "[data-testid='endpoint-entry-move-up']"
+);
+const IconMoveDown1 = EndpointEntryRow1.find(
+  "[data-testid='endpoint-entry-move-down']"
+);
+const IconMoveUp2 = EndpointEntryRow2.find(
+  "[data-testid='endpoint-entry-move-up']"
+);
 
 test("Address Resolver first entry click up arrow should not move", async (t) => {
   await t.hover(EndpointEntryRow1);

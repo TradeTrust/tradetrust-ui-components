@@ -7,7 +7,9 @@ const getPolygonscanBaseUrl = (network: string): string => {
 };
 
 const getBaseUrl = (network: string): string => {
-  return network.includes("matic") ? getPolygonscanBaseUrl(network) : getEtherscanBaseUrl(network);
+  return network.includes("matic")
+    ? getPolygonscanBaseUrl(network)
+    : getEtherscanBaseUrl(network);
 };
 
 export const makeAddressURL = (address: string, network: string): string => {

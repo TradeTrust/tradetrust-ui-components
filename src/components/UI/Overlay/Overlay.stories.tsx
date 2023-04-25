@@ -34,59 +34,84 @@ export const Text = (): ReactElement => {
       <OverlayDemo buttonText="Text">
         <Textual title="Textual">
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-            ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-            nulla pariatur
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore
+            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+            pariatur
           </p>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-            ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-            nulla pariatur
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore
+            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+            pariatur
           </p>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-            ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-            nulla pariatur
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore
+            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+            pariatur
           </p>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-            ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-            nulla pariatur
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore
+            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+            pariatur
           </p>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-            suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-            ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
-            nulla pariatur
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+            quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore
+            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
+            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+            pariatur
           </p>
         </Textual>
       </OverlayDemo>
@@ -98,7 +123,10 @@ export const Video = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Video">
-        <Youtube title="Digitalising Trust for Cross-Border Trade" youtubeId="udvPQyuqEug" />
+        <Youtube
+          title="Digitalising Trust for Cross-Border Trade"
+          youtubeId="udvPQyuqEug"
+        />
       </OverlayDemo>
     </OverlayContextProvider>
   );
@@ -108,7 +136,11 @@ export const NoMetamask = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No Metamask">
-        <DocumentTransferMessage title={MessageTitle.NO_METAMASK} isSuccess={false} isButtonMetamaskInstall={true}>
+        <DocumentTransferMessage
+          title={MessageTitle.NO_METAMASK}
+          isSuccess={false}
+          isButtonMetamaskInstall={true}
+        >
           <MessageNoMetamask />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -120,7 +152,10 @@ export const NoManageAccess = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No Manage Access">
-        <DocumentTransferMessage title={MessageTitle.NO_MANAGE_ACCESS} isSuccess={false}>
+        <DocumentTransferMessage
+          title={MessageTitle.NO_MANAGE_ACCESS}
+          isSuccess={false}
+        >
           <MessageNoManageAccess />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -132,7 +167,10 @@ export const NoUserAuthorization = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="No User Authorization">
-        <DocumentTransferMessage title={MessageTitle.NO_USER_AUTHORIZATION} isSuccess={false}>
+        <DocumentTransferMessage
+          title={MessageTitle.NO_USER_AUTHORIZATION}
+          isSuccess={false}
+        >
           <MessageNoUserAuthorization />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -144,7 +182,10 @@ export const FailTransaction = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Fail Transaction">
-        <DocumentTransferMessage title={MessageTitle.TRANSACTION_ERROR} isSuccess={false}>
+        <DocumentTransferMessage
+          title={MessageTitle.TRANSACTION_ERROR}
+          isSuccess={false}
+        >
           <MessageTransactionError error="Blockchain error message" />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -156,7 +197,10 @@ export const SuccessSurrender = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Surrender">
-        <DocumentTransferMessage title={MessageTitle.SURRENDER_DOCUMENT_SUCCESS} isSuccess={true}>
+        <DocumentTransferMessage
+          title={MessageTitle.SURRENDER_DOCUMENT_SUCCESS}
+          isSuccess={true}
+        >
           <MessageSurrenderSuccess />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -168,7 +212,10 @@ export const SuccessChangeBeneficiary = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Change Owner">
-        <DocumentTransferMessage title={MessageTitle.CHANGE_BENEFICIARY_SUCCESS} isSuccess={true}>
+        <DocumentTransferMessage
+          title={MessageTitle.CHANGE_BENEFICIARY_SUCCESS}
+          isSuccess={true}
+        >
           <MessageBeneficiarySuccess address="Bank of China Pte Ltd" />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -180,7 +227,10 @@ export const SuccessChangeHolder = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Change Holder">
-        <DocumentTransferMessage title={MessageTitle.TRANSFER_HOLDER_SUCCESS} isSuccess={true}>
+        <DocumentTransferMessage
+          title={MessageTitle.TRANSFER_HOLDER_SUCCESS}
+          isSuccess={true}
+        >
           <MessageHolderSuccess address="Bank of China Pte Ltd" />
         </DocumentTransferMessage>
       </OverlayDemo>
@@ -192,7 +242,10 @@ export const SuccessNominateBeneficiaryHolder = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Success Nominate Owner and Holder">
-        <DocumentTransferMessage title={MessageTitle.NOMINATE_BENEFICIARY_HOLDER_SUCCESS} isSuccess={true}>
+        <DocumentTransferMessage
+          title={MessageTitle.NOMINATE_BENEFICIARY_HOLDER_SUCCESS}
+          isSuccess={true}
+        >
           <MessageNominateBeneficiaryHolderSuccess />
         </DocumentTransferMessage>
       </OverlayDemo>

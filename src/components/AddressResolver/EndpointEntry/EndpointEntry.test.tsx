@@ -25,10 +25,18 @@ const defaultProps = {
 };
 
 const enterInfo = (): void => {
-  fireEvent.change(screen.getByPlaceholderText("Name"), { target: { value: "TEST" } });
-  fireEvent.change(screen.getByPlaceholderText("Endpoint"), { target: { value: "https://example.com" } });
-  fireEvent.change(screen.getByPlaceholderText("API Header"), { target: { value: "x-api-key" } });
-  fireEvent.change(screen.getByPlaceholderText("API Key"), { target: { value: "KEY" } });
+  fireEvent.change(screen.getByPlaceholderText("Name"), {
+    target: { value: "TEST" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("Endpoint"), {
+    target: { value: "https://example.com" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("API Header"), {
+    target: { value: "x-api-key" },
+  });
+  fireEvent.change(screen.getByPlaceholderText("API Key"), {
+    target: { value: "KEY" },
+  });
 };
 
 describe("endpointEntry", () => {
@@ -46,13 +54,21 @@ describe("endpointEntry", () => {
       },
     });
     render(
-      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
+      <EndpointEntry
+        {...defaultProps}
+        onUpdateEndpoint={mockOnUpdateEndpoint}
+        isEndpointUrlExists={() => false}
+      />
     );
     enterInfo();
     fireEvent.click(screen.getByText("Save"));
     await waitFor(() => expect(mockGetFeatures).toHaveBeenCalledTimes(1));
     await waitFor(() => expect(mockOnUpdateEndpoint).toHaveBeenCalledTimes(1));
-    expect(mockGetFeatures).toHaveBeenCalledWith("https://example.com", "x-api-key", "KEY");
+    expect(mockGetFeatures).toHaveBeenCalledWith(
+      "https://example.com",
+      "x-api-key",
+      "KEY"
+    );
     expect(mockOnUpdateEndpoint).toHaveBeenCalledWith({
       name: "TEST",
       endpoint: "https://example.com",
@@ -66,12 +82,20 @@ describe("endpointEntry", () => {
   it("should validate endpoint and display error when validation fails", async () => {
     mockGetFeatures.mockRejectedValueOnce(new Error("Api has gone home"));
     render(
-      <EndpointEntry {...defaultProps} onUpdateEndpoint={mockOnUpdateEndpoint} isEndpointUrlExists={() => false} />
+      <EndpointEntry
+        {...defaultProps}
+        onUpdateEndpoint={mockOnUpdateEndpoint}
+        isEndpointUrlExists={() => false}
+      />
     );
     enterInfo();
     fireEvent.click(screen.getByText("Save"));
     await waitFor(() => expect(mockGetFeatures).toHaveBeenCalledTimes(1));
-    expect(mockGetFeatures).toHaveBeenCalledWith("https://example.com", "x-api-key", "KEY");
+    expect(mockGetFeatures).toHaveBeenCalledWith(
+      "https://example.com",
+      "x-api-key",
+      "KEY"
+    );
     const errorMessages = await screen.findAllByText("Api has gone home");
     expect(errorMessages.length > 0).toBe(true);
   });

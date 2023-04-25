@@ -1,4 +1,9 @@
-import React, { FunctionComponent, AnchorHTMLAttributes, ButtonHTMLAttributes, LabelHTMLAttributes } from "react";
+import React, {
+  FunctionComponent,
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
 
 interface GetSharedStylesButton {
   padding: string;
@@ -16,7 +21,8 @@ export enum ButtonSize {
   LG = "py-3 px-4 rounded-xl",
 }
 
-export interface ButtonTradeTrust extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonTradeTrust
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
@@ -40,7 +46,9 @@ export const Button: FunctionComponent<ButtonTradeTrust> = ({
   return (
     <button
       className={`${shared} ${className} ${
-        disabled ? "cursor-not-allowed bg-gray-200 text-white hover:bg-gray-200" : ""
+        disabled
+          ? "cursor-not-allowed bg-gray-200 text-white hover:bg-gray-200"
+          : ""
       }`}
       type="submit"
       disabled={disabled}
@@ -67,7 +75,8 @@ export const ButtonIcon: FunctionComponent<ButtonTradeTrust> = ({
         height: 40,
       }}
       className={`button-icon ${shared} ${className} ${
-        disabled && "cursor-not-allowed bg-gray-50 text-gray-300 hover:bg-gray-200"
+        disabled &&
+        "cursor-not-allowed bg-gray-50 text-gray-300 hover:bg-gray-200"
       }`}
       type="submit"
       disabled={disabled}
@@ -87,7 +96,11 @@ export const LinkButton: FunctionComponent<AnchorTradeTrust> = ({
   const shared = getSharedStylesButton({ padding: size });
 
   return (
-    <a className={`block ${shared} ${className}`} rel="noopener noreferrer" {...props}>
+    <a
+      className={`block ${shared} ${className}`}
+      rel="noopener noreferrer"
+      {...props}
+    >
       {children}
     </a>
   );

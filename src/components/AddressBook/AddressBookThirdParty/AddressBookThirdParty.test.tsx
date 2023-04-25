@@ -28,7 +28,9 @@ describe("addressBookThirdParty", () => {
         network="local"
       />
     );
-    expect(screen.getByText("Try searching with keywords for results.")).not.toBeNull();
+    expect(
+      screen.getByText("Try searching with keywords for results.")
+    ).not.toBeNull();
   });
 
   it("should show empty message", () => {
@@ -40,7 +42,11 @@ describe("addressBookThirdParty", () => {
         network="local"
       />
     );
-    expect(screen.getByText("No address found. Try searching with another keyword for results.")).not.toBeNull();
+    expect(
+      screen.getByText(
+        "No address found. Try searching with another keyword for results."
+      )
+    ).not.toBeNull();
   });
 
   it("should show 2 mock results", () => {
