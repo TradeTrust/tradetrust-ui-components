@@ -11,10 +11,19 @@ export default {
   },
 };
 
-const render = ({ label }: FooterColumnItemProps): React.ReactElement => <div>{label}</div>;
-const renderSomethingElse = ({ to }: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
-const renderSpecial = ({ someOther }: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
-const bottomRender = ({ label, to }: FooterColumnItemProps): React.ReactElement => (
+const render = ({ label }: FooterColumnItemProps): React.ReactElement => (
+  <div>{label}</div>
+);
+const renderSomethingElse = ({
+  to,
+}: FooterColumnItemProps): React.ReactElement => <div>{to}</div>;
+const renderSpecial = ({
+  someOther,
+}: FooterColumnItemProps): React.ReactElement => <div>{someOther}</div>;
+const bottomRender = ({
+  label,
+  to,
+}: FooterColumnItemProps): React.ReactElement => (
   <a href={to} className="text-cloud-500 text-sm px-4 border-r">
     {label}
   </a>
@@ -23,7 +32,12 @@ const data = [
   {
     category: "Category A",
     items: [
-      { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+      {
+        label: "sdfsdf",
+        to: "somewhe",
+        render: renderSpecial,
+        someOther: "A-1",
+      },
       { label: "A-2", to: "https://google.com" },
       { label: "A-3", to: "somewhere", render },
     ],
@@ -70,5 +84,7 @@ export const Title: React.FunctionComponent = () => {
 };
 
 export const Logo: React.FunctionComponent = () => {
-  return <Footer logoUrl={defaultTradeTrustLogo} legalData={legalData} data={data} />;
+  return (
+    <Footer logoUrl={defaultTradeTrustLogo} legalData={legalData} data={data} />
+  );
 };

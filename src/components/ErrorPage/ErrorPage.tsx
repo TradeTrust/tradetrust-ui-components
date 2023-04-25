@@ -8,7 +8,13 @@ export interface ErrorPageProps {
   image: string;
 }
 
-export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ pageTitle, header, description, image, children }) => {
+export const ErrorPage: FunctionComponent<ErrorPageProps> = ({
+  pageTitle,
+  header,
+  description,
+  image,
+  children,
+}) => {
   return (
     <div
       className="bg-cerulean-50 bg-no-repeat bg-center bg-cover"
@@ -23,7 +29,9 @@ export const ErrorPage: FunctionComponent<ErrorPageProps> = ({ pageTitle, header
             </div>
             <div className="w-full sm:w-1/2 px-4">
               <h1 className="text-xl sm:text-4xl mb-4">{header}</h1>
-              <h3 className="font-normal leading-tight text-lg sm:text-2xl">{description}</h3>
+              <h3 className="font-normal leading-tight text-lg sm:text-2xl">
+                {description}
+              </h3>
               {children}
             </div>
           </div>

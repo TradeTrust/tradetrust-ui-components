@@ -1,7 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { NavigationBar } from "./NavigationBar";
-import { MockLogo, MockLeftNavItems, MockRightNavItems, MockMobileNavItems } from "./NavigationBar.mock";
+import {
+  MockLogo,
+  MockLeftNavItems,
+  MockRightNavItems,
+  MockMobileNavItems,
+} from "./NavigationBar.mock";
 
 describe("Navigation Bar", () => {
   it("should render correctly with the given input on desktop menu", () => {

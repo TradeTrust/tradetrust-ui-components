@@ -5,12 +5,16 @@ import { FooterColumnItemProps } from "./types";
 
 const renderLabel = ({ label }: FooterColumnItemProps) => <div>{label}</div>;
 const renderSomethingElse = ({ to }: FooterColumnItemProps) => <div>{to}</div>;
-const renderSpecial = ({ someOther }: FooterColumnItemProps) => <div>{someOther}</div>;
+const renderSpecial = ({ someOther }: FooterColumnItemProps) => (
+  <div>{someOther}</div>
+);
 const defaultProps = {
   title: "title",
   legalData: {
     copyright: "copyright",
-    items: [{ label: "Terms of use", to: "https://google.com", render: renderLabel }],
+    items: [
+      { label: "Terms of use", to: "https://google.com", render: renderLabel },
+    ],
   },
 };
 
@@ -25,7 +29,12 @@ describe("footer component", () => {
       {
         category: "Category A",
         items: [
-          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          {
+            label: "sdfsdf",
+            to: "somewhe",
+            render: renderSpecial,
+            someOther: "A-1",
+          },
           { label: "A-2", to: "https://google.com" },
           { label: "A-3", to: "somewhere", render: renderLabel },
         ],
@@ -41,7 +50,12 @@ describe("footer component", () => {
       {
         category: "Category A",
         items: [
-          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          {
+            label: "sdfsdf",
+            to: "somewhe",
+            render: renderSpecial,
+            someOther: "A-1",
+          },
           { label: "A-2", to: "https://google.com" },
           { label: "A-3", to: "somewhere", render: renderLabel },
         ],
@@ -66,7 +80,12 @@ describe("footer component", () => {
       {
         category: "Category A",
         items: [
-          { label: "sdfsdf", to: "somewhe", render: renderSpecial, someOther: "A-1" },
+          {
+            label: "sdfsdf",
+            to: "somewhe",
+            render: renderSpecial,
+            someOther: "A-1",
+          },
           { label: "A-2", to: "https://google.com" },
           { label: "A-3", to: "somewhere", render: renderLabel },
         ],

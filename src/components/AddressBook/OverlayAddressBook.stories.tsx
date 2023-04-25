@@ -1,5 +1,8 @@
 import React, { FunctionComponent, ReactElement } from "react";
-import { OverlayContextProvider, useOverlayContext } from "../../common/context/OverlayContext";
+import {
+  OverlayContextProvider,
+  useOverlayContext,
+} from "../../common/context/OverlayContext";
 import { Button } from "../UI/Button";
 import { Overlay } from "../UI/Overlay";
 import { OverlayAddressBook } from "./AddressBook";
@@ -14,7 +17,10 @@ export interface OverlayDemoProps {
   children: React.ReactNode;
 }
 
-const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({ buttonText, children }) => {
+const OverlayDemo: FunctionComponent<OverlayDemoProps> = ({
+  buttonText,
+  children,
+}) => {
   const { showOverlay } = useOverlayContext();
 
   return (
@@ -58,7 +64,9 @@ export const PopulatedThirdpartyAddressBook = (): ReactElement => {
     <OverlayContextProvider>
       <OverlayDemo buttonText="Populated third party address book">
         <OverlayAddressBook
-          onAddressSelected={(address) => window.alert(`${address} was selected!`)}
+          onAddressSelected={(address) =>
+            window.alert(`${address} was selected!`)
+          }
           network="goerli"
           title="Address Book"
         />

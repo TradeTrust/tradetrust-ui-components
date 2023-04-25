@@ -16,6 +16,10 @@ export const BackArrowLink = (): ReactElement => {
 
 export const TileInfoLink = (): ReactElement => {
   return (
-    <TileInfo title="Address Book" description="Access and update your addresses" tileIcon={<IconAddressBook />} />
+    <TileInfo
+      title="Address Book"
+      description="Access and update your addresses"
+      tileIcon={<IconAddressBook />}
+    />
   );
 };

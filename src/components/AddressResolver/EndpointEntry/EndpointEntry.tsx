@@ -1,4 +1,7 @@
-import { getFeatures, ThirdPartyAPIEntryProps } from "@govtechsg/address-identity-resolver";
+import {
+  getFeatures,
+  ThirdPartyAPIEntryProps,
+} from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent, useState } from "react";
 import { Edit, Trash2 } from "react-feather";
 import isEmpty from "validator/lib/isEmpty";
@@ -39,8 +42,10 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isEditable, setEditable] = useState(canEdit);
   const [inputErrorMessageName, setInputErrorMessageName] = useState("");
-  const [inputErrorMessageEndpoint, setInputErrorMessageEndpoint] = useState("");
-  const [inputErrorMessageApiHeader, setInputErrorMessageApiHeader] = useState("");
+  const [inputErrorMessageEndpoint, setInputErrorMessageEndpoint] =
+    useState("");
+  const [inputErrorMessageApiHeader, setInputErrorMessageApiHeader] =
+    useState("");
   const [inputErrorMessageApiKey, setInputErrorMessageApiKey] = useState("");
   const [endpointApi, setEndpointApi] = useState(api);
   const [endpointName, setEndpointName] = useState(name);
@@ -48,19 +53,27 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
   const [endpointApiKey, setEndpointApiKey] = useState(apiKey);
   const { showOverlay } = useOverlayContext();
 
-  const onEndpointApiChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onEndpointApiChanged = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setEndpointApi(event.target.value);
   };
 
-  const onEndpointNameChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onEndpointNameChanged = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setEndpointName(event.target.value);
   };
 
-  const onEndpointApiHeaderChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onEndpointApiHeaderChanged = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setEndpointApiHeader(event.target.value);
   };
 
-  const onEndpointApiKeyChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onEndpointApiKeyChanged = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setEndpointApiKey(event.target.value);
   };
 
@@ -123,7 +136,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
         return;
       }
 
-      const { features } = await getFeatures(endpointApi, endpointApiHeader, endpointApiKey);
+      const { features } = await getFeatures(
+        endpointApi,
+        endpointApiHeader,
+        endpointApiKey
+      );
 
       setEditable(false);
 
@@ -252,7 +269,11 @@ export const EndpointEntry: FunctionComponent<EndpointEntryProps> = ({
             <div className="my-2 lg:my-0">
               <div className="text-cerulean-500 hover:text-cerulean-800">
                 <div className="flex flex-wrap justify-end">
-                  <Trash2 className="cursor-pointer" onClick={removeEndpoint} data-testid="trash2-icon" />
+                  <Trash2
+                    className="cursor-pointer"
+                    onClick={removeEndpoint}
+                    data-testid="trash2-icon"
+                  />
                   <Edit
                     className="ml-3 cursor-pointer"
                     onClick={() => {

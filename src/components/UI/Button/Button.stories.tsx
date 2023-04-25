@@ -32,31 +32,59 @@ export const SolidDisabled = (): React.ReactNode => {
 };
 
 export const SolidOrangeWhite = (): React.ReactNode => {
-  return <Button className="bg-tangerine-500 text-white hover:bg-tangerine-800">SolidOrangeWhite</Button>;
+  return (
+    <Button className="bg-tangerine-500 text-white hover:bg-tangerine-800">
+      SolidOrangeWhite
+    </Button>
+  );
 };
 
 export const SolidWhiteOrange = (): React.ReactNode => {
-  return <Button className="bg-white text-tangerine-500 hover:bg-gray-50">SolidWhiteOrange</Button>;
+  return (
+    <Button className="bg-white text-tangerine-500 hover:bg-gray-50">
+      SolidWhiteOrange
+    </Button>
+  );
 };
 
 export const SolidWhiteBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-cerulean-500 hover:bg-gray-50">SolidWhiteBlue</Button>;
+  return (
+    <Button className="bg-white text-cerulean-500 hover:bg-gray-50">
+      SolidWhiteBlue
+    </Button>
+  );
 };
 
 export const SolidRedWhite = (): React.ReactNode => {
-  return <Button className="bg-scarlet-400 text-white hover:bg-red-400">SolidRedWhite</Button>;
+  return (
+    <Button className="bg-scarlet-400 text-white hover:bg-red-400">
+      SolidRedWhite
+    </Button>
+  );
 };
 
 export const SolidWhiteGrey = (): React.ReactNode => {
-  return <Button className="bg-white text-gray-500 hover:bg-gray-50">SolidWhiteGrey</Button>;
+  return (
+    <Button className="bg-white text-gray-500 hover:bg-gray-50">
+      SolidWhiteGrey
+    </Button>
+  );
 };
 
 export const SolidGreenWhite = (): React.ReactNode => {
-  return <Button className="bg-forest-500 text-white hover:bg-forest-700">SolidGreenWhite</Button>;
+  return (
+    <Button className="bg-forest-500 text-white hover:bg-forest-700">
+      SolidGreenWhite
+    </Button>
+  );
 };
 
 export const BorderedBlue = (): React.ReactNode => {
-  return <Button className="bg-white text-cerulean-500 border-cerulean-500 hover:bg-gray-50">BorderedBlue</Button>;
+  return (
+    <Button className="bg-white text-cerulean-500 border-cerulean-500 hover:bg-gray-50">
+      BorderedBlue
+    </Button>
+  );
 };
 
 export const IconWhiteOrange = (): React.ReactNode => {

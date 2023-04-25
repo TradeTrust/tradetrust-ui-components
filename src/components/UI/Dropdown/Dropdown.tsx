@@ -68,7 +68,11 @@ interface DropdownItemProps {
   className?: string;
 }
 
-export const DropdownItem: FunctionComponent<DropdownItemProps> = ({ className, children, ...props }) => {
+export const DropdownItem: FunctionComponent<DropdownItemProps> = ({
+  className,
+  children,
+  ...props
+}) => {
   return (
     <div
       className={`truncate cursor-pointer text-cloud-800 p-3 hover:bg-gray-50 active:bg-gray-300 ${className}`}

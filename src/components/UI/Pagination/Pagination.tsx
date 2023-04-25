@@ -21,12 +21,19 @@ interface GetPaginatedPagesTotal {
   posts: any[];
 }
 
-export const getPaginatedPagesTotal = ({ posts, postsPerPage }: GetPaginatedPagesTotal): number => {
+export const getPaginatedPagesTotal = ({
+  posts,
+  postsPerPage,
+}: GetPaginatedPagesTotal): number => {
   return Math.ceil(posts.length / postsPerPage);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getPaginatedPosts = ({ posts, postsPerPage, currentPage }: GetPaginatedPosts): any[] => {
+export const getPaginatedPosts = ({
+  posts,
+  postsPerPage,
+  currentPage,
+}: GetPaginatedPosts): any[] => {
   const indexOfLastEvent = currentPage * postsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - postsPerPage;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,7 +44,11 @@ export const getPaginatedPosts = ({ posts, postsPerPage, currentPage }: GetPagin
   return paginatedPosts;
 };
 
-export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages, currentPage, setCurrentPage }) => {
+export const Pagination: FunctionComponent<PaginationProps> = ({
+  totalNoOfPages,
+  currentPage,
+  setCurrentPage,
+}) => {
   const range = 5; // has to be odd number, so curr active number would be center of range
   const rangeOverflow = ~~(range / 2);
   const hideLeftTruncate = currentPage <= rangeOverflow + 2;
@@ -85,7 +96,8 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           const pageNumber = i + 1;
           const toHideLeft = pageNumber < currentPage - rangeOverflow;
           const toHideRight = pageNumber > currentPage + rangeOverflow;
-          const isFirstOrLastPage = pageNumber === 1 || pageNumber === totalNoOfPages;
+          const isFirstOrLastPage =
+            pageNumber === 1 || pageNumber === totalNoOfPages;
           const toHide = toHideLeft || toHideRight || isFirstOrLastPage;
           if (toHide) return null;
           return (
@@ -103,7 +115,10 @@ export const Pagination: FunctionComponent<PaginationProps> = ({ totalNoOfPages,
           );
         })}
         {!hideRightTruncate && (
-          <PaginationBox data-testid="truncate-right" className="cursor-default">
+          <PaginationBox
+            data-testid="truncate-right"
+            className="cursor-default"
+          >
             ...
           </PaginationBox>
         )}

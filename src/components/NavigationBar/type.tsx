@@ -39,4 +39,8 @@ export interface NavigationIconButton extends Omit<NavigationLink, "schema"> {
   icon: Icon;
 }
 
-export type NavigationItem = NavigationLink | NavigationDropDownList | NavigationLabelButton | NavigationIconButton;
+export type NavigationItem =
+  | NavigationLink
+  | NavigationDropDownList
+  | NavigationLabelButton
+  | NavigationIconButton;

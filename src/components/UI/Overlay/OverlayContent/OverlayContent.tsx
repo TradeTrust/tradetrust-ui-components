@@ -52,13 +52,21 @@ export const OverlayContent: FunctionComponent<OverlayContentProps> = ({
             <div className="flex flex-nowrap content-center items-start mb-2">
               {isSuccess !== undefined && (
                 <div className="w-auto mr-3 mt-0.5">
-                  {isSuccess ? <IconSuccess className="text-forest-500" /> : <IconError />}
+                  {isSuccess ? (
+                    <IconSuccess className="text-forest-500" />
+                  ) : (
+                    <IconError />
+                  )}
                 </div>
               )}
               <h3 className="mb-0 leading-8" data-testid="overlay-title">
                 {title}
               </h3>
-              <div className="w-auto ml-auto cursor-pointer" onClick={closeOverlay} data-testid="overlay-close">
+              <div
+                className="w-auto ml-auto cursor-pointer"
+                onClick={closeOverlay}
+                data-testid="overlay-close"
+              >
                 <X className={crossStyle ? crossStyle : ""} />
               </div>
             </div>

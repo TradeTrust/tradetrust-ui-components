@@ -77,7 +77,10 @@ export const MockRightNavItems: NavigationItem[] = [
     path: "https://creator.tradetrust.io/",
     customLink: (
       <a href="#">
-        <Button className="bg-white text-cerulean-500 hover:bg-gray-50 border border-cloud-200" size={ButtonSize.SM}>
+        <Button
+          className="bg-white text-cerulean-500 hover:bg-gray-50 border border-cloud-200"
+          size={ButtonSize.SM}
+        >
           Create Doc
         </Button>
       </a>
@@ -90,7 +93,10 @@ export const MockRightNavItems: NavigationItem[] = [
     path: "/verify",
     customLink: (
       <a href="#">
-        <Button className="bg-cerulean-500 text-white hover:bg-cerulean-800" size={ButtonSize.SM}>
+        <Button
+          className="bg-cerulean-500 text-white hover:bg-cerulean-800"
+          size={ButtonSize.SM}
+        >
           Verify Doc
         </Button>
       </a>
@@ -98,4 +104,5 @@ export const MockRightNavItems: NavigationItem[] = [
   },
 ];
 
-export const MockMobileNavItems: NavigationItem[] = MockLeftNavItems.concat(MockRightNavItems);
+export const MockMobileNavItems: NavigationItem[] =
+  MockLeftNavItems.concat(MockRightNavItems);

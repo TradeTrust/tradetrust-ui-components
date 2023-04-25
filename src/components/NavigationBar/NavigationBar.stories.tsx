@@ -1,6 +1,11 @@
 import React, { FunctionComponent, useState } from "react";
 import { NavigationBar } from "./NavigationBar";
-import { MockLogo, MockLeftNavItems, MockRightNavItems, MockMobileNavItems } from "./NavigationBar.mock";
+import {
+  MockLogo,
+  MockLeftNavItems,
+  MockRightNavItems,
+  MockMobileNavItems,
+} from "./NavigationBar.mock";
 
 export default {
   title: "Navigation/NavigationBar",

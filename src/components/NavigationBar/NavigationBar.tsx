@@ -21,7 +21,9 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
           <div className="relative flex items-baseline justify-between">
             <div className="self-center lg:hidden">
               <button
-                className={`flex items-center relative w-6 h-6 ${props.toggleNavBar ? "" : "collapsed"}`}
+                className={`flex items-center relative w-6 h-6 ${
+                  props.toggleNavBar ? "" : "collapsed"
+                }`}
                 onClick={() => {
                   props.setToggleNavBar(!props.toggleNavBar);
                 }}
@@ -29,14 +31,18 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
                 <span
                   style={{
                     height: 2,
-                    transform: collapsed ? "translateY(-4px) rotate(0)" : "translateY(0) rotate(45deg)",
+                    transform: collapsed
+                      ? "translateY(-4px) rotate(0)"
+                      : "translateY(0) rotate(45deg)",
                   }}
                   className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block top-bar"
                 />
                 <span
                   style={{
                     height: 2,
-                    transform: collapsed ? "translateY(4px) rotate(0)" : "translateY(0) rotate(-45deg)",
+                    transform: collapsed
+                      ? "translateY(4px) rotate(0)"
+                      : "translateY(0) rotate(-45deg)",
                   }}
                   className="w-full bg-cloud-500 transition-transform duration-200 ease-out absolute block bottom-bar"
                 />
@@ -78,7 +84,11 @@ export const NavigationBar: FunctionComponent<NavigationBarProps> = (props) => {
             }`}
           >
             {props.menuMobile.map((item, index) => {
-              if (item.id === "create-documents" || item.id === "verify" || item.id === "settings") {
+              if (
+                item.id === "create-documents" ||
+                item.id === "verify" ||
+                item.id === "settings"
+              ) {
                 return (
                   <div key={index} className="my-4 md:hidden">
                     <NavigationBarItem item={item} />

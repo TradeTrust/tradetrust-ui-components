@@ -1,4 +1,7 @@
-import { ThirdPartyAPIEntryProps, useThirdPartyAPIEndpoints } from "@govtechsg/address-identity-resolver";
+import {
+  ThirdPartyAPIEntryProps,
+  useThirdPartyAPIEndpoints,
+} from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";
@@ -9,9 +12,16 @@ export interface AddressesTableProps {
   setNewEndpoint: (isNewEndpoint: boolean) => void;
 }
 
-export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEndpoint, setNewEndpoint }) => {
-  const { thirdPartyAPIEndpoints, addThirdPartyAPIEndpoint, removeThirdPartyAPIEndpoint, setThirdPartyAPIEndpoints } =
-    useThirdPartyAPIEndpoints();
+export const AddressesTable: FunctionComponent<AddressesTableProps> = ({
+  isNewEndpoint,
+  setNewEndpoint,
+}) => {
+  const {
+    thirdPartyAPIEndpoints,
+    addThirdPartyAPIEndpoint,
+    removeThirdPartyAPIEndpoint,
+    setThirdPartyAPIEndpoints,
+  } = useThirdPartyAPIEndpoints();
   const { showOverlay, setOverlayVisible } = useOverlayContext();
 
   const deleteAddress = (index: number): void => {
@@ -31,16 +41,17 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
     );
   };
 
-  const isCurrentEndpointUrlExists = (currentEndpoint: string) => (endpoint: string) => {
-    const omitCurrent = thirdPartyAPIEndpoints.filter((item) => {
-      return item.endpoint !== currentEndpoint;
-    });
+  const isCurrentEndpointUrlExists =
+    (currentEndpoint: string) => (endpoint: string) => {
+      const omitCurrent = thirdPartyAPIEndpoints.filter((item) => {
+        return item.endpoint !== currentEndpoint;
+      });
 
-    const isFound = !!omitCurrent.find((item) => {
-      return item.endpoint === endpoint;
-    });
-    return isFound;
-  };
+      const isFound = !!omitCurrent.find((item) => {
+        return item.endpoint === endpoint;
+      });
+      return isFound;
+    };
 
   const isEndpointUrlExists = (endpoint: string): boolean => {
     const isFound = !!thirdPartyAPIEndpoints.find((item) => {
@@ -54,11 +65,12 @@ export const AddressesTable: FunctionComponent<AddressesTableProps> = ({ isNewEn
     setNewEndpoint(false);
   };
 
-  const onUpdateEndpoint = (index: number) => (newValues: ThirdPartyAPIEntryProps) => {
-    const newEndpoint = [...thirdPartyAPIEndpoints];
-    newEndpoint.splice(index, 1, newValues);
-    setThirdPartyAPIEndpoints(newEndpoint);
-  };
+  const onUpdateEndpoint =
+    (index: number) => (newValues: ThirdPartyAPIEntryProps) => {
+      const newEndpoint = [...thirdPartyAPIEndpoints];
+      newEndpoint.splice(index, 1, newValues);
+      setThirdPartyAPIEndpoints(newEndpoint);
+    };
 
   const swapArray = (indexA: number, indexB: number): void => {
     const toOrdered = [...thirdPartyAPIEndpoints];

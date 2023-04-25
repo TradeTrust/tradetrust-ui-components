@@ -25,7 +25,10 @@ export const AddressResolver: FunctionComponent = () => {
         </Button>
       </div>
       <div className="lg:bg-white lg:rounded-xl lg:shadow-lg lg:mt-6 lg:px-7 lg:py-12">
-        <AddressesTable isNewEndpoint={isNewEndpoint} setNewEndpoint={setNewEndpoint} />
+        <AddressesTable
+          isNewEndpoint={isNewEndpoint}
+          setNewEndpoint={setNewEndpoint}
+        />
       </div>
     </>
   );

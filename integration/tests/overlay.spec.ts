@@ -4,7 +4,9 @@ fixture`Text Overlay`
   .page`http://localhost:9009/iframe.html?id=ui-overlay--text&args=&viewMode=story`;
 
 const RootSelector = Selector("#root", { visibilityCheck: true });
-const ModalSelector = Selector("#root > div.overlay", { visibilityCheck: true });
+const ModalSelector = Selector("#root > div.overlay", {
+  visibilityCheck: true,
+});
 
 const openButton = RootSelector.find("#root > button");
 const modalCloseButton = ModalSelector.find("[data-testid='overlay-close']");
