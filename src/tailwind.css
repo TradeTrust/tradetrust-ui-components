@@ -103,24 +103,4 @@
   .max-h-screen {
     max-height: 100vh;
   }
-
-  .aspect-16-9 {
-    position: relative;
-    width: 100%;
-  }
-
-  .aspect-16-9::before {
-    content: "";
-    width: 1px;
-    margin-left: -1px;
-    float: left;
-    height: 0;
-    padding-top: calc(9 / 16 * 100%);
-  }
-
-  .aspect-16-9::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 }
