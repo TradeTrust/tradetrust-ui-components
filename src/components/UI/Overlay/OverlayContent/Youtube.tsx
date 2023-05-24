@@ -11,7 +11,7 @@ export const Youtube: FunctionComponent<YoutubeProps> = ({
 }) => {
   return (
     <OverlayContent className="max-w-6xl bg-white" {...props}>
-      <div className="aspect-16-9">
+      <div className="relative aspect-video">
         <iframe
           className="absolute top-0 left-0 w-full h-full p-0 m-0 border-0"
           title={youtubeId}
