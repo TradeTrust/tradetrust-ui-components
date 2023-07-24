@@ -17,6 +17,7 @@ import {
   MessageTransactionError,
   Textual,
   Youtube,
+  ProviderTimeoutMessage
 } from "./OverlayContent";
 
 export default {
@@ -119,7 +120,7 @@ export const Text = (): ReactElement => {
   );
 };
 
-export const Video = (): ReactElement => {
+export const Video = (): ReactElement => {  
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Video">
@@ -274,6 +275,17 @@ export const AddAddressResolver = (): ReactElement => {
     <OverlayContextProvider>
       <OverlayDemo buttonText="Add Address Resolver">
         <AddResolverConfirmation />
+      </OverlayDemo>
+    </OverlayContextProvider>
+  );
+};
+
+
+export const ProviderTimeout = (): ReactElement => {
+  return (
+    <OverlayContextProvider>
+      <OverlayDemo buttonText="Provider Timeout">
+        <ProviderTimeoutMessage address="https://example.com"/>
       </OverlayDemo>
     </OverlayContextProvider>
   );
