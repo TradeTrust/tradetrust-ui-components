@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { Button } from "../../Button";
 import { OverlayContentProps } from "./index";
+import { ConfirmationContext, MESSAGE_TYPE } from "./ConfirmationMessage";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
   name: string;
@@ -13,13 +14,8 @@ export const DeleteResolverConfirmation: FunctionComponent<
 > = ({ name, deleteAddress }) => {
   const { closeOverlay } = useOverlayContext();
 
-  return (
-    <div className="relative bg-white rounded-xl text-center w-96 p-8">
-      <div className="flex flex-col">
-        <h3 className="font-ubuntu text-2xl font-normal text-cloud-800">
-          Delete Address Resolver
-        </h3>
-        <p className="text-cloud-800 mt-7">
+  return <ConfirmationContext messageType={MESSAGE_TYPE.NONE} title="Delete Address Resolver">
+        <p className="text-cloud-800">
           Are you sure you want to delete this address resolver?
         </p>
         <p className="text-cloud-800 mt-7">{name}</p>
@@ -37,7 +33,5 @@ export const DeleteResolverConfirmation: FunctionComponent<
             Delete
           </Button>
         </div>
-      </div>
-    </div>
-  );
+  </ConfirmationContext>
 };
