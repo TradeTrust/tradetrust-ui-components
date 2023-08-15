@@ -120,7 +120,7 @@ export const Text = (): ReactElement => {
   );
 };
 
-export const Video = (): ReactElement => {  
+export const Video = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Video">
@@ -279,7 +279,6 @@ export const AddAddressResolver = (): ReactElement => {
     </OverlayContextProvider>
   );
 };
-
 
 export const ProviderTimeout = (): ReactElement => {
   return (
