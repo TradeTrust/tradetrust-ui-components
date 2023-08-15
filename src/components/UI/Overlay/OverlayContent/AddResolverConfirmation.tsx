@@ -3,7 +3,7 @@ import {
   ConfirmationContext,
   DismissalButton,
   MESSAGE_TYPE,
-} from "./ConfirmationMessage";
+} from "./ConfirmationContext";
 
 export const AddResolverConfirmation: FunctionComponent = () => {
   return (

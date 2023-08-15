@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { Button } from "../../Button";
 import { OverlayContentProps } from "./index";
-import { ConfirmationContext, MESSAGE_TYPE } from "./ConfirmationMessage";
+import { ConfirmationContext, MESSAGE_TYPE } from "./ConfirmationContext";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
   name: string;

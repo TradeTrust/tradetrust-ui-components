@@ -3,7 +3,7 @@ import {
   ConfirmationContext,
   DismissalButton,
   MESSAGE_TYPE,
-} from "./ConfirmationMessage";
+} from "./ConfirmationContext";
 
 interface ProviderTimeoutMessageProps {
   address: string;

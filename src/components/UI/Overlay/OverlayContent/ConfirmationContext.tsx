@@ -11,7 +11,7 @@ export const enum MESSAGE_TYPE {
   NONE = "none",
 }
 
-export interface ConfirmationMessageProps {
+export interface ConfirmationContextProps {
   messageType: MESSAGE_TYPE;
   title?: string;
   children?: React.ReactNode;
@@ -37,7 +37,7 @@ export const DismissalButton: FunctionComponent<{ buttonText?: string }> = ({
 };
 
 export const ConfirmationContext: FunctionComponent<
-  ConfirmationMessageProps
+  ConfirmationContextProps
 > = ({
   messageType,
   title: messageTitle,
@@ -45,7 +45,7 @@ export const ConfirmationContext: FunctionComponent<
   maxHeight,
   className,
   ...props
-}: ConfirmationMessageProps) => {
+}: ConfirmationContextProps) => {
   useLockBodyScroll();
 
   const style = {
