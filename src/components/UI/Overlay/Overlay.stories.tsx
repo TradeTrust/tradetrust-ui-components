@@ -17,7 +17,7 @@ import {
   MessageTransactionError,
   Textual,
   Youtube,
-  ProviderTimeoutMessage
+  ProviderTimeoutMessage,
 } from "./OverlayContent";
 
 export default {
@@ -284,7 +284,7 @@ export const ProviderTimeout = (): ReactElement => {
   return (
     <OverlayContextProvider>
       <OverlayDemo buttonText="Provider Timeout">
-        <ProviderTimeoutMessage address="https://example.com"/>
+        <ProviderTimeoutMessage address="https://example.com" />
       </OverlayDemo>
     </OverlayContextProvider>
   );

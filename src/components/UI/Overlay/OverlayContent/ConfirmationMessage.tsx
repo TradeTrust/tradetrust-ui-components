@@ -20,7 +20,11 @@ export interface ConfirmationMessageProps {
   className?: string;
 }
 
-export const DismissalButton: FunctionComponent<{buttonText?: string}> = ({buttonText}: {buttonText?: string}) => {
+export const DismissalButton: FunctionComponent<{ buttonText?: string }> = ({
+  buttonText,
+}: {
+  buttonText?: string;
+}) => {
   const { closeOverlay } = useOverlayContext();
   return (
     <Button
@@ -30,7 +34,7 @@ export const DismissalButton: FunctionComponent<{buttonText?: string}> = ({butto
       {buttonText ? buttonText : "Dismiss"}
     </Button>
   );
-}
+};
 
 export const ConfirmationContext: FunctionComponent<
   ConfirmationMessageProps
@@ -42,13 +46,11 @@ export const ConfirmationContext: FunctionComponent<
   className,
   ...props
 }: ConfirmationMessageProps) => {
-
   useLockBodyScroll();
 
   const style = {
     ...(maxHeight && { maxHeight: `${maxHeight}px` }),
   };
-
 
   let messageIcon;
   switch (messageType) {
@@ -62,13 +64,17 @@ export const ConfirmationContext: FunctionComponent<
       break;
   }
   return (
-    <div 
+    <div
       className={`relative bg-white rounded-xl text-center p-5 overflow-auto w-80 h-70 ${className}`}
       {...props}
       style={style}
-      >
+    >
       <div className="flex flex-col">
-        { messageIcon ? <div className="self-center mt-5">{messageIcon}</div> : <></> }
+        {messageIcon ? (
+          <div className="self-center mt-5">{messageIcon}</div>
+        ) : (
+          <></>
+        )}
         <h3 className="text-cloud-800 text-xl mt-5 mb-5">{messageTitle}</h3>
         {children}
       </div>
