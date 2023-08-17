@@ -47,7 +47,7 @@
     "IE >= 11"
   ],
   "dependencies": {
-    "@govtechsg/address-identity-resolver": "^1.4.1",
+    "@govtechsg/address-identity-resolver": "^1.5.0",
     "debug": "^4.3.4",
     "lodash": "^4.17.21",
     "react-feather": "^2.0.10",
