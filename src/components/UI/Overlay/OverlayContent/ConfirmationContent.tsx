@@ -30,7 +30,7 @@ export const DismissalButton: FunctionComponent<{ buttonText: string }> = ({
       className="bg-cerulean-500 hover:bg-cerulean-800 rounded-xl px-3 py-2 mx-auto mt-3 text-white font-normal"
       onClick={closeOverlay}
     >
-      { buttonText }
+      {buttonText}
     </Button>
   );
 };
@@ -57,7 +57,7 @@ export const ConfirmationContent: FunctionComponent<
       messageIcon = <IconSuccess className="text-forest-500 h-14 w-14" />;
       break;
     case MESSAGE_TYPE.WARNING:
-      messageIcon = <IconWarning className="h-14 w-14"/>;
+      messageIcon = <IconWarning className="h-14 w-14" />;
       break;
     default:
       messageIcon = null;
@@ -70,9 +70,7 @@ export const ConfirmationContent: FunctionComponent<
       style={style}
     >
       <div className="flex flex-col">
-        {messageIcon && (
-          <div className="self-center mt-5">{messageIcon}</div>
-        )}
+        {messageIcon && <div className="self-center mt-5">{messageIcon}</div>}
         <h3 className="text-cloud-800 text-xl mt-5 mb-5">{messageTitle}</h3>
         {children}
       </div>
