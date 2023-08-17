@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { Button } from "../../Button";
 import { OverlayContentProps } from "./index";
+import { ConfirmationContent, MESSAGE_TYPE } from "./ConfirmationContent";
 
 interface DeleteResolverConfirmationProps extends OverlayContentProps {
   name: string;
@@ -14,30 +15,28 @@ export const DeleteResolverConfirmation: FunctionComponent<
   const { closeOverlay } = useOverlayContext();
 
   return (
-    <div className="relative bg-white rounded-xl text-center w-96 p-8">
-      <div className="flex flex-col">
-        <h3 className="font-ubuntu text-2xl font-normal text-cloud-800">
-          Delete Address Resolver
-        </h3>
-        <p className="text-cloud-800 mt-7">
-          Are you sure you want to delete this address resolver?
-        </p>
-        <p className="text-cloud-800 mt-7">{name}</p>
-        <div className="flex flex-row mt-7 justify-center">
-          <Button
-            className="bg-white hover:bg-slate-50 border-cloud-100 rounded-xl px-3 py-2 text-cerulean"
-            onClick={closeOverlay}
-          >
-            Cancel
-          </Button>
-          <Button
-            className="bg-scarlet-500 hover:bg-red-600 rounded-xl px-3 py-2 ml-8 text-white"
-            onClick={deleteAddress}
-          >
-            Delete
-          </Button>
-        </div>
+    <ConfirmationContent
+      messageType={MESSAGE_TYPE.NONE}
+      title="Delete Address Resolver"
+    >
+      <p className="text-cloud-800">
+        Are you sure you want to delete this address resolver?
+      </p>
+      <p className="text-cloud-800 mt-7">{name}</p>
+      <div className="flex flex-row mt-7 justify-center">
+        <Button
+          className="bg-white hover:bg-slate-50 border-cloud-100 rounded-xl px-3 py-2 text-cerulean"
+          onClick={closeOverlay}
+        >
+          Cancel
+        </Button>
+        <Button
+          className="bg-scarlet-500 hover:bg-red-600 rounded-xl px-3 py-2 ml-8 text-white"
+          onClick={deleteAddress}
+        >
+          Delete
+        </Button>
       </div>
-    </div>
+    </ConfirmationContent>
   );
 };
