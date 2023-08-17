@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import {
-  ConfirmationContext,
+  ConfirmationContent,
   DismissalButton,
   MESSAGE_TYPE,
-} from "./ConfirmationContext";
+} from "./ConfirmationContent";
 
 interface ProviderTimeoutMessageProps {
   address: string;
@@ -13,7 +13,7 @@ export const ProviderTimeoutMessage: FunctionComponent<
   ProviderTimeoutMessageProps
 > = ({ address }) => {
   return (
-    <ConfirmationContext messageType={MESSAGE_TYPE.WARNING}>
+    <ConfirmationContent messageType={MESSAGE_TYPE.WARNING}>
       <p className="text-cloud-800">
         Loading the endorsement chain is taking longer than usual. To address
         this,{" "}
@@ -23,6 +23,6 @@ export const ProviderTimeoutMessage: FunctionComponent<
         .
       </p>
       <DismissalButton />
-    </ConfirmationContext>
+    </ConfirmationContent>
   );
 };

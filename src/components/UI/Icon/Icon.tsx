@@ -1,5 +1,6 @@
 import React, { SVGProps } from "react";
 import { CheckCircle } from "react-feather";
+import warningIcon from "../../../static/images/Alert/warning.png";
 
 export const IconAddressBook: React.FunctionComponent<SVGProps<SVGElement>> = ({
   className,
@@ -176,6 +177,12 @@ export const IconSuccess: React.FunctionComponent<SVGProps<SVGElement>> = ({
   className,
 }) => {
   return <CheckCircle className={`${className ? className : ""}`} />;
+};
+
+export const IconWarning: React.FunctionComponent<SVGProps<SVGElement>> = ({
+  className,
+}) => {
+  return <img className={`${className ? className : ""}`} src={warningIcon} />;
 };
 
 export const IconError: React.FunctionComponent<SVGProps<SVGElement>> = ({

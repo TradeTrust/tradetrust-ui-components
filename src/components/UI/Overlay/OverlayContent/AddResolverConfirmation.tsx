@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from "react";
 import {
-  ConfirmationContext,
+  ConfirmationContent,
   DismissalButton,
   MESSAGE_TYPE,
-} from "./ConfirmationContext";
+} from "./ConfirmationContent";
 
 export const AddResolverConfirmation: FunctionComponent = () => {
   return (
-    <ConfirmationContext
+    <ConfirmationContent
       messageType={MESSAGE_TYPE.SUCCESS}
       title="Success"
       btnText="Okay, got it"
     >
       <p className="text-cloud-800">Address successfully added</p>
       <DismissalButton buttonText="Okay, got it" />
-    </ConfirmationContext>
+    </ConfirmationContent>
   );
 };

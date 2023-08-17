@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../../../common/context/OverlayContext";
 import { Button } from "../../Button";
-import { IconSuccess } from "../../Icon";
-import warningIcon from "../../../../../src/static/images/Alert/warning.png";
+import { IconSuccess, IconWarning } from "../../Icon";
 import { useLockBodyScroll } from "../../../../common/hooks/useLockBodyScroll";
 
 export const enum MESSAGE_TYPE {
@@ -11,7 +10,7 @@ export const enum MESSAGE_TYPE {
   NONE = "none",
 }
 
-export interface ConfirmationContextProps {
+export interface ConfirmationContentProps {
   messageType: MESSAGE_TYPE;
   title?: string;
   children?: React.ReactNode;
@@ -20,10 +19,10 @@ export interface ConfirmationContextProps {
   className?: string;
 }
 
-export const DismissalButton: FunctionComponent<{ buttonText?: string }> = ({
-  buttonText,
+export const DismissalButton: FunctionComponent<{ buttonText: string }> = ({
+  buttonText = "Dismiss",
 }: {
-  buttonText?: string;
+  buttonText: string;
 }) => {
   const { closeOverlay } = useOverlayContext();
   return (
@@ -31,13 +30,13 @@ export const DismissalButton: FunctionComponent<{ buttonText?: string }> = ({
       className="bg-cerulean-500 hover:bg-cerulean-800 rounded-xl px-3 py-2 mx-auto mt-3 text-white font-normal"
       onClick={closeOverlay}
     >
-      {buttonText ? buttonText : "Dismiss"}
+      { buttonText }
     </Button>
   );
 };
 
-export const ConfirmationContext: FunctionComponent<
-  ConfirmationContextProps
+export const ConfirmationContent: FunctionComponent<
+  ConfirmationContentProps
 > = ({
   messageType,
   title: messageTitle,
@@ -45,7 +44,7 @@ export const ConfirmationContext: FunctionComponent<
   maxHeight,
   className,
   ...props
-}: ConfirmationContextProps) => {
+}: ConfirmationContentProps) => {
   useLockBodyScroll();
 
   const style = {
@@ -58,9 +57,10 @@ export const ConfirmationContext: FunctionComponent<
       messageIcon = <IconSuccess className="text-forest-500 h-14 w-14" />;
       break;
     case MESSAGE_TYPE.WARNING:
-      messageIcon = <img className="h-14 w-14" src={warningIcon} />;
+      messageIcon = <IconWarning className="h-14 w-14"/>;
       break;
     default:
+      messageIcon = null;
       break;
   }
   return (
