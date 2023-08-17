@@ -19,10 +19,10 @@ export interface ConfirmationContentProps {
   className?: string;
 }
 
-export const DismissalButton: FunctionComponent<{ buttonText: string }> = ({
+export const DismissalButton: FunctionComponent<{ buttonText?: string }> = ({
   buttonText = "Dismiss",
 }: {
-  buttonText: string;
+  buttonText?: string;
 }) => {
   const { closeOverlay } = useOverlayContext();
   return (
