@@ -70,10 +70,8 @@ export const ConfirmationContent: FunctionComponent<
       style={style}
     >
       <div className="flex flex-col">
-        {messageIcon ? (
+        {messageIcon && (
           <div className="self-center mt-5">{messageIcon}</div>
-        ) : (
-          <></>
         )}
         <h3 className="text-cloud-800 text-xl mt-5 mb-5">{messageTitle}</h3>
         {children}
