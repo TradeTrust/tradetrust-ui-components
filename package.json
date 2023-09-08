@@ -48,6 +48,7 @@
   ],
   "dependencies": {
     "@govtechsg/address-identity-resolver": "^1.5.0",
+    "@govtechsg/tradetrust-utils": "^1.6.0",
     "debug": "^4.3.4",
     "lodash": "^4.17.21",
     "react-feather": "^2.0.10",
