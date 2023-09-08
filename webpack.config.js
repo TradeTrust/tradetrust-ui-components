@@ -23,6 +23,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     fallback: {
       path: require.resolve("path-browserify"),
+      crypto: false,
     },
   },
   module: {
