@@ -50,8 +50,9 @@
     "@govtechsg/address-identity-resolver": "^1.5.0",
     "debug": "^4.3.4",
     "lodash": "^4.17.21",
+    "postcss": "^8.4.31",
     "react-feather": "^2.0.10",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.3",
     "validator": "^13.9.0"
   },
   "devDependencies": {
