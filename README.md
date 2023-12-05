@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-npm i --save @govtechsg/tradetrust-ui-components
+npm i --save @tradetrust-tt/tradetrust-ui-components
 ```
 
 ## Development
