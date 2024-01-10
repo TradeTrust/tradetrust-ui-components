@@ -11,9 +11,9 @@ localConfig = {
   content: [`./src/**/*.{js,jsx,ts,tsx}`],
   theme: {
     fontFamily: {
-      sans: ["Gilroy-Medium", "sans-serif"],
-      display: ["Gilroy-Medium", "sans-serif"],
-      body: ["Gilroy-Medium", "sans-serif"],
+      sans: ["RedHatDisplay-Medium", "sans-serif"],
+      display: ["RedHatDisplay-Medium", "sans-serif"],
+      body: ["RedHatDisplay-Medium", "sans-serif"],
       headings: ["Ubuntu", "sans-serif"],
     },
   },

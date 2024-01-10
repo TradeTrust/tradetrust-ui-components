@@ -12,7 +12,7 @@ interface GetSharedStylesButton {
 const getSharedStylesButton = (shared: GetSharedStylesButton): string => {
   const { padding } = shared;
 
-  return `transition-colors duration-200 ease-out cursor-pointer font-gilroy-bold border ${padding}`;
+  return `transition-colors duration-200 ease-out cursor-pointer font-redhatdisplay-bold border ${padding}`;
 };
 
 export enum ButtonSize {
@@ -45,11 +45,10 @@ export const Button: FunctionComponent<ButtonTradeTrust> = ({
 
   return (
     <button
-      className={`${shared} ${className} ${
-        disabled
+      className={`${shared} ${className} ${disabled
           ? "cursor-not-allowed bg-gray-200 text-white hover:bg-gray-200"
           : ""
-      }`}
+        }`}
       type="submit"
       disabled={disabled}
       {...props}
@@ -74,10 +73,9 @@ export const ButtonIcon: FunctionComponent<ButtonTradeTrust> = ({
         width: 40,
         height: 40,
       }}
-      className={`button-icon ${shared} ${className} ${
-        disabled &&
+      className={`button-icon ${shared} ${className} ${disabled &&
         "cursor-not-allowed bg-gray-50 text-gray-300 hover:bg-gray-200"
-      }`}
+        }`}
       type="submit"
       disabled={disabled}
       {...props}

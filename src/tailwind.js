@@ -15,10 +15,10 @@ module.exports = {
     }),
     extend: {
       fontFamily: {
-        "gilroy-light": ["Gilroy-Light", "sans-serif"],
-        "gilroy-medium": ["Gilroy-Medium", "sans-serif"],
-        "gilroy-bold": ["Gilroy-Bold", "sans-serif"],
-        "gilroy-extrabold": ["Gilroy-ExtraBold", "sans-serif"],
+        "redhatdisplay-light": ["RedHatDisplay-Light", "sans-serif"],
+        "redhatdisplay-medium": ["RedHatDisplay-Medium", "sans-serif"],
+        "redhatdisplay-bold": ["RedHatDisplay-Bold", "sans-serif"],
+        "redhatdisplay-extrabold": ["RedHatDisplay-ExtraBold", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       height: {

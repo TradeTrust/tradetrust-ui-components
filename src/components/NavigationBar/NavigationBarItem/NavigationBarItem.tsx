@@ -108,9 +108,8 @@ const DropDownList: FunctionComponent<{
           {item.label}
         </span>
         <svg
-          className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
-            isOpen ? "rotate-180" : "rotate-0"
-          }`}
+          className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${isOpen ? "rotate-180" : "rotate-0"
+            }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
@@ -125,7 +124,7 @@ const DropDownList: FunctionComponent<{
       </div>
       {isOpen && (
         <div
-          className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-gilroy-bold`}
+          className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-redhatdisplay-bold`}
         >
           <div className={`bg-white rounded-md lg:shadow-dropdown`}>
             {item.dropdownItems?.map(
