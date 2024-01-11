@@ -15,7 +15,7 @@ module.exports = {
     }),
     extend: {
       fontFamily: {
-        "redhatdisplay": ["Red Hat Display", "sans-serif"],
+        redhatdisplay: ["Red Hat Display", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       height: {

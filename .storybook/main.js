@@ -21,9 +21,7 @@ module.exports = {
           ...config.resolve.alias,
         },
       },
-      plugins: [
-        ...config.plugins,
-      ],
+      plugins: [...config.plugins],
     };
   },
 };
