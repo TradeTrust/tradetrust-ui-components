@@ -1,7 +1,29 @@
 @import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
 @import url("//hello.myfonts.net/count/481147");
 
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;700;800&display=swap");
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("../src/static/fonts/GilroyLight/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyLight/font.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("../src/static/fonts/GilroyMedium/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyMedium/font.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("../src/static/fonts/GilroyBold/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyBold/font.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Gilroy-ExtraBold";
+  src: url("../src/static/fonts/GilroyExtraBold/font.woff2") format("woff2"),
+    url("../src/static/fonts/GilroyExtraBold/font.woff") format("woff");
+}
 
 @tailwind base;
 
@@ -27,23 +49,23 @@
 
   h4 {
     font-size: 20px;
-    @apply font-redhatdisplay font-bold;
+    @apply font-gilroy-bold;
   }
 
   h5 {
     font-size: 16px;
-    @apply font-redhatdisplay font-bold;
+    @apply font-gilroy-bold;
   }
 
   h6 {
     font-size: 14px;
-    @apply font-redhatdisplay font-medium;
+    @apply font-gilroy-medium;
     @apply font-normal;
   }
 
   p {
     font-size: 16px;
-    @apply font-redhatdisplay font-medium;
+    @apply font-gilroy-medium;
     @apply font-normal;
   }
 
