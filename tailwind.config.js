@@ -11,9 +11,9 @@ localConfig = {
   content: [`./src/**/*.{js,jsx,ts,tsx}`],
   theme: {
     fontFamily: {
-      sans: ["RedHatDisplay-Medium", "sans-serif"],
-      display: ["RedHatDisplay-Medium", "sans-serif"],
-      body: ["RedHatDisplay-Medium", "sans-serif"],
+      sans: ["Red Hat Display", "sans-serif"],
+      display: ["Red Hat Display", "sans-serif"],
+      body: ["Red Hat Display", "sans-serif"],
       headings: ["Ubuntu", "sans-serif"],
     },
   },

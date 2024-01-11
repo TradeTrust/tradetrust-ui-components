@@ -24,7 +24,7 @@ export const AddressBookThirdParty: FunctionComponent<
   return (
     <>
       <div className="w-full">
-        <div className="hidden text-xl font-redhatdisplay-bold text-cloud-800 p-4 lg:flex">
+        <div className="hidden text-xl font-redhatdisplay font-bold text-cloud-800 p-4 lg:flex">
           <h4 className="w-3/12">Name</h4>
           <h4 className="w-5/12">Address</h4>
           <h4 className="w-3/12">Source</h4>

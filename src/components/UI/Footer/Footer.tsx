@@ -15,7 +15,7 @@ const Logo = (
       {title ? (
         <p
           className={
-            "text-xl lg:text-3xl text-center lg:text-left font-redhatdisplay-bold max-w-[142px]"
+            "text-xl lg:text-3xl text-center lg:text-left font-redhatdisplay font-bold max-w-[142px]"
           }
         >
           {title}

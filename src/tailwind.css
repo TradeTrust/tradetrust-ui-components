@@ -1,25 +1,7 @@
 @import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
 @import url("//hello.myfonts.net/count/481147");
 
-@font-face {
-  font-family: "RedHatDisplay-Light";
-  src: url("../src/static/fonts/RedHatDisplay-Light.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "RedHatDisplay-Medium";
-  src: url("../src/static/fonts/RedHatDisplay-Medium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "RedHatDisplay-Bold";
-  src: url("../src/static/fonts/RedHatDisplay-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "RedHatDisplay-ExtraBold";
-  src: url("../src/static/fonts/RedHatDisplay-ExtraBold.ttf") format("truetype");
-}
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;700;800&display=swap');
 
 @tailwind base;
 
@@ -45,23 +27,23 @@
 
   h4 {
     font-size: 20px;
-    @apply font-redhatdisplay-bold;
+    @apply font-redhatdisplay font-bold;
   }
 
   h5 {
     font-size: 16px;
-    @apply font-redhatdisplay-bold;
+    @apply font-redhatdisplay font-bold;
   }
 
   h6 {
     font-size: 14px;
-    @apply font-redhatdisplay-medium;
+    @apply font-redhatdisplay font-medium;
     @apply font-normal;
   }
 
   p {
     font-size: 16px;
-    @apply font-redhatdisplay-medium;
+    @apply font-redhatdisplay font-medium;
     @apply font-normal;
   }
 

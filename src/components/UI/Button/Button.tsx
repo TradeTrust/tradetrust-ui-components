@@ -12,7 +12,7 @@ interface GetSharedStylesButton {
 const getSharedStylesButton = (shared: GetSharedStylesButton): string => {
   const { padding } = shared;
 
-  return `transition-colors duration-200 ease-out cursor-pointer font-redhatdisplay-bold border ${padding}`;
+  return `transition-colors duration-200 ease-out cursor-pointer font-redhatdisplay font-bold border ${padding}`;
 };
 
 export enum ButtonSize {

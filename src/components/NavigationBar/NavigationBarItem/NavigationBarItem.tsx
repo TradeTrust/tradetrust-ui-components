@@ -125,7 +125,7 @@ const DropDownList: FunctionComponent<{
       </div>
       {isOpen && (
         <div
-          className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-redhatdisplay-bold`}
+          className={`w-max min-w-full z-30 lg:left-0 lg:absolute lg:-bottom-0 lg:transform lg:translate-y-full text-sm font-redhatdisplay font-bold`}
         >
           <div className={`bg-white rounded-md lg:shadow-dropdown`}>
             {item.dropdownItems?.map(

@@ -49,7 +49,7 @@ export const Category = ({
   category: string;
 }): React.ReactElement => {
   return (
-    <div className={"pb-4 font-redhatdisplay-bold text-cloud-500"}>
+    <div className={"pb-4 font-redhatdisplay font-bold text-cloud-500"}>
       {category}
     </div>
   );
