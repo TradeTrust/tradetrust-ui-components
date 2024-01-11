@@ -15,10 +15,7 @@ module.exports = {
     }),
     extend: {
       fontFamily: {
-        "gilroy-light": ["Gilroy-Light", "sans-serif"],
-        "gilroy-medium": ["Gilroy-Medium", "sans-serif"],
-        "gilroy-bold": ["Gilroy-Bold", "sans-serif"],
-        "gilroy-extrabold": ["Gilroy-ExtraBold", "sans-serif"],
+        redhatdisplay: ["Red Hat Display", "sans-serif"],
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       height: {
