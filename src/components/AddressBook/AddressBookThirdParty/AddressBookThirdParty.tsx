@@ -1,6 +1,6 @@
 import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
 import React, { FunctionComponent } from "react";
-import { AddressBookState } from "./../AddressBook";
+import { AddressBookState } from "../AddressBook";
 import {
   AddressBookTableRow,
   AddressBookTableRowEmpty,

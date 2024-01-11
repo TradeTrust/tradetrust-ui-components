@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FunctionComponent } from "react";
 import * as NavType from "./../type";
-import { LinkButton, ButtonSize } from "./../../UI/Button";
+import { LinkButton, ButtonSize } from "../../UI/Button";
 
 export const NavigationBarItem: FunctionComponent<{
   item: NavType.NavigationItem;
