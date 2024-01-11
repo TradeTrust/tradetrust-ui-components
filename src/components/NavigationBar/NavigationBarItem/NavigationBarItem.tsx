@@ -108,8 +108,9 @@ const DropDownList: FunctionComponent<{
           {item.label}
         </span>
         <svg
-          className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${isOpen ? "rotate-180" : "rotate-0"
-            }`}
+          className={`-mr-1 ml-1 h-5 w-5 transition-transform duration-200 ease-out transform ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
