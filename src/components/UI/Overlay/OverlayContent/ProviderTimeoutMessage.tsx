@@ -17,7 +17,7 @@ export const ProviderTimeoutMessage: FunctionComponent<
       <p className="text-cloud-800">
         Loading the endorsement chain is taking longer than usual. To address
         this,{" "}
-        <a href={address} target="_blank">
+        <a href={address} target="_blank" rel="noreferrer noopener">
           change your Remote Procedure Call (RPC) provider
         </a>
         .
