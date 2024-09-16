@@ -1,10 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
+import path from 'path';
 const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
+// import 'webpack-dev-server';
 
-module.exports = {
+import webpack from 'webpack';
+
+const config: webpack.Configuration = {
   entry: "./src/index.tsx",
   devtool:
     process.env.NODE_ENV === "production" ? false : "eval-cheap-source-map", // https://webpack.js.org/configuration/devtool/#devtool
@@ -66,3 +68,6 @@ module.exports = {
     }),
   ],
 };
+
+
+export default config;
