@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import path from 'path';
+import path from "path";
 const CopyPlugin = require("copy-webpack-plugin");
 // import 'webpack-dev-server';
 
-import webpack from 'webpack';
+import webpack from "webpack";
 
 const config: webpack.Configuration = {
   entry: "./src/index.tsx",
@@ -68,6 +68,5 @@ const config: webpack.Configuration = {
     }),
   ],
 };
-
 
 export default config;

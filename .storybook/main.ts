@@ -1,13 +1,16 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 import CopyPlugin from "copy-webpack-plugin";
 import * as path from "path";
-import custom from '../webpack.config.ts';
+import custom from "../webpack.config.ts";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.tsx"],
-  addons: ["@storybook/addon-essentials", "@storybook/addon-webpack5-compiler-babel"],
+  addons: [
+    "@storybook/addon-essentials",
+    "@storybook/addon-webpack5-compiler-babel",
+  ],
   core: {
-    disableTelemetry: true
+    disableTelemetry: true,
   },
   webpackFinal: (config: any) => {
     return {
@@ -24,7 +27,7 @@ const config: StorybookConfig = {
           ...config.resolve.alias,
         },
         // fallback: {
-          // ...custom.resolve?.fallback
+        // ...custom.resolve?.fallback
         // }
       },
       plugins: [
@@ -46,7 +49,7 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };
 export default config;
