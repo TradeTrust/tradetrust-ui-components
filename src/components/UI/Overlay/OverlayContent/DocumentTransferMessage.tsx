@@ -183,12 +183,14 @@ export const RejectSurrender: FunctionComponent = () => {
 export const MessageRejectSurrenderConfirmation: FunctionComponent<
   MessageProps
 > = ({ beneficiaryAddress, holderAddress }) => {
-  return <MessageTransferSuccess
-    beneficiaryTitle="Restore document to Owner:"
-    beneficiaryAddress={beneficiaryAddress}
-    holderTitle="and to Holder:"
-    holderAddress={holderAddress}
-  />;
+  return (
+    <MessageTransferSuccess
+      beneficiaryTitle="Restore document to Owner:"
+      beneficiaryAddress={beneficiaryAddress}
+      holderTitle="and to Holder:"
+      holderAddress={holderAddress}
+    />
+  );
 };
 
 export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({
@@ -217,7 +219,12 @@ export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
   beneficiaryAddress,
   holderAddress,
 }) => {
-  return <MessageTransferSuccess beneficiaryAddress={beneficiaryAddress} holderAddress={holderAddress} />;
+  return (
+    <MessageTransferSuccess
+      beneficiaryAddress={beneficiaryAddress}
+      holderAddress={holderAddress}
+    />
+  );
 };
 
 export const MessageTransferSuccess: FunctionComponent<MessageProps> = ({
@@ -304,11 +311,8 @@ export const showDocumentTransferMessage = (
           holderAddress={option.holderAddress}
         />
       )}
-      {!(Object.values(MessageTitle) as string[]).includes(title) && title?.length > 0 && (
-        <MessageTransferSuccess
-          {...option}
-        />
-      )}
+      {!(Object.values(MessageTitle) as string[]).includes(title) &&
+        title?.length > 0 && <MessageTransferSuccess {...option} />}
     </DocumentTransferMessage>
   );
 };
