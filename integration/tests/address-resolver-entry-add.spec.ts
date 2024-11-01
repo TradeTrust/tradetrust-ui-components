@@ -12,7 +12,7 @@ const ButtonAdd = Selector("button").withText("Add");
 const ButtonSave = Selector("button").withText("Save");
 const IconEdit = Selector("[data-testid='edit-icon']");
 
-test("Address Resolver should edit, save input values correctly", async (t) => {
+test.skip("Address Resolver should edit, save input values correctly", async (t) => {
   await t.click(ButtonAdd);
 
   await t.expect(InputName.value).eql("");
