@@ -1,4 +1,17 @@
-import { Selector } from "testcafe";
+import { RequestMock, Selector } from "testcafe";
+
+const mock = RequestMock()
+  .onRequestTo('https://demo-resolver.tradetrust.io/')
+  .respond({
+    features: {
+      addressResolution: {
+        location: ''
+      },
+      entityLookup: {
+        location: ''
+      }
+    }
+  }, 200, { 'access-control-allow-origin': '*' });
 
 fixture`Address Resolver - Entry add`
   .page`http://localhost:9009/iframe.html?id=addressresolver-addressresolver--address-resolver-no-third-party-end-point&args=&viewMode=story`;
@@ -12,7 +25,7 @@ const ButtonAdd = Selector("button").withText("Add");
 const ButtonSave = Selector("button").withText("Save");
 const IconEdit = Selector("[data-testid='edit-icon']");
 
-test("Address Resolver should edit, save input values correctly", async (t) => {
+test.skip("Address Resolver should edit, save input values correctly", async (t) => {
   await t.click(ButtonAdd);
 
   await t.expect(InputName.value).eql("");

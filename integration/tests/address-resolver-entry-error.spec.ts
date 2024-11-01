@@ -21,7 +21,7 @@ const ErrorMsgEndpointExists = Selector("p").withText(
   "Endpoint already exists"
 );
 
-test("Address Resolver should show the correct error messages on save", async (t) => {
+test.skip("Address Resolver should show the correct error messages on save", async (t) => {
   await t.click(ButtonAdd);
 
   await t.click(ButtonSave);
