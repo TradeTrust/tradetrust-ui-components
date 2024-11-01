@@ -1,4 +1,4 @@
-import { RequestMock, Selector } from "testcafe";
+import { Selector } from "testcafe";
 
 fixture`Address Resolver - Entry add`
   .page`http://localhost:9009/iframe.html?id=addressresolver-addressresolver--address-resolver-no-third-party-end-point&args=&viewMode=story`;
