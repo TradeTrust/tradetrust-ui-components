@@ -9,9 +9,9 @@ export enum MessageTitle {
   NO_MANAGE_ACCESS = "No manage assets access",
   NO_USER_AUTHORIZATION = "User denied account authorization", // this error message must match error message from metamask extension itself
   TRANSACTION_ERROR = "Error - Failed transaction",
-  SURRENDER_DOCUMENT_SUCCESS = "Surrender Document Success",
-  ACCEPT_SURRENDER_DOCUMENT = "Surrender Accepted",
-  REJECT_SURRENDER_DOCUMENT = "Surrender Rejected",
+  SURRENDER_DOCUMENT_SUCCESS = "Return of ETR successful",
+  ACCEPT_SURRENDER_DOCUMENT = "Return of ETR accepted",
+  REJECT_SURRENDER_DOCUMENT = "Return of this ETR has been rejected by the Issuer",
   CONFIRM_REJECT_SURRENDER_DOCUMENT = "Confirm Document Return",
   CHANGE_BENEFICIARY_SUCCESS = "Change Owner Success",
   NOMINATE_BENEFICIARY_HOLDER_SUCCESS = "Nomination Success",
@@ -163,20 +163,22 @@ export const MessageTransactionError: FunctionComponent<MessageProps> = ({
 export const MessageSurrenderSuccess: FunctionComponent = () => {
   return (
     <p className="mt-3">
-      This Bill of Lading has been surrendered, pending acceptance of issuer.
+      This ETR has been returned, pending acceptance by the Issuer.
     </p>
   );
 };
 
 export const AcceptSurrender: FunctionComponent = () => {
   return (
-    <p className="mt-3">Surrender for this Bill of Lading has been accepted.</p>
+    <p className="mt-3">
+      This ETR has been taken out of circulation by the Issuer.
+    </p>
   );
 };
 
 export const RejectSurrender: FunctionComponent = () => {
   return (
-    <p className="mt-3">Surrender for this Bill of Lading has been rejected.</p>
+    <p className="mt-3">Return for this ETR has been rejected by the Issuer.</p>
   );
 };
 
