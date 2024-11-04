@@ -1,6 +1,16 @@
 {
   "name": "@tradetrust-tt/tradetrust-ui-components",
   "version": "0.1.0",
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "v3",
+        "prerelease": "alpha"
+      }
+    ],
+    "tagFormat": "v${version}"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/TradeTrust/tradetrust-ui-components.git"
