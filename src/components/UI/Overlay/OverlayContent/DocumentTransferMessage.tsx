@@ -170,7 +170,9 @@ export const MessageSurrenderSuccess: FunctionComponent = () => {
 
 export const AcceptSurrender: FunctionComponent = () => {
   return (
-    <p className="mt-3">This ETR has been taken out of circulation by the Issuer.</p>
+    <p className="mt-3">
+      This ETR has been taken out of circulation by the Issuer.
+    </p>
   );
 };
 
