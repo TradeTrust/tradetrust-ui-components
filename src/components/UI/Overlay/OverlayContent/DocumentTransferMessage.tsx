@@ -9,9 +9,9 @@ export enum MessageTitle {
   NO_MANAGE_ACCESS = "No manage assets access",
   NO_USER_AUTHORIZATION = "User denied account authorization", // this error message must match error message from metamask extension itself
   TRANSACTION_ERROR = "Error - Failed transaction",
-  SURRENDER_DOCUMENT_SUCCESS = "Surrender Document Success",
-  ACCEPT_SURRENDER_DOCUMENT = "Surrender Accepted",
-  REJECT_SURRENDER_DOCUMENT = "Surrender Rejected",
+  SURRENDER_DOCUMENT_SUCCESS = "Return of ETR successful",
+  ACCEPT_SURRENDER_DOCUMENT = "Return of ETR accepted",
+  REJECT_SURRENDER_DOCUMENT = "Return of this ETR has been rejected by the Issuer",
   CONFIRM_REJECT_SURRENDER_DOCUMENT = "Confirm Document Return",
   CHANGE_BENEFICIARY_SUCCESS = "Change Owner Success",
   NOMINATE_BENEFICIARY_HOLDER_SUCCESS = "Nomination Success",
@@ -112,7 +112,9 @@ export const DocumentTransferMessage: FunctionComponent<
 interface MessageProps {
   address?: string;
   error?: string;
+  beneficiaryTitle?: string;
   beneficiaryAddress?: string;
+  holderTitle?: string;
   holderAddress?: string;
 }
 
@@ -162,20 +164,22 @@ export const MessageTransactionError: FunctionComponent<MessageProps> = ({
 export const MessageSurrenderSuccess: FunctionComponent = () => {
   return (
     <p className="mt-3">
-      This Bill of Lading has been surrendered, pending acceptance of issuer.
+      This ETR has been returned, pending acceptance by the Issuer.
     </p>
   );
 };
 
 export const AcceptSurrender: FunctionComponent = () => {
   return (
-    <p className="mt-3">Surrender for this Bill of Lading has been accepted.</p>
+    <p className="mt-3">
+      This ETR has been taken out of circulation by the Issuer.
+    </p>
   );
 };
 
 export const RejectSurrender: FunctionComponent = () => {
   return (
-    <p className="mt-3">Surrender for this Bill of Lading has been rejected.</p>
+    <p className="mt-3">Return for this ETR has been rejected by the Issuer.</p>
   );
 };
 
@@ -183,37 +187,25 @@ export const MessageRejectSurrenderConfirmation: FunctionComponent<
   MessageProps
 > = ({ beneficiaryAddress, holderAddress }) => {
   return (
-    <>
-      <h6 className="mt-3">Restore document to Owner:</h6>
-      {beneficiaryAddress && (
-        <MessageAddressResolver address={beneficiaryAddress} />
-      )}
-      <h6 className="mt-3">and to Holder:</h6>
-      {holderAddress && <MessageAddressResolver address={holderAddress} />}
-    </>
+    <MessageTransferSuccess
+      beneficiaryTitle="Restore document to Owner:"
+      beneficiaryAddress={beneficiaryAddress}
+      holderTitle="and to Holder:"
+      holderAddress={holderAddress}
+    />
   );
 };
 
 export const MessageBeneficiarySuccess: FunctionComponent<MessageProps> = ({
   address,
 }) => {
-  return (
-    <>
-      <h6 className="mt-3">Current Owner</h6>
-      {address && <MessageAddressResolver address={address} />}
-    </>
-  );
+  return <MessageTransferSuccess beneficiaryAddress={address} />;
 };
 
 export const MessageHolderSuccess: FunctionComponent<MessageProps> = ({
   address,
 }) => {
-  return (
-    <>
-      <h6 className="mt-3">Current Holder</h6>
-      {address && <MessageAddressResolver address={address} />}
-    </>
-  );
+  return <MessageTransferSuccess holderAddress={address} />;
 };
 
 export const MessageNominateBeneficiaryHolderSuccess: FunctionComponent =
@@ -231,14 +223,35 @@ export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
   holderAddress,
 }) => {
   return (
+    <MessageTransferSuccess
+      beneficiaryAddress={beneficiaryAddress}
+      holderAddress={holderAddress}
+    />
+  );
+};
+
+export const MessageTransferSuccess: FunctionComponent<MessageProps> = ({
+  beneficiaryTitle = "Current Owner",
+  beneficiaryAddress,
+  holderTitle = "Current Holder",
+  holderAddress,
+}) => {
+  return (
     <>
-      <h6 className="mt-3">Current Owner</h6>
       {beneficiaryAddress && (
-        <MessageAddressResolver address={beneficiaryAddress} />
+        <>
+          <h6 className="mt-3">{beneficiaryTitle}</h6>
+          {beneficiaryAddress && (
+            <MessageAddressResolver address={beneficiaryAddress} />
+          )}
+        </>
       )}
-      <div />
-      <h6 className="mt-3">Current Holder</h6>
-      {holderAddress && <MessageAddressResolver address={holderAddress} />}
+      {holderAddress && (
+        <>
+          <h6 className="mt-3">{holderTitle}</h6>
+          {holderAddress && <MessageAddressResolver address={holderAddress} />}
+        </>
+      )}
     </>
   );
 };
@@ -246,7 +259,9 @@ export const MessageEndorseTransferSuccess: FunctionComponent<MessageProps> = ({
 interface ShowDocumentTransferMessageOptionProps {
   isSuccess: boolean;
   error?: string;
+  beneficiaryTitle?: string;
   beneficiaryAddress?: string;
+  holderTitle?: string;
   holderAddress?: string;
   isButtonMetamaskInstall?: boolean;
   onConfirmationAction?: () => void;
@@ -299,6 +314,8 @@ export const showDocumentTransferMessage = (
           holderAddress={option.holderAddress}
         />
       )}
+      {!(Object.values(MessageTitle) as string[]).includes(title) &&
+        title?.length > 0 && <MessageTransferSuccess {...option} />}
     </DocumentTransferMessage>
   );
 };
