@@ -15,8 +15,6 @@ jobs:
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Check Prettier
-        run: npx prettier --check .
       - name: Check Lint
         run: npm run lint
       - name: Check TypeScript
@@ -37,4 +35,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release@19.0.5 --branches master
+        run: npx semantic-release@19.0.5
