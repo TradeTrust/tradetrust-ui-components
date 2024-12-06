@@ -3,12 +3,12 @@ import { Selector } from "testcafe";
 fixture`Text Overlay`
   .page`http://localhost:9009/iframe.html?id=ui-overlay--text&args=&viewMode=story`;
 
-const RootSelector = Selector("#root", { visibilityCheck: true });
-const ModalSelector = Selector("#root > div.overlay", {
+const RootSelector = Selector("#storybook-root", { visibilityCheck: true });
+const ModalSelector = Selector("#storybook-root > div.overlay", {
   visibilityCheck: true,
 });
 
-const openButton = RootSelector.find("#root > button");
+const openButton = RootSelector.find("#storybook-root > button");
 const modalCloseButton = ModalSelector.find("[data-testid='overlay-close']");
 const overlayTitle = ModalSelector.find("[data-testid='overlay-title']");
 
