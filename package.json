@@ -57,7 +57,7 @@
     "IE >= 11"
   ],
   "dependencies": {
-    "@govtechsg/address-identity-resolver": "^1.5.0",
+    "@tradetrust-tt/address-identity-resolver": "^1.6.1",
     "debug": "^4.3.4",
     "lodash": "^4.17.21",
     "postcss": "^8.4.31",

@@ -1,4 +1,4 @@
-import { AddressBookThirdPartyResultsProps } from "@govtechsg/address-identity-resolver";
+import { AddressBookThirdPartyResultsProps } from "@tradetrust-tt/address-identity-resolver";
 import React, { FunctionComponent } from "react";
 import { AddressBookState } from "./../AddressBook";
 import {

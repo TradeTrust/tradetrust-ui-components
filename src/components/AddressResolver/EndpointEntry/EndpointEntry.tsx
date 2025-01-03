@@ -1,7 +1,7 @@
 import {
   getFeatures,
   ThirdPartyAPIEntryProps,
-} from "@govtechsg/address-identity-resolver";
+} from "@tradetrust-tt/address-identity-resolver";
 import React, { FunctionComponent, useState } from "react";
 import { Edit, Trash2 } from "react-feather";
 import isEmpty from "validator/lib/isEmpty";
