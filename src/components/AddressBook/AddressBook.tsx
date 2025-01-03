@@ -3,7 +3,7 @@ import {
   entityLookup,
   useAddressBook,
   useThirdPartyAPIEndpoints,
-} from "@govtechsg/address-identity-resolver";
+} from "@tradetrust-tt/address-identity-resolver";
 import { debounce, isEmpty } from "lodash";
 import React, {
   FunctionComponent,

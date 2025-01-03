@@ -1,7 +1,7 @@
 import {
   ThirdPartyAPIEntryProps,
   useThirdPartyAPIEndpoints,
-} from "@govtechsg/address-identity-resolver";
+} from "@tradetrust-tt/address-identity-resolver";
 import React, { FunctionComponent } from "react";
 import { useOverlayContext } from "../../common/context/OverlayContext";
 import { DeleteResolverConfirmation } from "../UI/Overlay/OverlayContent";

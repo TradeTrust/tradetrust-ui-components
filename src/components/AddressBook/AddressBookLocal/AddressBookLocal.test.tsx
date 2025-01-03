@@ -1,10 +1,10 @@
-import { useAddressBook } from "@govtechsg/address-identity-resolver";
+import { useAddressBook } from "@tradetrust-tt/address-identity-resolver";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { AddressBookLocal } from "./AddressBookLocal";
 import { AddressBookState } from "./../AddressBook";
 
-jest.mock("@govtechsg/address-identity-resolver", () => ({
+jest.mock("@tradetrust-tt/address-identity-resolver", () => ({
   useAddressBook: jest.fn(),
 }));
 
