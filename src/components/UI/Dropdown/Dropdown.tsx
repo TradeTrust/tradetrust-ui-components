@@ -35,7 +35,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         }`}
       >
         <>
-          <span className="truncate">{dropdownButtonText}</span>
+          <span className="flex-1 truncate">{dropdownButtonText}</span>
           <span>
             <ChevronDown />
           </span>
