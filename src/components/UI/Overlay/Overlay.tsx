@@ -1,9 +1,21 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { useOverlayContext } from "../../../common/context/OverlayContext";
 
 export const Overlay: FunctionComponent = () => {
   const { overlayContent, closeOverlay, isOverlayVisible } =
     useOverlayContext();
+
+  useEffect(() => {
+    if (isOverlayVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOverlayVisible]);
 
   return (
     <>
