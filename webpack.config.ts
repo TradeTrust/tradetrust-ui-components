@@ -25,6 +25,7 @@ const config: webpack.Configuration = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     fallback: {
       path: require.resolve("path-browserify"),
+      buffer: require.resolve("buffer"),
     },
   },
   module: {

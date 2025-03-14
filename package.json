@@ -58,6 +58,7 @@
   ],
   "dependencies": {
     "@tradetrust-tt/address-identity-resolver": "^1.6.1",
+    "buffer": "^6.0.3",
     "debug": "^4.3.4",
     "lodash": "^4.17.21",
     "postcss": "^8.5.1",

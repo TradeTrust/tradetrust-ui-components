@@ -8,6 +8,7 @@ export interface DropdownProps {
   className?: string;
   classNameMenu?: string;
   classNameShared?: string;
+  disabled?: boolean;
 }
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
@@ -17,6 +18,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   className,
   classNameMenu,
   classNameShared,
+  disabled,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,11 +28,14 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
     <div className={`relative${classNameRoot ? ` ${classNameRoot}` : ""}`}>
       <button
         {...props}
+        disabled={disabled}
         onClick={(event) => {
           event.preventDefault();
-          setIsOpen(!isOpen);
+          if (!disabled) {
+            setIsOpen(!isOpen);
+          }
         }}
-        className={`relative z-10 cursor-pointer focus:outline-none flex items-center justify-between${addonStylesShared}${
+        className={`relative z-10 cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-200 focus:outline-none flex items-center justify-between${addonStylesShared}${
           className ? ` ${className}` : ""
         }`}
       >
