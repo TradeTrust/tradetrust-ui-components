@@ -19,7 +19,7 @@ export interface FooterColumnProps {
 }
 
 export interface legalDataProps {
-  copyright: string;
+  copyright: string | React.ReactElement;
   items: FooterColumnData[];
 }
 export interface FooterProps {
