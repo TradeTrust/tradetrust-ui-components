@@ -19,12 +19,18 @@ export enum MessageTitle {
   ENDORSE_TRANSFER_SUCCESS = "Endorse Ownership/Holdership Success",
 }
 
-const ButtonClose: FunctionComponent = () => {
+interface ButtonCloseProps {
+  className?: string;
+}
+
+export const ButtonClose: FunctionComponent<ButtonCloseProps> = ({
+  className,
+}) => {
   const { closeOverlay } = useOverlayContext();
 
   return (
     <Button
-      className="bg-cerulean-500 rounded-xl text-white px-3 py-2 hover:bg-cerulean-800"
+      className={`bg-cerulean-500 rounded-xl text-white px-3 py-2 hover:bg-cerulean-800 ${className}`}
       onClick={closeOverlay}
     >
       Dismiss
@@ -67,6 +73,7 @@ interface DocumentTransferMessageProps extends OverlayContentProps {
   isButtonMetamaskInstall?: boolean;
   isConfirmationMessage?: boolean;
   onConfirmationAction?: () => void;
+  footer?: React.ReactNode;
 }
 
 export const DocumentTransferMessage: FunctionComponent<
@@ -76,6 +83,7 @@ export const DocumentTransferMessage: FunctionComponent<
   isConfirmationMessage,
   onConfirmationAction,
   children,
+  footer,
   ...props
 }) => {
   const documentTransferButton = (): ReactNode => {
@@ -94,11 +102,11 @@ export const DocumentTransferMessage: FunctionComponent<
         </div>
       );
     }
-    return <ButtonClose />;
+    return footer ? footer : <ButtonClose />;
   };
 
   return (
-    <OverlayContent className="max-w-md bg-white" {...props}>
+    <OverlayContent className="max-w-lg bg-white" {...props}>
       <div className="flex-1 mb-4">{children}</div>
       <div className="flex mx-0">
         <div className="flex w-full col-auto justify-center">
@@ -270,7 +278,8 @@ interface ShowDocumentTransferMessageOptionProps {
 
 export const showDocumentTransferMessage = (
   title: string,
-  option: ShowDocumentTransferMessageOptionProps
+  option: ShowDocumentTransferMessageOptionProps,
+  footer?: React.ReactNode,
 ): ReactNode => {
   return (
     <DocumentTransferMessage
@@ -279,6 +288,7 @@ export const showDocumentTransferMessage = (
       isButtonMetamaskInstall={option.isButtonMetamaskInstall}
       onConfirmationAction={option.onConfirmationAction}
       isConfirmationMessage={option.isConfirmationMessage}
+      footer={footer}
     >
       {title === MessageTitle.NO_METAMASK && <MessageNoMetamask />}
       {title === MessageTitle.NO_MANAGE_ACCESS && <MessageNoManageAccess />}
