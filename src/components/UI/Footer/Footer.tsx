@@ -3,7 +3,7 @@ import defaultTradeTrustLogo from "../../../static/images/tradetrust_logo.svg";
 import { Bottom, Category, mapper } from "./helpers";
 import { FooterColumnProps, FooterProps } from "./types";
 
-const sharedColumnPadding = `px-0 lg:px-6 xl:px-8`;
+const sharedColumnPadding = `px-2 lg:px-6 xl:px-8`;
 
 const Logo = (
   props: Pick<FooterProps, "title" | "logoUrl">

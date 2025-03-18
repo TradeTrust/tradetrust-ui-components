@@ -44,6 +44,12 @@ export const ButtonDefault = (): ReactElement => {
     >
       <DropdownItem
         className="active:bg-tangerine-800 active:text-white"
+        onClick={() => console.log("thirdparty clicked!!")}
+      >
+        Transfer ownership
+      </DropdownItem>
+      <DropdownItem
+        className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("local clicked!!")}
       >
         Transfer holdership
@@ -52,13 +58,13 @@ export const ButtonDefault = (): ReactElement => {
         className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
-        Endorse change of ownership
+        Transfer ownership and holdership
       </DropdownItem>
       <DropdownItem
         className="active:bg-tangerine-800 active:text-white"
         onClick={() => console.log("thirdparty clicked!!")}
       >
-        Surrender document
+        Return ETR to issuer
       </DropdownItem>
     </Dropdown>
   );
