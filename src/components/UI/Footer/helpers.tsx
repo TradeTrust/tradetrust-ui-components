@@ -22,7 +22,7 @@ export const mapper = (
 ): React.ReactElement => {
   const { render = defaultRender } = item;
   return (
-    <div key={`row-${index}`}>
+    <div className="pb-3.5 sm:pb-0" key={`row-${index}`}>
       {render({ ...item })}
     </div>
   );
@@ -36,10 +36,20 @@ export const Bottom = ({
   const { copyright, items } = legalData;
 
   return (
-    <div className={"flex justify-center items-center pt-6 divide-x"}>
+    <div
+      className={
+        "flex flex-col sm:flex-row sm:justify-center sm:items-center pt-6 sm:divide-x"
+      }
+    >
       {items.map(mapper)}
-      {typeof copyright === 'string' ? (
-        <p className={"text-cloud-500 text-sm px-4 flex items-center text-center"}>{copyright}</p>
+      {typeof copyright === "string" ? (
+        <p
+          className={
+            "text-cloud-500 text-sm sm:px-4 flex sm:items-center sm:text-center"
+          }
+        >
+          {copyright}
+        </p>
       ) : (
         copyright
       )}
