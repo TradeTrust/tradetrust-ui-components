@@ -49,7 +49,7 @@ export const Footer = (props: FooterProps): React.ReactElement => {
   return (
     <footer className={`bg-white no-print ${className}`}>
       <div className="container">
-        <div className="flex flex-wrap lg:flex-nowrap pb-3.5 lg:justify-between">
+        <div className="flex flex-col flex-wrap sm:flex-row lg:flex-nowrap pb-3.5 lg:justify-between">
           <Logo title={title} logoUrl={logoUrl} />
           {data ? (
             data.map((columnData, index) => (
