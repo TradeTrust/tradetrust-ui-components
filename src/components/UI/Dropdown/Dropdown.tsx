@@ -1,5 +1,6 @@
-import React, { FunctionComponent, ReactNode, useState } from "react";
+import React, { FunctionComponent, ReactNode, useState, useRef, useEffect } from "react";
 import { ChevronDown } from "react-feather";
+import { createPortal } from "react-dom";
 
 export interface DropdownProps {
   dropdownButtonText: string | ReactNode;
@@ -9,6 +10,7 @@ export interface DropdownProps {
   classNameMenu?: string;
   classNameShared?: string;
   disabled?: boolean;
+  menuPortalTarget?: HTMLElement;
 }
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
@@ -19,14 +21,57 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   classNameMenu,
   classNameShared,
   disabled,
+  menuPortalTarget,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
   const addonStylesShared = classNameShared ? ` ${classNameShared}` : "";
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isOpen && buttonRef.current && menuPortalTarget) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+      
+      setMenuPosition({
+        top: rect.bottom + scrollTop,
+        left: rect.left + scrollLeft
+      });
+    }
+  }, [isOpen, menuPortalTarget]);
+
+  const renderDropdownContent = () => {
+    const content = (
+      <div
+        onClick={() => setIsOpen(false)}
+        style={menuPortalTarget ? {
+          position: "absolute",
+          zIndex: 9999,
+          top: menuPosition.top,
+          left: menuPosition.left,
+          minWidth: buttonRef.current?.offsetWidth
+        } : undefined}
+        className={`rounded bg-white border border-gray-300 py-2 shadow-lg${addonStylesShared}${
+          classNameMenu ? ` ${classNameMenu}` : ""
+        }`}
+      >
+        {children}
+      </div>
+    );
+
+    if (menuPortalTarget && typeof document !== "undefined") {
+      return createPortal(content, menuPortalTarget);
+    }
+
+    return content;
+  };
 
   return (
     <div className={`relative${classNameRoot ? ` ${classNameRoot}` : ""}`}>
       <button
+        ref={buttonRef}
         {...props}
         disabled={disabled}
         onClick={(event) => {
@@ -53,14 +98,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
             onClick={() => setIsOpen(false)}
             className="fixed z-20 inset-0 w-full h-full cursor-default focus:outline-none"
           />
-          <div
-            onClick={() => setIsOpen(false)}
-            className={`absolute z-30 rounded bg-white border border-gray-300 py-2 shadow-lg${addonStylesShared}${
-              classNameMenu ? ` ${classNameMenu}` : ""
-            }`}
-          >
-            {children}
-          </div>
+          {renderDropdownContent()}
         </>
       )}
     </div>
