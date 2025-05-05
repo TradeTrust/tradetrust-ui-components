@@ -51,7 +51,7 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
           zIndex: 9999,
           top: menuPosition.top,
           left: menuPosition.left,
-          minWidth: buttonRef.current?.offsetWidth
+          maxWidth: buttonRef.current?.offsetWidth
         } : undefined}
         className={`rounded bg-white border border-gray-300 py-2 shadow-lg${addonStylesShared}${
           classNameMenu ? ` ${classNameMenu}` : ""
